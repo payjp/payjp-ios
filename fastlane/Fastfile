@@ -41,11 +41,16 @@ platform :ios do
       remote_branch: new_branch
     )
 
-    create_pull_request(
+    pr_url = create_pull_request(
       repo: public_repo,
       base: 'master',
       title: "internal update:#{last_commit_hash}",
       api_token: ENV['GITHUB_API_TOKEN']
+    )
+
+    slack(
+      message: ":rocket: PR is created! Please fill in the blank PR description:information_desk_person:\n#{pr_url}",
+      success: true
     )
   end
 end
