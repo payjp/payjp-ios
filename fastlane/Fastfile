@@ -29,7 +29,8 @@ platform :ios do
   desc "Create GitHub PR to `payjp/payjp-ios` from internal repo. (internal only)"
   lane :create_pr_to_public do
     public_repo = 'payjp/payjp-ios'
-    new_branch = "internal/#{last_git_commit}"
+    last_commit_hash = last_git_commit[:commit_hash]
+    new_branch = "internal/#{last_commit_hash}"
 
     sh("git config --global user.name pay-kun")
     sh("git config --global user.email misc@pay.jp")
@@ -43,7 +44,7 @@ platform :ios do
     create_pull_request(
       repo: public_repo,
       base: 'master',
-      title: "internal update:#{last_git_commit}",
+      title: "internal update:#{last_commit_hash}",
       api_token: ENV['GITHUB_API_TOKEN']
     )
   end
