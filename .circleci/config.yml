@@ -74,6 +74,6 @@ workflows:
       - create_pr_to_public:
           requires:
             - build
-          filters:
-              branches:
-                only: master
+          # filters:
+          #     branches:
+          #       only: master
