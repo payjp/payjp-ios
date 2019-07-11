@@ -69,3 +69,5 @@ fastlane/screenshots
 fastlane/test_output
 
 
+vendor/bundle
+.bundle

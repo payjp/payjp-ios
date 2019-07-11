@@ -1,0 +1,50 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+
+  desc "Run test"
+  lane :test do
+    scan(
+      scheme: 'PAYJP',
+      device: 'iPhone Xs Max',
+      configuration: 'Debug'
+    )
+  end
+  
+  desc "Create GitHub PR to `payjp/payjp-ios` from internal repo. (internal only)"
+  lane :create_pr_to_public do
+    public_repo = 'payjp/payjp-ios'
+    new_branch = "internal/#{last_git_commit}"
+
+    sh("git config --global user.name pay-kun")
+    sh("git config --global user.email misc@pay.jp")
+    sh("git checkout -b #{new_branch}")
+    sh("git remote add public git@github.com:payjp/payjp-ios.git")
+    push_to_git_remote(
+      remote: 'public',
+      remote_branch: new_branch
+    )
+
+    create_pull_request(
+      repo: public_repo,
+      base: 'master',
+      title: "internal update:#{last_git_commit}",
+      api_token: ENV['GITHUB_API_TOKEN']
+    )
+  end
+end

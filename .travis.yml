@@ -4,10 +4,11 @@ matrix:
     - osx_image: xcode10.2
 
 before_install:
+  - bundle install --path=vendor/bundle --clean
   - carthage bootstrap --no-use-binaries --platform ios
 
 script:
-    - xcodebuild -scheme PAYJP -sdk iphonesimulator -destination 'platform=iOS Simulator,OS=12.0,name=iPhone XS Max' -configuration Debug test | xcpretty -c
+    - bundle exec fastlane ios test
 
 cache:
   directories:

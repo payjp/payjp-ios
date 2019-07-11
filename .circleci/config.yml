@@ -1,0 +1,79 @@
+version: 2
+
+machine:
+  - &defaults
+    macos:
+      xcode: "10.2.0"
+    shell: /bin/bash --login -eo pipefail
+    working_directory: /Users/distiller/project
+
+cache_step:
+  - gem_cache:
+      primary: &primary_cache_key_gem gem-v1-{{ checksum "Gemfile.lock" }}
+      keys: &all_cache_keys_gem
+        - *primary_cache_key_gem
+        - gem-v1-
+  - gem_cache:
+      primary: &primary_cache_key_carthage carthage-v1-{{ checksum "Cartfile.resolved" }}
+      keys: &all_cache_keys_carthage
+        - *primary_cache_key_carthage
+        - carthage-v1-
+  - restore_cache: &restore_cache_carthage
+      keys: *all_cache_keys_carthage
+  - save_cache: &save_cache_carthage
+      paths:
+        - Carthage
+      key: *primary_cache_key_carthage
+  - restore_cache: &restore_cache_gem
+      keys: *all_cache_keys_gem
+  - save_cache: &save_cache_gem
+      paths:
+        - vendor/bundle
+      key: *primary_cache_key_gem
+
+shared_build_step:
+  - run: &set_ruby_version
+      name: Set Ruby Version
+      command:  echo "ruby-2.4" > .ruby-version
+
+  - run: &bundle_install
+      name: bundle install
+      command: bundle install --path=vendor/bundle --clean
+
+  - run: &carthage_bootstrap
+      name: carthage bootstrap
+      command: carthage bootstrap --no-use-binaries --platform ios
+
+jobs:
+  build:
+    <<: *defaults
+    steps:
+      - checkout
+      - run: *set_ruby_version
+      - restore_cache: *restore_cache_gem
+      - run: *bundle_install
+      - save_cache: *save_cache_gem
+      - restore_cache: *restore_cache_carthage
+      - run: *carthage_bootstrap
+      - save_cache: *save_cache_carthage
+      - run: bundle exec fastlane ios test
+
+  create_pr_to_public:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /Users/distiller/project
+      - run: bundle exec fastlane ios create_pr_to_public
+
+workflows:
+  version: 2
+  default_flow:
+    jobs:
+      - build
+      - create_pr_to_public:
+          requires:
+            - build
+          filters:
+              branches:
+                only: master
