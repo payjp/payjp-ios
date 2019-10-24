@@ -5,7 +5,8 @@ matrix:
 
 before_install:
   - brew update
-  - brew install swiftlint clang-format
+  - brew list swiftlint || brew install swiftlint
+  - brew list clang-format || brew install clang-format
   - bundle install --path=vendor/bundle --clean
   - carthage bootstrap --no-use-binaries --platform ios
 
