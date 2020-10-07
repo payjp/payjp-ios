@@ -266,7 +266,9 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
         cvcTextField.clearButtonMode = .whileEditing
         cardHolderTextField.clearButtonMode = .whileEditing
 
-        cardNumberTextField.textContentType = .creditCardNumber
+        if #available(iOS 10.0, *) {
+            cardNumberTextField.textContentType = .creditCardNumber
+        }
         cardNumberTextField.keyboardType = .numberPad
         expirationTextField.keyboardType = .numberPad
         cvcTextField.keyboardType = .numberPad
