@@ -49,20 +49,44 @@ class ErrorTranslatorTests: XCTestCase {
         XCTAssertEqual(result, "402 error")
     }
 
-    func testTranslate_error401() {
-        let payError = MockPAYErrorResponse(status: 401, message: "401 error")
+    func testTranslate_error402_nomessage() {
+        let payError = MockPAYErrorResponse(status: 402, message: nil, code: "something_wrong")
         let apiError = APIError.serviceError(payError)
 
         let result = translator.translate(error: apiError)
-        XCTAssertEqual(result, "payjp_card_form_screen_error_application".localized)
+        XCTAssertEqual(result, "payjp_card_form_screen_error_unknown".localized + " (code:something_wrong)")
+    }
+
+    func testTranslate_error403() {
+        let payError = MockPAYErrorResponse(status: 403, message: "403 error", code: "something_wrong")
+        let apiError = APIError.serviceError(payError)
+
+        let result = translator.translate(error: apiError)
+        XCTAssertEqual(result, "payjp_card_form_screen_error_application".localized + " (code:something_wrong)")
+    }
+
+    func testTranslate_error401() {
+        let payError = MockPAYErrorResponse(status: 401, message: "401 error", code: "something_wrong")
+        let apiError = APIError.serviceError(payError)
+
+        let result = translator.translate(error: apiError)
+        XCTAssertEqual(result, "payjp_card_form_screen_error_application".localized + " (code:something_wrong)")
+    }
+
+    func testTranslate_error400() {
+        let payError = MockPAYErrorResponse(status: 400, message: "400 error")
+        let apiError = APIError.serviceError(payError)
+
+        let result = translator.translate(error: apiError)
+        XCTAssertEqual(result, "payjp_card_form_screen_error_application".localized + " (code:none)")
     }
 
     func testTranslate_error500() {
-        let payError = MockPAYErrorResponse(status: 500, message: "500 error")
+        let payError = MockPAYErrorResponse(status: 500, message: "500 error", code: "maintenance")
         let apiError = APIError.serviceError(payError)
 
         let result = translator.translate(error: apiError)
-        XCTAssertEqual(result, "payjp_card_form_screen_error_server".localized)
+        XCTAssertEqual(result, "payjp_card_form_screen_error_server".localized + " (code:maintenance)")
     }
 
     func testTranslate_rateLimitExceeded() {
