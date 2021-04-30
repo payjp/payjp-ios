@@ -71,17 +71,6 @@ import PassKit
                                   completion: completion)
     }
 
-    /// Create PAY.JP Token
-    /// - parameter token:         3DSecure Token
-    /// - parameter completion:    completion action
-    @nonobjc
-    public func createToken(
-        with token: ThreeDSecureToken,
-        completion: @escaping (Result<Token, APIError>) -> Void
-    ) {
-        tokensService.createTokenForThreeDSecure(tdsId: token.identifier, completion: completion)
-    }
-
     /// GET PAY.JP Token
     /// - parameter tokenId:       identifier of the Token
     /// - parameter completion:    completion action
@@ -138,21 +127,6 @@ extension APIClient {
                     name: name,
                     tenantId: tenantId
         ) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success(let result):
-                completionHandler(result, nil)
-            case .failure(let error):
-                completionHandler(nil, self.nsErrorConverter.convert(from: error))
-            }
-        }
-    }
-
-    @objc public func createTokenWithTds(
-        _ token: ThreeDSecureToken,
-        completionHandler: @escaping (Token?, NSError?) -> Void
-    ) {
-        createToken(with: token) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let result):

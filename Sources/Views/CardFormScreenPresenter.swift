@@ -18,7 +18,6 @@ protocol CardFormScreenDelegate: class {
     func showErrorView(message: String, buttonHidden: Bool)
     func dismissErrorView()
     func showErrorAlert(message: String)
-    func presentVerificationScreen(with tdsToken: ThreeDSecureToken)
     func presentVerificationScreen(token: Token)
     // callback
     func didCompleteCardForm(with result: CardFormResult)
@@ -37,7 +36,6 @@ protocol CardFormScreenPresenterType {
 
 class CardFormScreenPresenter: CardFormScreenPresenterType {
     var cardFormResultSuccess: Bool = false
-    var tdsToken: ThreeDSecureToken?
     var incompletedToken: Token?
 
     private weak var delegate: CardFormScreenDelegate?
@@ -84,16 +82,7 @@ class CardFormScreenPresenter: CardFormScreenPresenterType {
                     self.creatingTokenCompleted(token: token)
                 }
             case .failure(let error):
-                switch error {
-                case .requiredThreeDSecure(let tdsToken):
-                    self.tdsToken = tdsToken
-                    self.dispatchQueue.async { [weak self] in
-                        guard let self = self else { return }
-                        self.delegate?.presentVerificationScreen(with: tdsToken)
-                    }
-                default:
-                    self.showErrorAlert(message: self.errorTranslator.translate(error: error))
-                }
+                self.showErrorAlert(message: self.errorTranslator.translate(error: error))
             }
         }
     }
@@ -143,9 +132,6 @@ class CardFormScreenPresenter: CardFormScreenPresenterType {
         if let incompletedToken = incompletedToken {
             tokenService.finishTokenThreeDSecure(tokenId: incompletedToken.identifer,
                                                  completion: tokenCompletion)
-        } else if let tdsToken = tdsToken {
-            tokenService.createTokenForThreeDSecure(tdsId: tdsToken.identifier,
-                                                    completion: tokenCompletion)
         }
     }
 

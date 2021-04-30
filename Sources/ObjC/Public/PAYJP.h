@@ -28,8 +28,6 @@ FOUNDATION_EXPORT NSInteger const PAYErrorServiceError;
 FOUNDATION_EXPORT NSInteger const PAYErrorInvalidJSON;
 /// Form validation error.
 FOUNDATION_EXPORT NSInteger const PAYErrorFormInvalid;
-/// Required 3DSecure.
-FOUNDATION_EXPORT NSInteger const PAYErrorRequiredThreeDSecure;
 /// Too many requests
 FOUNDATION_EXPORT NSInteger const PAYErrorRateLimitExceeded;
 
@@ -46,9 +44,6 @@ FOUNDATION_EXPORT NSString *const PAYErrorServiceErrorObject;
 /// Use this key name to get `PAYErrorInvalidJSON` error's data which is stored in the `userInfo`.
 FOUNDATION_EXPORT NSString *const PAYErrorInvalidJSONObject;
 FOUNDATION_EXPORT NSString *const PAYErrorInvalidJSONErrorObject;
-/// Use this key name to get `PAYErrorRequiredThreeDSecure` tds identifier which is stored in the
-/// `userInfo`.
-FOUNDATION_EXPORT NSString *const PAYErrorRequiredThreeDSecureIdObject;
 
 /// 3DSecure status
 typedef NSString *const PAYThreeDSecureStatus NS_STRING_ENUM;

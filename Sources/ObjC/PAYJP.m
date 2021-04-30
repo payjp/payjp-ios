@@ -17,7 +17,6 @@ NSInteger const PAYErrorInvalidResponse = 2;
 NSInteger const PAYErrorServiceError = 3;
 NSInteger const PAYErrorInvalidJSON = 4;
 NSInteger const PAYErrorFormInvalid = 5;
-NSInteger const PAYErrorRequiredThreeDSecure = 6;
 NSInteger const PAYErrorRateLimitExceeded = 7;
 
 NSString *const PAYErrorInvalidApplePayTokenObject = @"PAYErrorInvalidApplePayToken";
@@ -26,7 +25,6 @@ NSString *const PAYErrorInvalidResponseObject = @"PAYErrorInvalidResponseObject"
 NSString *const PAYErrorServiceErrorObject = @"PAYErrorServiceErrorObject";
 NSString *const PAYErrorInvalidJSONObject = @"PAYErrorInvalidJSONObject";
 NSString *const PAYErrorInvalidJSONErrorObject = @"PAYErrorInvalidJSONErrorObject";
-NSString *const PAYErrorRequiredThreeDSecureIdObject = @"PAYErrorRequiredThreeDSecureIdObject";
 
 PAYThreeDSecureStatus PAYThreeDSecureStatusUnverified = @"unverified";
 PAYThreeDSecureStatus PAYThreeDSecureStatusVerified = @"verified";
