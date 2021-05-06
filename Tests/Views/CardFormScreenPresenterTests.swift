@@ -171,29 +171,6 @@ class CardFormScreenPresenterTests: XCTestCase {
         XCTAssertFalse(presenter.cardFormResultSuccess)
     }
 
-    func testPresentVerificationScreen_with_ThreeDSecureToken() {
-        let expectation = self.expectation(description: "view update")
-        let mockDelegate = MockCardFormScreenDelegate(expectation: expectation)
-        let tdsToken = ThreeDSecureToken(identifier: "tds_id")
-        let requiredTds = APIError.requiredThreeDSecure(tdsToken)
-        let mockService = MockTokenService()
-        mockService.createTokenResult = .failure(requiredTds)
-
-        let presenter = CardFormScreenPresenter(delegate: mockDelegate, tokenService: mockService)
-        presenter.createToken(tenantId: "tenant_id", formInput: cardFormInput())
-        presenter.tokenOperationStatusDidUpdate(status: .running)
-        presenter.tokenOperationStatusDidUpdate(status: .throttled)
-        presenter.tokenOperationStatusDidUpdate(status: .acceptable)
-
-        waitForExpectations(timeout: 1, handler: nil)
-
-        XCTAssertEqual(mockService.createTokenTenantId, "tenant_id")
-        XCTAssertTrue(mockDelegate.showIndicatorCalled, "showIndicator not called")
-        XCTAssertTrue(mockDelegate.disableSubmitButtonCalled, "disableSubmitButton not called")
-        XCTAssertEqual(mockDelegate.presentVerificationScreenTdsToken?.identifier, tdsToken.identifier)
-        XCTAssertFalse(presenter.cardFormResultSuccess)
-    }
-
     func testPresentVerificationScreen_with_Token() {
         let expectation = self.expectation(description: "view update")
         let mockDelegate = MockCardFormScreenDelegate(expectation: expectation)
@@ -214,63 +191,6 @@ class CardFormScreenPresenterTests: XCTestCase {
         XCTAssertTrue(mockDelegate.showIndicatorCalled, "showIndicator not called")
         XCTAssertTrue(mockDelegate.disableSubmitButtonCalled, "disableSubmitButton not called")
         XCTAssertEqual(mockDelegate.presentVerificationScreenToken?.identifer, token.identifer)
-        XCTAssertFalse(presenter.cardFormResultSuccess)
-    }
-
-    func testCompleteTokenTds_with_ThreeDSecureToken_success() {
-        let expectation = self.expectation(description: "view update")
-        expectation.expectedFulfillmentCount = 2
-        let mockDelegate = MockCardFormScreenDelegate(expectation: expectation)
-        let token = mockToken()
-        let tdsToken = ThreeDSecureToken(identifier: "tds_id")
-        let requiredTds = APIError.requiredThreeDSecure(tdsToken)
-        let mockService = MockTokenService()
-        mockService.createTokenResult = .failure(requiredTds)
-        mockService.createTokenForThreeDSecureResult = .success(token)
-
-        let presenter = CardFormScreenPresenter(delegate: mockDelegate,
-                                                tokenService: mockService)
-        presenter.createToken(tenantId: "tenant_id", formInput: cardFormInput())
-        presenter.completeTokenTds()
-        presenter.tokenOperationStatusDidUpdate(status: .running)
-        presenter.tokenOperationStatusDidUpdate(status: .throttled)
-        presenter.tokenOperationStatusDidUpdate(status: .acceptable)
-
-        waitForExpectations(timeout: 1, handler: nil)
-
-        XCTAssertEqual(mockService.createTokenForThreeDSecureTdsId, "tds_id")
-        XCTAssertTrue(mockDelegate.didProducedCalled, "didProduced not called")
-        XCTAssertFalse(mockDelegate.dismissIndicatorCalled, "dismissIndicator is called")
-        XCTAssertFalse(mockDelegate.enableSubmitButtonCalled, "enableSubmitButton is called")
-        XCTAssertTrue(mockDelegate.didCompleteCardFormCalled, "didCompleteCardForm not called")
-        XCTAssertTrue(presenter.cardFormResultSuccess)
-    }
-
-    func testCompleteTokenTds_with_ThreeDSecureToken_failure() {
-        let error = NSError(domain: "mock_domain",
-                            code: 0,
-                            userInfo: [NSLocalizedDescriptionKey: "mock api error"])
-        let apiError = APIError.systemError(error)
-        let expectation = self.expectation(description: "view update")
-        expectation.expectedFulfillmentCount = 2
-        let mockDelegate = MockCardFormScreenDelegate(expectation: expectation)
-        let tdsToken = ThreeDSecureToken(identifier: "tds_id")
-        let requiredTds = APIError.requiredThreeDSecure(tdsToken)
-        let mockService = MockTokenService()
-        mockService.createTokenResult = .failure(requiredTds)
-        mockService.createTokenForThreeDSecureResult = .failure(apiError)
-
-        let presenter = CardFormScreenPresenter(delegate: mockDelegate,
-                                                tokenService: mockService)
-        presenter.createToken(tenantId: "tenant_id", formInput: cardFormInput())
-        presenter.completeTokenTds()
-
-        waitForExpectations(timeout: 1, handler: nil)
-
-        XCTAssertEqual(mockService.createTokenForThreeDSecureTdsId, "tds_id")
-        XCTAssertTrue(mockDelegate.dismissIndicatorCalled, "dismissIndicator not called")
-        XCTAssertTrue(mockDelegate.enableSubmitButtonCalled, "enableSubmitButton not called")
-        XCTAssertEqual(mockDelegate.showErrorAlertMessage, "mock api error")
         XCTAssertFalse(presenter.cardFormResultSuccess)
     }
 

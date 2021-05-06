@@ -62,13 +62,6 @@ class Client: NSObject, ClientType {
                 guard error != nil else {
                     switch response.statusCode {
                     case 200:
-                        // 3Dセキュア認証かどうかのチェック
-                        if let tdsToken = self.createThreeDSecureToken(data: data,
-                                                                       request: request,
-                                                                       response: response) {
-                            completion?(Result.failure(.requiredThreeDSecure(tdsToken)))
-                            return
-                        }
                         do {
                             let result = try request.response(data: data, response: response)
                             completion?(Result.success(result))
@@ -95,28 +88,5 @@ class Client: NSObject, ClientType {
             completion?(Result.failure(.systemError(error)))
             return nil
         }
-    }
-
-    /// Response bodyから3DSecureのidを取り出してThreeDSecureTokenを生成する
-    /// - Parameters:
-    ///   - data: Data
-    ///   - request: Request
-    ///   - response: Response
-    /// - Returns: ThreeDSecureToken
-    func createThreeDSecureToken<Req: Request>(data: Data,
-                                               request: Req,
-                                               response: HTTPURLResponse) -> ThreeDSecureToken? {
-
-        guard let url = response.url?.absoluteString else { return nil }
-        guard url == "\(PAYJPApiEndpoint)tokens" else { return nil }
-        guard request.httpMethod == "POST" else { return nil }
-
-        let response = try? self.jsonDecoder.decode(PAYCommonResponse.self, from: data)
-        if response?.object == "three_d_secure_token" {
-            if let tdsId = response?.id {
-                return ThreeDSecureToken(identifier: tdsId)
-            }
-        }
-        return nil
     }
 }

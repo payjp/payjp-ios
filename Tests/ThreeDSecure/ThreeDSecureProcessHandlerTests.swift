@@ -12,10 +12,29 @@ import SafariServices
 
 class ThreeDSecureProcessHandlerTests: XCTestCase {
 
+    private func mockToken(tdsStatus: PAYThreeDSecureStatus? = nil) -> Token {
+        let card = Card(identifier: "car_123",
+                        name: "paykun",
+                        last4Number: "1234",
+                        brand: "visa",
+                        expirationMonth: 12,
+                        expirationYear: 19,
+                        fingerprint: "abcdefg",
+                        liveMode: false,
+                        createAt: Date(),
+                        threeDSecureStatus: tdsStatus)
+        let token = Token(identifier: "tok_123",
+                          livemode: false,
+                          used: false,
+                          card: card,
+                          createAt: Date())
+        return token
+    }
+
     func testStartThreeDSecureProcess() {
         let mockDriver = MockWebDriver()
         let handler = ThreeDSecureProcessHandler(webDriver: mockDriver)
-        let token = ThreeDSecureToken(identifier: "tds_xxx")
+        let token = self.mockToken(tdsStatus: .unverified)
         let mockVC = MockViewController()
 
         handler.startThreeDSecureProcess(viewController: mockVC,
@@ -31,7 +50,7 @@ class ThreeDSecureProcessHandlerTests: XCTestCase {
 
         let mockDriver = MockWebDriver(isSafariVC: true)
         let handler = ThreeDSecureProcessHandler(webDriver: mockDriver)
-        let token = ThreeDSecureToken(identifier: "tds_xxx")
+        let token = self.mockToken(tdsStatus: .unverified)
         let mockVC = MockViewController()
         let url = URL(string: "test://")!
 
@@ -51,7 +70,7 @@ class ThreeDSecureProcessHandlerTests: XCTestCase {
 
         let mockDriver = MockWebDriver(isSafariVC: true)
         let handler = ThreeDSecureProcessHandler(webDriver: mockDriver)
-        let token = ThreeDSecureToken(identifier: "tds_xxx")
+        let token = self.mockToken(tdsStatus: .unverified)
         let mockVC = MockViewController()
         let url = URL(string: "unknown://")!
 
@@ -71,7 +90,7 @@ class ThreeDSecureProcessHandlerTests: XCTestCase {
 
         let mockDriver = MockWebDriver(isSafariVC: false)
         let handler = ThreeDSecureProcessHandler(webDriver: mockDriver)
-        let token = ThreeDSecureToken(identifier: "tds_xxx")
+        let token = self.mockToken(tdsStatus: .unverified)
         let mockVC = MockViewController()
         let url = URL(string: "test://")!
 
@@ -91,7 +110,7 @@ class ThreeDSecureProcessHandlerTests: XCTestCase {
 
         let mockDriver = MockWebDriver(isSafariVC: true)
         let handler = ThreeDSecureProcessHandler(webDriver: mockDriver)
-        let token = ThreeDSecureToken(identifier: "tds_xxx")
+        let token = self.mockToken(tdsStatus: .unverified)
         let mockVC = MockViewController()
 
         handler.startThreeDSecureProcess(viewController: mockVC,
