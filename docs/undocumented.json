@@ -9,35 +9,28 @@
     },
     {
       "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/APIClient.swift",
-      "line": 110,
+      "line": 99,
       "symbol": "APIClient.createTokenWith(_:completionHandler:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/APIClient.swift",
-      "line": 125,
+      "line": 114,
       "symbol": "APIClient.createTokenWith(_:cvc:expirationMonth:expirationYear:name:tenantId:completionHandler:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/APIClient.swift",
-      "line": 151,
-      "symbol": "APIClient.createTokenWithTds(_:completionHandler:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/APIClient.swift",
-      "line": 166,
+      "line": 140,
       "symbol": "APIClient.getTokenWith(_:completionHandler:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/APIClient.swift",
-      "line": 179,
+      "line": 153,
       "symbol": "APIClient.getAcceptedBrandsWith(_:completionHandler:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
@@ -72,14 +65,14 @@
     },
     {
       "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Networking/Core/APIError.swift",
-      "line": 64,
+      "line": 60,
       "symbol": "APIError.errorCode",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Networking/Core/APIError.swift",
-      "line": 83,
+      "line": 77,
       "symbol": "APIError.userInfo",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
@@ -366,7 +359,7 @@
     },
     {
       "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/ThreeDSecure/ThreeDSecureProcessHandler.swift",
-      "line": 60,
+      "line": 61,
       "symbol": "ThreeDSecureProcessHandler.init(webDriver:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
