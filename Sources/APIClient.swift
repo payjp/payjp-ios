@@ -92,6 +92,17 @@ import PassKit
     ) {
         accountsService.getAcceptedBrands(tenantId: tenantId, completion: completion)
     }
+
+    /// Finish 3D Secure flow on tokenization
+    /// - parameter tokenId:    identifier of the Token
+    /// - parameter completion: completion action
+    @nonobjc
+    public func finishTokenThreeDSecure(
+        with tokenId: String,
+        completion: @escaping (Result<Token, APIError>) -> Void
+    ) {
+        tokensService.finishTokenThreeDSecure(tokenId: tokenId, completion: completion)
+    }
 }
 
 /// Objective-C API
@@ -160,6 +171,21 @@ extension APIClient {
             case .success(let result):
                 let converted = result.map { (brand: CardBrand) -> NSString in return brand.rawValue as NSString }
                 completionHandler(converted, nil)
+            case .failure(let error):
+                completionHandler(nil, self.nsErrorConverter.convert(from: error))
+            }
+        }
+    }
+
+    @objc public func finishTokenThreeDSecureWith(
+        _ tokenId: String,
+        completionHandler: @escaping (Token?, NSError?) -> Void
+    ) {
+        finishTokenThreeDSecure(with: tokenId) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let result):
+                completionHandler(result, nil)
             case .failure(let error):
                 completionHandler(nil, self.nsErrorConverter.convert(from: error))
             }
