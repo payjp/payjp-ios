@@ -274,6 +274,64 @@ class APIClientTests: XCTestCase {
         waitForExpectations(timeout: 1, handler: nil)
     }
 
+    func testFinishTokenThreeDSecure() {
+        let apiClient = APIClient.shared
+        let tokenId = "tok_eff34b780cbebd61e87f09ecc9c6"
+        let json = TestFixture.JSON(by: "token.json")
+        let decoder = JSONDecoder.shared
+        let expectedToken = try! Token.decodeJson(with: json, using: decoder)
+
+        let expectation = self.expectation(description: self.description)
+
+        apiClient.finishTokenThreeDSecure(with: tokenId) { result in
+            switch result {
+            case .success(let token):
+                XCTAssertEqual(token.identifer, expectedToken.identifer)
+                XCTAssertEqual(token.used, expectedToken.used)
+                XCTAssertEqual(token.livemode, expectedToken.livemode)
+                XCTAssertEqual(token.createdAt, expectedToken.createdAt)
+                XCTAssertEqual(token.rawValue?.count, expectedToken.rawValue?.count)
+                XCTAssertEqual(token.card.identifer, expectedToken.card.identifer)
+                XCTAssertEqual(token.card.rawValue?.count, expectedToken.card.rawValue?.count)
+                expectation.fulfill()
+            default:
+                XCTFail()
+            }
+        }
+
+        waitForExpectations(timeout: 1, handler: nil)
+    }
+
+    func testFinishTokenThreeDSecure_objc() {
+        let apiClient = APIClient.shared
+        let tokenId = "tok_eff34b780cbebd61e87f09ecc9c6"
+        let json = TestFixture.JSON(by: "token.json")
+        let decoder = JSONDecoder.shared
+        let expectedToken = try! Token.decodeJson(with: json, using: decoder)
+
+        let expectation = self.expectation(description: self.description)
+
+        apiClient.finishTokenThreeDSecureWith(tokenId) { (token, error) in
+            XCTAssertNil(error)
+            guard let token = token else {
+                XCTFail()
+                return
+            }
+            XCTAssertEqual(token.identifer, expectedToken.identifer)
+            XCTAssertEqual(token.used, expectedToken.used)
+            XCTAssertEqual(token.livemode, expectedToken.livemode)
+            XCTAssertEqual(token.createdAt, expectedToken.createdAt)
+            XCTAssertEqual(token.rawValue?.count, expectedToken.rawValue?.count)
+            XCTAssertEqual(token.card.identifer, expectedToken.card.identifer)
+            XCTAssertEqual(token.card.rawValue?.count, expectedToken.card.rawValue?.count)
+            expectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 1, handler: nil)
+    }
+
+    // MARK: - Helper
+
     private func stubCardInputResponse(cardNumber: String,
                                        cardCvc: String,
                                        cardExpMonth: String,

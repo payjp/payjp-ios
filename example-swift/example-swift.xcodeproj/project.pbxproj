@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3219F14C26B1087400D2AE00 /* CardFormViewWith3DSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3219F14B26B1087400D2AE00 /* CardFormViewWith3DSViewController.swift */; };
 		32B471E024C6AD180061579C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B471DF24C6AD180061579C /* AppDelegate.swift */; };
 		32B471E224C6AD180061579C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B471E124C6AD180061579C /* SceneDelegate.swift */; };
 		32B471E424C6AD180061579C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B471E324C6AD180061579C /* ContentView.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3219F14B26B1087400D2AE00 /* CardFormViewWith3DSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFormViewWith3DSViewController.swift; sourceTree = "<group>"; };
 		32B471DD24C6AD180061579C /* example-swift-ui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "example-swift-ui.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		32B471DF24C6AD180061579C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32B471E124C6AD180061579C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				32CB112E1FDA7E3D007AD8F5 /* Assets.xcassets */,
 				ED50839223278BB800C64A7F /* CardFormViewExampleViewController.swift */,
 				ED5085BC232A0FE300C64A7F /* CardFormViewScrollViewController.swift */,
+				3219F14B26B1087400D2AE00 /* CardFormViewWith3DSViewController.swift */,
 				ED630C1623556BF4006C061E /* ColorTheme.swift */,
 				32CB11331FDA7E3D007AD8F5 /* Info.plist */,
 				32CB11301FDA7E3D007AD8F5 /* LaunchScreen.storyboard */,
@@ -334,6 +337,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3219F14C26B1087400D2AE00 /* CardFormViewWith3DSViewController.swift in Sources */,
 				ED8BDA062383BA3B00680C05 /* ExampleHostViewController.swift in Sources */,
 				ED5085BD232A0FE300C64A7F /* CardFormViewScrollViewController.swift in Sources */,
 				ED630C1723556BF4006C061E /* ColorTheme.swift in Sources */,
