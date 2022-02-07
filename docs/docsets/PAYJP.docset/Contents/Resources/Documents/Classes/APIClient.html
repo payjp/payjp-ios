@@ -17,7 +17,7 @@
     <a title="APIClient Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">PAYJP 1.6.0 Docs</a></p>
+        <p><a href="../index.html">PAYJP 1.6.1 Docs</a></p>
         <p class="header-right"><a href="https://github.com/payjp/payjp-ios"><img src="../img/gh.png"/>View on GitHub</a></p>
         <p class="header-right">
           <form role="search" action="../search.json">
@@ -555,6 +555,68 @@ cf. <a href="https://pay.jp/docs/api/#introduction">https://pay.jp/docs/api/#int
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:5PAYJP9APIClientC23finishTokenThreeDSecure4with10completionySS_ys6ResultOyAA0D0CAA8APIErrorOGctF"></a>
+                    <a name="//apple_ref/swift/Method/finishTokenThreeDSecure(with:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5PAYJP9APIClientC23finishTokenThreeDSecure4with10completionySS_ys6ResultOyAA0D0CAA8APIErrorOGctF">finishTokenThreeDSecure(with:<wbr>completion:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Finish 3D Secure flow on tokenization</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@nonobjc</span>
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">finishTokenThreeDSecure</span><span class="p">(</span>
+    <span class="n">with</span> <span class="nv">tokenId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+    <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Result</span><span class="o">&lt;</span><span class="kt"><a href="../Classes/Token.html">Token</a></span><span class="p">,</span> <span class="kt"><a href="../Enums/APIError.html">APIError</a></span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span>
+<span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>tokenId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>identifier of the Token</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>completion action</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/c:@CM@PAYJP@objc(cs)PAYAPIClient(im)createTokenWith:completionHandler:"></a>
                     <a name="//apple_ref/swift/Method/createTokenWith(_:completionHandler:)" class="dashAnchor"></a>
                     <a class="token" href="#/c:@CM@PAYJP@objc(cs)PAYAPIClient(im)createTokenWith:completionHandler:">createTokenWith(_:<wbr>completionHandler:<wbr>)</a>
@@ -672,6 +734,37 @@ cf. <a href="https://pay.jp/docs/api/#introduction">https://pay.jp/docs/api/#int
 <span class="kd">public</span> <span class="kd">func</span> <span class="nf">getAcceptedBrandsWith</span><span class="p">(</span>
     <span class="n">_</span> <span class="nv">tenantId</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span>
     <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">([</span><span class="kt">NSString</span><span class="p">]?,</span> <span class="kt">NSError</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span>
+<span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@PAYJP@objc(cs)PAYAPIClient(im)finishTokenThreeDSecureWith:completionHandler:"></a>
+                    <a name="//apple_ref/swift/Method/finishTokenThreeDSecureWith(_:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@PAYJP@objc(cs)PAYAPIClient(im)finishTokenThreeDSecureWith:completionHandler:">finishTokenThreeDSecureWith(_:<wbr>completionHandler:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">finishTokenThreeDSecureWith</span><span class="p">(</span>
+    <span class="n">_</span> <span class="nv">tokenId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+    <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Classes/Token.html">Token</a></span><span class="p">?,</span> <span class="kt">NSError</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span>
 <span class="p">)</span></code></pre>
 
                         </div>
