@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol ErrorViewDelegate: class {
+protocol ErrorViewDelegate: AnyObject {
     func reload()
 }
 

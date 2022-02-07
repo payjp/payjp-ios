@@ -18,7 +18,7 @@ import SafariServices
 }
 
 /// 3DSecure handler delegate.
-public protocol ThreeDSecureProcessHandlerDelegate: class {
+public protocol ThreeDSecureProcessHandlerDelegate: AnyObject {
 
     /// Tells the delegate that 3DSecure process is finished.
     /// - Parameters:

@@ -43,7 +43,7 @@ protocol CardFormProperties {
     var cardNumberSeparator: String { get }
 }
 
-protocol CardFormViewTextFieldDelegate: class {
+protocol CardFormViewTextFieldDelegate: AnyObject {
     func didBeginEditing(textField: UITextField)
     func didDeleteBackward(textField: FormTextField)
 }
@@ -306,50 +306,6 @@ public class CardFormView: UIView {
         }
     }
 
-    /// 入力フィールドのカーソル位置を調整する
-    ///
-    /// - Parameters:
-    ///   - textField: テキストフィールド
-    ///   - range: 置換される文字列範囲
-    ///   - replacement: 置換文字列
-    /// - Returns: 古いテキストを保持する場合はfalse
-    private func adjustInputFieldCursor(
-        textField: UITextField,
-        range: NSRange,
-        replacement: String) -> Bool {
-        // 文字挿入時にカーソルの位置を調整する
-        let beginning = textField.beginningOfDocument
-        let start = textField.position(from: beginning, offset: range.location)
-
-        if let start = start {
-            let cursorOffset = textField.offset(from: beginning, to: start) + replacement.count
-            let newCursorPosition = textField.position(from: textField.beginningOfDocument, offset: cursorOffset)
-
-            if let newCursorPosition = newCursorPosition,
-               let newSelectedRange = textField.textRange(from: newCursorPosition, to: newCursorPosition) {
-                // カーソル直前の文字列が数字以外（-, /）の場合 あるいは 0（有効期限の0埋め）の場合
-                // カーソルを 1文字 後ろに移動させる
-                if let newPosition = textField.position(from: newSelectedRange.start, offset: -1),
-                   let range = textField.textRange(from: newPosition, to: newSelectedRange.start),
-                   let textBeforeCursor = textField.text(in: range) {
-                    if replacement != "" &&
-                        !textBeforeCursor.isDigitsOnly ||
-                        (textBeforeCursor == "0" && textField == cardFormProperties.expirationTextField) {
-                        if let adjustPosition = textField.position(from: newSelectedRange.start, offset: 1),
-                           let adjustSelectedRange = textField.textRange(from: adjustPosition, to: adjustPosition) {
-                            textField.selectedTextRange = adjustSelectedRange
-                            resetTintColor()
-                            return false
-                        }
-                    }
-                }
-                textField.selectedTextRange = newSelectedRange
-            }
-        }
-        resetTintColor()
-        return false
-    }
-
     /// textFieldのtintColorをリセットする
     private func resetTintColor() {
         cardFormProperties.cardNumberTextField.tintColor = cardFormProperties.inputTintColor
@@ -460,19 +416,15 @@ extension CardFormView: CardFormAction {
     }
 }
 
-// MARK: UITextFieldDelegate
-extension CardFormView: UITextFieldDelegate {
+// MARK: Event
 
-    public func textField(
-        _ textField: UITextField,
-        shouldChangeCharactersIn range: NSRange,
-        replacementString string: String
-    ) -> Bool {
-
-        if let currentText = textField.text {
-            let range = Range(range, in: currentText)!
-            let newText = currentText.replacingCharacters(in: range, with: string)
-
+@objc extension CardFormView {
+    func textFieldDidChange(_ textField: UITextField) {
+        if textField.markedTextRange != nil {
+            return
+        }
+        let selectedTextRangeOriginal = textField.selectedTextRange
+        if let newText = textField.text {
             switch textField {
             case cardFormProperties.cardNumberTextField:
                 updateCardNumberInput(input: newText, separator: cardFormProperties.cardNumberSeparator)
@@ -487,9 +439,27 @@ extension CardFormView: UITextFieldDelegate {
             }
         }
         notifyIsValidChanged()
+        resetTintColor()
 
-        return adjustInputFieldCursor(textField: textField, range: range, replacement: string)
+        guard let selectedTextRange = selectedTextRangeOriginal else {
+            return
+        }
+        // テキスト変更時にカーソル位置を復元するが、デリミタや0埋め前後でずらす
+        if let beforePosition = textField.position(from: selectedTextRange.start, offset: -1),
+           let beforeRange = textField.textRange(from: beforePosition, to: selectedTextRange.start),
+           let textBeforeCursor = textField.text(in: beforeRange),
+           !textBeforeCursor.isDigitsOnly || (textBeforeCursor == "0" && textField == cardFormProperties.expirationTextField),
+           let adjustPosition = textField.position(from: selectedTextRange.start, offset: 1),
+           let adjustSelectedRange = textField.textRange(from: adjustPosition, to: adjustPosition) {
+            textField.selectedTextRange = adjustSelectedRange
+        } else {
+            textField.selectedTextRange = selectedTextRange
+        }
     }
+}
+
+// MARK: UITextFieldDelegate
+extension CardFormView: UITextFieldDelegate {
 
     public func textFieldShouldClear(_ textField: UITextField) -> Bool {
 

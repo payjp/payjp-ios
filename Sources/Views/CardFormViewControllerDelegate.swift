@@ -9,7 +9,7 @@ import Foundation
 
 /// CardFormViewController delegate.
 @objc(PAYCardFormViewControllerDelegate)
-public protocol CardFormViewControllerDelegate: class {
+public protocol CardFormViewControllerDelegate: AnyObject {
 
     /// Callback when card form operation is completed.
     ///

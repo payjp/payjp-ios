@@ -10,7 +10,7 @@ import UIKit
 
 /// CardFormView delegate.
 @objc(PAYCardFormViewDelegate)
-public protocol CardFormViewDelegate: class {
+public protocol CardFormViewDelegate: AnyObject {
 
     /// Callback when form input validated
     ///

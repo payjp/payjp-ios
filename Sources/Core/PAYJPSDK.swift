@@ -12,7 +12,7 @@ import Foundation
 #endif
 
 /// PAY.JP SDK initial settings.
-public protocol PAYJPSDKType: class {
+public protocol PAYJPSDKType: AnyObject {
     /// PAY.JP public key.
     static var publicKey: String? { get set }
     /// Locale.
