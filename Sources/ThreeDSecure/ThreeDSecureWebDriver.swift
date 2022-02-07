@@ -10,7 +10,7 @@ import Foundation
 import SafariServices
 
 /// Delegate of web browse driver.
-public protocol ThreeDSecureWebDriverDelegate: class {
+public protocol ThreeDSecureWebDriverDelegate: AnyObject {
 
     /// Tells the delegate that web browsing is finished.
     /// - Parameter driver: ThreeDSecureWebDriver

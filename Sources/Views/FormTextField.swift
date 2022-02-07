@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol FormTextFieldDelegate: class {
+protocol FormTextFieldDelegate: AnyObject {
     func didDeleteBackward(_ textField: FormTextField)
 }
 

@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol CardFormScreenDelegate: class {
+protocol CardFormScreenDelegate: AnyObject {
     // update view
     func reloadBrands(brands: [CardBrand])
     func showIndicator()

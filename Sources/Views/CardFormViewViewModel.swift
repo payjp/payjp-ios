@@ -79,7 +79,7 @@ protocol CardFormViewViewModelType {
     func requestOcr()
 }
 
-protocol CardFormViewModelDelegate: class {
+protocol CardFormViewModelDelegate: AnyObject {
     /// スキャナ画面を起動する
     func startScanner()
     /// カメラ許可が必要な内容のアラートを表示する

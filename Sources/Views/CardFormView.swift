@@ -43,7 +43,7 @@ protocol CardFormProperties {
     var cardNumberSeparator: String { get }
 }
 
-protocol CardFormViewTextFieldDelegate: class {
+protocol CardFormViewTextFieldDelegate: AnyObject {
     func didBeginEditing(textField: UITextField)
     func didDeleteBackward(textField: FormTextField)
 }
