@@ -290,14 +290,12 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
             string: "payjp_card_form_holder_name_placeholder".localized,
             attributes: [NSAttributedString.Key.foregroundColor: Style.Color.placeholderText])
 
-        cardNumberTextField.delegate = self
-        cardNumberTextField.deletionDelegate = self
-        expirationTextField.delegate = self
-        expirationTextField.deletionDelegate = self
-        cvcTextField.delegate = self
-        cvcTextField.deletionDelegate = self
-        cardHolderTextField.delegate = self
-        cardHolderTextField.deletionDelegate = self
+        [cardNumberTextField, expirationTextField, cvcTextField, cardHolderTextField].forEach { textField in
+            guard let textField = textField else { return }
+            textField.delegate = self
+            textField.deletionDelegate = self
+            textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        }
     }
 
     /// 横スクロール可能なフォームの作成

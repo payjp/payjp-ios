@@ -138,10 +138,11 @@ public class CardFormTableStyledView: CardFormView, CardFormProperties {
             string: "payjp_card_form_holder_name_placeholder".localized,
             attributes: [NSAttributedString.Key.foregroundColor: Style.Color.placeholderText])
 
-        cardNumberTextField.delegate = self
-        expirationTextField.delegate = self
-        cvcTextField.delegate = self
-        cardHolderTextField.delegate = self
+        [cardNumberTextField, expirationTextField, cvcTextField, cardHolderTextField].forEach { textField in
+            guard let textField = textField else { return }
+            textField.delegate = self
+            textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        }
     }
 }
 
