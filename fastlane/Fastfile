@@ -20,7 +20,9 @@ platform :ios do
 
   desc "Run carthage bootstrap"
   lane :carthage_bootstrap do
-    sh('cd ../ && ./scripts/carthage-build.sh bootstrap --platform iOS --cache-builds')
+    Dir.chdir('..') do
+      sh('carthage bootstrap --use-xcframeworks --platform iOS --cache-builds')
+    end
   end
 
   desc "Run test"
@@ -222,7 +224,7 @@ platform :ios do
 
   desc "Build carthage-swift example app"
   lane :build_carthage_swift_example do
-    sh('cd ../example-swift && ../scripts/carthage-build.sh bootstrap --platform iOS --cache-builds')
+    sh('cd ../example-swift && carthage bootstrap --use-xcframeworks --platform iOS --cache-builds')
     project_file = 'example-swift/example-swift.xcodeproj'
     build_app(
       project: project_file,

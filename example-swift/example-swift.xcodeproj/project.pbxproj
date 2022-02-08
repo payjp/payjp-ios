@@ -3,10 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32167E0927B1C5F100E4BCD5 /* PAYJP.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32167E0827B1C5F100E4BCD5 /* PAYJP.xcframework */; };
+		32167E0A27B1C5F100E4BCD5 /* PAYJP.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 32167E0827B1C5F100E4BCD5 /* PAYJP.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		32167E0C27B1C62900E4BCD5 /* PAYJP.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32167E0827B1C5F100E4BCD5 /* PAYJP.xcframework */; };
+		32167E0D27B1C62900E4BCD5 /* PAYJP.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 32167E0827B1C5F100E4BCD5 /* PAYJP.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3219F14C26B1087400D2AE00 /* CardFormViewWith3DSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3219F14B26B1087400D2AE00 /* CardFormViewWith3DSViewController.swift */; };
 		32B471E024C6AD180061579C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B471DF24C6AD180061579C /* AppDelegate.swift */; };
 		32B471E224C6AD180061579C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B471E124C6AD180061579C /* SceneDelegate.swift */; };
@@ -14,13 +18,11 @@
 		32B471E624C6AD1B0061579C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32B471E524C6AD1B0061579C /* Assets.xcassets */; };
 		32B471E924C6AD1B0061579C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32B471E824C6AD1B0061579C /* Preview Assets.xcassets */; };
 		32B471EC24C6AD1B0061579C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32B471EA24C6AD1B0061579C /* LaunchScreen.storyboard */; };
-		32B471F124C6AE910061579C /* PAYJP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32CB113A1FDA8507007AD8F5 /* PAYJP.framework */; };
 		32CB11281FDA7E3D007AD8F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CB11271FDA7E3D007AD8F5 /* AppDelegate.swift */; };
 		32CB112A1FDA7E3D007AD8F5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CB11291FDA7E3D007AD8F5 /* ViewController.swift */; };
 		32CB112D1FDA7E3D007AD8F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32CB112B1FDA7E3D007AD8F5 /* Main.storyboard */; };
 		32CB112F1FDA7E3D007AD8F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32CB112E1FDA7E3D007AD8F5 /* Assets.xcassets */; };
 		32CB11321FDA7E3D007AD8F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32CB11301FDA7E3D007AD8F5 /* LaunchScreen.storyboard */; };
-		32CB113B1FDA8507007AD8F5 /* PAYJP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32CB113A1FDA8507007AD8F5 /* PAYJP.framework */; };
 		ED50839323278BB800C64A7F /* CardFormViewExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED50839223278BB800C64A7F /* CardFormViewExampleViewController.swift */; };
 		ED5085BD232A0FE300C64A7F /* CardFormViewScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5085BC232A0FE300C64A7F /* CardFormViewScrollViewController.swift */; };
 		ED5085C1232A1A2B00C64A7F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ED5085C3232A1A2B00C64A7F /* Localizable.strings */; };
@@ -29,7 +31,33 @@
 		EDADA266238CBE780057FDF3 /* SampleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDADA265238CBE780057FDF3 /* SampleService.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		32167E0B27B1C5F100E4BCD5 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				32167E0A27B1C5F100E4BCD5 /* PAYJP.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		32167E0E27B1C62900E4BCD5 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				32167E0D27B1C62900E4BCD5 /* PAYJP.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		32167E0827B1C5F100E4BCD5 /* PAYJP.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = PAYJP.xcframework; path = Carthage/Build/PAYJP.xcframework; sourceTree = "<group>"; };
 		3219F14B26B1087400D2AE00 /* CardFormViewWith3DSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFormViewWith3DSViewController.swift; sourceTree = "<group>"; };
 		32B471DD24C6AD180061579C /* example-swift-ui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "example-swift-ui.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		32B471DF24C6AD180061579C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -61,7 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				32B471F124C6AE910061579C /* PAYJP.framework in Frameworks */,
+				32167E0C27B1C62900E4BCD5 /* PAYJP.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,7 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				32CB113B1FDA8507007AD8F5 /* PAYJP.framework in Frameworks */,
+				32167E0927B1C5F100E4BCD5 /* PAYJP.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,6 +168,7 @@
 		32CB11391FDA8507007AD8F5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				32167E0827B1C5F100E4BCD5 /* PAYJP.xcframework */,
 				32CB113A1FDA8507007AD8F5 /* PAYJP.framework */,
 			);
 			name = Frameworks;
@@ -155,8 +184,8 @@
 				32B471D924C6AD180061579C /* Sources */,
 				32B471DA24C6AD180061579C /* Frameworks */,
 				32B471DB24C6AD180061579C /* Resources */,
-				32B471F224C6AED10061579C /* ShellScript */,
 				32B471F324C6AF080061579C /* Run SwiftLint */,
+				32167E0E27B1C62900E4BCD5 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -174,8 +203,8 @@
 				32CB11201FDA7E3D007AD8F5 /* Sources */,
 				32CB11211FDA7E3D007AD8F5 /* Frameworks */,
 				32CB11221FDA7E3D007AD8F5 /* Resources */,
-				32CB113C1FDA8517007AD8F5 /* ShellScript */,
 				32563D972355C184009A59AE /* Run SwiftLint */,
+				32167E0B27B1C5F100E4BCD5 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -269,24 +298,6 @@
 			shellPath = /bin/sh;
 			shellScript = "sh ./run-swiftlint.sh\n";
 		};
-		32B471F224C6AED10061579C /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/PAYJP.framework",
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
-		};
 		32B471F324C6AF080061579C /* Run SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -304,21 +315,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "sh ./run-swiftlint.sh\n";
-		};
-		32CB113C1FDA8517007AD8F5 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/PAYJP.framework",
-			);
-			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/PAYJP.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -398,13 +394,13 @@
 				DEVELOPMENT_ASSET_PATHS = "\"example-swift-ui/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "example-swift-ui/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.exmaple.jp.pay.example-swift-ui";
@@ -423,13 +419,13 @@
 				DEVELOPMENT_ASSET_PATHS = "\"example-swift-ui/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "example-swift-ui/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.exmaple.jp.pay.example-swift-ui";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -547,7 +543,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -560,12 +557,12 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "example-swift/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.exmaple.jp.pay.example-swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -580,12 +577,12 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "example-swift/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.exmaple.jp.pay.example-swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
