@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32167E0727B1C55800E4BCD5 /* OHHTTPStubs.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32167E0627B1C55800E4BCD5 /* OHHTTPStubs.xcframework */; };
 		322BD1D6225C83CA00D83B5E /* JSONDecoder+PAYJP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322BD1D5225C83CA00D83B5E /* JSONDecoder+PAYJP.swift */; };
 		325E36B1233484C90037E6BE /* UIColor+PAYJP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325E36B0233484C90037E6BE /* UIColor+PAYJP.swift */; };
 		3289C9D123EACB6D008FFBC1 /* ClientInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3289C9D023EACB6D008FFBC1 /* ClientInfo.swift */; };
@@ -67,8 +68,6 @@
 		C65513751DA24E18009D6DA5 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65513741DA24E18009D6DA5 /* Card.swift */; };
 		C65513BE1DA37AD4009D6DA5 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65513BD1DA37AD4009D6DA5 /* APIError.swift */; };
 		C68681F81E1E22DB001D7F75 /* CardFromTokenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68681F61E1E21D9001D7F75 /* CardFromTokenTests.swift */; };
-		C6E00B0F1E1F583B00C101B0 /* OHHTTPStubs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6E00B0D1E1F505600C101B0 /* OHHTTPStubs.framework */; };
-		C6E00B111E1F58D100C101B0 /* OHHTTPStubs.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6E00B0D1E1F505600C101B0 /* OHHTTPStubs.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		ED00F8BF24319E1B004DFE2C /* UIApplication+PAYJP.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED00F8BE24319E1B004DFE2C /* UIApplication+PAYJP.swift */; };
 		ED00F8D1243353FD004DFE2C /* ThreeDSecureProcessHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED00F8CF243353FC004DFE2C /* ThreeDSecureProcessHandler.swift */; };
 		ED00F8D2243353FD004DFE2C /* ThreeDSecureURLConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED00F8D0243353FC004DFE2C /* ThreeDSecureURLConfiguration.swift */; };
@@ -148,20 +147,8 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		C6E00B101E1F58C200C101B0 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				C6E00B111E1F58D100C101B0 /* OHHTTPStubs.framework in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
+		32167E0627B1C55800E4BCD5 /* OHHTTPStubs.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = OHHTTPStubs.xcframework; path = Carthage/Build/OHHTTPStubs.xcframework; sourceTree = "<group>"; };
 		322BD1D5225C83CA00D83B5E /* JSONDecoder+PAYJP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+PAYJP.swift"; sourceTree = "<group>"; };
 		325E36AE233482AC0037E6BE /* FormStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormStyle.swift; sourceTree = "<group>"; };
 		325E36B0233484C90037E6BE /* UIColor+PAYJP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+PAYJP.swift"; sourceTree = "<group>"; };
@@ -308,8 +295,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32167E0727B1C55800E4BCD5 /* OHHTTPStubs.xcframework in Frameworks */,
 				615AFF661C8C74A1003FB86F /* PAYJP.framework in Frameworks */,
-				C6E00B0F1E1F583B00C101B0 /* OHHTTPStubs.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -629,6 +616,7 @@
 		C6E00B0C1E1F505600C101B0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				32167E0627B1C55800E4BCD5 /* OHHTTPStubs.xcframework */,
 				C6E00B0D1E1F505600C101B0 /* OHHTTPStubs.framework */,
 			);
 			name = Frameworks;
@@ -736,7 +724,6 @@
 				615AFF611C8C74A1003FB86F /* Sources */,
 				615AFF621C8C74A1003FB86F /* Frameworks */,
 				615AFF631C8C74A1003FB86F /* Resources */,
-				C6E00B101E1F58C200C101B0 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -1087,7 +1074,8 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_CFLAGS = "-fembed-bitcode";
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1109,7 +1097,11 @@
 				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
 				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = jp.pay.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1131,7 +1123,11 @@
 				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
 				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = jp.pay.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1144,12 +1140,13 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 8ZAC8P584F;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = jp.pay.ios.PAYJPTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Tests/PAYJPTests-Bridging-Header.h";
@@ -1164,12 +1161,13 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 8ZAC8P584F;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = jp.pay.ios.PAYJPTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Tests/PAYJPTests-Bridging-Header.h";

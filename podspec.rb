@@ -1,11 +1,11 @@
 module PAYJPSDK
-  VERSION = '1.6.1'
+  VERSION = '1.6.2'
   HOMEPAGE_URL = 'https://github.com/payjp/payjp-ios'
   LICENSE = { :type => 'MIT' }
   AUTHOR = { 'PAY.JP (https://pay.jp)' => 'support@pay.jp' }
   SOURCE = { :git => 'https://github.com/payjp/payjp-ios.git', :tag => VERSION }
   MODULE_NAME = 'PAYJP'
-  SWIFT_VERSIONS = ['5.0', '5.1', '5.2']
+  SWIFT_VERSIONS = ['5.0', '5.1', '5.2', '5.3', '5.4', '5.5']
   IOS_DEPLOYMENT_TARGET = '10.0'
   SOURCE_FILES = ['Sources/**/*.{h,m,swift}']
   RESOURCE_BUNDLES = { 'PAYJP' => ['Sources/Resources/**/*'] }
