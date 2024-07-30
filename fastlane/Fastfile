@@ -219,7 +219,7 @@ platform :ios do
 
   desc "Build with Package.swift"
   lane :build_swiftpm do
-    sh('swift build -v -Xswiftc "-sdk" -Xswiftc "`xcrun --sdk iphonesimulator --show-sdk-path`" -Xswiftc "-target" -Xswiftc "arm64-apple-ios17.5-simulator"')
+    sh('swift build -v --sdk `xcrun --sdk iphonesimulator --show-sdk-path` -Xswiftc "-target" -Xswiftc "arm64-apple-ios17.5-simulator"')
   end
 
   desc "Build carthage-swift example app"
