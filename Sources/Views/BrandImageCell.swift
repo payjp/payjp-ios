@@ -12,10 +12,6 @@ class BrandImageCell: UICollectionViewCell {
 
     @IBOutlet weak var brandImage: UIImageView!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
     func setup(brand: CardBrand) {
         brandImage.image = brand.logoImage
     }
