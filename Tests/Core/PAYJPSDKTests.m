@@ -29,7 +29,7 @@
     PAYJPSDK.locale = mockLocale;
     
     XCTAssertEqual(PAYJPSDK.publicKey, mockPublicKey);
-    XCTAssertEqual(PAYJPSDK.locale, mockLocale);
+    XCTAssertEqual(PAYJPSDK.locale.localeIdentifier, mockLocale.localeIdentifier);
 }
 
 @end

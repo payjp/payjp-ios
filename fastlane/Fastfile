@@ -21,7 +21,7 @@ platform :ios do
   desc "Run carthage bootstrap"
   lane :carthage_bootstrap do
     Dir.chdir('..') do
-      sh('carthage bootstrap --use-xcframeworks --platform iOS --cache-builds')
+      sh('scripts/carthage.sh bootstrap --use-xcframeworks --platform iOS --cache-builds')
     end
   end
 
@@ -29,7 +29,7 @@ platform :ios do
   lane :test do
     scan(
       scheme: 'PAYJP',
-      device: 'iPhone 11 Pro',
+      device: 'iPhone 15 Pro',
       configuration: 'Debug',
       skip_slack: true
     )
@@ -219,7 +219,7 @@ platform :ios do
 
   desc "Build with Package.swift"
   lane :build_swiftpm do
-    sh('swift build -v -Xswiftc "-sdk" -Xswiftc "`xcrun --sdk iphonesimulator --show-sdk-path`" -Xswiftc "-target" -Xswiftc "x86_64-apple-ios14.0-simulator"')
+    sh('swift build -v --sdk `xcrun --sdk iphonesimulator --show-sdk-path` -Xswiftc "-target" -Xswiftc "arm64-apple-ios17.5-simulator"')
   end
 
   desc "Build carthage-swift example app"

@@ -328,7 +328,7 @@ public class CardFormView: UIView {
         let settingsAction = UIAlertAction(
             title: "payjp_common_settings".localized,
             style: .default,
-            handler: { (_) -> Void in
+            handler: { (_) in
                 guard let settingsURL = URL(string: UIApplication.openSettingsURLString ) else {
                     return
                 }
