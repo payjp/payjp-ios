@@ -19,7 +19,6 @@
 @property(weak, nonatomic) IBOutlet UITextField *selectColorField;
 @property(weak, nonatomic) IBOutlet UILabel *tokenIdLabel;
 
-- (IBAction)cardHolderSwitchChanged:(id)sender;
 - (IBAction)createToken:(id)sender;
 - (IBAction)validateAndCreateToken:(id)sender;
 
@@ -168,10 +167,6 @@
   BOOL isAcceptable = self.tokenOperationStatus == PAYTokenOperationStatusAcceptable;
   self.createTokenButton.enabled = self.cardFormView.isValid && isAcceptable;
   self.validateAndCreateTokenButton.enabled = isAcceptable;
-}
-
-- (IBAction)cardHolderSwitchChanged:(UISwitch *)sender {
-  [self.cardFormView setCardHolderRequired:sender.isOn];
 }
 
 - (IBAction)createToken:(id)sender {

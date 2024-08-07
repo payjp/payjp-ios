@@ -19,8 +19,6 @@
 @property(weak, nonatomic) IBOutlet UITableViewCell *validateAndCreateTokenCell;
 @property(weak, nonatomic) IBOutlet UITextField *selectColorField;
 
-- (IBAction)cardHolderSwitchChanged:(id)sender;
-
 @property(strong, nonatomic) PAYAPIClient *payjpClient;
 
 @property(strong, nonatomic) NSArray *list;
@@ -245,10 +243,6 @@
 
 - (void)formInputDoneTappedIn:(UIView *)cardFormView {
   [self createToken];
-}
-
-- (IBAction)cardHolderSwitchChanged:(UISwitch *)sender {
-  [self.cardFormView setCardHolderRequired:sender.isOn];
 }
 
 - (void)handleTokenOperationStatusChange:(NSNotification *)notification {

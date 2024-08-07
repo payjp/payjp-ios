@@ -28,7 +28,6 @@ class CardFormViewWith3DSViewController: UIViewController {
         let frame: CGRect = CGRect(x: x, y: y, width: width, height: height)
         cardFormView = CardFormLabelStyledView(frame: frame)
         cardFormView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        cardFormView.setCardHolderRequired(true)
         cardFormView.delegate = self
 
         self.formContentView.addSubview(cardFormView)

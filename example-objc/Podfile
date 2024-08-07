@@ -4,5 +4,5 @@ use_frameworks!
 target 'example-objc' do
 #  pod 'PAYJP'
   pod 'PAYJP', :path => '../'
-  pod 'CardIO'
+#  pod 'CardIO'
 end

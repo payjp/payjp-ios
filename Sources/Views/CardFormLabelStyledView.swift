@@ -15,15 +15,6 @@ public class CardFormLabelStyledView: CardFormView, CardFormProperties {
 
     // MARK: CardFormProperties
 
-    /// Card holder input field enabled.
-    @IBInspectable var isHolderRequired: Bool = false {
-        didSet {
-            holderContainer.isHidden = !isHolderRequired
-            viewModel.update(isCardHolderEnabled: isHolderRequired)
-            notifyIsValidChanged()
-        }
-    }
-
     @IBOutlet weak var brandLogoImage: UIImageView!
     @IBOutlet weak var cvcIconImage: UIImageView!
     @IBOutlet weak var holderContainer: UIStackView!
@@ -187,9 +178,5 @@ extension CardFormLabelStyledView: CardFormStylable {
         expirationFieldBackground.backgroundColor = inputFieldBackgroundColor
         cvcFieldBackground.backgroundColor = inputFieldBackgroundColor
         cardHolderFieldBackground.backgroundColor = inputFieldBackgroundColor
-    }
-
-    public func setCardHolderRequired(_ required: Bool) {
-        isHolderRequired = required
     }
 }

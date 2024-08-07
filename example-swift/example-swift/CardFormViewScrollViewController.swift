@@ -34,7 +34,6 @@ class CardFormViewScrollViewController: UIViewController, CardFormViewDelegate,
         let frame: CGRect = CGRect(x: x, y: y, width: width, height: height)
         cardFormView = CardFormLabelStyledView(frame: frame)
         cardFormView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        cardFormView.setCardHolderRequired(true)
         cardFormView.delegate = self
 
         self.formContentView.addSubview(cardFormView)
@@ -151,10 +150,6 @@ class CardFormViewScrollViewController: UIViewController, CardFormViewDelegate,
         let isAcceptable = self.tokenOperationStatus == .acceptable
         self.createTokenButton.isEnabled = isAcceptable && self.cardFormView.isValid
         self.validateAndCreateTokenButton.isEnabled = isAcceptable
-    }
-
-    @IBAction func cardHolderSwitchChanged(_ sender: UISwitch) {
-        self.cardFormView.setCardHolderRequired(sender.isOn)
     }
 
     @IBAction func createToken(_ sender: Any) {

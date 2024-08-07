@@ -14,12 +14,6 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
 
     // MARK: CardFormProperties
 
-    var isHolderRequired: Bool = true {
-        didSet {
-            viewModel.update(isCardHolderEnabled: isHolderRequired)
-        }
-    }
-
     @IBOutlet weak var brandLogoImage: UIImageView!
     var cvcIconImage: UIImageView!
     var ocrButton: UIButton!
@@ -503,7 +497,7 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
                 cvcTextField.becomeFirstResponder()
             }
         case cvcTextField:
-            if cvcTextField.isFirstResponder && isHolderRequired {
+            if cvcTextField.isFirstResponder {
                 cardHolderTextField.becomeFirstResponder()
             }
         default:
@@ -566,10 +560,6 @@ extension CardFormDisplayStyledView: CardFormStylable {
         cvc4BorderView.borderColor = highlightColor
         cardHolderBorderView.borderColor = highlightColor
     }
-
-    public func setCardHolderRequired(_ required: Bool) {
-        isHolderRequired = required
-    }
 }
 
 extension CardFormDisplayStyledView: CardFormViewTextFieldDelegate {
@@ -618,7 +608,7 @@ extension CardFormDisplayStyledView: CardFormViewTextFieldDelegate {
                 cardFormProperties.expirationTextField.becomeFirstResponder()
             }
         case cardFormProperties.cardHolderTextField:
-            if cardFormProperties.cardHolderTextField.isFirstResponder && cardFormProperties.isHolderRequired {
+            if cardFormProperties.cardHolderTextField.isFirstResponder {
                 cardFormProperties.cvcTextField.becomeFirstResponder()
             }
         default:
