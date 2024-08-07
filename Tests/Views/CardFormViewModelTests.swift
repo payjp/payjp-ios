@@ -322,8 +322,6 @@ class CardFormViewModelTests: XCTestCase {
     }
 
     func testIsValidAllValid() {
-        viewModel.update(isCardHolderEnabled: true)
-
         _ = viewModel.update(cardNumber: "4242424242424242", separator: "-")
         _ = viewModel.update(expiration: "12/99")
         _ = viewModel.update(cvc: "123")
@@ -334,34 +332,10 @@ class CardFormViewModelTests: XCTestCase {
     }
 
     func testIsValidNotAllValid() {
-        viewModel.update(isCardHolderEnabled: true)
-
         _ = viewModel.update(cardNumber: "4242424242424242", separator: "-")
         _ = viewModel.update(expiration: "12/9")
         _ = viewModel.update(cvc: "123")
         _ = viewModel.update(cardHolder: "PAY TARO")
-
-        let result = viewModel.isValid
-        XCTAssertFalse(result)
-    }
-
-    func testIsValidAllValidCardHolderDisabled() {
-        viewModel.update(isCardHolderEnabled: false)
-
-        _ = viewModel.update(cardNumber: "4242424242424242", separator: "-")
-        _ = viewModel.update(expiration: "12/99")
-        _ = viewModel.update(cvc: "123")
-
-        let result = viewModel.isValid
-        XCTAssertTrue(result)
-    }
-
-    func testIsValidNotAllValidCardHolderDisabled() {
-        viewModel.update(isCardHolderEnabled: false)
-
-        _ = viewModel.update(cardNumber: "4242424242424242", separator: "-")
-        _ = viewModel.update(expiration: "12/99")
-        _ = viewModel.update(cvc: "1")
 
         let result = viewModel.isValid
         XCTAssertFalse(result)

@@ -52,11 +52,6 @@ protocol CardFormViewViewModelType {
     /// - Returns: 入力結果
     func update(cardHolder: String?) -> Result<String, FormError>
 
-    /// カード名義入力の有効を更新する
-    ///
-    /// - Parameter isCardHolderEnabled: true 有効にする
-    func update(isCardHolderEnabled: Bool)
-
     /// トークンを生成する
     ///
     /// - Parameters:
@@ -104,13 +99,11 @@ class CardFormViewViewModel: CardFormViewViewModelType {
     private var cvc: String?
     private var cardHolder: String?
 
-    private var isCardHolderEnabled: Bool = false
-
     var isValid: Bool {
         return checkCardNumberValid() &&
             checkExpirationValid() &&
             checkCvcValid() &&
-            (!self.isCardHolderEnabled || checkCardHolderValid())
+            checkCardHolderValid()
     }
 
     var isCardBrandChanged = false
@@ -237,10 +230,6 @@ class CardFormViewViewModel: CardFormViewViewModelType {
         self.cardHolder = holderInput
 
         return .success(holderInput)
-    }
-
-    func update(isCardHolderEnabled: Bool) {
-        self.isCardHolderEnabled = isCardHolderEnabled
     }
 
     func createToken(with tenantId: String?, completion: @escaping (Result<Token, Error>) -> Void) {

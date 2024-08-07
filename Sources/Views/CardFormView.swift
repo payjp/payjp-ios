@@ -14,11 +14,6 @@ public protocol CardFormStylable {
     ///
     /// - Parameter style: card form style
     func apply(style: FormStyle)
-
-    /// Set whether to enable card holder form.
-    ///
-    /// - Parameter required: card holder required
-    func setCardHolderRequired(_ required: Bool)
 }
 
 protocol CardFormProperties {
@@ -39,7 +34,6 @@ protocol CardFormProperties {
     var inputTextColor: UIColor { get }
     var inputTintColor: UIColor { get }
     var inputTextErrorColorEnabled: Bool { get }
-    var isHolderRequired: Bool { get }
     var cardNumberSeparator: String { get }
 }
 
@@ -298,7 +292,7 @@ public class CardFormView: UIView {
                 cardFormProperties.cvcTextField.becomeFirstResponder()
             }
         case cardFormProperties.cvcTextField:
-            if cardFormProperties.cvcTextField.isFirstResponder && cardFormProperties.isHolderRequired {
+            if cardFormProperties.cvcTextField.isFirstResponder {
                 cardFormProperties.cardHolderTextField.becomeFirstResponder()
             }
         default:
