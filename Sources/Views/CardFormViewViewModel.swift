@@ -240,7 +240,10 @@ class CardFormViewViewModel: CardFormViewViewModelType {
                                      expirationMonth: month,
                                      expirationYear: year,
                                      name: cardHolder,
-                                     tenantId: tenantId) { result in
+                                     tenantId: tenantId,
+                                     // TODO: set email and phone
+                                     email: nil,
+                                     phone: nil) { result in
                 switch result {
                 case .success(let token): completion(.success(token))
                 case .failure(let error): completion(.failure(error))
@@ -271,7 +274,10 @@ class CardFormViewViewModel: CardFormViewViewModelType {
                                       expirationMonth: month,
                                       expirationYear: year,
                                       cvc: cvc,
-                                      cardHolder: cardHolder)
+                                      cardHolder: cardHolder,
+                                      // TODO: set email and phone
+                                      email: nil,
+                                      phoneNumber: nil)
             completion(.success(input))
         } else {
             completion(.failure(LocalError.invalidFormInput))

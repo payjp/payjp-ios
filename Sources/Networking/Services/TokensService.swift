@@ -20,6 +20,8 @@ protocol TokenServiceType {
         expirationYear: String,
         name: String?,
         tenantId: String?,
+        email: String?,
+        phone: String?,
         completion: @escaping (Result<Token, APIError>) -> Void
     ) -> URLSessionDataTask?
 
@@ -68,6 +70,8 @@ class TokenService: TokenServiceType {
         expirationYear: String,
         name: String?,
         tenantId: String?,
+        email: String?,
+        phone: String?,
         completion: @escaping (Result<Token, APIError>) -> Void
     ) -> URLSessionDataTask? {
         let request = CreateTokenRequest(
@@ -76,7 +80,9 @@ class TokenService: TokenServiceType {
             expirationMonth: expirationMonth,
             expirationYear: expirationYear,
             name: name,
-            tenantId: tenantId)
+            tenantId: tenantId,
+            email: email,
+            phone: phone)
         self.checkTokenOperationStatus()
         self.tokenOperationObserverInternal.startRequest()
         return self.client.request(with: request) { [weak self] result in

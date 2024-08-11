@@ -16,7 +16,10 @@ class CardFormScreenPresenterTests: XCTestCase {
                              expirationMonth: "4",
                              expirationYear: "20",
                              cvc: "123",
-                             cardHolder: "waka")
+                             cardHolder: "waka",
+                             email: "test@example.com",
+                             phoneNumber: "+819012345678"
+        )
     }
 
     private func mockToken(tdsStatus: PAYThreeDSecureStatus? = nil) -> Token {

@@ -51,6 +51,8 @@ import PassKit
     /// - parameter expirationMonth:    Credit card expiration month `01`
     /// - parameter expirationYear:     Credit card expiration year `2020`
     /// - parameter name:               Credit card holder name `TARO YAMADA`
+    /// - parameter email:              Credit card email (3DS Attributes) e.g. `test@example.com`
+    /// - parameter phone:              Credit card phone number (3DS Attributes) E.164  e.g. `+819012345678`
     /// - parameter completion:         completion action
     @nonobjc
     public func createToken(
@@ -60,6 +62,8 @@ import PassKit
         expirationYear: String,
         name: String? = nil,
         tenantId: String? = nil,
+        email: String? = nil,
+        phone: String? = nil,
         completion: @escaping (Result<Token, APIError>) -> Void
     ) {
         tokensService.createToken(cardNumber: cardNumber,
@@ -68,6 +72,8 @@ import PassKit
                                   expirationYear: expirationYear,
                                   name: name,
                                   tenantId: tenantId,
+                                  email: email,
+                                  phone: phone,
                                   completion: completion)
     }
 

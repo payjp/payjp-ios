@@ -101,6 +101,8 @@ class MockTokenService: TokenServiceType {
                      expirationYear: String,
                      name: String?,
                      tenantId: String?,
+                     email: String?,
+                     phone: String?,
                      completion: @escaping (Result<Token, APIError>) -> Void) -> URLSessionDataTask? {
 
         self.createTokenTenantId = tenantId
