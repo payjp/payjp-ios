@@ -32,7 +32,9 @@ class CardFormScreenPresenterTests: XCTestCase {
                         fingerprint: "abcdefg",
                         liveMode: false,
                         createAt: Date(),
-                        threeDSecureStatus: tdsStatus)
+                        threeDSecureStatus: tdsStatus,
+                        email: "test@example.com",
+                        phone: "+819012345678")
         let token = Token(identifier: "token_id",
                           livemode: false,
                           used: false,
