@@ -17,18 +17,19 @@ public class CardFormLabelStyledView: CardFormView, CardFormProperties {
 
     @IBOutlet weak var brandLogoImage: UIImageView!
     @IBOutlet weak var cvcIconImage: UIImageView!
-    @IBOutlet weak var holderContainer: UIStackView!
     @IBOutlet weak var ocrButton: UIButton!
 
     @IBOutlet weak var cardNumberTextField: FormTextField!
     @IBOutlet weak var expirationTextField: FormTextField!
     @IBOutlet weak var cvcTextField: FormTextField!
     @IBOutlet weak var cardHolderTextField: FormTextField!
+    @IBOutlet weak var emailTextField: FormTextField!
 
     @IBOutlet weak var cardNumberErrorLabel: UILabel!
     @IBOutlet weak var expirationErrorLabel: UILabel!
     @IBOutlet weak var cvcErrorLabel: UILabel!
     @IBOutlet weak var cardHolderErrorLabel: UILabel!
+    @IBOutlet weak var emailErrorLabel: UILabel!
 
     var inputTextColor: UIColor = Style.Color.label
     var inputTintColor: UIColor = Style.Color.blue
@@ -41,11 +42,13 @@ public class CardFormLabelStyledView: CardFormView, CardFormProperties {
     @IBOutlet private weak var expirationLabel: UILabel!
     @IBOutlet private weak var cvcLabel: UILabel!
     @IBOutlet private weak var cardHolderLabel: UILabel!
+    @IBOutlet private weak var emailLabel: UILabel!
 
     @IBOutlet private weak var cardNumberFieldBackground: UIView!
     @IBOutlet private weak var expirationFieldBackground: UIView!
     @IBOutlet private weak var cvcFieldBackground: UIView!
     @IBOutlet private weak var cardHolderFieldBackground: UIView!
+    @IBOutlet private weak var emailFieldBackground: UIView!
 
     /// Camera scan action
     ///
@@ -86,6 +89,7 @@ public class CardFormLabelStyledView: CardFormView, CardFormProperties {
         expirationLabel.text = "payjp_card_form_expiration_label".localized
         cvcLabel.text = "payjp_card_form_cvc_label".localized
         cardHolderLabel.text = "payjp_card_form_holder_name_label".localized
+        emailLabel.text = "payjp_card_form_email_label".localized
 
         // set images
         brandLogoImage.image = "icon_card".image
@@ -109,10 +113,13 @@ public class CardFormLabelStyledView: CardFormView, CardFormProperties {
 
     public override func layoutSubviews() {
         super.layoutSubviews()
-        cardNumberFieldBackground.roundingCorners(corners: .allCorners, radius: 4.0)
-        expirationFieldBackground.roundingCorners(corners: .allCorners, radius: 4.0)
-        cvcFieldBackground.roundingCorners(corners: .allCorners, radius: 4.0)
-        cardHolderFieldBackground.roundingCorners(corners: .allCorners, radius: 4.0)
+        [
+            cardNumberFieldBackground,
+            expirationFieldBackground,
+            cvcFieldBackground,
+            cardHolderFieldBackground,
+            emailFieldBackground
+        ].forEach { $0?.roundingCorners(corners: .allCorners, radius: 4.0) }
     }
 
     // MARK: Private
@@ -132,8 +139,11 @@ public class CardFormLabelStyledView: CardFormView, CardFormProperties {
         cardHolderTextField.attributedPlaceholder = NSAttributedString(
             string: "payjp_card_form_label_style_holder_name_placeholder".localized,
             attributes: [NSAttributedString.Key.foregroundColor: Style.Color.placeholderText])
+        emailTextField.attributedPlaceholder = NSAttributedString(
+            string: "payjp_card_form_label_style_email_placeholder".localized,
+            attributes: [NSAttributedString.Key.foregroundColor: Style.Color.placeholderText])
 
-        [cardNumberTextField, expirationTextField, cvcTextField, cardHolderTextField].forEach { textField in
+        [cardNumberTextField, expirationTextField, cvcTextField, cardHolderTextField, emailTextField].forEach { textField in
             guard let textField = textField else { return }
             textField.delegate = self
             textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
@@ -158,25 +168,30 @@ extension CardFormLabelStyledView: CardFormStylable {
         expirationLabel.textColor = labelTextColor
         cvcLabel.textColor = labelTextColor
         cardHolderLabel.textColor = labelTextColor
+        emailLabel.textColor = labelTextColor
         // input text
         cardNumberTextField.textColor = inputTextColor
         expirationTextField.textColor = inputTextColor
         cvcTextField.textColor = inputTextColor
         cardHolderTextField.textColor = inputTextColor
+        emailTextField.textColor = inputTextColor
         // error text
         cardNumberErrorLabel.textColor = errorTextColor
         expirationErrorLabel.textColor = errorTextColor
         cvcErrorLabel.textColor = errorTextColor
         cardHolderErrorLabel.textColor = errorTextColor
+        emailErrorLabel.textColor = errorTextColor
         // tint
         cardNumberTextField.tintColor = tintColor
         expirationTextField.tintColor = tintColor
         cvcTextField.tintColor = tintColor
         cardHolderTextField.tintColor = tintColor
+        emailTextField.tintColor = tintColor
         // input field background
         cardNumberFieldBackground.backgroundColor = inputFieldBackgroundColor
         expirationFieldBackground.backgroundColor = inputFieldBackgroundColor
         cvcFieldBackground.backgroundColor = inputFieldBackgroundColor
         cardHolderFieldBackground.backgroundColor = inputFieldBackgroundColor
+        emailFieldBackground.backgroundColor = inputFieldBackgroundColor
     }
 }

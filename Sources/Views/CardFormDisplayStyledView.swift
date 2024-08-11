@@ -22,11 +22,13 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
     var expirationTextField: FormTextField!
     var cvcTextField: FormTextField!
     var cardHolderTextField: FormTextField!
+    var emailTextField: FormTextField!
 
     var cardNumberErrorLabel: UILabel!
     var expirationErrorLabel: UILabel!
     var cvcErrorLabel: UILabel!
     var cardHolderErrorLabel: UILabel!
+    var emailErrorLabel: UILabel!
 
     var inputTextColor: UIColor = Style.Color.label
     var inputTintColor: UIColor = Style.Color.blue
@@ -56,11 +58,13 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
     private var expirationFieldBackground: UIView!
     private var cvcFieldBackground: UIView!
     private var cardHolderFieldBackground: UIView!
+    private var emailFieldBackground: UIView!
 
     private var cardNumberFieldContentView: UIStackView!
     private var expirationFieldContentView: UIStackView!
     private var cvcFieldContentView: UIStackView!
     private var cardHolderFieldContentView: UIStackView!
+    private var emailFieldContentView: UIStackView!
 
     private var contentView: UIView!
     private let formContentStackView: UIStackView = UIStackView()
@@ -119,10 +123,13 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
 
     public override func layoutSubviews() {
         super.layoutSubviews()
-        cardNumberFieldBackground.roundingCorners(corners: .allCorners, radius: 4.0)
-        expirationFieldBackground.roundingCorners(corners: .allCorners, radius: 4.0)
-        cvcFieldBackground.roundingCorners(corners: .allCorners, radius: 4.0)
-        cardHolderFieldBackground.roundingCorners(corners: .allCorners, radius: 4.0)
+        [
+            cardNumberFieldBackground,
+            expirationFieldBackground,
+            cvcFieldBackground,
+            cardHolderFieldBackground,
+            emailFieldBackground
+        ].forEach { $0.roundingCorners(corners: .allCorners, radius: 4.0) }
     }
 
     // MARK: CardFormView
@@ -215,11 +222,13 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
         expirationFieldBackground = UIView(frame: backgroudFrame)
         cvcFieldBackground = UIView(frame: backgroudFrame)
         cardHolderFieldBackground = UIView(frame: backgroudFrame)
+        emailFieldBackground = UIView(frame: backgroudFrame)
 
         cardNumberErrorLabel = UILabel()
         expirationErrorLabel = UILabel()
         cvcErrorLabel = UILabel()
         cardHolderErrorLabel = UILabel()
+        emailErrorLabel = UILabel()
 
         ocrButton = UIButton()
         ocrButton.addTarget(self,
@@ -249,16 +258,19 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
         expirationTextField = FormTextField()
         cvcTextField = FormTextField()
         cardHolderTextField = FormTextField()
+        emailTextField = FormTextField()
 
         cardNumberTextField.borderStyle = .none
         expirationTextField.borderStyle = .none
         cvcTextField.borderStyle = .none
         cardHolderTextField.borderStyle = .none
+        emailTextField.borderStyle = .none
 
         cardNumberTextField.clearButtonMode = .whileEditing
         expirationTextField.clearButtonMode = .whileEditing
         cvcTextField.clearButtonMode = .whileEditing
         cardHolderTextField.clearButtonMode = .whileEditing
+        emailTextField.clearButtonMode = .whileEditing
 
         cardNumberTextField.textContentType = .creditCardNumber
         cardNumberTextField.keyboardType = .numberPad
@@ -269,6 +281,8 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
         cardHolderTextField.autocapitalizationType = .none
         cardHolderTextField.autocorrectionType = .no
         cardHolderTextField.returnKeyType = .done
+        emailTextField.keyboardType = .emailAddress
+        emailTextField.autocapitalizationType = .none
 
         // placeholder
         cardNumberTextField.attributedPlaceholder = NSAttributedString(
@@ -283,8 +297,11 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
         cardHolderTextField.attributedPlaceholder = NSAttributedString(
             string: "payjp_card_form_holder_name_placeholder".localized,
             attributes: [NSAttributedString.Key.foregroundColor: Style.Color.placeholderText])
+        emailTextField.attributedPlaceholder = NSAttributedString(
+            string: "payjp_card_form_email_placeholder".localized,
+            attributes: [NSAttributedString.Key.foregroundColor: Style.Color.placeholderText])
 
-        [cardNumberTextField, expirationTextField, cvcTextField, cardHolderTextField].forEach { textField in
+        [cardNumberTextField, expirationTextField, cvcTextField, cardHolderTextField, emailTextField].forEach { textField in
             guard let textField = textField else { return }
             textField.delegate = self
             textField.deletionDelegate = self
@@ -311,7 +328,7 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
             formContentStackView.heightAnchor.constraint(equalTo: formScrollView.heightAnchor),
             // widthはscrollView.widthAnchor x ページ数
             formContentStackView.widthAnchor.constraint(equalTo: formScrollView.widthAnchor,
-                                                        multiplier: CGFloat(4))
+                                                        multiplier: CGFloat(5))
         ])
 
         // 各入力フィールド
@@ -329,11 +346,15 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
         cardHolderFieldContentView = setupInputContentView(backgroundView: cardHolderFieldBackground,
                                                            textField: cardHolderTextField,
                                                            errorLabel: cardHolderErrorLabel)
+        emailFieldContentView = setupInputContentView(backgroundView: emailFieldBackground,
+                                                      textField: emailTextField,
+                                                      errorLabel: emailErrorLabel)
 
         formContentStackView.addArrangedSubview(cardNumberFieldContentView)
         formContentStackView.addArrangedSubview(expirationFieldContentView)
         formContentStackView.addArrangedSubview(cvcFieldContentView)
         formContentStackView.addArrangedSubview(cardHolderFieldContentView)
+        formContentStackView.addArrangedSubview(emailFieldContentView)
     }
 
     private func setupInputContentView(backgroundView: UIView,
@@ -500,6 +521,7 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
             if cvcTextField.isFirstResponder {
                 cardHolderTextField.becomeFirstResponder()
             }
+        // TODO: focus
         default:
             break
         }
@@ -543,16 +565,19 @@ extension CardFormDisplayStyledView: CardFormStylable {
         expirationTextField.textColor = inputTextColor
         cvcTextField.textColor = inputTextColor
         cardHolderTextField.textColor = inputTextColor
+        emailTextField.textColor = inputTextColor
         // error text
         cardNumberErrorLabel.textColor = errorTextColor
         expirationErrorLabel.textColor = errorTextColor
         cvcErrorLabel.textColor = errorTextColor
         cardHolderErrorLabel.textColor = errorTextColor
+        emailErrorLabel.textColor = errorTextColor
         // tint
         cardNumberTextField.tintColor = tintColor
         expirationTextField.tintColor = tintColor
         cvcTextField.tintColor = tintColor
         cardHolderTextField.tintColor = tintColor
+        emailTextField.tintColor = tintColor
         // highlight
         cardNumberBorderView.borderColor = highlightColor
         expirationBorderView.borderColor = highlightColor
@@ -588,6 +613,8 @@ extension CardFormDisplayStyledView: CardFormViewTextFieldDelegate {
             contentPositionX = cvcFieldContentView.frame.origin.x
         case cardHolderTextField:
             contentPositionX = cardHolderFieldContentView.frame.origin.x
+        case emailTextField:
+            contentPositionX = emailFieldContentView.frame.origin.x
         default:
             break
         }
@@ -611,6 +638,7 @@ extension CardFormDisplayStyledView: CardFormViewTextFieldDelegate {
             if cardFormProperties.cardHolderTextField.isFirstResponder {
                 cardFormProperties.cvcTextField.becomeFirstResponder()
             }
+        // TODO: focus previous
         default:
             break
         }

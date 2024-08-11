@@ -25,11 +25,16 @@ protocol CardFormProperties {
     var expirationTextField: FormTextField! { get }
     var cvcTextField: FormTextField! { get }
     var cardHolderTextField: FormTextField! { get }
+    var emailTextField: FormTextField! { get }
+    // TODO: phone country code field
+    // TODO: phone number field
 
     var cardNumberErrorLabel: UILabel! { get }
     var expirationErrorLabel: UILabel! { get }
     var cvcErrorLabel: UILabel! { get }
     var cardHolderErrorLabel: UILabel! { get }
+    var emailErrorLabel: UILabel! { get }
+    // TODO: phone error label
 
     var inputTextColor: UIColor { get }
     var inputTintColor: UIColor { get }
@@ -407,6 +412,7 @@ extension CardFormView: CardFormAction {
         cardFormProperties.expirationTextField.inputAccessoryView = view
         cardFormProperties.cvcTextField.inputAccessoryView = view
         cardFormProperties.cardHolderTextField.inputAccessoryView = view
+        cardFormProperties.emailTextField.inputAccessoryView = view
     }
 }
 
@@ -428,6 +434,7 @@ extension CardFormView: CardFormAction {
                 updateCvcInput(input: newText)
             case cardFormProperties.cardHolderTextField:
                 updateCardHolderInput(input: newText)
+            // TODO: email
             default:
                 break
             }
@@ -467,6 +474,7 @@ extension CardFormView: UITextFieldDelegate {
             updateCvcInput(input: nil)
         case cardFormProperties.cardHolderTextField:
             updateCardHolderInput(input: nil)
+        // TODO: email
         default:
             break
         }

@@ -17,18 +17,19 @@ public class CardFormTableStyledView: CardFormView, CardFormProperties {
 
     @IBOutlet weak var brandLogoImage: UIImageView!
     @IBOutlet weak var cvcIconImage: UIImageView!
-    @IBOutlet weak var holderContainer: UIStackView!
     @IBOutlet weak var ocrButton: UIButton!
 
     @IBOutlet weak var cardNumberTextField: FormTextField!
     @IBOutlet weak var expirationTextField: FormTextField!
     @IBOutlet weak var cvcTextField: FormTextField!
     @IBOutlet weak var cardHolderTextField: FormTextField!
+    @IBOutlet weak var emailTextField: FormTextField!
 
     @IBOutlet weak var cardNumberErrorLabel: UILabel!
     @IBOutlet weak var expirationErrorLabel: UILabel!
     @IBOutlet weak var cvcErrorLabel: UILabel!
     @IBOutlet weak var cardHolderErrorLabel: UILabel!
+    @IBOutlet weak var emailErrorLabel: UILabel!
 
     var inputTextColor: UIColor = Style.Color.blue
     var inputTintColor: UIColor = Style.Color.blue
@@ -40,10 +41,12 @@ public class CardFormTableStyledView: CardFormView, CardFormProperties {
     @IBOutlet private weak var expirationSeparator: UIView!
     @IBOutlet private weak var cvcSeparator: UIView!
     @IBOutlet private weak var holderSeparator: UIView!
+    @IBOutlet weak var emailSeparator: UIView!
 
     @IBOutlet private weak var expirationSeparatorConstraint: NSLayoutConstraint!
     @IBOutlet private weak var cvcSeparatorConstraint: NSLayoutConstraint!
     @IBOutlet private weak var holderSeparatorConstraint: NSLayoutConstraint!
+    @IBOutlet weak var emailSeparatorConstraint: NSLayoutConstraint!
 
     /// Camera scan action
     ///
@@ -92,13 +95,19 @@ public class CardFormTableStyledView: CardFormView, CardFormProperties {
         // separatorのheightを 0.5 で指定すると太さが統一ではなくなってしまうためscaleを使って対応
         // cf. https://stackoverflow.com/a/21553495
         let height = 1.0 / UIScreen.main.scale
-        expirationSeparatorConstraint.constant = height
-        cvcSeparatorConstraint.constant = height
-        holderSeparatorConstraint.constant = height
+        [
+            expirationSeparatorConstraint,
+            cvcSeparatorConstraint,
+            holderSeparatorConstraint,
+            emailSeparatorConstraint
+        ].forEach { $0?.constant = height }
 
-        expirationSeparator.backgroundColor = Style.Color.separator
-        cvcSeparator.backgroundColor = Style.Color.separator
-        holderSeparator.backgroundColor = Style.Color.separator
+        [
+            expirationSeparator,
+            cvcSeparator,
+            holderSeparator,
+            emailSeparator
+        ].forEach { $0?.backgroundColor = Style.Color.separator }
 
         setupInputFields()
         apply(style: .defaultStyle)
@@ -127,6 +136,9 @@ public class CardFormTableStyledView: CardFormView, CardFormProperties {
         cardHolderTextField.attributedPlaceholder = NSAttributedString(
             string: "payjp_card_form_holder_name_placeholder".localized,
             attributes: [NSAttributedString.Key.foregroundColor: Style.Color.placeholderText])
+        emailTextField.attributedPlaceholder = NSAttributedString(
+            string: "payjp_card_form_email_placeholder".localized,
+            attributes: [NSAttributedString.Key.foregroundColor: Style.Color.placeholderText])
 
         [cardNumberTextField, expirationTextField, cvcTextField, cardHolderTextField].forEach { textField in
             guard let textField = textField else { return }
@@ -145,19 +157,26 @@ extension CardFormTableStyledView: CardFormStylable {
         self.inputTintColor = tintColor
 
         // input text
-        cardNumberTextField.textColor = inputTextColor
-        expirationTextField.textColor = inputTextColor
-        cvcTextField.textColor = inputTextColor
-        cardHolderTextField.textColor = inputTextColor
+        [
+            cardNumberTextField,
+            expirationTextField,
+            cvcTextField,
+            cardHolderTextField,
+            emailTextField
+        ].forEach { textField in
+            textField?.textColor = inputTextColor
+            textField?.tintColor = tintColor
+        }
+
         // error text
-        cardNumberErrorLabel.textColor = errorTextColor
-        expirationErrorLabel.textColor = errorTextColor
-        cvcErrorLabel.textColor = errorTextColor
-        cardHolderErrorLabel.textColor = errorTextColor
-        // tint
-        cardNumberTextField.tintColor = tintColor
-        expirationTextField.tintColor = tintColor
-        cvcTextField.tintColor = tintColor
-        cardHolderTextField.tintColor = tintColor
+        [
+            cardNumberErrorLabel,
+            expirationErrorLabel,
+            cvcErrorLabel,
+            cardHolderErrorLabel,
+            emailErrorLabel
+        ].forEach { label in
+            label?.textColor = errorTextColor
+        }
     }
 }

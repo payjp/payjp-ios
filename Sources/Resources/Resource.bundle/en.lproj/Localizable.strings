@@ -15,18 +15,21 @@
 "payjp_card_form_expiration_label" = "Expiration date";
 "payjp_card_form_cvc_label" = "Security code";
 "payjp_card_form_holder_name_label" = "Name";
+"payjp_card_form_email_label" = "Email";
 
 // table style
 "payjp_card_form_number_placeholder" = "Card number";
 "payjp_card_form_expiration_placeholder" = "Expiration month/year";
 "payjp_card_form_cvc_placeholder" = "Security code";
 "payjp_card_form_holder_name_placeholder" = "Card holder name";
+"payjp_card_form_email_placeholder" = "Email";
 
 // label style
 "payjp_card_form_label_style_number_placeholder" = "Card number";
 "payjp_card_form_label_style_expiration_placeholder" = "month/year";
 "payjp_card_form_label_style_cvc_placeholder" = "000";
 "payjp_card_form_label_style_holder_name_placeholder" = "TARO TANAKA";
+"payjp_card_form_label_style_email_placeholder" = "tanaka@example.com";
 
 // validation
 "payjp_card_form_error_no_number" = "Please enter a card number.";

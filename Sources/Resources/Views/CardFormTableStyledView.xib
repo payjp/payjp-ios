@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,11 +19,14 @@
                 <outlet property="cvcSeparator" destination="sx1-iF-Ehn" id="zKc-YP-XwB"/>
                 <outlet property="cvcSeparatorConstraint" destination="MPT-Dz-owM" id="sgi-K8-Wdc"/>
                 <outlet property="cvcTextField" destination="cFx-df-SwM" id="PUq-oI-KWb"/>
+                <outlet property="emailErrorLabel" destination="cIY-7E-bMl" id="uH0-Vd-oxa"/>
+                <outlet property="emailSeparator" destination="2tA-9M-6Ya" id="gMX-po-sLW"/>
+                <outlet property="emailSeparatorConstraint" destination="895-a5-BLp" id="WK7-Gj-OS2"/>
+                <outlet property="emailTextField" destination="9SF-h8-4vE" id="WFx-c5-1ej"/>
                 <outlet property="expirationErrorLabel" destination="MyD-K5-tRI" id="HH6-ZH-2lf"/>
                 <outlet property="expirationSeparator" destination="dYQ-X5-gpG" id="6gF-Gu-A0R"/>
                 <outlet property="expirationSeparatorConstraint" destination="mnt-dg-7Jt" id="Wlj-nh-rPp"/>
                 <outlet property="expirationTextField" destination="G9O-hO-3ha" id="Mkj-J2-1Jj"/>
-                <outlet property="holderContainer" destination="5jR-px-r6W" id="Xpn-vD-pDM"/>
                 <outlet property="holderSeparator" destination="UV3-z2-UU5" id="3jK-kE-JPT"/>
                 <outlet property="holderSeparatorConstraint" destination="XwA-5B-AuG" id="gof-bR-EY4"/>
                 <outlet property="ocrButton" destination="Edh-Qk-Qqn" id="tHU-LT-iZG"/>
@@ -37,8 +40,8 @@
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="i8u-DO-8mH">
                     <rect key="frame" x="0.0" y="0.0" width="352" height="363"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="xGv-sY-8Xd">
-                            <rect key="frame" x="16" y="4" width="336" height="82"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="xGv-sY-8Xd" userLabel="Card Number">
+                            <rect key="frame" x="16" y="24" width="336" height="32"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="v9u-ED-moM">
                                     <rect key="frame" x="8" y="0.0" width="320" height="32"/>
@@ -84,7 +87,7 @@
                                     <edgeInsets key="layoutMargins" top="4" left="0.0" bottom="4" right="8"/>
                                 </stackView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GFQ-GY-Vr8">
-                                    <rect key="frame" x="8" y="32" width="320" height="50"/>
+                                    <rect key="frame" x="8" y="32" width="320" height="0.0"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
@@ -93,14 +96,14 @@
                             <edgeInsets key="layoutMargins" top="0.0" left="8" bottom="0.0" right="8"/>
                         </stackView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dYQ-X5-gpG" userLabel="Expiration Separator">
-                            <rect key="frame" x="16" y="90" width="336" height="1"/>
+                            <rect key="frame" x="16" y="60" width="336" height="1"/>
                             <color key="backgroundColor" red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="mnt-dg-7Jt"/>
                             </constraints>
                         </view>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="LoV-x3-iVm">
-                            <rect key="frame" x="16" y="95" width="336" height="82"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="LoV-x3-iVm" userLabel="Card Expiration">
+                            <rect key="frame" x="16" y="65" width="336" height="32"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="GEj-PX-Ntf">
                                     <rect key="frame" x="8" y="0.0" width="320" height="32"/>
@@ -118,7 +121,7 @@
                                     <edgeInsets key="layoutMargins" top="4" left="0.0" bottom="4" right="8"/>
                                 </stackView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MyD-K5-tRI">
-                                    <rect key="frame" x="8" y="32" width="320" height="50"/>
+                                    <rect key="frame" x="8" y="32" width="320" height="0.0"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
@@ -127,14 +130,14 @@
                             <edgeInsets key="layoutMargins" top="0.0" left="8" bottom="0.0" right="8"/>
                         </stackView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sx1-iF-Ehn" userLabel="Cvc Separator">
-                            <rect key="frame" x="16" y="181" width="336" height="1"/>
+                            <rect key="frame" x="16" y="101" width="336" height="1"/>
                             <color key="backgroundColor" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="MPT-Dz-owM"/>
                             </constraints>
                         </view>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="BYN-rt-K6C">
-                            <rect key="frame" x="16" y="186" width="336" height="82"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="BYN-rt-K6C" userLabel="Card Cvc">
+                            <rect key="frame" x="16" y="106" width="336" height="71"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="EJN-1F-AHB">
                                     <rect key="frame" x="8" y="0.0" width="320" height="32"/>
@@ -158,7 +161,7 @@
                                     <edgeInsets key="layoutMargins" top="4" left="0.0" bottom="4" right="8"/>
                                 </stackView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f2T-bl-zOV">
-                                    <rect key="frame" x="8" y="32" width="320" height="50"/>
+                                    <rect key="frame" x="8" y="32" width="320" height="39"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
@@ -166,15 +169,15 @@
                             </subviews>
                             <edgeInsets key="layoutMargins" top="0.0" left="8" bottom="0.0" right="8"/>
                         </stackView>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UV3-z2-UU5">
-                            <rect key="frame" x="16" y="272" width="336" height="1"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UV3-z2-UU5" userLabel="Holder Separator">
+                            <rect key="frame" x="16" y="181" width="336" height="1"/>
                             <color key="backgroundColor" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="XwA-5B-AuG"/>
                             </constraints>
                         </view>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5jR-px-r6W">
-                            <rect key="frame" x="16" y="277" width="336" height="82"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5jR-px-r6W" userLabel="Card Holder">
+                            <rect key="frame" x="16" y="186" width="336" height="82"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="6pe-yT-sJJ">
                                     <rect key="frame" x="8" y="0.0" width="320" height="32"/>
@@ -192,6 +195,40 @@
                                     <edgeInsets key="layoutMargins" top="4" left="0.0" bottom="4" right="8"/>
                                 </stackView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NaF-fa-61z">
+                                    <rect key="frame" x="8" y="32" width="320" height="50"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <edgeInsets key="layoutMargins" top="0.0" left="8" bottom="0.0" right="8"/>
+                        </stackView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2tA-9M-6Ya" userLabel="Email Separator">
+                            <rect key="frame" x="16" y="272" width="336" height="1"/>
+                            <color key="backgroundColor" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="895-a5-BLp"/>
+                            </constraints>
+                        </view>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="mUa-5J-GcG" userLabel="Card Holder">
+                            <rect key="frame" x="16" y="277" width="336" height="82"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="7DS-XQ-JQC">
+                                    <rect key="frame" x="8" y="0.0" width="320" height="32"/>
+                                    <subviews>
+                                        <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="メールアドレス" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="9SF-h8-4vE" userLabel="メールアドレス">
+                                            <rect key="frame" x="0.0" y="4" width="312" height="24"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="24" id="5n8-Dn-k7G"/>
+                                            </constraints>
+                                            <color key="textColor" red="0.01176470588" green="0.01176470588" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" textContentType="email"/>
+                                        </textField>
+                                    </subviews>
+                                    <edgeInsets key="layoutMargins" top="4" left="0.0" bottom="4" right="8"/>
+                                </stackView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cIY-7E-bMl">
                                     <rect key="frame" x="8" y="32" width="320" height="50"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
