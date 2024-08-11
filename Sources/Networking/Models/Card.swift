@@ -63,8 +63,8 @@ import Foundation
         } else {
             threeDSecureStatus = nil
         }
-        email = try container.decode(String.self, forKey: .email)
-        phone = try container.decode(String.self, forKey: .phone)
+        email = try container.decodeIfPresent(String.self, forKey: .email)
+        phone = try container.decodeIfPresent(String.self, forKey: .phone)
     }
 
     public init(identifier: String,
