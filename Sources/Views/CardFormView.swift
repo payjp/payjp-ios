@@ -331,11 +331,7 @@ public class CardFormView: UIView {
                 guard let settingsURL = URL(string: UIApplication.openSettingsURLString ) else {
                     return
                 }
-                if #available(iOS 10.0, *) {
-                    UIApplication.shared.open(settingsURL, options: [:], completionHandler: nil)
-                } else {
-                    UIApplication.shared.openURL(settingsURL)
-                }
+                UIApplication.shared.open(settingsURL, options: [:], completionHandler: nil)
             })
         let closeAction = UIAlertAction(title: "payjp_common_ok".localized,
                                         style: .default,

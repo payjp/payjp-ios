@@ -16,6 +16,7 @@
 "payjp_card_form_cvc_label" = "セキュリティコード";
 "payjp_card_form_holder_name_label" = "カード名義";
 "payjp_card_form_email_label" = "メールアドレス";
+"payjp_card_form_phone_number_label" = "電話番号";
 
 // table style
 "payjp_card_form_number_placeholder" = "カード番号";

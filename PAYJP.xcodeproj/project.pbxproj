@@ -10,6 +10,7 @@
 		32167E0727B1C55800E4BCD5 /* OHHTTPStubs.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32167E0627B1C55800E4BCD5 /* OHHTTPStubs.xcframework */; };
 		322BD1D6225C83CA00D83B5E /* JSONDecoder+PAYJP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322BD1D5225C83CA00D83B5E /* JSONDecoder+PAYJP.swift */; };
 		325E36B1233484C90037E6BE /* UIColor+PAYJP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325E36B0233484C90037E6BE /* UIColor+PAYJP.swift */; };
+		328622662C6C483F00DEA55B /* PhoneNumberKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 328622622C6C42CB00DEA55B /* PhoneNumberKit.xcframework */; };
 		3289C9D123EACB6D008FFBC1 /* ClientInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3289C9D023EACB6D008FFBC1 /* ClientInfo.swift */; };
 		3289C9D323EBFC87008FFBC1 /* ClientInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3289C9D223EBFC87008FFBC1 /* ClientInfoTests.swift */; };
 		32A6F614239608DD00747477 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A6F613239608DD00747477 /* ActionButton.swift */; };
@@ -152,6 +153,7 @@
 		322BD1D5225C83CA00D83B5E /* JSONDecoder+PAYJP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+PAYJP.swift"; sourceTree = "<group>"; };
 		325E36AE233482AC0037E6BE /* FormStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormStyle.swift; sourceTree = "<group>"; };
 		325E36B0233484C90037E6BE /* UIColor+PAYJP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+PAYJP.swift"; sourceTree = "<group>"; };
+		328622622C6C42CB00DEA55B /* PhoneNumberKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = PhoneNumberKit.xcframework; path = Carthage/Build/PhoneNumberKit.xcframework; sourceTree = "<group>"; };
 		3289C9D023EACB6D008FFBC1 /* ClientInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientInfo.swift; sourceTree = "<group>"; };
 		3289C9D223EBFC87008FFBC1 /* ClientInfoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientInfoTests.swift; sourceTree = "<group>"; };
 		32A6F613239608DD00747477 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
@@ -296,6 +298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				32167E0727B1C55800E4BCD5 /* OHHTTPStubs.xcframework in Frameworks */,
+				328622662C6C483F00DEA55B /* PhoneNumberKit.xcframework in Frameworks */,
 				615AFF661C8C74A1003FB86F /* PAYJP.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -616,6 +619,7 @@
 		C6E00B0C1E1F505600C101B0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				328622622C6C42CB00DEA55B /* PhoneNumberKit.xcframework */,
 				32167E0627B1C55800E4BCD5 /* OHHTTPStubs.xcframework */,
 				C6E00B0D1E1F505600C101B0 /* OHHTTPStubs.framework */,
 			);
@@ -1094,9 +1098,15 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/Carthage/Build/",
+					"$(SRCROOT)/Carthage/Build/iOS",
+				);
 				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
 				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1120,9 +1130,15 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/Carthage/Build/",
+					"$(SRCROOT)/Carthage/Build/iOS",
+				);
 				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
 				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

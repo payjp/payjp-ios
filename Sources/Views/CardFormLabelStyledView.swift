@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PhoneNumberKit
 
 /// CardFormView with label.
 /// It's recommended to implement with UIScrollView.
@@ -24,12 +25,14 @@ public class CardFormLabelStyledView: CardFormView, CardFormProperties {
     @IBOutlet weak var cvcTextField: FormTextField!
     @IBOutlet weak var cardHolderTextField: FormTextField!
     @IBOutlet weak var emailTextField: FormTextField!
+    @IBOutlet weak var phoneNumberTextField: PhoneNumberTextField!
 
     @IBOutlet weak var cardNumberErrorLabel: UILabel!
     @IBOutlet weak var expirationErrorLabel: UILabel!
     @IBOutlet weak var cvcErrorLabel: UILabel!
     @IBOutlet weak var cardHolderErrorLabel: UILabel!
     @IBOutlet weak var emailErrorLabel: UILabel!
+    @IBOutlet weak var phoneNumberErrorLabel: UILabel!
 
     var inputTextColor: UIColor = Style.Color.label
     var inputTintColor: UIColor = Style.Color.blue
@@ -43,12 +46,14 @@ public class CardFormLabelStyledView: CardFormView, CardFormProperties {
     @IBOutlet private weak var cvcLabel: UILabel!
     @IBOutlet private weak var cardHolderLabel: UILabel!
     @IBOutlet private weak var emailLabel: UILabel!
+    @IBOutlet private weak var phoneNumberLabel: UILabel!
 
     @IBOutlet private weak var cardNumberFieldBackground: UIView!
     @IBOutlet private weak var expirationFieldBackground: UIView!
     @IBOutlet private weak var cvcFieldBackground: UIView!
     @IBOutlet private weak var cardHolderFieldBackground: UIView!
     @IBOutlet private weak var emailFieldBackground: UIView!
+    @IBOutlet private weak var phoneNumberFieldBackground: UIView!
 
     /// Camera scan action
     ///
@@ -90,6 +95,7 @@ public class CardFormLabelStyledView: CardFormView, CardFormProperties {
         cvcLabel.text = "payjp_card_form_cvc_label".localized
         cardHolderLabel.text = "payjp_card_form_holder_name_label".localized
         emailLabel.text = "payjp_card_form_email_label".localized
+        phoneNumberLabel.text = "payjp_card_form_phone_number_label".localized
 
         // set images
         brandLogoImage.image = "icon_card".image
@@ -118,7 +124,8 @@ public class CardFormLabelStyledView: CardFormView, CardFormProperties {
             expirationFieldBackground,
             cvcFieldBackground,
             cardHolderFieldBackground,
-            emailFieldBackground
+            emailFieldBackground,
+            phoneNumberFieldBackground
         ].forEach { $0?.roundingCorners(corners: .allCorners, radius: 4.0) }
     }
 
@@ -142,8 +149,12 @@ public class CardFormLabelStyledView: CardFormView, CardFormProperties {
         emailTextField.attributedPlaceholder = NSAttributedString(
             string: "payjp_card_form_label_style_email_placeholder".localized,
             attributes: [NSAttributedString.Key.foregroundColor: Style.Color.placeholderText])
+        phoneNumberTextField.withFlag = true
+        phoneNumberTextField.withDefaultPickerUI = true
+        phoneNumberTextField.withExamplePlaceholder = true
+        phoneNumberTextField.withPrefix = true
 
-        [cardNumberTextField, expirationTextField, cvcTextField, cardHolderTextField, emailTextField].forEach { textField in
+        [cardNumberTextField, expirationTextField, cvcTextField, cardHolderTextField, emailTextField, phoneNumberTextField].forEach { textField in
             guard let textField = textField else { return }
             textField.delegate = self
             textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
@@ -169,29 +180,39 @@ extension CardFormLabelStyledView: CardFormStylable {
         cvcLabel.textColor = labelTextColor
         cardHolderLabel.textColor = labelTextColor
         emailLabel.textColor = labelTextColor
+        phoneNumberLabel.textColor = labelTextColor
         // input text
-        cardNumberTextField.textColor = inputTextColor
-        expirationTextField.textColor = inputTextColor
-        cvcTextField.textColor = inputTextColor
-        cardHolderTextField.textColor = inputTextColor
-        emailTextField.textColor = inputTextColor
+        let inputs: [UITextField] = [
+            cardNumberTextField,
+            expirationTextField,
+            cvcTextField,
+            cardHolderTextField,
+            emailTextField,
+            phoneNumberTextField
+        ]
+        inputs.forEach { view in
+            view.textColor = inputTextColor
+            view.tintColor = tintColor
+        }
         // error text
-        cardNumberErrorLabel.textColor = errorTextColor
-        expirationErrorLabel.textColor = errorTextColor
-        cvcErrorLabel.textColor = errorTextColor
-        cardHolderErrorLabel.textColor = errorTextColor
-        emailErrorLabel.textColor = errorTextColor
-        // tint
-        cardNumberTextField.tintColor = tintColor
-        expirationTextField.tintColor = tintColor
-        cvcTextField.tintColor = tintColor
-        cardHolderTextField.tintColor = tintColor
-        emailTextField.tintColor = tintColor
+        let errorLabels = [
+            cardNumberErrorLabel,
+            expirationErrorLabel,
+            cvcErrorLabel,
+            cardHolderErrorLabel,
+            emailErrorLabel,
+            phoneNumberErrorLabel
+        ]
+        errorLabels.forEach { $0?.textColor = errorTextColor }
         // input field background
-        cardNumberFieldBackground.backgroundColor = inputFieldBackgroundColor
-        expirationFieldBackground.backgroundColor = inputFieldBackgroundColor
-        cvcFieldBackground.backgroundColor = inputFieldBackgroundColor
-        cardHolderFieldBackground.backgroundColor = inputFieldBackgroundColor
-        emailFieldBackground.backgroundColor = inputFieldBackgroundColor
+        let backgrounds: [UIView] = [
+            cardNumberFieldBackground,
+            expirationFieldBackground,
+            cvcFieldBackground,
+            cardHolderFieldBackground,
+            emailFieldBackground,
+            phoneNumberFieldBackground
+        ]
+        backgrounds.forEach { $0.backgroundColor = inputFieldBackgroundColor }
     }
 }

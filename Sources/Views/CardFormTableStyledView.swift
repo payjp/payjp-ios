@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PhoneNumberKit
 
 /// CardFormView without label.
 /// It's suitable for UITableView design.
@@ -24,12 +25,14 @@ public class CardFormTableStyledView: CardFormView, CardFormProperties {
     @IBOutlet weak var cvcTextField: FormTextField!
     @IBOutlet weak var cardHolderTextField: FormTextField!
     @IBOutlet weak var emailTextField: FormTextField!
+    @IBOutlet weak var phoneNumberTextField: PhoneNumberTextField!
 
     @IBOutlet weak var cardNumberErrorLabel: UILabel!
     @IBOutlet weak var expirationErrorLabel: UILabel!
     @IBOutlet weak var cvcErrorLabel: UILabel!
     @IBOutlet weak var cardHolderErrorLabel: UILabel!
     @IBOutlet weak var emailErrorLabel: UILabel!
+    @IBOutlet weak var phoneNumberErrorLabel: UILabel!
 
     var inputTextColor: UIColor = Style.Color.blue
     var inputTintColor: UIColor = Style.Color.blue
@@ -41,12 +44,14 @@ public class CardFormTableStyledView: CardFormView, CardFormProperties {
     @IBOutlet private weak var expirationSeparator: UIView!
     @IBOutlet private weak var cvcSeparator: UIView!
     @IBOutlet private weak var holderSeparator: UIView!
-    @IBOutlet weak var emailSeparator: UIView!
+    @IBOutlet private weak var emailSeparator: UIView!
+    @IBOutlet private weak var phoneNumberSeparator: UIView!
 
     @IBOutlet private weak var expirationSeparatorConstraint: NSLayoutConstraint!
     @IBOutlet private weak var cvcSeparatorConstraint: NSLayoutConstraint!
     @IBOutlet private weak var holderSeparatorConstraint: NSLayoutConstraint!
     @IBOutlet weak var emailSeparatorConstraint: NSLayoutConstraint!
+    @IBOutlet weak var phoneSeparatorConstraint: NSLayoutConstraint!
 
     /// Camera scan action
     ///
@@ -99,14 +104,16 @@ public class CardFormTableStyledView: CardFormView, CardFormProperties {
             expirationSeparatorConstraint,
             cvcSeparatorConstraint,
             holderSeparatorConstraint,
-            emailSeparatorConstraint
+            emailSeparatorConstraint,
+            phoneSeparatorConstraint
         ].forEach { $0?.constant = height }
 
         [
             expirationSeparator,
             cvcSeparator,
             holderSeparator,
-            emailSeparator
+            emailSeparator,
+            phoneNumberSeparator
         ].forEach { $0?.backgroundColor = Style.Color.separator }
 
         setupInputFields()
@@ -139,8 +146,12 @@ public class CardFormTableStyledView: CardFormView, CardFormProperties {
         emailTextField.attributedPlaceholder = NSAttributedString(
             string: "payjp_card_form_email_placeholder".localized,
             attributes: [NSAttributedString.Key.foregroundColor: Style.Color.placeholderText])
+        phoneNumberTextField.withFlag = true
+        phoneNumberTextField.withDefaultPickerUI = true
+        phoneNumberTextField.withExamplePlaceholder = true
+        phoneNumberTextField.withPrefix = true
 
-        [cardNumberTextField, expirationTextField, cvcTextField, cardHolderTextField].forEach { textField in
+        [cardNumberTextField, expirationTextField, cvcTextField, cardHolderTextField, phoneNumberTextField].forEach { textField in
             guard let textField = textField else { return }
             textField.delegate = self
             textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
@@ -162,7 +173,8 @@ extension CardFormTableStyledView: CardFormStylable {
             expirationTextField,
             cvcTextField,
             cardHolderTextField,
-            emailTextField
+            emailTextField,
+            phoneNumberTextField
         ].forEach { textField in
             textField?.textColor = inputTextColor
             textField?.tintColor = tintColor
@@ -174,7 +186,8 @@ extension CardFormTableStyledView: CardFormStylable {
             expirationErrorLabel,
             cvcErrorLabel,
             cardHolderErrorLabel,
-            emailErrorLabel
+            emailErrorLabel,
+            phoneNumberErrorLabel
         ].forEach { label in
             label?.textColor = errorTextColor
         }

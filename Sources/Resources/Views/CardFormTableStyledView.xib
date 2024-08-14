@@ -30,15 +30,19 @@
                 <outlet property="holderSeparator" destination="UV3-z2-UU5" id="3jK-kE-JPT"/>
                 <outlet property="holderSeparatorConstraint" destination="XwA-5B-AuG" id="gof-bR-EY4"/>
                 <outlet property="ocrButton" destination="Edh-Qk-Qqn" id="tHU-LT-iZG"/>
+                <outlet property="phoneNumberErrorLabel" destination="6H3-VY-mK8" id="Ta5-g3-n9d"/>
+                <outlet property="phoneNumberSeparator" destination="FZf-to-J82" id="mpW-cY-HvZ"/>
+                <outlet property="phoneNumberTextField" destination="iOc-p7-bTO" id="H4G-ZU-c0i"/>
+                <outlet property="phoneSeparatorConstraint" destination="whe-TA-30R" id="AAn-Ls-iAD"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="352" height="363"/>
+            <rect key="frame" x="0.0" y="0.0" width="352" height="383"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="i8u-DO-8mH">
-                    <rect key="frame" x="0.0" y="0.0" width="352" height="363"/>
+                    <rect key="frame" x="0.0" y="0.0" width="352" height="383"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="xGv-sY-8Xd" userLabel="Card Number">
                             <rect key="frame" x="16" y="24" width="336" height="32"/>
@@ -137,7 +141,7 @@
                             </constraints>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="BYN-rt-K6C" userLabel="Card Cvc">
-                            <rect key="frame" x="16" y="106" width="336" height="71"/>
+                            <rect key="frame" x="16" y="106" width="336" height="32"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="EJN-1F-AHB">
                                     <rect key="frame" x="8" y="0.0" width="320" height="32"/>
@@ -161,7 +165,7 @@
                                     <edgeInsets key="layoutMargins" top="4" left="0.0" bottom="4" right="8"/>
                                 </stackView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f2T-bl-zOV">
-                                    <rect key="frame" x="8" y="32" width="320" height="39"/>
+                                    <rect key="frame" x="8" y="32" width="320" height="0.0"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
@@ -170,14 +174,14 @@
                             <edgeInsets key="layoutMargins" top="0.0" left="8" bottom="0.0" right="8"/>
                         </stackView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UV3-z2-UU5" userLabel="Holder Separator">
-                            <rect key="frame" x="16" y="181" width="336" height="1"/>
+                            <rect key="frame" x="16" y="142" width="336" height="1"/>
                             <color key="backgroundColor" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="XwA-5B-AuG"/>
                             </constraints>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5jR-px-r6W" userLabel="Card Holder">
-                            <rect key="frame" x="16" y="186" width="336" height="82"/>
+                            <rect key="frame" x="16" y="147" width="336" height="50"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="6pe-yT-sJJ">
                                     <rect key="frame" x="8" y="0.0" width="320" height="32"/>
@@ -195,7 +199,7 @@
                                     <edgeInsets key="layoutMargins" top="4" left="0.0" bottom="4" right="8"/>
                                 </stackView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NaF-fa-61z">
-                                    <rect key="frame" x="8" y="32" width="320" height="50"/>
+                                    <rect key="frame" x="8" y="32" width="320" height="18"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
@@ -204,14 +208,14 @@
                             <edgeInsets key="layoutMargins" top="0.0" left="8" bottom="0.0" right="8"/>
                         </stackView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2tA-9M-6Ya" userLabel="Email Separator">
-                            <rect key="frame" x="16" y="272" width="336" height="1"/>
+                            <rect key="frame" x="16" y="201" width="336" height="1"/>
                             <color key="backgroundColor" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="895-a5-BLp"/>
                             </constraints>
                         </view>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="mUa-5J-GcG" userLabel="Card Holder">
-                            <rect key="frame" x="16" y="277" width="336" height="82"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="mUa-5J-GcG" userLabel="Email">
+                            <rect key="frame" x="16" y="206" width="336" height="82"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="7DS-XQ-JQC">
                                     <rect key="frame" x="8" y="0.0" width="320" height="32"/>
@@ -237,6 +241,40 @@
                             </subviews>
                             <edgeInsets key="layoutMargins" top="0.0" left="8" bottom="0.0" right="8"/>
                         </stackView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FZf-to-J82" userLabel="Phone Separator">
+                            <rect key="frame" x="16" y="292" width="336" height="1"/>
+                            <color key="backgroundColor" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="whe-TA-30R"/>
+                            </constraints>
+                        </view>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="p4F-CK-fkd" userLabel="Phone">
+                            <rect key="frame" x="16" y="297" width="336" height="82"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="VqP-aK-5If">
+                                    <rect key="frame" x="8" y="0.0" width="320" height="32"/>
+                                    <subviews>
+                                        <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="電話番号" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="iOc-p7-bTO" userLabel="Phone Input" customClass="PhoneNumberTextField" customModule="PhoneNumberKit">
+                                            <rect key="frame" x="0.0" y="4" width="312" height="24"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="24" id="OvD-nc-zqN"/>
+                                            </constraints>
+                                            <color key="textColor" red="0.01176470588" green="0.01176470588" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" textContentType="email"/>
+                                        </textField>
+                                    </subviews>
+                                    <edgeInsets key="layoutMargins" top="4" left="0.0" bottom="4" right="8"/>
+                                </stackView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6H3-VY-mK8">
+                                    <rect key="frame" x="8" y="32" width="320" height="50"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <edgeInsets key="layoutMargins" top="0.0" left="8" bottom="0.0" right="8"/>
+                        </stackView>
                     </subviews>
                     <edgeInsets key="layoutMargins" top="4" left="16" bottom="4" right="0.0"/>
                 </stackView>
@@ -250,7 +288,7 @@
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="82.608695652173921" y="414.53804347826087"/>
+            <point key="canvasLocation" x="82.608695652173921" y="421.87500000000006"/>
         </view>
     </objects>
 </document>

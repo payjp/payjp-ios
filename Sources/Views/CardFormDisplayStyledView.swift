@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PhoneNumberKit
 
 // swiftlint:disable type_body_length file_length
 /// CardFormView with card animation.
@@ -23,12 +24,14 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
     var cvcTextField: FormTextField!
     var cardHolderTextField: FormTextField!
     var emailTextField: FormTextField!
+    var phoneNumberTextField: PhoneNumberTextField!
 
     var cardNumberErrorLabel: UILabel!
     var expirationErrorLabel: UILabel!
     var cvcErrorLabel: UILabel!
     var cardHolderErrorLabel: UILabel!
     var emailErrorLabel: UILabel!
+    var phoneNumberErrorLabel: UILabel!
 
     var inputTextColor: UIColor = Style.Color.label
     var inputTintColor: UIColor = Style.Color.blue
@@ -59,12 +62,14 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
     private var cvcFieldBackground: UIView!
     private var cardHolderFieldBackground: UIView!
     private var emailFieldBackground: UIView!
+    private var phoneNumberFieldBackground: UIView!
 
     private var cardNumberFieldContentView: UIStackView!
     private var expirationFieldContentView: UIStackView!
     private var cvcFieldContentView: UIStackView!
     private var cardHolderFieldContentView: UIStackView!
     private var emailFieldContentView: UIStackView!
+    private var phoneNumberFieldContentView: UIStackView!
 
     private var contentView: UIView!
     private let formContentStackView: UIStackView = UIStackView()
@@ -128,7 +133,8 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
             expirationFieldBackground,
             cvcFieldBackground,
             cardHolderFieldBackground,
-            emailFieldBackground
+            emailFieldBackground,
+            phoneNumberFieldBackground
         ].forEach { $0.roundingCorners(corners: .allCorners, radius: 4.0) }
     }
 
@@ -223,12 +229,14 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
         cvcFieldBackground = UIView(frame: backgroudFrame)
         cardHolderFieldBackground = UIView(frame: backgroudFrame)
         emailFieldBackground = UIView(frame: backgroudFrame)
+        phoneNumberFieldBackground = UIView(frame: backgroudFrame)
 
         cardNumberErrorLabel = UILabel()
         expirationErrorLabel = UILabel()
         cvcErrorLabel = UILabel()
         cardHolderErrorLabel = UILabel()
         emailErrorLabel = UILabel()
+        phoneNumberErrorLabel = UILabel()
 
         ocrButton = UIButton()
         ocrButton.addTarget(self,
@@ -259,18 +267,21 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
         cvcTextField = FormTextField()
         cardHolderTextField = FormTextField()
         emailTextField = FormTextField()
+        phoneNumberTextField = PhoneNumberTextField()
 
         cardNumberTextField.borderStyle = .none
         expirationTextField.borderStyle = .none
         cvcTextField.borderStyle = .none
         cardHolderTextField.borderStyle = .none
         emailTextField.borderStyle = .none
+        phoneNumberTextField.borderStyle = .none
 
         cardNumberTextField.clearButtonMode = .whileEditing
         expirationTextField.clearButtonMode = .whileEditing
         cvcTextField.clearButtonMode = .whileEditing
         cardHolderTextField.clearButtonMode = .whileEditing
         emailTextField.clearButtonMode = .whileEditing
+        phoneNumberTextField.clearButtonMode = .whileEditing
 
         cardNumberTextField.textContentType = .creditCardNumber
         cardNumberTextField.keyboardType = .numberPad
@@ -283,6 +294,7 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
         cardHolderTextField.returnKeyType = .done
         emailTextField.keyboardType = .emailAddress
         emailTextField.autocapitalizationType = .none
+        phoneNumberTextField.keyboardType = .phonePad
 
         // placeholder
         cardNumberTextField.attributedPlaceholder = NSAttributedString(
@@ -301,10 +313,17 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
             string: "payjp_card_form_email_placeholder".localized,
             attributes: [NSAttributedString.Key.foregroundColor: Style.Color.placeholderText])
 
-        [cardNumberTextField, expirationTextField, cvcTextField, cardHolderTextField, emailTextField].forEach { textField in
+        phoneNumberTextField.withFlag = true
+        phoneNumberTextField.withDefaultPickerUI = true
+        phoneNumberTextField.withExamplePlaceholder = true
+        phoneNumberTextField.withPrefix = true
+
+        [cardNumberTextField, expirationTextField, cvcTextField, cardHolderTextField, emailTextField, phoneNumberTextField].forEach { textField in
             guard let textField = textField else { return }
             textField.delegate = self
-            textField.deletionDelegate = self
+            if let deletionDelegatable = textField as? FormTextField {
+                deletionDelegatable.deletionDelegate = self
+            }
             textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         }
     }
@@ -328,7 +347,7 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
             formContentStackView.heightAnchor.constraint(equalTo: formScrollView.heightAnchor),
             // widthはscrollView.widthAnchor x ページ数
             formContentStackView.widthAnchor.constraint(equalTo: formScrollView.widthAnchor,
-                                                        multiplier: CGFloat(5))
+                                                        multiplier: CGFloat(6))
         ])
 
         // 各入力フィールド
@@ -349,12 +368,16 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
         emailFieldContentView = setupInputContentView(backgroundView: emailFieldBackground,
                                                       textField: emailTextField,
                                                       errorLabel: emailErrorLabel)
+        phoneNumberFieldContentView = setupInputContentView(backgroundView: phoneNumberFieldBackground,
+                                                            textField: phoneNumberTextField,
+                                                            errorLabel: phoneNumberErrorLabel)
 
         formContentStackView.addArrangedSubview(cardNumberFieldContentView)
         formContentStackView.addArrangedSubview(expirationFieldContentView)
         formContentStackView.addArrangedSubview(cvcFieldContentView)
         formContentStackView.addArrangedSubview(cardHolderFieldContentView)
         formContentStackView.addArrangedSubview(emailFieldContentView)
+        formContentStackView.addArrangedSubview(phoneNumberFieldContentView)
     }
 
     private func setupInputContentView(backgroundView: UIView,
@@ -566,18 +589,21 @@ extension CardFormDisplayStyledView: CardFormStylable {
         cvcTextField.textColor = inputTextColor
         cardHolderTextField.textColor = inputTextColor
         emailTextField.textColor = inputTextColor
+        phoneNumberTextField.textColor = inputTextColor
         // error text
         cardNumberErrorLabel.textColor = errorTextColor
         expirationErrorLabel.textColor = errorTextColor
         cvcErrorLabel.textColor = errorTextColor
         cardHolderErrorLabel.textColor = errorTextColor
         emailErrorLabel.textColor = errorTextColor
+        phoneNumberErrorLabel.textColor = errorTextColor
         // tint
         cardNumberTextField.tintColor = tintColor
         expirationTextField.tintColor = tintColor
         cvcTextField.tintColor = tintColor
         cardHolderTextField.tintColor = tintColor
         emailTextField.tintColor = tintColor
+        phoneNumberTextField.tintColor = tintColor
         // highlight
         cardNumberBorderView.borderColor = highlightColor
         expirationBorderView.borderColor = highlightColor
@@ -615,6 +641,8 @@ extension CardFormDisplayStyledView: CardFormViewTextFieldDelegate {
             contentPositionX = cardHolderFieldContentView.frame.origin.x
         case emailTextField:
             contentPositionX = emailFieldContentView.frame.origin.x
+        case phoneNumberTextField:
+            contentPositionX = phoneNumberFieldContentView.frame.origin.x
         default:
             break
         }

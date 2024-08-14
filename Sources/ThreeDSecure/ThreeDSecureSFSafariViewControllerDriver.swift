@@ -19,9 +19,7 @@ public class ThreeDSecureSFSafariViewControllerDriver: NSObject, ThreeDSecureWeb
 
     public func openWebBrowser(host: UIViewController, url: URL, delegate: ThreeDSecureWebDriverDelegate) {
         let safariVc = SFSafariViewController(url: url)
-        if #available(iOS 11.0, *) {
-            safariVc.dismissButtonStyle = .close
-        }
+        safariVc.dismissButtonStyle = .close
         safariVc.delegate = self
         self.delegate = delegate
         host.present(safariVc, animated: true, completion: nil)

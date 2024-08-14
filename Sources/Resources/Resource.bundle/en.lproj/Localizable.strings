@@ -16,6 +16,7 @@
 "payjp_card_form_cvc_label" = "Security code";
 "payjp_card_form_holder_name_label" = "Name";
 "payjp_card_form_email_label" = "Email";
+"payjp_card_form_phone_number_label" = "Phone Number";
 
 // table style
 "payjp_card_form_number_placeholder" = "Card number";
