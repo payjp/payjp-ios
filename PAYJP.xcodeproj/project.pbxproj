@@ -149,6 +149,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		320B38E92C6E3886002D1BFB /* PAYJPTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = PAYJPTests.xctestplan; path = Tests/PAYJPTests.xctestplan; sourceTree = "<group>"; };
 		32167E0627B1C55800E4BCD5 /* OHHTTPStubs.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = OHHTTPStubs.xcframework; path = Carthage/Build/OHHTTPStubs.xcframework; sourceTree = "<group>"; };
 		322BD1D5225C83CA00D83B5E /* JSONDecoder+PAYJP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+PAYJP.swift"; sourceTree = "<group>"; };
 		325E36AE233482AC0037E6BE /* FormStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormStyle.swift; sourceTree = "<group>"; };
@@ -353,6 +354,7 @@
 		615AFF511C8C74A1003FB86F = {
 			isa = PBXGroup;
 			children = (
+				320B38E92C6E3886002D1BFB /* PAYJPTests.xctestplan */,
 				C6E00B0C1E1F505600C101B0 /* Frameworks */,
 				615AFF5C1C8C74A1003FB86F /* Products */,
 				615AFF5D1C8C74A1003FB86F /* Sources */,

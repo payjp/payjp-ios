@@ -28,9 +28,10 @@ platform :ios do
   desc "Run test"
   lane :test do
     scan(
-      scheme: 'PAYJP',
+      scheme: 'PAYJPTests',
       device: 'iPhone 15 Pro',
       configuration: 'Debug',
+      clean: true,
       skip_slack: true
     )
   end

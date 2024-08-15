@@ -1,0 +1,25 @@
+{
+  "configurations" : [
+    {
+      "id" : "34338B67-6AB8-4364-B59C-164A6AEBF39F",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "language" : "en"
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:PAYJP.xcodeproj",
+        "identifier" : "615AFF641C8C74A1003FB86F",
+        "name" : "PAYJPTests"
+      }
+    }
+  ],
+  "version" : 1
+}
