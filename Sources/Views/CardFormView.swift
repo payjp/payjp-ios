@@ -259,7 +259,7 @@ public class CardFormView: UIView {
             default:
                 break
             }
-            
+
         }
         inputEmailComplete()
     }
@@ -277,7 +277,7 @@ public class CardFormView: UIView {
         case .failure(let error):
             switch error {
             case .phoneNumberEmptyError(_, let isInstant),
-                    .phoneNumberInvalidError(_, let isInstant):
+                 .phoneNumberInvalidError(_, let isInstant):
                 inputPhoneNumberFailure(error: error, forceShowError: forceShowError, instant: isInstant)
             default:
                 break
