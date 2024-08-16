@@ -17,6 +17,9 @@ enum FormError: Error {
     case cvcEmptyError(value: String?, isInstant: Bool)
     case cvcInvalidError(value: String?, isInstant: Bool)
     case cardHolderEmptyError(value: String?, isInstant: Bool)
+    case emailEmptyError(value: String?, isInstant: Bool)
+    case phoneNumberEmptyError(value: String?, isInstant: Bool)
+    case phoneNumberInvalidError(value: String?, isInstant: Bool)
 }
 
 extension FormError: LocalizedError {
@@ -38,6 +41,12 @@ extension FormError: LocalizedError {
             return "payjp_card_form_error_invalid_cvc".localized
         case .cardHolderEmptyError:
             return "payjp_card_form_error_no_holder_name".localized
+        case .emailEmptyError:
+            return "payjp_card_form_error_no_email".localized
+        case .phoneNumberEmptyError:
+            return "payjp_card_form_error_no_phone_number".localized
+        case .phoneNumberInvalidError:
+            return "payjp_card_form_error_invalid_phone_number".localized
         }
     }
 }

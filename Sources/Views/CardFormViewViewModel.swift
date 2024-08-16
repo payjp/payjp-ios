@@ -52,6 +52,19 @@ protocol CardFormViewViewModelType {
     /// - Returns: 入力結果
     func update(cardHolder: String?) -> Result<String, FormError>
 
+    /// メールアドレスの入力値を更新する
+    ///
+    /// - Parameter email: メールアドレス
+    /// - Returns: 入力結果
+    func update(email: String?) -> Result<String, FormError>
+
+    /// 電話番号の入力値を更新する
+    ///
+    /// - Parameter input: 入力値
+    /// - Parameter formattedValue: E 164でフォーマットされた値
+    /// - Returns: 入力結果
+    func updatePhoneNumber(input: String?, formattedValue: String?, exampleNumber: String?) -> Result<String, FormError>
+
     /// トークンを生成する
     ///
     /// - Parameters:
@@ -98,6 +111,8 @@ class CardFormViewViewModel: CardFormViewViewModelType {
     private var monthYear: (month: String, year: String)?
     private var cvc: String?
     private var cardHolder: String?
+    private var email: String?
+    private var phoneNumber: String?
 
     var isValid: Bool {
         return checkCardNumberValid() &&
@@ -232,6 +247,31 @@ class CardFormViewViewModel: CardFormViewViewModelType {
         return .success(holderInput)
     }
 
+    func update(email: String?) -> Result<String, FormError> {
+        guard let email, !email.isEmpty else {
+            self.email = nil
+            return .failure(.emailEmptyError(value: nil, isInstant: false))
+        }
+        // TODO: email validation
+        self.email = email
+        return .success(email)
+    }
+
+    func updatePhoneNumber(input: String?, formattedValue: String?, exampleNumber: String?) -> Result<String, FormError> {
+        guard let input, !input.isEmpty else {
+            self.phoneNumber = nil
+            return .failure(.phoneNumberEmptyError(value: nil, isInstant: false))
+        }
+        // TODO: phone validation
+        guard let formattedValue, !formattedValue.isEmpty else {
+            self.phoneNumber = nil
+            let maybeTooLong = input.count > (exampleNumber?.count ?? 99)
+            return .failure(.phoneNumberInvalidError(value: input, isInstant: maybeTooLong))
+        }
+        self.phoneNumber = formattedValue
+        return .success(formattedValue)
+    }
+
     func createToken(with tenantId: String?, completion: @escaping (Result<Token, Error>) -> Void) {
         if let cardNumberString = cardNumber?.value, let month = monthYear?.month,
            let year = monthYear?.year, let cvc = cvc {
@@ -241,9 +281,8 @@ class CardFormViewViewModel: CardFormViewViewModelType {
                                      expirationYear: year,
                                      name: cardHolder,
                                      tenantId: tenantId,
-                                     // TODO: set email and phone
-                                     email: nil,
-                                     phone: nil) { result in
+                                     email: email,
+                                     phone: phoneNumber) { result in
                 switch result {
                 case .success(let token): completion(.success(token))
                 case .failure(let error): completion(.failure(error))
@@ -275,9 +314,8 @@ class CardFormViewViewModel: CardFormViewViewModelType {
                                       expirationYear: year,
                                       cvc: cvc,
                                       cardHolder: cardHolder,
-                                      // TODO: set email and phone
-                                      email: nil,
-                                      phoneNumber: nil)
+                                      email: email,
+                                      phoneNumber: phoneNumber)
             completion(.success(input))
         } else {
             completion(.failure(LocalError.invalidFormInput))

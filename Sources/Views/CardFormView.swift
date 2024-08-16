@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PhoneNumberKit
 
 /// CardForm style protocol.
 public protocol CardFormStylable {
@@ -26,15 +27,14 @@ protocol CardFormProperties {
     var cvcTextField: FormTextField! { get }
     var cardHolderTextField: FormTextField! { get }
     var emailTextField: FormTextField! { get }
-    // TODO: phone country code field
-    // TODO: phone number field
+    var phoneNumberTextField: PhoneNumberTextField! { get }
 
     var cardNumberErrorLabel: UILabel! { get }
     var expirationErrorLabel: UILabel! { get }
     var cvcErrorLabel: UILabel! { get }
     var cardHolderErrorLabel: UILabel! { get }
     var emailErrorLabel: UILabel! { get }
-    // TODO: phone error label
+    var phoneNumberErrorLabel: UILabel! { get }
 
     var inputTextColor: UIColor { get }
     var inputTintColor: UIColor { get }
@@ -247,6 +247,45 @@ public class CardFormView: UIView {
         cardFormProperties.cardHolderErrorLabel.isHidden = cardFormProperties.cardHolderTextField.text == nil
     }
 
+    private func updateEmailInput(input: String?, forceShowError: Bool = false) {
+        let result = viewModel.update(email: input)
+        switch result {
+        case .success(let email):
+            inputEmailSuccess(value: email)
+        case .failure(let error):
+            switch error {
+            case .emailEmptyError(let value, let isInstant):
+                inputEmailFailure(value: value, error: error, forceShowError: forceShowError, instant: isInstant)
+            default:
+                break
+            }
+            
+        }
+        inputEmailComplete()
+    }
+
+    private func updatePhoneNumberInput(textField: PhoneNumberTextField, forceShowError: Bool = false) {
+        let rawInput = textField.text
+        let formatted = textField.phoneNumber.map { phoneNumber in
+            textField.phoneNumberKit.format(phoneNumber, toType: .e164)
+        }
+        let exampleNumber = textField.placeholder
+        let result = viewModel.updatePhoneNumber(input: rawInput, formattedValue: formatted, exampleNumber: exampleNumber)
+        switch result {
+        case .success(let phoneNumber):
+            inputPhoneNumberSuccess(value: phoneNumber)
+        case .failure(let error):
+            switch error {
+            case .phoneNumberEmptyError(_, let isInstant),
+                    .phoneNumberInvalidError(_, let isInstant):
+                inputPhoneNumberFailure(error: error, forceShowError: forceShowError, instant: isInstant)
+            default:
+                break
+            }
+        }
+        inputPhoneNumberComplete()
+    }
+
     func inputCardNumberSuccess(value: CardNumber) {
         cardFormProperties.cardNumberErrorLabel.text = nil
     }
@@ -281,6 +320,40 @@ public class CardFormView: UIView {
 
     func inputCardHolderComplete() {
         cardFormProperties.cardHolderErrorLabel.isHidden = cardFormProperties.cardHolderTextField.text == nil
+    }
+
+    func inputEmailSuccess(value: String) {
+        cardFormProperties.emailTextField.text = value
+        cardFormProperties.emailErrorLabel.text = nil
+    }
+
+    func inputEmailFailure(value: String?, error: Error, forceShowError: Bool, instant: Bool) {
+        cardFormProperties.emailTextField.text = value
+        if cardFormProperties.inputTextErrorColorEnabled {
+            cardFormProperties.emailTextField.textColor = forceShowError ||
+                instant ? Style.Color.red : cardFormProperties.inputTextColor
+        }
+        cardFormProperties.emailErrorLabel.text = forceShowError || instant ? error.localizedDescription : nil
+    }
+
+    func inputEmailComplete() {
+        cardFormProperties.emailErrorLabel.isHidden = cardFormProperties.emailTextField.text == nil
+    }
+
+    func inputPhoneNumberSuccess(value: String) {
+        cardFormProperties.phoneNumberErrorLabel.text = nil
+    }
+
+    func inputPhoneNumberFailure(error: Error, forceShowError: Bool, instant: Bool) {
+        if cardFormProperties.inputTextErrorColorEnabled {
+            cardFormProperties.phoneNumberTextField.textColor = forceShowError ||
+                instant ? Style.Color.red : cardFormProperties.inputTextColor
+        }
+        cardFormProperties.phoneNumberErrorLabel.text = forceShowError || instant ? error.localizedDescription : nil
+    }
+
+    func inputPhoneNumberComplete() {
+        cardFormProperties.phoneNumberErrorLabel.isHidden = cardFormProperties.phoneNumberTextField.text == nil
     }
 
     /// バリデーションOKの場合、次のTextFieldへフォーカスを移動する
@@ -398,6 +471,9 @@ extension CardFormView: CardFormAction {
         updateExpirationInput(input: cardFormProperties.expirationTextField.text, forceShowError: true)
         updateCvcInput(input: cardFormProperties.cvcTextField.text, forceShowError: true)
         updateCardHolderInput(input: cardFormProperties.cardHolderTextField.text, forceShowError: true)
+        // TODO: condition
+        updateEmailInput(input: cardFormProperties.emailTextField.text, forceShowError: true)
+        updatePhoneNumberInput(textField: cardFormProperties.phoneNumberTextField)
         resetTintColor()
         notifyIsValidChanged()
         return isValid
@@ -430,7 +506,12 @@ extension CardFormView: CardFormAction {
                 updateCvcInput(input: newText)
             case cardFormProperties.cardHolderTextField:
                 updateCardHolderInput(input: newText)
-            // TODO: email
+            case cardFormProperties.emailTextField:
+                updateEmailInput(input: newText)
+            case cardFormProperties.phoneNumberTextField:
+                if let phoneNumberTextField = textField as? PhoneNumberTextField {
+                    updatePhoneNumberInput(textField: phoneNumberTextField)
+                }
             default:
                 break
             }
@@ -470,7 +551,11 @@ extension CardFormView: UITextFieldDelegate {
             updateCvcInput(input: nil)
         case cardFormProperties.cardHolderTextField:
             updateCardHolderInput(input: nil)
-        // TODO: email
+        case cardFormProperties.emailTextField:
+            updateEmailInput(input: nil)
+        case cardFormProperties.phoneNumberTextField:
+            textField.text = nil
+            updatePhoneNumberInput(textField: cardFormProperties.phoneNumberTextField)
         default:
             break
         }

@@ -41,6 +41,9 @@
 "payjp_card_form_error_no_cvc" = "Please enter a security code.";
 "payjp_card_form_error_invalid_cvc" = "Please enter a valid security code.";
 "payjp_card_form_error_no_holder_name" = "Please enter a card holder name.";
+"payjp_card_form_error_no_email" = "Please enter a email.";
+"payjp_card_form_error_no_phone_number" = "Please enter a phone number.";
+"payjp_card_form_error_invalid_phone_number" = "Please enter a valid phone number.";
 
 // card form screen
 "payjp_card_form_screen_submit_button" = "submit";
