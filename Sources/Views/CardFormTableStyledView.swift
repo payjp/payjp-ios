@@ -38,9 +38,23 @@ public class CardFormTableStyledView: CardFormView, CardFormProperties {
     var inputTintColor: UIColor = Style.Color.blue
     var inputTextErrorColorEnabled: Bool = false
     var cardNumberSeparator: String = "-"
+    var emailInputEnabled: Bool = false {
+        didSet {
+            emailInputView.isHidden = !emailInputEnabled
+            emailSeparator.isHidden = !emailInputEnabled
+        }
+    }
+    var phoneInputEnabled: Bool = false {
+        didSet {
+            phoneInputView.isHidden = !phoneInputEnabled
+            phoneNumberSeparator.isHidden = !phoneInputEnabled
+        }
+    }
 
     // MARK: Private
 
+    @IBOutlet private weak var emailInputView: UIView!
+    @IBOutlet private weak var phoneInputView: UIView!
     @IBOutlet private weak var expirationSeparator: UIView!
     @IBOutlet private weak var cvcSeparator: UIView!
     @IBOutlet private weak var holderSeparator: UIView!
@@ -50,8 +64,8 @@ public class CardFormTableStyledView: CardFormView, CardFormProperties {
     @IBOutlet private weak var expirationSeparatorConstraint: NSLayoutConstraint!
     @IBOutlet private weak var cvcSeparatorConstraint: NSLayoutConstraint!
     @IBOutlet private weak var holderSeparatorConstraint: NSLayoutConstraint!
-    @IBOutlet weak var emailSeparatorConstraint: NSLayoutConstraint!
-    @IBOutlet weak var phoneSeparatorConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var emailSeparatorConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var phoneSeparatorConstraint: NSLayoutConstraint!
 
     /// Camera scan action
     ///
@@ -151,7 +165,7 @@ public class CardFormTableStyledView: CardFormView, CardFormProperties {
         phoneNumberTextField.withExamplePlaceholder = true
         phoneNumberTextField.withPrefix = true
 
-        [cardNumberTextField, expirationTextField, cvcTextField, cardHolderTextField, phoneNumberTextField].forEach { textField in
+        [cardNumberTextField, expirationTextField, cvcTextField, cardHolderTextField, emailTextField, phoneNumberTextField].forEach { textField in
             guard let textField = textField else { return }
             textField.delegate = self
             textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)

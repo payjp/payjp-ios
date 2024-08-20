@@ -68,4 +68,10 @@ public protocol CardFormAction {
     ///
     /// - Parameter view: input accessory view
     func setupInputAccessoryView(view: UIView)
+
+    /// Enable additional attributes for 3-D Secure.
+    /// Both TdsAttributesEmail and TdsAttributesPhone is enabled as default.
+    /// - Parameters:
+    ///  - threeDSecureAttributes: array of attributes.
+    func apply(threeDSecureAttributes: [ThreeDSecureAttribute])
 }

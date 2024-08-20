@@ -38,6 +38,10 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
     var inputTextErrorColorEnabled: Bool = true
     var cardNumberSeparator: String = " "
 
+    // TODO: visibility
+    var emailInputEnabled: Bool = false
+    var phoneInputEnabled: Bool = false
+
     // MARK: Private
 
     @IBOutlet private weak var cardDisplayView: UIView!

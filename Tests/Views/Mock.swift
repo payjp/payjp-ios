@@ -205,6 +205,9 @@ class MockCardFormViewModelDelegate: CardFormViewModelDelegate {
     func showPermissionAlert() {
         showPermissionAlertCalled = true
     }
+
+    func updateThreeDSecureAttributes(email: PAYJP.ThreeDSecureAttributeEmail?, phone: PAYJP.ThreeDSecureAttributePhone?) {
+    }
 }
 
 class MockTokenOperationObserverType: TokenOperationObserverType {

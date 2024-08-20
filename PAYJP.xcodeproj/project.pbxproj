@@ -10,6 +10,7 @@
 		32167E0727B1C55800E4BCD5 /* OHHTTPStubs.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32167E0627B1C55800E4BCD5 /* OHHTTPStubs.xcframework */; };
 		322BD1D6225C83CA00D83B5E /* JSONDecoder+PAYJP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322BD1D5225C83CA00D83B5E /* JSONDecoder+PAYJP.swift */; };
 		325E36B1233484C90037E6BE /* UIColor+PAYJP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325E36B0233484C90037E6BE /* UIColor+PAYJP.swift */; };
+		327C806E2C73D1F700CADF44 /* ThreeDSecureAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327C806D2C73D1F700CADF44 /* ThreeDSecureAttribute.swift */; };
 		328622662C6C483F00DEA55B /* PhoneNumberKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 328622622C6C42CB00DEA55B /* PhoneNumberKit.xcframework */; };
 		3289C9D123EACB6D008FFBC1 /* ClientInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3289C9D023EACB6D008FFBC1 /* ClientInfo.swift */; };
 		3289C9D323EBFC87008FFBC1 /* ClientInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3289C9D223EBFC87008FFBC1 /* ClientInfoTests.swift */; };
@@ -154,6 +155,7 @@
 		322BD1D5225C83CA00D83B5E /* JSONDecoder+PAYJP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+PAYJP.swift"; sourceTree = "<group>"; };
 		325E36AE233482AC0037E6BE /* FormStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormStyle.swift; sourceTree = "<group>"; };
 		325E36B0233484C90037E6BE /* UIColor+PAYJP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+PAYJP.swift"; sourceTree = "<group>"; };
+		327C806D2C73D1F700CADF44 /* ThreeDSecureAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeDSecureAttribute.swift; sourceTree = "<group>"; };
 		328622622C6C42CB00DEA55B /* PhoneNumberKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = PhoneNumberKit.xcframework; path = Carthage/Build/PhoneNumberKit.xcframework; sourceTree = "<group>"; };
 		3289C9D023EACB6D008FFBC1 /* ClientInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientInfo.swift; sourceTree = "<group>"; };
 		3289C9D223EBFC87008FFBC1 /* ClientInfoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientInfoTests.swift; sourceTree = "<group>"; };
@@ -605,6 +607,7 @@
 				ED3FEF6E22EFE71900FA73BF /* FormError.swift */,
 				325E36AE233482AC0037E6BE /* FormStyle.swift */,
 				ED6DF6F4245ADC9C009E2EF3 /* FormTextField.swift */,
+				327C806D2C73D1F700CADF44 /* ThreeDSecureAttribute.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -880,6 +883,7 @@
 				444052DF2554ED2500CBEEAE /* CardIOCardParams.m in Sources */,
 				ED31B0822398E9F000DDFFE5 /* CardFormInput.swift in Sources */,
 				615AFF761C8C76E2003FB86F /* APIClient.swift in Sources */,
+				327C806E2C73D1F700CADF44 /* ThreeDSecureAttribute.swift in Sources */,
 				BE0203E9231F8DCB00FE5635 /* StringProtocol+PAYJP.swift in Sources */,
 				EDA0E4122435E8AA0083A5E0 /* ThreeDSecureStatus.swift in Sources */,
 				EDCF722D22F935D400272C10 /* Token.swift in Sources */,

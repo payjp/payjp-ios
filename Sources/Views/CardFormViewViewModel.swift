@@ -85,6 +85,9 @@ protocol CardFormViewViewModelType {
 
     /// スキャナ起動をリクエストする
     func requestOcr()
+
+    /// 3DS追加項目の設定を更新する
+    func update(threeDSecureAttributes: [ThreeDSecureAttribute])
 }
 
 protocol CardFormViewModelDelegate: AnyObject {
@@ -92,6 +95,8 @@ protocol CardFormViewModelDelegate: AnyObject {
     func startScanner()
     /// カメラ許可が必要な内容のアラートを表示する
     func showPermissionAlert()
+    /// 3DSの追加項目をUIに反映する
+    func updateThreeDSecureAttributes(email: ThreeDSecureAttributeEmail?, phone: ThreeDSecureAttributePhone?)
 }
 
 class CardFormViewViewModel: CardFormViewViewModelType {
@@ -113,12 +118,15 @@ class CardFormViewViewModel: CardFormViewViewModelType {
     private var cardHolder: String?
     private var email: String?
     private var phoneNumber: String?
+    private var emailEnabled: Bool = true
+    private var phoneEnabled: Bool = true
 
     var isValid: Bool {
         return checkCardNumberValid() &&
             checkExpirationValid() &&
             checkCvcValid() &&
-            checkCardHolderValid()
+            checkCardHolderValid() &&
+            checkThreeDSecureAttributesValid()
     }
 
     var isCardBrandChanged = false
@@ -342,6 +350,14 @@ class CardFormViewViewModel: CardFormViewViewModelType {
         }
     }
 
+    func update(threeDSecureAttributes: [any ThreeDSecureAttribute]) {
+        let email = threeDSecureAttributes.compactMap({ $0 as? ThreeDSecureAttributeEmail }).first
+        let phone = threeDSecureAttributes.compactMap({ $0 as? ThreeDSecureAttributePhone }).first
+        emailEnabled = email != nil
+        phoneEnabled = phone != nil
+        delegate?.updateThreeDSecureAttributes(email: email, phone: phone)
+    }
+
     // MARK: - Helpers
 
     private func checkCardNumberValid() -> Bool {
@@ -371,5 +387,20 @@ class CardFormViewViewModel: CardFormViewViewModelType {
             return !cardHolder.isEmpty
         }
         return false
+    }
+
+    private func checkThreeDSecureAttributesValid() -> Bool {
+        let emailOk = email?.isEmpty == false
+        let phoneOk = phoneNumber?.isEmpty == false
+        switch (emailEnabled, phoneEnabled) {
+        case (true, true):
+            return emailOk || phoneOk
+        case (true, _):
+            return emailOk
+        case (_, true):
+            return phoneOk
+        case (false, false):
+            return true
+        }
     }
 }

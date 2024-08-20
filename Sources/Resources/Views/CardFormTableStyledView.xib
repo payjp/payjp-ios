@@ -9,6 +9,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CardFormTableStyledView" customModule="PAYJP" customModuleProvider="target">
             <connections>
+                <outlet property="EmailInputView" destination="mUa-5J-GcG" id="SOS-D4-s32"/>
+                <outlet property="PhoneInputView" destination="p4F-CK-fkd" id="k7Y-jc-ejb"/>
                 <outlet property="brandLogoImage" destination="6O6-nL-6Y3" id="MsN-c2-c4y"/>
                 <outlet property="cardHolderErrorLabel" destination="NaF-fa-61z" id="L1f-7l-zoz"/>
                 <outlet property="cardHolderTextField" destination="GUy-pg-STB" id="W08-fh-Yv6"/>

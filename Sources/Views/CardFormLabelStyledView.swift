@@ -39,6 +39,17 @@ public class CardFormLabelStyledView: CardFormView, CardFormProperties {
     var inputTextErrorColorEnabled: Bool = true
     var cardNumberSeparator: String = "-"
 
+    var emailInputEnabled: Bool = false {
+        didSet {
+            emailInputView.isHidden = !emailInputEnabled
+        }
+    }
+    var phoneInputEnabled: Bool = false {
+        didSet {
+            phoneInputView.isHidden = !phoneInputEnabled
+        }
+    }
+
     // MARK: Private
 
     @IBOutlet private weak var cardNumberLabel: UILabel!
@@ -54,6 +65,8 @@ public class CardFormLabelStyledView: CardFormView, CardFormProperties {
     @IBOutlet private weak var cardHolderFieldBackground: UIView!
     @IBOutlet private weak var emailFieldBackground: UIView!
     @IBOutlet private weak var phoneNumberFieldBackground: UIView!
+    @IBOutlet private weak var emailInputView: UIView!
+    @IBOutlet private weak var phoneInputView: UIView!
 
     /// Camera scan action
     ///

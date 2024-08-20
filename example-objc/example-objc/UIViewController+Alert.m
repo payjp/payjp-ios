@@ -33,10 +33,11 @@
 }
 
 - (NSString *)displayToken:(PAYToken *)token {
-  return [NSString
-      stringWithFormat:@"id=%@,\ncard.id=%@,\ncard.last4=%@,\ncard.exp=%hhu/%hu,\ncard.name=%@",
-                       token.identifer, token.card.identifer, token.card.last4Number,
-                       token.card.expirationMonth, token.card.expirationYear, token.card.name];
+  return [NSString stringWithFormat:@"id=%@,\ncard.id=%@,\ncard.last4=%@,\ncard.exp=%hhu/"
+                                    @"%hu,\ncard.name=%@,\ncard.email=%@,\ncard.phone=%@",
+                                    token.identifer, token.card.identifer, token.card.last4Number,
+                                    token.card.expirationMonth, token.card.expirationYear,
+                                    token.card.name, token.card.email, token.card.phone];
 }
 
 @end

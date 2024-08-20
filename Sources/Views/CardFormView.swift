@@ -40,6 +40,9 @@ protocol CardFormProperties {
     var inputTintColor: UIColor { get }
     var inputTextErrorColorEnabled: Bool { get }
     var cardNumberSeparator: String { get }
+    // TDS Attributes
+    var emailInputEnabled: Bool { get set }
+    var phoneInputEnabled: Bool { get set }
 }
 
 protocol CardFormViewTextFieldDelegate: AnyObject {
@@ -471,9 +474,8 @@ extension CardFormView: CardFormAction {
         updateExpirationInput(input: cardFormProperties.expirationTextField.text, forceShowError: true)
         updateCvcInput(input: cardFormProperties.cvcTextField.text, forceShowError: true)
         updateCardHolderInput(input: cardFormProperties.cardHolderTextField.text, forceShowError: true)
-        // TODO: condition
         updateEmailInput(input: cardFormProperties.emailTextField.text, forceShowError: true)
-        updatePhoneNumberInput(textField: cardFormProperties.phoneNumberTextField)
+        updatePhoneNumberInput(textField: cardFormProperties.phoneNumberTextField, forceShowError: true)
         resetTintColor()
         notifyIsValidChanged()
         return isValid
@@ -485,6 +487,11 @@ extension CardFormView: CardFormAction {
         cardFormProperties.cvcTextField.inputAccessoryView = view
         cardFormProperties.cardHolderTextField.inputAccessoryView = view
         cardFormProperties.emailTextField.inputAccessoryView = view
+        cardFormProperties.phoneNumberTextField.inputAccessoryView = view
+    }
+
+    public func apply(threeDSecureAttributes: [any ThreeDSecureAttribute]) {
+        viewModel.update(threeDSecureAttributes: threeDSecureAttributes)
     }
 }
 
@@ -604,6 +611,21 @@ extension CardFormView: CardFormViewModelDelegate {
 
     func showPermissionAlert() {
         showCameraPermissionAlert()
+    }
+
+    func updateThreeDSecureAttributes(email: ThreeDSecureAttributeEmail?, phone: ThreeDSecureAttributePhone?) {
+        cardFormProperties.emailInputEnabled = email != nil
+        if let email {
+            updateEmailInput(input: email.preset)
+        }
+        cardFormProperties.phoneInputEnabled = phone != nil
+        if let phone {
+            if let region = phone.presetRegion {
+                cardFormProperties.phoneNumberTextField.defaultRegion = region
+            }
+            cardFormProperties.phoneNumberTextField.text = phone.presetNumber
+            updatePhoneNumberInput(textField: cardFormProperties.phoneNumberTextField)
+        }
     }
 }
 
