@@ -82,7 +82,11 @@
         // pop
         [wself.navigationController popViewControllerAnimated:YES];
         if (wself.token != nil) {
-          [wself showToken:wself.token];
+          [wself.navigationController
+              dismissViewControllerAnimated:YES
+                                 completion:^{
+                                   [wself.navigationController showToken:wself.token];
+                                 }];
         }
 
         // dismiss
