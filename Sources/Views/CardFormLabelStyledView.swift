@@ -39,12 +39,12 @@ public class CardFormLabelStyledView: CardFormView, CardFormProperties {
     var inputTextErrorColorEnabled: Bool = true
     var cardNumberSeparator: String = "-"
 
-    var emailInputEnabled: Bool = false {
+    var emailInputEnabled: Bool = true {
         didSet {
             emailInputView.isHidden = !emailInputEnabled
         }
     }
-    var phoneInputEnabled: Bool = false {
+    var phoneInputEnabled: Bool = true {
         didSet {
             phoneInputView.isHidden = !phoneInputEnabled
         }

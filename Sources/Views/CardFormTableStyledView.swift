@@ -38,13 +38,13 @@ public class CardFormTableStyledView: CardFormView, CardFormProperties {
     var inputTintColor: UIColor = Style.Color.blue
     var inputTextErrorColorEnabled: Bool = false
     var cardNumberSeparator: String = "-"
-    var emailInputEnabled: Bool = false {
+    var emailInputEnabled: Bool = true {
         didSet {
             emailInputView.isHidden = !emailInputEnabled
             emailSeparator.isHidden = !emailInputEnabled
         }
     }
-    var phoneInputEnabled: Bool = false {
+    var phoneInputEnabled: Bool = true {
         didSet {
             phoneInputView.isHidden = !phoneInputEnabled
             phoneNumberSeparator.isHidden = !phoneInputEnabled

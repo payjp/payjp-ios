@@ -38,13 +38,13 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
     var inputTextErrorColorEnabled: Bool = true
     var cardNumberSeparator: String = " "
 
-    var emailInputEnabled: Bool = false {
+    var emailInputEnabled: Bool = true {
         didSet {
             emailTextField.isHidden = !emailInputEnabled
             emailSeparator.isHidden = !emailInputEnabled
         }
     }
-    var phoneInputEnabled: Bool = false {
+    var phoneInputEnabled: Bool = true {
         didSet {
             phoneNumberTextField.isHidden = !phoneInputEnabled
             phoneNumberSeparator.isHidden = !phoneInputEnabled
