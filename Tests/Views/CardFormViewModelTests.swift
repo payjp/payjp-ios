@@ -13,9 +13,8 @@ import AVFoundation
 // swiftlint:disable type_body_length
 class CardFormViewModelTests: XCTestCase {
 
-    let viewModel = CardFormViewViewModel()
-
     func testUpdateCardNumberEmpty() {
+        let viewModel = CardFormViewViewModel()
         let result = viewModel.update(cardNumber: "", separator: "-")
 
         switch result {
@@ -32,6 +31,7 @@ class CardFormViewModelTests: XCTestCase {
     }
 
     func testUpdateCardNumberNil() {
+        let viewModel = CardFormViewViewModel()
         let result = viewModel.update(cardNumber: nil, separator: "-")
 
         switch result {
@@ -48,6 +48,7 @@ class CardFormViewModelTests: XCTestCase {
     }
 
     func testUpdateCardNumberInvalidLength() {
+        let viewModel = CardFormViewViewModel()
         let result = viewModel.update(cardNumber: "4242424242", separator: "-")
         //        let cardNumber = CardNumber(formatted: "4242 4242 42", brand: .visa)
 
@@ -65,6 +66,7 @@ class CardFormViewModelTests: XCTestCase {
     }
 
     func testUpdateCardNumberInvalidLuhn() {
+        let viewModel = CardFormViewViewModel()
         let result = viewModel.update(cardNumber: "4242424242424241", separator: "-")
         //        let cardNumber = CardNumber(formatted: "4242 4242 4242 4241", brand: .visa)
 
@@ -82,6 +84,7 @@ class CardFormViewModelTests: XCTestCase {
     }
 
     func testUpdateCardNumberSuccess() {
+        let viewModel = CardFormViewViewModel()
         let result = viewModel.update(cardNumber: "4242424242424242", separator: "-")
 
         switch result {
@@ -94,6 +97,7 @@ class CardFormViewModelTests: XCTestCase {
     }
 
     func testUpdateExpirationEmpty() {
+        let viewModel = CardFormViewViewModel()
         let result = viewModel.update(expiration: "")
 
         switch result {
@@ -110,6 +114,7 @@ class CardFormViewModelTests: XCTestCase {
     }
 
     func testUpdateExpirationNil() {
+        let viewModel = CardFormViewViewModel()
         let result = viewModel.update(expiration: nil)
 
         switch result {
@@ -126,6 +131,7 @@ class CardFormViewModelTests: XCTestCase {
     }
 
     func testUpdateExpirationInvalidMonth() {
+        let viewModel = CardFormViewViewModel()
         let result = viewModel.update(expiration: "15")
 
         switch result {
@@ -142,6 +148,7 @@ class CardFormViewModelTests: XCTestCase {
     }
 
     func testUpdateExpirationInvalidYear() {
+        let viewModel = CardFormViewViewModel()
         let result = viewModel.update(expiration: "08/10")
 
         switch result {
@@ -158,6 +165,7 @@ class CardFormViewModelTests: XCTestCase {
     }
 
     func testUpdateExpirationOneDigitMonth() {
+        let viewModel = CardFormViewViewModel()
         let result = viewModel.update(expiration: "1")
 
         switch result {
@@ -174,6 +182,7 @@ class CardFormViewModelTests: XCTestCase {
     }
 
     func testUpdateExpirationTwoDigitMonth() {
+        let viewModel = CardFormViewViewModel()
         let result = viewModel.update(expiration: "20")
 
         switch result {
@@ -190,6 +199,7 @@ class CardFormViewModelTests: XCTestCase {
     }
 
     func testUpdateExpirationSuccess() {
+        let viewModel = CardFormViewViewModel()
         let result = viewModel.update(expiration: "12/99")
 
         switch result {
@@ -202,6 +212,7 @@ class CardFormViewModelTests: XCTestCase {
     }
 
     func testUpdateCvcEmpty() {
+        let viewModel = CardFormViewViewModel()
         let result = viewModel.update(cvc: "")
 
         switch result {
@@ -218,6 +229,7 @@ class CardFormViewModelTests: XCTestCase {
     }
 
     func testUpdateCvcNil() {
+        let viewModel = CardFormViewViewModel()
         let result = viewModel.update(cvc: nil)
 
         switch result {
@@ -234,6 +246,7 @@ class CardFormViewModelTests: XCTestCase {
     }
 
     func testUpdateCvcInvalid() {
+        let viewModel = CardFormViewViewModel()
         let result = viewModel.update(cvc: "12")
 
         switch result {
@@ -250,6 +263,7 @@ class CardFormViewModelTests: XCTestCase {
     }
 
     func testUpdateCvcSuccess() {
+        let viewModel = CardFormViewViewModel()
         _ = viewModel.update(cardNumber: "42", separator: "-")
         let result = viewModel.update(cvc: "123")
 
@@ -262,6 +276,7 @@ class CardFormViewModelTests: XCTestCase {
     }
 
     func testUpdateCvcWhenBrandChanged() {
+        let viewModel = CardFormViewViewModel()
         _ = viewModel.update(cardNumber: "4242", separator: "-")
         let result = viewModel.update(cvc: "1234")
 
@@ -279,6 +294,7 @@ class CardFormViewModelTests: XCTestCase {
     }
 
     func testUpdateCardHolderEmpty() {
+        let viewModel = CardFormViewViewModel()
         let result = viewModel.update(cardHolder: "")
 
         switch result {
@@ -295,6 +311,7 @@ class CardFormViewModelTests: XCTestCase {
     }
 
     func testUpdateCardHolderNil() {
+        let viewModel = CardFormViewViewModel()
         let result = viewModel.update(cardHolder: nil)
 
         switch result {
@@ -311,6 +328,7 @@ class CardFormViewModelTests: XCTestCase {
     }
 
     func testUpdateCardHolderSuccess() {
+        let viewModel = CardFormViewViewModel()
         let result = viewModel.update(cardHolder: "PAY TARO")
 
         switch result {
@@ -321,7 +339,95 @@ class CardFormViewModelTests: XCTestCase {
         }
     }
 
+    func testUpdateEmailEmpty() {
+        let viewModel = CardFormViewViewModel()
+        viewModel.update(threeDSecureAttributes: [ThreeDSecureAttributeEmail()])
+        let result = viewModel.update(email: "")
+
+        switch result {
+        case .failure(let error):
+            switch error {
+            case .emailEmptyError(value: nil, isInstant: false):
+                break
+            default:
+                XCTFail()
+            }
+        default:
+            XCTFail()
+        }
+    }
+
+    func testUpdateEmailSuccess() {
+        let viewModel = CardFormViewViewModel()
+        viewModel.update(threeDSecureAttributes: [ThreeDSecureAttributeEmail()])
+        let result = viewModel.update(email: "test@example.com")
+
+        switch result {
+        case .success(let value):
+            XCTAssertEqual(value, "test@example.com")
+        default:
+            XCTFail()
+        }
+    }
+
+    func testUpdatePhoneNumberEmpty() {
+        let viewModel = CardFormViewViewModel()
+        viewModel.update(threeDSecureAttributes: [ThreeDSecureAttributePhone()])
+        let result = viewModel.updatePhoneNumber(input: "", formattedValue: "", exampleNumber: "")
+
+        switch result {
+        case .failure(let error):
+            switch error {
+            case .phoneNumberEmptyError(value: nil, isInstant: false):
+                break
+            default:
+                XCTFail()
+            }
+        default:
+            XCTFail()
+        }
+    }
+
+    func testUpdatePhoneNumberSuccess() {
+        let viewModel = CardFormViewViewModel()
+        viewModel.update(threeDSecureAttributes: [ThreeDSecureAttributePhone()])
+        let result = viewModel.updatePhoneNumber(input: "09012345678", formattedValue: "+819012345678", exampleNumber: "")
+
+        switch result {
+        case .success(let value):
+            XCTAssertEqual(value, "+819012345678")
+        default:
+            XCTFail()
+        }
+    }
+
     func testIsValidAllValid() {
+        let viewModel = CardFormViewViewModel()
+        _ = viewModel.update(cardNumber: "4242424242424242", separator: "-")
+        _ = viewModel.update(expiration: "12/99")
+        _ = viewModel.update(cvc: "123")
+        _ = viewModel.update(cardHolder: "PAY TARO")
+        _ = viewModel.update(email: "test@example.com")
+        _ = viewModel.updatePhoneNumber(input: "09012345678", formattedValue: "+819012345678", exampleNumber: "")
+
+        let result = viewModel.isValid
+        XCTAssertTrue(result)
+    }
+
+    func testIsValidNotAllValid() {
+        let viewModel = CardFormViewViewModel()
+        _ = viewModel.update(cardNumber: "4242424242424242", separator: "-")
+        _ = viewModel.update(expiration: "12/9")
+        _ = viewModel.update(cvc: "123")
+        _ = viewModel.update(cardHolder: "PAY TARO")
+
+        let result = viewModel.isValid
+        XCTAssertFalse(result)
+    }
+
+    func testIsValidBothEmailAndPhoneDisabled() {
+        let viewModel = CardFormViewViewModel()
+        viewModel.update(threeDSecureAttributes: [])
         _ = viewModel.update(cardNumber: "4242424242424242", separator: "-")
         _ = viewModel.update(expiration: "12/99")
         _ = viewModel.update(cvc: "123")
@@ -331,14 +437,44 @@ class CardFormViewModelTests: XCTestCase {
         XCTAssertTrue(result)
     }
 
-    func testIsValidNotAllValid() {
+    func testIsValidEmailEnabled() {
+        let viewModel = CardFormViewViewModel()
+        viewModel.update(threeDSecureAttributes: [ThreeDSecureAttributeEmail()])
         _ = viewModel.update(cardNumber: "4242424242424242", separator: "-")
-        _ = viewModel.update(expiration: "12/9")
+        _ = viewModel.update(expiration: "12/99")
         _ = viewModel.update(cvc: "123")
         _ = viewModel.update(cardHolder: "PAY TARO")
-
+        _ = viewModel.updatePhoneNumber(input: "09012345678", formattedValue: "+819012345678", exampleNumber: "")
+        
         let result = viewModel.isValid
         XCTAssertFalse(result)
+    }
+
+    func testIsValidPhoneEnabled() {
+        let viewModel = CardFormViewViewModel()
+        viewModel.update(threeDSecureAttributes: [ThreeDSecureAttributePhone()])
+        _ = viewModel.update(cardNumber: "4242424242424242", separator: "-")
+        _ = viewModel.update(expiration: "12/99")
+        _ = viewModel.update(cvc: "123")
+        _ = viewModel.update(cardHolder: "PAY TARO")
+        _ = viewModel.update(email: "test@example.com")
+        
+        let result = viewModel.isValid
+        XCTAssertFalse(result)
+    }
+
+    func testIsValidBothEmailAndPhoneEnabled() {
+        let viewModel = CardFormViewViewModel()
+        viewModel.update(threeDSecureAttributes: [ThreeDSecureAttributeEmail(), ThreeDSecureAttributePhone()])
+        _ = viewModel.update(cardNumber: "4242424242424242", separator: "-")
+        _ = viewModel.update(expiration: "12/99")
+        _ = viewModel.update(cvc: "123")
+        _ = viewModel.update(cardHolder: "PAY TARO")
+        // どちらかが入力されていれば良い
+        _ = viewModel.update(email: "test@example.com")
+        
+        let result = viewModel.isValid
+        XCTAssertTrue(result)
     }
 
     func testRequestOcr_notAuthorized() {
