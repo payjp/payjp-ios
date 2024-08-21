@@ -273,7 +273,7 @@ public class CardFormView: UIView {
     private func updatePhoneNumberInput(textField: PresetPhoneNumberTextField, forceShowError: Bool = false) {
         let rawInput = textField.text
         let formatted = textField.phoneNumber.map { phoneNumber in
-            textField.phoneNumberKit.format(phoneNumber, toType: .e164)
+            textField.utility.format(phoneNumber, toType: .e164)
         }
         let exampleNumber = textField.placeholder
         let result = viewModel.updatePhoneNumber(input: rawInput, formattedValue: formatted, exampleNumber: exampleNumber)

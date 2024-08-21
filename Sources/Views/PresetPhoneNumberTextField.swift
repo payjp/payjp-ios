@@ -23,7 +23,6 @@ class PresetPhoneNumberTextField: PhoneNumberTextField {
         didSet {
             if let presetRegion {
                 partialFormatter.defaultRegion = presetRegion
-                withDefaultPickerUIOptions
                 updatePlaceholder()
             }
         }
