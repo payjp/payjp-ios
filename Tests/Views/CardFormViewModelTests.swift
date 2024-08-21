@@ -445,7 +445,7 @@ class CardFormViewModelTests: XCTestCase {
         _ = viewModel.update(cvc: "123")
         _ = viewModel.update(cardHolder: "PAY TARO")
         _ = viewModel.updatePhoneNumber(input: "09012345678", formattedValue: "+819012345678", exampleNumber: "")
-        
+
         let result = viewModel.isValid
         XCTAssertFalse(result)
     }
@@ -458,7 +458,7 @@ class CardFormViewModelTests: XCTestCase {
         _ = viewModel.update(cvc: "123")
         _ = viewModel.update(cardHolder: "PAY TARO")
         _ = viewModel.update(email: "test@example.com")
-        
+
         let result = viewModel.isValid
         XCTAssertFalse(result)
     }
@@ -472,7 +472,7 @@ class CardFormViewModelTests: XCTestCase {
         _ = viewModel.update(cardHolder: "PAY TARO")
         // どちらかが入力されていれば良い
         _ = viewModel.update(email: "test@example.com")
-        
+
         let result = viewModel.isValid
         XCTAssertTrue(result)
     }
