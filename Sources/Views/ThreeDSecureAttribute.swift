@@ -17,7 +17,7 @@ public final class ThreeDSecureAttributeEmail: NSObject, ThreeDSecureAttribute {
     public let preset: String?
 
     /// - parameters:
-    ///   - preset: preset email for card form. 
+    ///   - preset: preset email for card form.
     @objc
     public init(preset: String? = nil) {
         self.preset = preset

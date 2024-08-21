@@ -9,7 +9,7 @@
 import Foundation
 import PhoneNumberKit
 
-class PresetPhoneNumberTextField : PhoneNumberTextField {
+class PresetPhoneNumberTextField: PhoneNumberTextField {
     override var defaultRegion: String {
         get {
             presetRegion ?? super.defaultRegion
