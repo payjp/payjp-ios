@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import PhoneNumberKit
 
 // swiftlint:disable type_body_length file_length
 /// CardFormView with card animation.

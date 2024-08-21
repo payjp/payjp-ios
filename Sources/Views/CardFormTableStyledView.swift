@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import PhoneNumberKit
 
 /// CardFormView without label.
 /// It's suitable for UITableView design.

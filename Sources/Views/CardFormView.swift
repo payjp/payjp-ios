@@ -270,7 +270,7 @@ public class CardFormView: UIView {
         inputEmailComplete()
     }
 
-    private func updatePhoneNumberInput(textField: PhoneNumberTextField, forceShowError: Bool = false) {
+    private func updatePhoneNumberInput(textField: PresetPhoneNumberTextField, forceShowError: Bool = false) {
         let rawInput = textField.text
         let formatted = textField.phoneNumber.map { phoneNumber in
             textField.phoneNumberKit.format(phoneNumber, toType: .e164)
@@ -522,7 +522,7 @@ extension CardFormView: CardFormAction {
             case cardFormProperties.emailTextField:
                 updateEmailInput(input: newText)
             case cardFormProperties.phoneNumberTextField:
-                if let phoneNumberTextField = textField as? PhoneNumberTextField {
+                if let phoneNumberTextField = textField as? PresetPhoneNumberTextField {
                     updatePhoneNumberInput(textField: phoneNumberTextField)
                 }
             default:

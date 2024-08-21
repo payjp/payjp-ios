@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import PhoneNumberKit
 
 /// CardFormView with label.
 /// It's recommended to implement with UIScrollView.
