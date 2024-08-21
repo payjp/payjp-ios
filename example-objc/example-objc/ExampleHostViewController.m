@@ -48,17 +48,6 @@
 - (void)pushCardFormWithViewType:(CardFormViewType)viewType {
   PAYThreeDSecureAttributeEmail *email =
       [[PAYThreeDSecureAttributeEmail alloc] initWithPreset:@"test@example.com"];
-  PAYCardFormViewController *cardFormVc =
-      [PAYCardFormViewController createCardFormViewControllerWithStyle:PAYCardFormStyle.defaultStyle
-                                                              tenantId:nil
-                                                              delegate:self
-                                                              viewType:viewType
-                                                threeDSecureAttributes:@[ email ]];
-  [self.navigationController pushViewController:cardFormVc animated:YES];
-}
-
-- (void)presentCardFormWithViewType:(CardFormViewType)viewType {
-  PAYThreeDSecureAttributeEmail *email = [[PAYThreeDSecureAttributeEmail alloc] initWithPreset:nil];
   PAYThreeDSecureAttributePhone *phone =
       [[PAYThreeDSecureAttributePhone alloc] initWithPresetNumber:nil presetRegion:nil];
   PAYCardFormViewController *cardFormVc =
@@ -67,6 +56,17 @@
                                                               delegate:self
                                                               viewType:viewType
                                                 threeDSecureAttributes:@[ email, phone ]];
+  [self.navigationController pushViewController:cardFormVc animated:YES];
+}
+
+- (void)presentCardFormWithViewType:(CardFormViewType)viewType {
+  PAYThreeDSecureAttributeEmail *email = [[PAYThreeDSecureAttributeEmail alloc] initWithPreset:nil];
+  PAYCardFormViewController *cardFormVc =
+      [PAYCardFormViewController createCardFormViewControllerWithStyle:PAYCardFormStyle.defaultStyle
+                                                              tenantId:nil
+                                                              delegate:self
+                                                              viewType:viewType
+                                                threeDSecureAttributes:@[ email ]];
   UINavigationController *naviVc =
       [UINavigationController.new initWithRootViewController:cardFormVc];
   naviVc.presentationController.delegate = cardFormVc;

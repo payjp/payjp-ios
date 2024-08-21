@@ -38,9 +38,18 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
     var inputTextErrorColorEnabled: Bool = true
     var cardNumberSeparator: String = " "
 
-    // TODO: visibility
-    var emailInputEnabled: Bool = false
-    var phoneInputEnabled: Bool = false
+    var emailInputEnabled: Bool = false {
+        didSet {
+            emailTextField.isHidden = !emailInputEnabled
+            emailSeparator.isHidden = !emailInputEnabled
+        }
+    }
+    var phoneInputEnabled: Bool = false {
+        didSet {
+            phoneNumberTextField.isHidden = !phoneInputEnabled
+            phoneNumberSeparator.isHidden = !phoneInputEnabled
+        }
+    }
 
     // MARK: Private
 
@@ -65,15 +74,13 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
     private var expirationFieldBackground: UIView!
     private var cvcFieldBackground: UIView!
     private var cardHolderFieldBackground: UIView!
-    private var emailFieldBackground: UIView!
-    private var phoneNumberFieldBackground: UIView!
+    private var emailSeparator: UIView!
+    private var phoneNumberSeparator: UIView!
 
     private var cardNumberFieldContentView: UIStackView!
     private var expirationFieldContentView: UIStackView!
     private var cvcFieldContentView: UIStackView!
     private var cardHolderFieldContentView: UIStackView!
-    private var emailFieldContentView: UIStackView!
-    private var phoneNumberFieldContentView: UIStackView!
 
     private var contentView: UIView!
     private let formContentStackView: UIStackView = UIStackView()
@@ -136,9 +143,7 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
             cardNumberFieldBackground,
             expirationFieldBackground,
             cvcFieldBackground,
-            cardHolderFieldBackground,
-            emailFieldBackground,
-            phoneNumberFieldBackground
+            cardHolderFieldBackground
         ].forEach { $0.roundingCorners(corners: .allCorners, radius: 4.0) }
     }
 
@@ -231,16 +236,13 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
         cardNumberFieldBackground = UIView(frame: backgroudFrame)
         expirationFieldBackground = UIView(frame: backgroudFrame)
         cvcFieldBackground = UIView(frame: backgroudFrame)
-        cardHolderFieldBackground = UIView(frame: backgroudFrame)
-        emailFieldBackground = UIView(frame: backgroudFrame)
-        phoneNumberFieldBackground = UIView(frame: backgroudFrame)
 
-        cardNumberErrorLabel = UILabel()
-        expirationErrorLabel = UILabel()
-        cvcErrorLabel = UILabel()
-        cardHolderErrorLabel = UILabel()
-        emailErrorLabel = UILabel()
-        phoneNumberErrorLabel = UILabel()
+        cardNumberErrorLabel = setupErrorLabel()
+        expirationErrorLabel = setupErrorLabel()
+        cvcErrorLabel = setupErrorLabel()
+        cardHolderErrorLabel = setupErrorLabel()
+        emailErrorLabel = setupErrorLabel()
+        phoneNumberErrorLabel = setupErrorLabel()
 
         ocrButton = UIButton()
         ocrButton.addTarget(self,
@@ -263,6 +265,12 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
         cardDisplayView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         cardDisplayView.layer.shadowOpacity = 0.4
         cardDisplayView.layer.shadowRadius = 4
+    }
+
+    private func setupErrorLabel() -> UILabel {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 13)
+        return label
     }
 
     private func setupInputFields() {
@@ -295,7 +303,7 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
         cardHolderTextField.keyboardType = .alphabet
         cardHolderTextField.autocapitalizationType = .none
         cardHolderTextField.autocorrectionType = .no
-        cardHolderTextField.returnKeyType = .done
+        cardHolderTextField.returnKeyType = !emailInputEnabled && !phoneInputEnabled ? .done : .next
         emailTextField.keyboardType = .emailAddress
         emailTextField.autocapitalizationType = .none
         phoneNumberTextField.keyboardType = .phonePad
@@ -338,7 +346,7 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
         // 横ScrollViewにaddするStackView
         formContentStackView.spacing = 0.0
         formContentStackView.axis = .horizontal
-        formContentStackView.alignment = .fill
+        formContentStackView.alignment = .top
         formContentStackView.distribution = .fillEqually
         formContentStackView.translatesAutoresizingMaskIntoConstraints = false
         formScrollView.addSubview(formContentStackView)
@@ -351,7 +359,7 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
             formContentStackView.heightAnchor.constraint(equalTo: formScrollView.heightAnchor),
             // widthはscrollView.widthAnchor x ページ数
             formContentStackView.widthAnchor.constraint(equalTo: formScrollView.widthAnchor,
-                                                        multiplier: CGFloat(6))
+                                                        multiplier: CGFloat(4))
         ])
 
         // 各入力フィールド
@@ -366,22 +374,13 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
         cvcFieldContentView = setupInputContentView(backgroundView: cvcFieldBackground,
                                                     textField: cvcTextField,
                                                     errorLabel: cvcErrorLabel)
-        cardHolderFieldContentView = setupInputContentView(backgroundView: cardHolderFieldBackground,
-                                                           textField: cardHolderTextField,
-                                                           errorLabel: cardHolderErrorLabel)
-        emailFieldContentView = setupInputContentView(backgroundView: emailFieldBackground,
-                                                      textField: emailTextField,
-                                                      errorLabel: emailErrorLabel)
-        phoneNumberFieldContentView = setupInputContentView(backgroundView: phoneNumberFieldBackground,
-                                                            textField: phoneNumberTextField,
-                                                            errorLabel: phoneNumberErrorLabel)
+        setupCardHolderTdsAttributesView()
+        toggleCardHolderTdsAttributeErrorLabel()
 
         formContentStackView.addArrangedSubview(cardNumberFieldContentView)
         formContentStackView.addArrangedSubview(expirationFieldContentView)
         formContentStackView.addArrangedSubview(cvcFieldContentView)
         formContentStackView.addArrangedSubview(cardHolderFieldContentView)
-        formContentStackView.addArrangedSubview(emailFieldContentView)
-        formContentStackView.addArrangedSubview(phoneNumberFieldContentView)
     }
 
     private func setupInputContentView(backgroundView: UIView,
@@ -432,6 +431,69 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
         ])
 
         return contentStackView
+    }
+
+    private func setupCardHolderTdsAttributesView() {
+        emailSeparator = UIView()
+        emailSeparator.backgroundColor = Style.Color.separator
+        phoneNumberSeparator = UIView()
+        phoneNumberSeparator.backgroundColor = Style.Color.separator
+        let inputStackView = UIStackView()
+        inputStackView.axis = .vertical
+        inputStackView.alignment = .leading
+        inputStackView.distribution = .equalSpacing
+        inputStackView.translatesAutoresizingMaskIntoConstraints = false
+        inputStackView.addArrangedSubview(cardHolderTextField)
+        inputStackView.addArrangedSubview(emailSeparator)
+        inputStackView.addArrangedSubview(emailTextField)
+        inputStackView.addArrangedSubview(phoneNumberSeparator)
+        inputStackView.addArrangedSubview(phoneNumberTextField)
+        cardHolderFieldBackground = inputStackView
+
+        inputStackView.backgroundColor = FormStyle.defaultStyle.inputFieldBackgroundColor
+
+        NSLayoutConstraint.activate([
+            emailSeparator.leadingAnchor.constraint(equalTo: inputStackView.leadingAnchor),
+            emailSeparator.trailingAnchor.constraint(equalTo: inputStackView.trailingAnchor),
+            emailSeparator.heightAnchor.constraint(equalToConstant: 0.5),
+            phoneNumberSeparator.leadingAnchor.constraint(equalTo: inputStackView.leadingAnchor),
+            phoneNumberSeparator.trailingAnchor.constraint(equalTo: inputStackView.trailingAnchor),
+            phoneNumberSeparator.heightAnchor.constraint(equalToConstant: 0.5),
+            cardHolderTextField.leadingAnchor.constraint(equalTo: inputStackView.leadingAnchor,
+                                                         constant: inputFieldMargin),
+            cardHolderTextField.trailingAnchor.constraint(equalTo: inputStackView.trailingAnchor,
+                                                          constant: -inputFieldMargin),
+            emailTextField.leadingAnchor.constraint(equalTo: inputStackView.leadingAnchor,
+                                                    constant: inputFieldMargin),
+            emailTextField.trailingAnchor.constraint(equalTo: inputStackView.trailingAnchor,
+                                                     constant: -inputFieldMargin),
+            phoneNumberTextField.leadingAnchor.constraint(equalTo: inputStackView.leadingAnchor,
+                                                          constant: inputFieldMargin),
+            phoneNumberTextField.trailingAnchor.constraint(equalTo: inputStackView.trailingAnchor,
+                                                           constant: -inputFieldMargin),
+            cardHolderTextField.heightAnchor.constraint(equalToConstant: 44.0),
+            emailTextField.heightAnchor.constraint(equalToConstant: 44.0),
+            phoneNumberTextField.heightAnchor.constraint(equalToConstant: 44.0)
+        ])
+
+        let contentStackView = UIStackView()
+        contentStackView.spacing = 4.0
+        contentStackView.axis = .vertical
+        contentStackView.alignment = .fill
+        contentStackView.distribution = .fill
+        contentStackView.translatesAutoresizingMaskIntoConstraints = false
+        contentStackView.addArrangedSubview(inputStackView)
+        contentStackView.addArrangedSubview(cardHolderErrorLabel)
+        contentStackView.addArrangedSubview(emailErrorLabel)
+        contentStackView.addArrangedSubview(phoneNumberErrorLabel)
+
+        NSLayoutConstraint.activate([
+            cardHolderErrorLabel.heightAnchor.constraint(equalToConstant: 20.0),
+            emailErrorLabel.heightAnchor.constraint(equalToConstant: 20.0),
+            phoneNumberErrorLabel.heightAnchor.constraint(equalToConstant: 20.0)
+        ])
+
+        cardHolderFieldContentView = contentStackView
     }
 
     private func backFlipCard() {
@@ -548,10 +610,29 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
             if cvcTextField.isFirstResponder {
                 cardHolderTextField.becomeFirstResponder()
             }
-        // TODO: focus
+        case cardHolderTextField:
+            if cardHolderTextField.isFirstResponder {
+                if emailInputEnabled {
+                    emailTextField.becomeFirstResponder()
+                } else if phoneInputEnabled {
+                    phoneNumberTextField.becomeFirstResponder()
+                }
+            }
+        case emailTextField:
+            if emailTextField.isFirstResponder {
+                if phoneInputEnabled {
+                    phoneNumberTextField.becomeFirstResponder()
+                }
+            }
         default:
             break
         }
+    }
+
+    private func toggleCardHolderTdsAttributeErrorLabel() {
+        cardHolderErrorLabel.isHidden = cardHolderErrorLabel.text?.isEmpty ?? true
+        emailErrorLabel.isHidden = emailErrorLabel.text?.isEmpty ?? true
+        phoneNumberErrorLabel.isHidden = phoneNumberErrorLabel.text?.isEmpty ?? true
     }
 }
 
@@ -641,12 +722,8 @@ extension CardFormDisplayStyledView: CardFormViewTextFieldDelegate {
             contentPositionX = expirationFieldContentView.frame.origin.x
         case cvcTextField:
             contentPositionX = cvcFieldContentView.frame.origin.x
-        case cardHolderTextField:
+        case cardHolderTextField, emailTextField, phoneNumberTextField:
             contentPositionX = cardHolderFieldContentView.frame.origin.x
-        case emailTextField:
-            contentPositionX = emailFieldContentView.frame.origin.x
-        case phoneNumberTextField:
-            contentPositionX = phoneNumberFieldContentView.frame.origin.x
         default:
             break
         }
@@ -670,7 +747,18 @@ extension CardFormDisplayStyledView: CardFormViewTextFieldDelegate {
             if cardFormProperties.cardHolderTextField.isFirstResponder {
                 cardFormProperties.cvcTextField.becomeFirstResponder()
             }
-        // TODO: focus previous
+        case cardFormProperties.emailTextField:
+            if cardFormProperties.emailTextField.isFirstResponder {
+                cardFormProperties.cardHolderTextField.becomeFirstResponder()
+            }
+        case cardFormProperties.phoneNumberTextField:
+            if cardFormProperties.phoneNumberTextField.isFirstResponder {
+                if emailInputEnabled {
+                    cardFormProperties.emailTextField.becomeFirstResponder()
+                } else {
+                    cardFormProperties.cardHolderTextField.becomeFirstResponder()
+                }
+            }
         default:
             break
         }

@@ -247,13 +247,16 @@ public class CardFormView: UIView {
                 break
             }
         }
-        cardFormProperties.cardHolderErrorLabel.isHidden = cardFormProperties.cardHolderTextField.text == nil
+        inputCardHolderComplete()
     }
 
     private func updateEmailInput(input: String?, forceShowError: Bool = false) {
         let result = viewModel.update(email: input)
         switch result {
         case .success(let email):
+            if cardFormProperties.inputTextErrorColorEnabled {
+                cardFormProperties.emailTextField.textColor = cardFormProperties.inputTextColor
+            }
             inputEmailSuccess(value: email)
         case .failure(let error):
             switch error {
@@ -276,6 +279,9 @@ public class CardFormView: UIView {
         let result = viewModel.updatePhoneNumber(input: rawInput, formattedValue: formatted, exampleNumber: exampleNumber)
         switch result {
         case .success(let phoneNumber):
+            if cardFormProperties.inputTextErrorColorEnabled {
+                cardFormProperties.phoneNumberTextField.textColor = cardFormProperties.inputTextColor
+            }
             inputPhoneNumberSuccess(value: phoneNumber)
         case .failure(let error):
             switch error {
@@ -322,10 +328,10 @@ public class CardFormView: UIView {
     }
 
     func inputCardHolderComplete() {
-        cardFormProperties.cardHolderErrorLabel.isHidden = cardFormProperties.cardHolderTextField.text == nil
+        cardFormProperties.cardHolderErrorLabel.isHidden = cardFormProperties.cardHolderErrorLabel.text?.isEmpty ?? true
     }
 
-    func inputEmailSuccess(value: String) {
+    func inputEmailSuccess(value: String?) {
         cardFormProperties.emailTextField.text = value
         cardFormProperties.emailErrorLabel.text = nil
     }
@@ -340,10 +346,10 @@ public class CardFormView: UIView {
     }
 
     func inputEmailComplete() {
-        cardFormProperties.emailErrorLabel.isHidden = cardFormProperties.emailTextField.text == nil
+        cardFormProperties.emailErrorLabel.isHidden = cardFormProperties.emailErrorLabel.text?.isEmpty ?? true
     }
 
-    func inputPhoneNumberSuccess(value: String) {
+    func inputPhoneNumberSuccess(value: String?) {
         cardFormProperties.phoneNumberErrorLabel.text = nil
     }
 
@@ -356,7 +362,7 @@ public class CardFormView: UIView {
     }
 
     func inputPhoneNumberComplete() {
-        cardFormProperties.phoneNumberErrorLabel.isHidden = cardFormProperties.phoneNumberTextField.text == nil
+        cardFormProperties.phoneNumberErrorLabel.isHidden = cardFormProperties.phoneNumberErrorLabel.text?.isEmpty ?? true
     }
 
     /// バリデーションOKの場合、次のTextFieldへフォーカスを移動する

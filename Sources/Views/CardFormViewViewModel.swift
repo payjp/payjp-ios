@@ -56,14 +56,14 @@ protocol CardFormViewViewModelType {
     ///
     /// - Parameter email: メールアドレス
     /// - Returns: 入力結果
-    func update(email: String?) -> Result<String, FormError>
+    func update(email: String?) -> Result<String?, FormError>
 
     /// 電話番号の入力値を更新する
     ///
     /// - Parameter input: 入力値
     /// - Parameter formattedValue: E 164でフォーマットされた値
     /// - Returns: 入力結果
-    func updatePhoneNumber(input: String?, formattedValue: String?, exampleNumber: String?) -> Result<String, FormError>
+    func updatePhoneNumber(input: String?, formattedValue: String?, exampleNumber: String?) -> Result<String?, FormError>
 
     /// トークンを生成する
     ///
@@ -255,9 +255,17 @@ class CardFormViewViewModel: CardFormViewViewModelType {
         return .success(holderInput)
     }
 
-    func update(email: String?) -> Result<String, FormError> {
+    func update(email: String?) -> Result<String?, FormError> {
+        guard emailEnabled else {
+            self.email = nil
+            return .success(nil)
+        }
         guard let email, !email.isEmpty else {
             self.email = nil
+            // email / phone どちらかが入力できていれば良い
+            if phoneEnabled && phoneNumber != nil {
+                return .success(nil)
+            }
             return .failure(.emailEmptyError(value: nil, isInstant: false))
         }
         // TODO: email validation
@@ -265,9 +273,17 @@ class CardFormViewViewModel: CardFormViewViewModelType {
         return .success(email)
     }
 
-    func updatePhoneNumber(input: String?, formattedValue: String?, exampleNumber: String?) -> Result<String, FormError> {
+    func updatePhoneNumber(input: String?, formattedValue: String?, exampleNumber: String?) -> Result<String?, FormError> {
+        guard phoneEnabled else {
+            self.phoneNumber = nil
+            return .success(nil)
+        }
         guard let input, !input.isEmpty else {
             self.phoneNumber = nil
+            // email / phone どちらかが入力できていれば良い
+            if emailEnabled && email != nil {
+                return .success(nil)
+            }
             return .failure(.phoneNumberEmptyError(value: nil, isInstant: false))
         }
         // TODO: phone validation
