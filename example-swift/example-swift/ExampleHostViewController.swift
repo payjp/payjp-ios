@@ -16,34 +16,43 @@ class ExampleHostViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         switch indexPath.row {
         case 0:
-            self.pushCardForm(viewType: .tableStyled)
+            presentTdsAttributeOptions(viewType: .tableStyled, pushNavigation: true)
         case 1:
-            self.presentCardForm(viewType: .labelStyled)
+            presentTdsAttributeOptions(viewType: .labelStyled, pushNavigation: false)
         case 2:
-            self.pushCardForm(viewType: .displayStyled)
+            presentTdsAttributeOptions(viewType: .displayStyled, pushNavigation: true)
         default:
             break
         }
     }
 
-    private func pushCardForm(viewType: CardFormViewType) {
-        // customize card form
-        //            let color = UIColor(0, 122, 255)
-        //            let style = FormStyle(
-        //                labelTextColor: color,
-        //                inputTextColor: color,
-        //                tintColor: color)
-        let cardFormVc = CardFormViewController.createCardFormViewController(delegate: self,
-                                                                             viewType: viewType)
-        self.navigationController?.pushViewController(cardFormVc, animated: true)
-    }
-
-    private func presentCardForm(viewType: CardFormViewType) {
-        let cardFormVc = CardFormViewController.createCardFormViewController(delegate: self,
-                                                                             viewType: viewType)
-        let naviVc = UINavigationController(rootViewController: cardFormVc)
-        naviVc.presentationController?.delegate = cardFormVc
-        self.present(naviVc, animated: true, completion: nil)
+    private func presentTdsAttributeOptions(viewType: CardFormViewType, pushNavigation: Bool) {
+        func showCardForm(attributes: [ThreeDSecureAttribute]) {
+            let cardForm = CardFormViewController.createCardFormViewController(delegate: self, viewType: viewType, threeDSecureAttributes: attributes)
+            if pushNavigation {
+                self.navigationController?.pushViewController(cardForm, animated: true)
+            } else {
+                let naviVc = UINavigationController(rootViewController: cardForm)
+                naviVc.presentationController?.delegate = cardForm
+                self.present(naviVc, animated: true, completion: nil)
+            }
+        }
+        let options: [(label: String, attributes: [ThreeDSecureAttribute])] = [
+            ("email and phone", [ThreeDSecureAttributeEmail(), ThreeDSecureAttributePhone()]),
+            ("email", [ThreeDSecureAttributeEmail()]),
+            ("phone", [ThreeDSecureAttributePhone()]),
+            ("email (preset)", [ThreeDSecureAttributeEmail(preset: "test@example.com")]),
+            ("phone (preset)", [ThreeDSecureAttributePhone(presetNumber: "+819012345678", presetRegion: "JP")]),
+            ("none", [])
+        ]
+        let sheet = UIAlertController(title: "Select TDS Attributes", message: nil, preferredStyle: .actionSheet)
+        options.forEach { (label, attrs) in
+            let action = UIAlertAction(title: label, style: .default) { _ in
+                showCardForm(attributes: attrs)
+            }
+            sheet.addAction(action)
+        }
+        present(sheet, animated: true)
     }
 }
 
@@ -60,7 +69,9 @@ extension ExampleHostViewController: CardFormViewControllerDelegate {
                 // pop
                 self.navigationController?.popViewController(animated: true)
                 if let token = self.token {
-                    self.showToken(token: token)
+                    self.navigationController?.dismiss(animated: true, completion: { [weak self] in
+                        self?.navigationController?.showToken(token: token)
+                    })
                 }
 
                 // dismiss
