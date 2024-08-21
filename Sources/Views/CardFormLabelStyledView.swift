@@ -25,7 +25,7 @@ public class CardFormLabelStyledView: CardFormView, CardFormProperties {
     @IBOutlet weak var cvcTextField: FormTextField!
     @IBOutlet weak var cardHolderTextField: FormTextField!
     @IBOutlet weak var emailTextField: FormTextField!
-    @IBOutlet weak var phoneNumberTextField: PhoneNumberTextField!
+    @IBOutlet weak var phoneNumberTextField: PresetPhoneNumberTextField!
 
     @IBOutlet weak var cardNumberErrorLabel: UILabel!
     @IBOutlet weak var expirationErrorLabel: UILabel!

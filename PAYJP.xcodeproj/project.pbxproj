@@ -17,6 +17,7 @@
 		32A6F614239608DD00747477 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A6F613239608DD00747477 /* ActionButton.swift */; };
 		32A6F6162396093B00747477 /* Radius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A6F6152396093B00747477 /* Radius.swift */; };
 		32A8E4CC23B4616A001D1C38 /* JSONDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A8E4CB23B4616A001D1C38 /* JSONDecodable.swift */; };
+		32F227B22C768CCB00259287 /* PresetPhoneNumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F227B12C768CCB00259287 /* PresetPhoneNumberTextField.swift */; };
 		4421F6662591CCAC0001DA30 /* FinishTokenThreeDSecureRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4421F6652591CCAC0001DA30 /* FinishTokenThreeDSecureRequest.swift */; };
 		443AD9AF255A3D3800C13CB0 /* CardIOProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 443AD9AC255A3D3800C13CB0 /* CardIOProxy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		443AD9B0255A3D3800C13CB0 /* PAYJP.h in Headers */ = {isa = PBXBuildFile; fileRef = 443AD9AD255A3D3800C13CB0 /* PAYJP.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -162,6 +163,7 @@
 		32A6F613239608DD00747477 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		32A6F6152396093B00747477 /* Radius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Radius.swift; sourceTree = "<group>"; };
 		32A8E4CB23B4616A001D1C38 /* JSONDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecodable.swift; sourceTree = "<group>"; };
+		32F227B12C768CCB00259287 /* PresetPhoneNumberTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetPhoneNumberTextField.swift; sourceTree = "<group>"; };
 		4421F6652591CCAC0001DA30 /* FinishTokenThreeDSecureRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishTokenThreeDSecureRequest.swift; sourceTree = "<group>"; };
 		443AD9AC255A3D3800C13CB0 /* CardIOProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOProxy.h; sourceTree = "<group>"; };
 		443AD9AD255A3D3800C13CB0 /* PAYJP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYJP.h; sourceTree = "<group>"; };
@@ -608,6 +610,7 @@
 				325E36AE233482AC0037E6BE /* FormStyle.swift */,
 				ED6DF6F4245ADC9C009E2EF3 /* FormTextField.swift */,
 				327C806D2C73D1F700CADF44 /* ThreeDSecureAttribute.swift */,
+				32F227B12C768CCB00259287 /* PresetPhoneNumberTextField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -915,6 +918,7 @@
 				ED31B07E2397C6E800DDFFE5 /* CardFormScreenPresenter.swift in Sources */,
 				EDA3EE9622E1C26100D9A6C9 /* CvcFormatter.swift in Sources */,
 				ED2ECF84237E9E240066D6C2 /* CardFormViewController.swift in Sources */,
+				32F227B22C768CCB00259287 /* PresetPhoneNumberTextField.swift in Sources */,
 				ED6DF6F7245BB9B1009E2EF3 /* CardFormDisplayStyledView.swift in Sources */,
 				BE21782022E82B820098128D /* ParametersSerialization.swift in Sources */,
 				ED3DB9E0243ACCBE0065FC33 /* Mock.swift in Sources */,

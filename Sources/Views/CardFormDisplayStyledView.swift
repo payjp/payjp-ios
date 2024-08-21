@@ -24,7 +24,7 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
     var cvcTextField: FormTextField!
     var cardHolderTextField: FormTextField!
     var emailTextField: FormTextField!
-    var phoneNumberTextField: PhoneNumberTextField!
+    var phoneNumberTextField: PresetPhoneNumberTextField!
 
     var cardNumberErrorLabel: UILabel!
     var expirationErrorLabel: UILabel!
@@ -279,7 +279,7 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
         cvcTextField = FormTextField()
         cardHolderTextField = FormTextField()
         emailTextField = FormTextField()
-        phoneNumberTextField = PhoneNumberTextField()
+        phoneNumberTextField = PresetPhoneNumberTextField()
 
         cardNumberTextField.borderStyle = .none
         expirationTextField.borderStyle = .none

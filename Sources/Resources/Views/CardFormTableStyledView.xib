@@ -256,7 +256,7 @@
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="VqP-aK-5If">
                                     <rect key="frame" x="8" y="0.0" width="320" height="32"/>
                                     <subviews>
-                                        <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="電話番号" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="iOc-p7-bTO" userLabel="Phone Input" customClass="PhoneNumberTextField" customModule="PhoneNumberKit">
+                                        <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="電話番号" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="iOc-p7-bTO" userLabel="Phone Input" customClass="PresetPhoneNumberTextField" customModule="PAYJP" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="4" width="312" height="24"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="24" id="OvD-nc-zqN"/>

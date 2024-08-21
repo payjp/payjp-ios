@@ -27,7 +27,7 @@ protocol CardFormProperties {
     var cvcTextField: FormTextField! { get }
     var cardHolderTextField: FormTextField! { get }
     var emailTextField: FormTextField! { get }
-    var phoneNumberTextField: PhoneNumberTextField! { get }
+    var phoneNumberTextField: PresetPhoneNumberTextField! { get }
 
     var cardNumberErrorLabel: UILabel! { get }
     var expirationErrorLabel: UILabel! { get }
@@ -627,7 +627,7 @@ extension CardFormView: CardFormViewModelDelegate {
         cardFormProperties.phoneInputEnabled = phone != nil
         if let phone {
             if let region = phone.presetRegion {
-                cardFormProperties.phoneNumberTextField.defaultRegion = region
+                cardFormProperties.phoneNumberTextField.presetRegion = region
             }
             cardFormProperties.phoneNumberTextField.text = phone.presetNumber
             updatePhoneNumberInput(textField: cardFormProperties.phoneNumberTextField)
