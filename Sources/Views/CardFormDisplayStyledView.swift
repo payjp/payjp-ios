@@ -303,7 +303,7 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
         cardHolderTextField.autocapitalizationType = .none
         cardHolderTextField.autocorrectionType = .no
         cardHolderTextField.returnKeyType = !emailInputEnabled && !phoneInputEnabled ? .done : .next
-        emailTextField.keyboardType = .emailAddress
+        emailTextField.textContentType = .emailAddress
         emailTextField.autocapitalizationType = .none
         phoneNumberTextField.keyboardType = .phonePad
 
@@ -729,7 +729,9 @@ extension CardFormDisplayStyledView: CardFormViewTextFieldDelegate {
     }
 
     func didDeleteBackward(textField: FormTextField) {
-        focusPrevious(currentField: textField)
+        if let text = textField.text, text.isEmpty {
+            focusPrevious(currentField: textField)
+        }
     }
 
     private func focusPrevious(currentField: UITextField) {
