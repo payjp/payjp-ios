@@ -151,14 +151,14 @@
   [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
   // Create Token
-  if (indexPath.section == 1 && indexPath.row == 1) {
+  if (indexPath.section == 1 && indexPath.row == 0) {
     if (!self.cardFormView.isValid) {
       return;
     }
     [self createToken];
   }
   // Valdate and Create Token
-  if (indexPath.section == 1 && indexPath.row == 2) {
+  if (indexPath.section == 1 && indexPath.row == 1) {
     BOOL isValid = [self.cardFormView validateCardForm];
     if (isValid) {
       [self createToken];
