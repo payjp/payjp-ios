@@ -260,7 +260,8 @@ class CardFormViewViewModel: CardFormViewViewModelType {
             self.email = nil
             return .success(nil)
         }
-        guard let email, !email.isEmpty else {
+        // 未入力かどうかのみチェックする
+        guard let trimmed = email?.trimmingCharacters(in: .whitespacesAndNewlines), !trimmed.isEmpty else {
             self.email = nil
             // email / phone どちらかが入力できていれば良い
             if phoneEnabled && phoneNumber != nil {
@@ -268,9 +269,8 @@ class CardFormViewViewModel: CardFormViewViewModelType {
             }
             return .failure(.emailEmptyError(value: nil, isInstant: false))
         }
-        // TODO: email validation
-        self.email = email
-        return .success(email)
+        self.email = trimmed
+        return .success(trimmed)
     }
 
     func updatePhoneNumber(input: String?, formattedValue: String?, exampleNumber: String?) -> Result<String?, FormError> {
@@ -286,7 +286,6 @@ class CardFormViewViewModel: CardFormViewViewModelType {
             }
             return .failure(.phoneNumberEmptyError(value: nil, isInstant: false))
         }
-        // TODO: phone validation
         guard let formattedValue, !formattedValue.isEmpty else {
             self.phoneNumber = nil
             let maybeTooLong = input.count > (exampleNumber?.count ?? 99)
