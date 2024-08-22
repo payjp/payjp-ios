@@ -46,7 +46,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="RXl-Bp-kHC">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="420.5"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="416.5"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="bZ6-uw-5ka" userLabel="Card Number Section">
                             <rect key="frame" x="8" y="8" width="398" height="106.5"/>
@@ -227,7 +227,7 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="tgn-Ty-UYl" userLabel="Card Holder Name">
-                            <rect key="frame" x="8" y="197" width="398" height="66.5"/>
+                            <rect key="frame" x="8" y="197" width="398" height="62.5"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="カード名義" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ay-nw-vn1">
                                     <rect key="frame" x="8" y="0.0" width="382" height="14.5"/>
@@ -263,8 +263,8 @@
                                         <constraint firstAttribute="height" constant="44" id="n0O-oU-Tan"/>
                                     </constraints>
                                 </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0eX-6y-NFG">
-                                    <rect key="frame" x="8" y="66.5" width="382" height="0.0"/>
+                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0eX-6y-NFG">
+                                    <rect key="frame" x="8" y="62.5" width="382" height="0.0"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
@@ -273,16 +273,16 @@
                             <edgeInsets key="layoutMargins" top="0.0" left="8" bottom="0.0" right="8"/>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="qKN-bO-u3s" userLabel="Email">
-                            <rect key="frame" x="8" y="271.5" width="398" height="66.5"/>
+                            <rect key="frame" x="8" y="267.5" width="398" height="66.5"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="メールアドレス" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0xK-ht-Q1d">
-                                    <rect key="frame" x="8" y="0.0" width="382" height="14.5"/>
+                                    <rect key="frame" x="8" y="4" width="382" height="14.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" red="0.01176470588" green="0.01176470588" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BXf-AY-fij">
-                                    <rect key="frame" x="8" y="18.5" width="382" height="44"/>
+                                    <rect key="frame" x="8" y="22.5" width="382" height="44"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="EIr-J5-icF">
                                             <rect key="frame" x="0.0" y="3" width="382" height="38"/>
@@ -309,26 +309,26 @@
                                         <constraint firstItem="EIr-J5-icF" firstAttribute="leading" secondItem="BXf-AY-fij" secondAttribute="leading" id="vZ1-KZ-om8"/>
                                     </constraints>
                                 </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UGG-YX-HSF">
+                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UGG-YX-HSF">
                                     <rect key="frame" x="8" y="66.5" width="382" height="0.0"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <edgeInsets key="layoutMargins" top="0.0" left="8" bottom="0.0" right="8"/>
+                            <edgeInsets key="layoutMargins" top="4" left="8" bottom="0.0" right="8"/>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="sim-mg-1Sk" userLabel="Phone">
-                            <rect key="frame" x="8" y="346" width="398" height="66.5"/>
+                            <rect key="frame" x="8" y="342" width="398" height="66.5"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="電話番号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nSk-vX-KX8" userLabel="電話番号">
-                                    <rect key="frame" x="8" y="0.0" width="382" height="14.5"/>
+                                    <rect key="frame" x="8" y="4" width="382" height="14.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" red="0.01176470588" green="0.01176470588" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fjD-d6-UKk">
-                                    <rect key="frame" x="8" y="18.5" width="382" height="44"/>
+                                    <rect key="frame" x="8" y="22.5" width="382" height="44"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vFN-JY-2rt">
                                             <rect key="frame" x="0.0" y="3" width="382" height="38"/>
@@ -355,14 +355,14 @@
                                         <constraint firstItem="vFN-JY-2rt" firstAttribute="centerY" secondItem="fjD-d6-UKk" secondAttribute="centerY" id="TRv-kf-R87"/>
                                     </constraints>
                                 </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ah-7a-e7R">
+                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ah-7a-e7R">
                                     <rect key="frame" x="8" y="66.5" width="382" height="0.0"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <edgeInsets key="layoutMargins" top="0.0" left="8" bottom="0.0" right="8"/>
+                            <edgeInsets key="layoutMargins" top="4" left="8" bottom="0.0" right="8"/>
                         </stackView>
                     </subviews>
                     <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
