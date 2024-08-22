@@ -52,6 +52,7 @@ class ExampleHostViewController: UITableViewController {
             }
             sheet.addAction(action)
         }
+        sheet.addAction(.init(title: "Cancel", style: .cancel))
         present(sheet, animated: true)
     }
 }

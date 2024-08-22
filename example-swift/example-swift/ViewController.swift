@@ -103,8 +103,8 @@ extension Token {
             + "card.id=\(card.identifer),\n"
             + "card.last4=\(card.last4Number),\n"
             + "card.exp=\(card.expirationMonth)/\(card.expirationYear),\n"
-            + "card.name=\(card.name ?? "nil")"
-            + "card.email=\(card.email ?? "nil")"
+            + "card.name=\(card.name ?? "nil"),\n"
+            + "card.email=\(card.email ?? "nil"),\n"
             + "card.phone=\(card.phone ?? "nil")"
     }
 }
