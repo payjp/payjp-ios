@@ -45,7 +45,7 @@ class ExampleHostViewController: UITableViewController {
             ("phone (preset)", [ThreeDSecureAttributePhone(presetNumber: "+819012345678", presetRegion: "JP")]),
             ("none", [])
         ]
-        let sheet = UIAlertController(title: "Select TDS Attributes", message: nil, preferredStyle: .actionSheet)
+        let sheet = UIAlertController(title: "Select 3-D Secure Attributes", message: nil, preferredStyle: .actionSheet)
         options.forEach { (label, attrs) in
             let action = UIAlertAction(title: label, style: .default) { _ in
                 showCardForm(attributes: attrs)
