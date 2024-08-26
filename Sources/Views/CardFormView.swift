@@ -275,8 +275,7 @@ public class CardFormView: UIView {
         let formatted = textField.phoneNumber.map { phoneNumber in
             textField.utility.format(phoneNumber, toType: .e164)
         }
-        let exampleNumber = textField.placeholder
-        let result = viewModel.updatePhoneNumber(input: rawInput, formattedValue: formatted, exampleNumber: exampleNumber)
+        let result = viewModel.updatePhoneNumber(input: rawInput, formattedValue: formatted)
         switch result {
         case .success(let phoneNumber):
             if cardFormProperties.inputTextErrorColorEnabled {

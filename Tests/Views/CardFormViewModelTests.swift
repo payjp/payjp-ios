@@ -373,7 +373,7 @@ class CardFormViewModelTests: XCTestCase {
     func testUpdatePhoneNumberEmpty() {
         let viewModel = CardFormViewViewModel()
         viewModel.update(threeDSecureAttributes: [ThreeDSecureAttributePhone()])
-        let result = viewModel.updatePhoneNumber(input: "", formattedValue: "", exampleNumber: "")
+        let result = viewModel.updatePhoneNumber(input: "", formattedValue: "")
 
         switch result {
         case .failure(let error):
@@ -391,7 +391,7 @@ class CardFormViewModelTests: XCTestCase {
     func testUpdatePhoneNumberSuccess() {
         let viewModel = CardFormViewViewModel()
         viewModel.update(threeDSecureAttributes: [ThreeDSecureAttributePhone()])
-        let result = viewModel.updatePhoneNumber(input: "09012345678", formattedValue: "+819012345678", exampleNumber: "")
+        let result = viewModel.updatePhoneNumber(input: "09012345678", formattedValue: "+819012345678")
 
         switch result {
         case .success(let value):
@@ -408,7 +408,7 @@ class CardFormViewModelTests: XCTestCase {
         _ = viewModel.update(cvc: "123")
         _ = viewModel.update(cardHolder: "PAY TARO")
         _ = viewModel.update(email: "test@example.com")
-        _ = viewModel.updatePhoneNumber(input: "09012345678", formattedValue: "+819012345678", exampleNumber: "")
+        _ = viewModel.updatePhoneNumber(input: "09012345678", formattedValue: "+819012345678")
 
         let result = viewModel.isValid
         XCTAssertTrue(result)
@@ -444,7 +444,7 @@ class CardFormViewModelTests: XCTestCase {
         _ = viewModel.update(expiration: "12/99")
         _ = viewModel.update(cvc: "123")
         _ = viewModel.update(cardHolder: "PAY TARO")
-        _ = viewModel.updatePhoneNumber(input: "09012345678", formattedValue: "+819012345678", exampleNumber: "")
+        _ = viewModel.updatePhoneNumber(input: "09012345678", formattedValue: "+819012345678")
 
         let result = viewModel.isValid
         XCTAssertFalse(result)

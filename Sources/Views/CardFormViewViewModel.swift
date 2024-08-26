@@ -63,7 +63,7 @@ protocol CardFormViewViewModelType {
     /// - Parameter input: 入力値
     /// - Parameter formattedValue: E 164でフォーマットされた値
     /// - Returns: 入力結果
-    func updatePhoneNumber(input: String?, formattedValue: String?, exampleNumber: String?) -> Result<String?, FormError>
+    func updatePhoneNumber(input: String?, formattedValue: String?) -> Result<String?, FormError>
 
     /// トークンを生成する
     ///
@@ -273,7 +273,7 @@ class CardFormViewViewModel: CardFormViewViewModelType {
         return .success(trimmed)
     }
 
-    func updatePhoneNumber(input: String?, formattedValue: String?, exampleNumber: String?) -> Result<String?, FormError> {
+    func updatePhoneNumber(input: String?, formattedValue: String?) -> Result<String?, FormError> {
         guard phoneEnabled else {
             self.phoneNumber = nil
             return .success(nil)
@@ -288,8 +288,7 @@ class CardFormViewViewModel: CardFormViewViewModelType {
         }
         guard let formattedValue, !formattedValue.isEmpty else {
             self.phoneNumber = nil
-            let maybeTooLong = input.count > (exampleNumber?.count ?? 99)
-            return .failure(.phoneNumberInvalidError(value: input, isInstant: maybeTooLong))
+            return .failure(.phoneNumberInvalidError(value: input, isInstant: true))
         }
         self.phoneNumber = formattedValue
         return .success(formattedValue)
