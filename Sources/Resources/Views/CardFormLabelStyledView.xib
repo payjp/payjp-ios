@@ -241,7 +241,7 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="0o9-05-Jq9">
                                             <rect key="frame" x="0.0" y="3" width="382" height="38"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="TARO TANAKA" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="K5S-bf-dwx">
+                                                <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="TARO PAY" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="K5S-bf-dwx">
                                                     <rect key="frame" x="16" y="4" width="358" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="BRe-80-QCa"/>
@@ -287,7 +287,7 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="EIr-J5-icF">
                                             <rect key="frame" x="0.0" y="3" width="382" height="38"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="tanaka@example.com" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Pkj-6A-CBe">
+                                                <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="test@example.com" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Pkj-6A-CBe">
                                                     <rect key="frame" x="16" y="4" width="358" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="tcp-Zl-zon"/>
