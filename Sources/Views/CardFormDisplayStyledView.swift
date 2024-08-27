@@ -37,10 +37,12 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
     var inputTextErrorColorEnabled: Bool = true
     var cardNumberSeparator: String = " "
 
+    var additionalInfoView: UIView!
+    var additionalInfoNoteLabel: UILabel!
+
     var emailInputEnabled: Bool = true {
         didSet {
             emailTextField.isHidden = !emailInputEnabled
-            emailSeparator.isHidden = !emailInputEnabled
         }
     }
     var phoneInputEnabled: Bool = true {
@@ -73,7 +75,7 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
     private var expirationFieldBackground: UIView!
     private var cvcFieldBackground: UIView!
     private var cardHolderFieldBackground: UIView!
-    private var emailSeparator: UIView!
+    private var threeDSecureFieldsBackground: UIView!
     private var phoneNumberSeparator: UIView!
 
     private var cardNumberFieldContentView: UIStackView!
@@ -142,7 +144,8 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
             cardNumberFieldBackground,
             expirationFieldBackground,
             cvcFieldBackground,
-            cardHolderFieldBackground
+            cardHolderFieldBackground,
+            threeDSecureFieldsBackground
         ].forEach { $0.roundingCorners(corners: .allCorners, radius: 4.0) }
     }
 
@@ -373,6 +376,7 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
         cvcFieldContentView = setupInputContentView(backgroundView: cvcFieldBackground,
                                                     textField: cvcTextField,
                                                     errorLabel: cvcErrorLabel)
+        setupAdditionalInfoView()
         setupCardHolderTdsAttributesView()
         toggleCardHolderTdsAttributeErrorLabel()
 
@@ -432,43 +436,67 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
         return contentStackView
     }
 
+    private func setupAdditionalInfoView() {
+        let additionalInfoLabel = UILabel()
+        additionalInfoLabel.text = "payjp_card_form_additional_info_label".localized
+        additionalInfoNoteLabel = UILabel()
+        additionalInfoNoteLabel.text = "payjp_card_form_additional_info_required_at_least_one".localized
+        [additionalInfoLabel, additionalInfoNoteLabel].forEach { label in
+            label.font = .systemFont(ofSize: 13)
+            if #available(iOS 13.0, *) {
+                label.textColor = .secondaryLabel
+            } else {
+                label.textColor = .systemGray
+            }
+        }
+        let additionalInfoStackView = UIStackView()
+        additionalInfoStackView.axis = .horizontal
+        additionalInfoStackView.alignment = .bottom
+        additionalInfoStackView.distribution = .equalSpacing
+        additionalInfoStackView.spacing = 8
+        additionalInfoStackView.translatesAutoresizingMaskIntoConstraints = false
+        additionalInfoStackView.layoutMargins = .init(top: 12, left: 4, bottom: 4, right: 4)
+        additionalInfoStackView.isLayoutMarginsRelativeArrangement = true
+        additionalInfoStackView.addArrangedSubview(additionalInfoLabel)
+        additionalInfoStackView.addArrangedSubview(additionalInfoNoteLabel)
+        self.additionalInfoView = additionalInfoStackView
+    }
+
     private func setupCardHolderTdsAttributesView() {
-        emailSeparator = UIView()
-        emailSeparator.backgroundColor = Style.Color.separator
         phoneNumberSeparator = UIView()
         phoneNumberSeparator.backgroundColor = Style.Color.separator
-        let inputStackView = UIStackView()
-        inputStackView.axis = .vertical
-        inputStackView.alignment = .leading
-        inputStackView.distribution = .equalSpacing
-        inputStackView.translatesAutoresizingMaskIntoConstraints = false
-        inputStackView.addArrangedSubview(cardHolderTextField)
-        inputStackView.addArrangedSubview(emailSeparator)
-        inputStackView.addArrangedSubview(emailTextField)
-        inputStackView.addArrangedSubview(phoneNumberSeparator)
-        inputStackView.addArrangedSubview(phoneNumberTextField)
-        cardHolderFieldBackground = inputStackView
+        let cardHolderStackView = UIStackView()
+        let tdsStackView = UIStackView()
+        [cardHolderStackView, tdsStackView].forEach { stackView in
+            stackView.axis = .vertical
+            stackView.alignment = .leading
+            stackView.distribution = .equalSpacing
+            stackView.translatesAutoresizingMaskIntoConstraints = false
+            stackView.backgroundColor = FormStyle.defaultStyle.inputFieldBackgroundColor
+        }
+        cardHolderStackView.addArrangedSubview(cardHolderTextField)
+        cardHolderFieldBackground = cardHolderStackView
+        tdsStackView.addArrangedSubview(emailTextField)
+        tdsStackView.addArrangedSubview(phoneNumberSeparator)
+        tdsStackView.addArrangedSubview(phoneNumberTextField)
+        threeDSecureFieldsBackground = tdsStackView
 
-        inputStackView.backgroundColor = FormStyle.defaultStyle.inputFieldBackgroundColor
-
+        let separatorHeight = 1.0 / UIScreen.main.scale
         NSLayoutConstraint.activate([
-            emailSeparator.leadingAnchor.constraint(equalTo: inputStackView.leadingAnchor),
-            emailSeparator.trailingAnchor.constraint(equalTo: inputStackView.trailingAnchor),
-            emailSeparator.heightAnchor.constraint(equalToConstant: 0.5),
-            phoneNumberSeparator.leadingAnchor.constraint(equalTo: inputStackView.leadingAnchor),
-            phoneNumberSeparator.trailingAnchor.constraint(equalTo: inputStackView.trailingAnchor),
-            phoneNumberSeparator.heightAnchor.constraint(equalToConstant: 0.5),
-            cardHolderTextField.leadingAnchor.constraint(equalTo: inputStackView.leadingAnchor,
+            phoneNumberSeparator.leadingAnchor.constraint(equalTo: tdsStackView.leadingAnchor),
+            phoneNumberSeparator.trailingAnchor.constraint(equalTo: tdsStackView.trailingAnchor),
+            phoneNumberSeparator.heightAnchor.constraint(equalToConstant: separatorHeight),
+            cardHolderTextField.leadingAnchor.constraint(equalTo: cardHolderStackView.leadingAnchor,
                                                          constant: inputFieldMargin),
-            cardHolderTextField.trailingAnchor.constraint(equalTo: inputStackView.trailingAnchor,
+            cardHolderTextField.trailingAnchor.constraint(equalTo: cardHolderStackView.trailingAnchor,
                                                           constant: -inputFieldMargin),
-            emailTextField.leadingAnchor.constraint(equalTo: inputStackView.leadingAnchor,
+            emailTextField.leadingAnchor.constraint(equalTo: tdsStackView.leadingAnchor,
                                                     constant: inputFieldMargin),
-            emailTextField.trailingAnchor.constraint(equalTo: inputStackView.trailingAnchor,
+            emailTextField.trailingAnchor.constraint(equalTo: tdsStackView.trailingAnchor,
                                                      constant: -inputFieldMargin),
-            phoneNumberTextField.leadingAnchor.constraint(equalTo: inputStackView.leadingAnchor,
+            phoneNumberTextField.leadingAnchor.constraint(equalTo: tdsStackView.leadingAnchor,
                                                           constant: inputFieldMargin),
-            phoneNumberTextField.trailingAnchor.constraint(equalTo: inputStackView.trailingAnchor,
+            phoneNumberTextField.trailingAnchor.constraint(equalTo: tdsStackView.trailingAnchor,
                                                            constant: -inputFieldMargin),
             cardHolderTextField.heightAnchor.constraint(equalToConstant: 44.0),
             emailTextField.heightAnchor.constraint(equalToConstant: 44.0),
@@ -478,18 +506,24 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
         let contentStackView = UIStackView()
         contentStackView.spacing = 4.0
         contentStackView.axis = .vertical
-        contentStackView.alignment = .fill
+        contentStackView.alignment = .leading
         contentStackView.distribution = .fill
         contentStackView.translatesAutoresizingMaskIntoConstraints = false
-        contentStackView.addArrangedSubview(inputStackView)
+        contentStackView.addArrangedSubview(cardHolderStackView)
         contentStackView.addArrangedSubview(cardHolderErrorLabel)
+        contentStackView.addArrangedSubview(additionalInfoView)
+        contentStackView.addArrangedSubview(tdsStackView)
         contentStackView.addArrangedSubview(emailErrorLabel)
         contentStackView.addArrangedSubview(phoneNumberErrorLabel)
 
         NSLayoutConstraint.activate([
             cardHolderErrorLabel.heightAnchor.constraint(equalToConstant: 20.0),
             emailErrorLabel.heightAnchor.constraint(equalToConstant: 20.0),
-            phoneNumberErrorLabel.heightAnchor.constraint(equalToConstant: 20.0)
+            phoneNumberErrorLabel.heightAnchor.constraint(equalToConstant: 20.0),
+            cardHolderStackView.leadingAnchor.constraint(equalTo: contentStackView.leadingAnchor),
+            cardHolderStackView.trailingAnchor.constraint(equalTo: contentStackView.trailingAnchor),
+            tdsStackView.leadingAnchor.constraint(equalTo: contentStackView.leadingAnchor),
+            tdsStackView.trailingAnchor.constraint(equalTo: contentStackView.trailingAnchor)
         ])
 
         cardHolderFieldContentView = contentStackView

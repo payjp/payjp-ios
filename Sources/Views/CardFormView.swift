@@ -40,9 +40,12 @@ protocol CardFormProperties {
     var inputTintColor: UIColor { get }
     var inputTextErrorColorEnabled: Bool { get }
     var cardNumberSeparator: String { get }
-    // TDS Attributes
+    // ThreeDSecure Attributes
     var emailInputEnabled: Bool { get set }
     var phoneInputEnabled: Bool { get set }
+    // Additional Information
+    var additionalInfoView: UIView! { get }
+    var additionalInfoNoteLabel: UILabel! { get }
 }
 
 protocol CardFormViewTextFieldDelegate: AnyObject {
@@ -619,11 +622,13 @@ extension CardFormView: CardFormViewModelDelegate {
     }
 
     func updateThreeDSecureAttributes(email: ThreeDSecureAttributeEmail?, phone: ThreeDSecureAttributePhone?) {
-        cardFormProperties.emailInputEnabled = email != nil
+        let emailInputEnabled = email != nil
+        let phoneInputEnabled = phone != nil
+        cardFormProperties.emailInputEnabled = emailInputEnabled
         if let email {
             updateEmailInput(input: email.preset)
         }
-        cardFormProperties.phoneInputEnabled = phone != nil
+        cardFormProperties.phoneInputEnabled = phoneInputEnabled
         if let phone {
             if let region = phone.presetRegion {
                 cardFormProperties.phoneNumberTextField.presetRegion = region
@@ -631,6 +636,9 @@ extension CardFormView: CardFormViewModelDelegate {
             cardFormProperties.phoneNumberTextField.text = phone.presetNumber
             updatePhoneNumberInput(textField: cardFormProperties.phoneNumberTextField)
         }
+        // toggle additional information label
+        cardFormProperties.additionalInfoNoteLabel.isHidden = !(emailInputEnabled && phoneInputEnabled)
+        cardFormProperties.additionalInfoView.isHidden = !(emailInputEnabled || phoneInputEnabled)
     }
 }
 

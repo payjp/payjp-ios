@@ -32,6 +32,8 @@ public class CardFormTableStyledView: CardFormView, CardFormProperties {
     @IBOutlet weak var cardHolderErrorLabel: UILabel!
     @IBOutlet weak var emailErrorLabel: UILabel!
     @IBOutlet weak var phoneNumberErrorLabel: UILabel!
+    @IBOutlet weak var additionalInfoView: UIView!
+    @IBOutlet weak var additionalInfoNoteLabel: UILabel!
 
     var inputTextColor: UIColor = Style.Color.blue
     var inputTintColor: UIColor = Style.Color.blue
@@ -40,13 +42,14 @@ public class CardFormTableStyledView: CardFormView, CardFormProperties {
     var emailInputEnabled: Bool = true {
         didSet {
             emailInputView.isHidden = !emailInputEnabled
-            emailSeparator.isHidden = !emailInputEnabled
+            threeDSecureAttributeInputsView.isHidden = !emailInputEnabled && !phoneInputEnabled
         }
     }
     var phoneInputEnabled: Bool = true {
         didSet {
             phoneInputView.isHidden = !phoneInputEnabled
-            phoneNumberSeparator.isHidden = !phoneInputEnabled
+            phoneNumberSeparator.isHidden = !emailInputEnabled || !phoneInputEnabled
+            threeDSecureAttributeInputsView.isHidden = !emailInputEnabled && !phoneInputEnabled
         }
     }
 
@@ -57,14 +60,16 @@ public class CardFormTableStyledView: CardFormView, CardFormProperties {
     @IBOutlet private weak var expirationSeparator: UIView!
     @IBOutlet private weak var cvcSeparator: UIView!
     @IBOutlet private weak var holderSeparator: UIView!
-    @IBOutlet private weak var emailSeparator: UIView!
     @IBOutlet private weak var phoneNumberSeparator: UIView!
 
     @IBOutlet private weak var expirationSeparatorConstraint: NSLayoutConstraint!
     @IBOutlet private weak var cvcSeparatorConstraint: NSLayoutConstraint!
     @IBOutlet private weak var holderSeparatorConstraint: NSLayoutConstraint!
-    @IBOutlet private weak var emailSeparatorConstraint: NSLayoutConstraint!
     @IBOutlet private weak var phoneSeparatorConstraint: NSLayoutConstraint!
+
+    @IBOutlet private weak var basicInputsContainerView: UIStackView!
+    @IBOutlet private weak var threeDSecureAttributeInputsView: UIStackView!
+    @IBOutlet private weak var additionalInfoLabel: UILabel!
 
     /// Camera scan action
     ///
@@ -98,7 +103,8 @@ public class CardFormTableStyledView: CardFormView, CardFormProperties {
             addSubview(view)
         }
 
-        backgroundColor = Style.Color.groupedBackground
+        basicInputsContainerView.backgroundColor = Style.Color.groupedBackground
+        threeDSecureAttributeInputsView.backgroundColor = Style.Color.groupedBackground
 
         // set images
         brandLogoImage.image = "icon_card".image
@@ -117,7 +123,6 @@ public class CardFormTableStyledView: CardFormView, CardFormProperties {
             expirationSeparatorConstraint,
             cvcSeparatorConstraint,
             holderSeparatorConstraint,
-            emailSeparatorConstraint,
             phoneSeparatorConstraint
         ].forEach { $0?.constant = height }
 
@@ -125,11 +130,12 @@ public class CardFormTableStyledView: CardFormView, CardFormProperties {
             expirationSeparator,
             cvcSeparator,
             holderSeparator,
-            emailSeparator,
             phoneNumberSeparator
         ].forEach { $0?.backgroundColor = Style.Color.separator }
 
         setupInputFields()
+        additionalInfoLabel.text = "payjp_card_form_additional_info_label".localized
+        additionalInfoNoteLabel.text = "payjp_card_form_additional_info_required_at_least_one".localized
         apply(style: .defaultStyle)
 
         cardFormProperties = self

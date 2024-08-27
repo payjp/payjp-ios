@@ -17,6 +17,8 @@
 "payjp_card_form_holder_name_label" = "Name";
 "payjp_card_form_email_label" = "Email";
 "payjp_card_form_phone_number_label" = "Phone Number";
+"payjp_card_form_additional_info_label" = "Additional Information";
+"payjp_card_form_additional_info_required_at_least_one" = "Please enter at least one.";
 
 // table style
 "payjp_card_form_number_placeholder" = "Card number";

@@ -17,6 +17,9 @@
 "payjp_card_form_holder_name_label" = "カード名義";
 "payjp_card_form_email_label" = "メールアドレス";
 "payjp_card_form_phone_number_label" = "電話番号";
+// 3D Secure additional information
+"payjp_card_form_additional_info_label" = "追加情報";
+"payjp_card_form_additional_info_required_at_least_one" = "※1つ以上入力してください。";
 
 // table style
 "payjp_card_form_number_placeholder" = "カード番号";

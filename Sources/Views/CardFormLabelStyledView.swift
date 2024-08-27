@@ -32,6 +32,8 @@ public class CardFormLabelStyledView: CardFormView, CardFormProperties {
     @IBOutlet weak var cardHolderErrorLabel: UILabel!
     @IBOutlet weak var emailErrorLabel: UILabel!
     @IBOutlet weak var phoneNumberErrorLabel: UILabel!
+    @IBOutlet weak var additionalInfoNoteLabel: UILabel!
+    @IBOutlet weak var additionalInfoView: UIView!
 
     var inputTextColor: UIColor = Style.Color.label
     var inputTintColor: UIColor = Style.Color.blue
@@ -57,6 +59,7 @@ public class CardFormLabelStyledView: CardFormView, CardFormProperties {
     @IBOutlet private weak var cardHolderLabel: UILabel!
     @IBOutlet private weak var emailLabel: UILabel!
     @IBOutlet private weak var phoneNumberLabel: UILabel!
+    @IBOutlet private weak var additionalInfoLabel: UILabel!
 
     @IBOutlet private weak var cardNumberFieldBackground: UIView!
     @IBOutlet private weak var expirationFieldBackground: UIView!
@@ -108,6 +111,8 @@ public class CardFormLabelStyledView: CardFormView, CardFormProperties {
         cardHolderLabel.text = "payjp_card_form_holder_name_label".localized
         emailLabel.text = "payjp_card_form_email_label".localized
         phoneNumberLabel.text = "payjp_card_form_phone_number_label".localized
+        additionalInfoLabel.text = "payjp_card_form_additional_info_label".localized
+        additionalInfoNoteLabel.text = "payjp_card_form_additional_info_required_at_least_one".localized
 
         // set images
         brandLogoImage.image = "icon_card".image
@@ -193,6 +198,7 @@ extension CardFormLabelStyledView: CardFormStylable {
         cardHolderLabel.textColor = labelTextColor
         emailLabel.textColor = labelTextColor
         phoneNumberLabel.textColor = labelTextColor
+        additionalInfoLabel.textColor = labelTextColor
         // input text
         let inputs: [UITextField] = [
             cardNumberTextField,
