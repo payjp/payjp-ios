@@ -118,6 +118,7 @@ class CardFormViewViewModel: CardFormViewViewModelType {
     private var cardHolder: String?
     private var email: String?
     private var phoneNumber: String?
+    private var phoneNumberInput: String? // 未入力かどうかをチェックする
     private var emailEnabled: Bool = true
     private var phoneEnabled: Bool = true
 
@@ -278,6 +279,7 @@ class CardFormViewViewModel: CardFormViewViewModelType {
             self.phoneNumber = nil
             return .success(nil)
         }
+        self.phoneNumberInput = input
         guard let input, !input.isEmpty else {
             self.phoneNumber = nil
             // email / phone どちらかが入力できていれば良い
@@ -406,8 +408,12 @@ class CardFormViewViewModel: CardFormViewViewModelType {
     private func checkThreeDSecureAttributesValid() -> Bool {
         let emailOk = email?.isEmpty == false
         let phoneOk = phoneNumber?.isEmpty == false
+        // 電話番号のinputがありvalueがないことから不正な入力とみなす
+        let hasInvalidPhoneInput = !phoneOk && phoneNumberInput?.isEmpty == false
         switch (emailEnabled, phoneEnabled) {
         case (true, true):
+            // 不正な入力がある場合はinvalid
+            guard !hasInvalidPhoneInput else { return false }
             return emailOk || phoneOk
         case (true, _):
             return emailOk

@@ -629,6 +629,7 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
     }
 
     private func toggleCardHolderTdsAttributeErrorLabel() {
+        // 複数項目のエラーを縦に並べる形なので、エラー文字列がない場合はLabel自体を非表示にする
         cardHolderErrorLabel.isHidden = cardHolderErrorLabel.text?.isEmpty ?? true
         emailErrorLabel.isHidden = emailErrorLabel.text?.isEmpty ?? true
         phoneNumberErrorLabel.isHidden = phoneNumberErrorLabel.text?.isEmpty ?? true

@@ -477,6 +477,22 @@ class CardFormViewModelTests: XCTestCase {
         XCTAssertTrue(result)
     }
 
+    func testIsValidBothEmailAndPhoneEnabledInvalid() {
+        let viewModel = CardFormViewViewModel()
+        viewModel.update(threeDSecureAttributes: [ThreeDSecureAttributeEmail(), ThreeDSecureAttributePhone()])
+        _ = viewModel.update(cardNumber: "4242424242424242", separator: "-")
+        _ = viewModel.update(expiration: "12/99")
+        _ = viewModel.update(cvc: "123")
+        _ = viewModel.update(cardHolder: "PAY TARO")
+        // どちらかが入力されていれば良い
+        _ = viewModel.update(email: "test@example.com")
+        // ただし、どちらかが不正なら不正とする
+        _ = viewModel.updatePhoneNumber(input: "09012345", formattedValue: nil)
+
+        let result = viewModel.isValid
+        XCTAssertFalse(result)
+    }
+
     func testRequestOcr_notAuthorized() {
         let expectation = self.expectation(description: "view update")
         let mockPermissionFetcher = MockPermissionFetcher(status: AVAuthorizationStatus.notDetermined,
