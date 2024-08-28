@@ -42,14 +42,14 @@ public class CardFormTableStyledView: CardFormView, CardFormProperties {
     var emailInputEnabled: Bool = true {
         didSet {
             emailInputView.isHidden = !emailInputEnabled
-            threeDSecureAttributeInputsView.isHidden = !emailInputEnabled && !phoneInputEnabled
+            extraAttributeInputsView.isHidden = !emailInputEnabled && !phoneInputEnabled
         }
     }
     var phoneInputEnabled: Bool = true {
         didSet {
             phoneInputView.isHidden = !phoneInputEnabled
             phoneNumberSeparator.isHidden = !emailInputEnabled || !phoneInputEnabled
-            threeDSecureAttributeInputsView.isHidden = !emailInputEnabled && !phoneInputEnabled
+            extraAttributeInputsView.isHidden = !emailInputEnabled && !phoneInputEnabled
         }
     }
 
@@ -68,7 +68,7 @@ public class CardFormTableStyledView: CardFormView, CardFormProperties {
     @IBOutlet private weak var phoneSeparatorConstraint: NSLayoutConstraint!
 
     @IBOutlet private weak var basicInputsContainerView: UIStackView!
-    @IBOutlet private weak var threeDSecureAttributeInputsView: UIStackView!
+    @IBOutlet private weak var extraAttributeInputsView: UIStackView!
     @IBOutlet private weak var additionalInfoLabel: UILabel!
 
     /// Camera scan action
@@ -104,7 +104,7 @@ public class CardFormTableStyledView: CardFormView, CardFormProperties {
         }
 
         basicInputsContainerView.backgroundColor = Style.Color.groupedBackground
-        threeDSecureAttributeInputsView.backgroundColor = Style.Color.groupedBackground
+        extraAttributeInputsView.backgroundColor = Style.Color.groupedBackground
 
         // set images
         brandLogoImage.image = "icon_card".image

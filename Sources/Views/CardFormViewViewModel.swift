@@ -86,8 +86,8 @@ protocol CardFormViewViewModelType {
     /// スキャナ起動をリクエストする
     func requestOcr()
 
-    /// 3DS追加項目の設定を更新する
-    func update(threeDSecureAttributes: [ThreeDSecureAttribute])
+    /// 追加項目の設定を更新する
+    func update(extraAttributes: [ExtraAttribute])
 }
 
 protocol CardFormViewModelDelegate: AnyObject {
@@ -95,8 +95,8 @@ protocol CardFormViewModelDelegate: AnyObject {
     func startScanner()
     /// カメラ許可が必要な内容のアラートを表示する
     func showPermissionAlert()
-    /// 3DSの追加項目をUIに反映する
-    func updateThreeDSecureAttributes(email: ThreeDSecureAttributeEmail?, phone: ThreeDSecureAttributePhone?)
+    /// 追加項目をUIに反映する
+    func updateExtraAttributes(email: ExtraAttributeEmail?, phone: ExtraAttributePhone?)
 }
 
 class CardFormViewViewModel: CardFormViewViewModelType {
@@ -127,7 +127,7 @@ class CardFormViewViewModel: CardFormViewViewModelType {
             checkExpirationValid() &&
             checkCvcValid() &&
             checkCardHolderValid() &&
-            checkThreeDSecureAttributesValid()
+            checkExtraAttributesValid()
     }
 
     var isCardBrandChanged = false
@@ -366,12 +366,12 @@ class CardFormViewViewModel: CardFormViewViewModelType {
         }
     }
 
-    func update(threeDSecureAttributes: [any ThreeDSecureAttribute]) {
-        let email = threeDSecureAttributes.compactMap({ $0 as? ThreeDSecureAttributeEmail }).first
-        let phone = threeDSecureAttributes.compactMap({ $0 as? ThreeDSecureAttributePhone }).first
+    func update(extraAttributes: [any ExtraAttribute]) {
+        let email = extraAttributes.compactMap({ $0 as? ExtraAttributeEmail }).first
+        let phone = extraAttributes.compactMap({ $0 as? ExtraAttributePhone }).first
         emailEnabled = email != nil
         phoneEnabled = phone != nil
-        delegate?.updateThreeDSecureAttributes(email: email, phone: phone)
+        delegate?.updateExtraAttributes(email: email, phone: phone)
     }
 
     // MARK: - Helpers
@@ -405,7 +405,7 @@ class CardFormViewViewModel: CardFormViewViewModelType {
         return false
     }
 
-    private func checkThreeDSecureAttributesValid() -> Bool {
+    private func checkExtraAttributesValid() -> Bool {
         let emailOk = email?.isEmpty == false
         let phoneOk = phoneNumber?.isEmpty == false
         // 電話番号のinputがありvalueがないことから不正な入力とみなす

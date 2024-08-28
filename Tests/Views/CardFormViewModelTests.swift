@@ -341,7 +341,7 @@ class CardFormViewModelTests: XCTestCase {
 
     func testUpdateEmailEmpty() {
         let viewModel = CardFormViewViewModel()
-        viewModel.update(threeDSecureAttributes: [ThreeDSecureAttributeEmail()])
+        viewModel.update(extraAttributes: [ExtraAttributeEmail()])
         let result = viewModel.update(email: "")
 
         switch result {
@@ -359,7 +359,7 @@ class CardFormViewModelTests: XCTestCase {
 
     func testUpdateEmailSuccess() {
         let viewModel = CardFormViewViewModel()
-        viewModel.update(threeDSecureAttributes: [ThreeDSecureAttributeEmail()])
+        viewModel.update(extraAttributes: [ExtraAttributeEmail()])
         let result = viewModel.update(email: "test@example.com")
 
         switch result {
@@ -372,7 +372,7 @@ class CardFormViewModelTests: XCTestCase {
 
     func testUpdatePhoneNumberEmpty() {
         let viewModel = CardFormViewViewModel()
-        viewModel.update(threeDSecureAttributes: [ThreeDSecureAttributePhone()])
+        viewModel.update(extraAttributes: [ExtraAttributePhone()])
         let result = viewModel.updatePhoneNumber(input: "", formattedValue: "")
 
         switch result {
@@ -390,7 +390,7 @@ class CardFormViewModelTests: XCTestCase {
 
     func testUpdatePhoneNumberSuccess() {
         let viewModel = CardFormViewViewModel()
-        viewModel.update(threeDSecureAttributes: [ThreeDSecureAttributePhone()])
+        viewModel.update(extraAttributes: [ExtraAttributePhone()])
         let result = viewModel.updatePhoneNumber(input: "09012345678", formattedValue: "+819012345678")
 
         switch result {
@@ -427,7 +427,7 @@ class CardFormViewModelTests: XCTestCase {
 
     func testIsValidBothEmailAndPhoneDisabled() {
         let viewModel = CardFormViewViewModel()
-        viewModel.update(threeDSecureAttributes: [])
+        viewModel.update(extraAttributes: [])
         _ = viewModel.update(cardNumber: "4242424242424242", separator: "-")
         _ = viewModel.update(expiration: "12/99")
         _ = viewModel.update(cvc: "123")
@@ -439,7 +439,7 @@ class CardFormViewModelTests: XCTestCase {
 
     func testIsValidEmailEnabled() {
         let viewModel = CardFormViewViewModel()
-        viewModel.update(threeDSecureAttributes: [ThreeDSecureAttributeEmail()])
+        viewModel.update(extraAttributes: [ExtraAttributeEmail()])
         _ = viewModel.update(cardNumber: "4242424242424242", separator: "-")
         _ = viewModel.update(expiration: "12/99")
         _ = viewModel.update(cvc: "123")
@@ -452,7 +452,7 @@ class CardFormViewModelTests: XCTestCase {
 
     func testIsValidPhoneEnabled() {
         let viewModel = CardFormViewViewModel()
-        viewModel.update(threeDSecureAttributes: [ThreeDSecureAttributePhone()])
+        viewModel.update(extraAttributes: [ExtraAttributePhone()])
         _ = viewModel.update(cardNumber: "4242424242424242", separator: "-")
         _ = viewModel.update(expiration: "12/99")
         _ = viewModel.update(cvc: "123")
@@ -465,7 +465,7 @@ class CardFormViewModelTests: XCTestCase {
 
     func testIsValidBothEmailAndPhoneEnabled() {
         let viewModel = CardFormViewViewModel()
-        viewModel.update(threeDSecureAttributes: [ThreeDSecureAttributeEmail(), ThreeDSecureAttributePhone()])
+        viewModel.update(extraAttributes: [ExtraAttributeEmail(), ExtraAttributePhone()])
         _ = viewModel.update(cardNumber: "4242424242424242", separator: "-")
         _ = viewModel.update(expiration: "12/99")
         _ = viewModel.update(cvc: "123")
@@ -479,7 +479,7 @@ class CardFormViewModelTests: XCTestCase {
 
     func testIsValidBothEmailAndPhoneEnabledInvalid() {
         let viewModel = CardFormViewViewModel()
-        viewModel.update(threeDSecureAttributes: [ThreeDSecureAttributeEmail(), ThreeDSecureAttributePhone()])
+        viewModel.update(extraAttributes: [ExtraAttributeEmail(), ExtraAttributePhone()])
         _ = viewModel.update(cardNumber: "4242424242424242", separator: "-")
         _ = viewModel.update(expiration: "12/99")
         _ = viewModel.update(cvc: "123")

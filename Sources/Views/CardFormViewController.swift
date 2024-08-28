@@ -58,7 +58,7 @@ public class CardFormViewController: UIViewController {
     private var cardFormView: CardFormView!
     private var presenter: CardFormScreenPresenterType?
     private let errorTranslator = ErrorTranslator.shared
-    private var threeDSecureAttributes: [ThreeDSecureAttribute] = [ThreeDSecureAttributeEmail(), ThreeDSecureAttributePhone()]
+    private var extraAttributes: [ExtraAttribute] = [ExtraAttributeEmail(), ExtraAttributePhone()]
 
     /// CardFormViewController delegate.
     private weak var delegate: CardFormViewControllerDelegate?
@@ -70,15 +70,15 @@ public class CardFormViewController: UIViewController {
     ///   - tenantId: identifier of tenant
     ///   - delegate: delegate of CardFormViewControllerDelegate
     ///   - viewType: card form type
-    ///   - threeDSecureAttributes: attributes for 3DS
+    ///   - extraAttributes: extra attributes for 3-D Secure
     /// - Returns: CardFormViewController
-    @objc(createCardFormViewControllerWithStyle: tenantId: delegate: viewType: threeDSecureAttributes:)
+    @objc(createCardFormViewControllerWithStyle: tenantId: delegate: viewType: extraAttributes:)
     public static func createCardFormViewController(
         style: FormStyle = .defaultStyle,
         tenantId: String? = nil,
         delegate: CardFormViewControllerDelegate,
         viewType: CardFormViewType = .labelStyled,
-        threeDSecureAttributes: [ThreeDSecureAttribute] = [ThreeDSecureAttributeEmail(), ThreeDSecureAttributePhone()]
+        extraAttributes: [ExtraAttribute] = [ExtraAttributeEmail(), ExtraAttributePhone()]
     ) -> CardFormViewController {
 
         let stotyboard = UIStoryboard(name: "CardForm", bundle: .payjpBundle)
@@ -90,7 +90,7 @@ public class CardFormViewController: UIViewController {
         cardFormVc.tenantId = tenantId
         cardFormVc.delegate = delegate
         cardFormVc.cardFormViewType = viewType
-        cardFormVc.threeDSecureAttributes = threeDSecureAttributes
+        cardFormVc.extraAttributes = extraAttributes
         return cardFormVc
     }
 
@@ -276,7 +276,7 @@ public class CardFormViewController: UIViewController {
             cardFormView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             cardFormView.delegate = self
             cardFormView.setupInputAccessoryView(view: accessoryView)
-            cardFormView.apply(threeDSecureAttributes: threeDSecureAttributes)
+            cardFormView.apply(extraAttributes: extraAttributes)
             if let formStyle = formStyle {
                 cardFormView.apply(style: formStyle)
                 submitButton.normalBackgroundColor = formStyle.submitButtonColor

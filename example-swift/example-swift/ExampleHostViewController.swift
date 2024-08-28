@@ -27,8 +27,8 @@ class ExampleHostViewController: UITableViewController {
     }
 
     private func presentTdsAttributeOptions(viewType: CardFormViewType, pushNavigation: Bool) {
-        func showCardForm(attributes: [ThreeDSecureAttribute]) {
-            let cardForm = CardFormViewController.createCardFormViewController(delegate: self, viewType: viewType, threeDSecureAttributes: attributes)
+        func showCardForm(attributes: [ExtraAttribute]) {
+            let cardForm = CardFormViewController.createCardFormViewController(delegate: self, viewType: viewType, extraAttributes: attributes)
             if pushNavigation {
                 self.navigationController?.pushViewController(cardForm, animated: true)
             } else {
@@ -37,15 +37,18 @@ class ExampleHostViewController: UITableViewController {
                 self.present(naviVc, animated: true, completion: nil)
             }
         }
-        let options: [(label: String, attributes: [ThreeDSecureAttribute])] = [
-            ("email and phone", [ThreeDSecureAttributeEmail(), ThreeDSecureAttributePhone()]),
-            ("email", [ThreeDSecureAttributeEmail()]),
-            ("phone", [ThreeDSecureAttributePhone()]),
-            ("email (preset)", [ThreeDSecureAttributeEmail(preset: "test@example.com")]),
-            ("phone (preset)", [ThreeDSecureAttributePhone(presetNumber: "+819012345678", presetRegion: "JP")]),
+        let options: [(label: String, attributes: [ExtraAttribute])] = [
+            ("email and phone", [ExtraAttributeEmail(), ExtraAttributePhone()]),
+            ("email", [ExtraAttributeEmail()]),
+            ("phone", [ExtraAttributePhone()]),
+            ("email (preset)", [ExtraAttributeEmail(preset: "test@example.com")]),
+            // You can pass preset phone number,
+            // by either an international phone number format (e.g. `+819012345678`)
+            // or a local number format (e.g. `09012345678`).
+            ("phone (preset)", [ExtraAttributePhone(presetNumber: "+819012345678", presetRegion: "JP")]),
             ("none", [])
         ]
-        let sheet = UIAlertController(title: "Select 3-D Secure Attributes", message: nil, preferredStyle: .actionSheet)
+        let sheet = UIAlertController(title: "Select Extra Attributes", message: nil, preferredStyle: .actionSheet)
         options.forEach { (label, attrs) in
             let action = UIAlertAction(title: label, style: .default) { _ in
                 showCardForm(attributes: attrs)

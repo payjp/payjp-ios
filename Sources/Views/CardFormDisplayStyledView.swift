@@ -377,8 +377,8 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
                                                     textField: cvcTextField,
                                                     errorLabel: cvcErrorLabel)
         setupAdditionalInfoView()
-        setupCardHolderTdsAttributesView()
-        toggleCardHolderTdsAttributeErrorLabel()
+        setupCardHolderExtraAttributesView()
+        toggleCardHolderExtraAttributeErrorLabel()
 
         formContentStackView.addArrangedSubview(cardNumberFieldContentView)
         formContentStackView.addArrangedSubview(expirationFieldContentView)
@@ -462,12 +462,12 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
         self.additionalInfoView = additionalInfoStackView
     }
 
-    private func setupCardHolderTdsAttributesView() {
+    private func setupCardHolderExtraAttributesView() {
         phoneNumberSeparator = UIView()
         phoneNumberSeparator.backgroundColor = Style.Color.separator
         let cardHolderStackView = UIStackView()
-        let tdsStackView = UIStackView()
-        [cardHolderStackView, tdsStackView].forEach { stackView in
+        let extrasStackView = UIStackView()
+        [cardHolderStackView, extrasStackView].forEach { stackView in
             stackView.axis = .vertical
             stackView.alignment = .leading
             stackView.distribution = .equalSpacing
@@ -476,27 +476,27 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
         }
         cardHolderStackView.addArrangedSubview(cardHolderTextField)
         cardHolderFieldBackground = cardHolderStackView
-        tdsStackView.addArrangedSubview(emailTextField)
-        tdsStackView.addArrangedSubview(phoneNumberSeparator)
-        tdsStackView.addArrangedSubview(phoneNumberTextField)
-        threeDSecureFieldsBackground = tdsStackView
+        extrasStackView.addArrangedSubview(emailTextField)
+        extrasStackView.addArrangedSubview(phoneNumberSeparator)
+        extrasStackView.addArrangedSubview(phoneNumberTextField)
+        threeDSecureFieldsBackground = extrasStackView
 
         let separatorHeight = 1.0 / UIScreen.main.scale
         NSLayoutConstraint.activate([
-            phoneNumberSeparator.leadingAnchor.constraint(equalTo: tdsStackView.leadingAnchor),
-            phoneNumberSeparator.trailingAnchor.constraint(equalTo: tdsStackView.trailingAnchor),
+            phoneNumberSeparator.leadingAnchor.constraint(equalTo: extrasStackView.leadingAnchor),
+            phoneNumberSeparator.trailingAnchor.constraint(equalTo: extrasStackView.trailingAnchor),
             phoneNumberSeparator.heightAnchor.constraint(equalToConstant: separatorHeight),
             cardHolderTextField.leadingAnchor.constraint(equalTo: cardHolderStackView.leadingAnchor,
                                                          constant: inputFieldMargin),
             cardHolderTextField.trailingAnchor.constraint(equalTo: cardHolderStackView.trailingAnchor,
                                                           constant: -inputFieldMargin),
-            emailTextField.leadingAnchor.constraint(equalTo: tdsStackView.leadingAnchor,
+            emailTextField.leadingAnchor.constraint(equalTo: extrasStackView.leadingAnchor,
                                                     constant: inputFieldMargin),
-            emailTextField.trailingAnchor.constraint(equalTo: tdsStackView.trailingAnchor,
+            emailTextField.trailingAnchor.constraint(equalTo: extrasStackView.trailingAnchor,
                                                      constant: -inputFieldMargin),
-            phoneNumberTextField.leadingAnchor.constraint(equalTo: tdsStackView.leadingAnchor,
+            phoneNumberTextField.leadingAnchor.constraint(equalTo: extrasStackView.leadingAnchor,
                                                           constant: inputFieldMargin),
-            phoneNumberTextField.trailingAnchor.constraint(equalTo: tdsStackView.trailingAnchor,
+            phoneNumberTextField.trailingAnchor.constraint(equalTo: extrasStackView.trailingAnchor,
                                                            constant: -inputFieldMargin),
             cardHolderTextField.heightAnchor.constraint(equalToConstant: 44.0),
             emailTextField.heightAnchor.constraint(equalToConstant: 44.0),
@@ -512,7 +512,7 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
         contentStackView.addArrangedSubview(cardHolderStackView)
         contentStackView.addArrangedSubview(cardHolderErrorLabel)
         contentStackView.addArrangedSubview(additionalInfoView)
-        contentStackView.addArrangedSubview(tdsStackView)
+        contentStackView.addArrangedSubview(extrasStackView)
         contentStackView.addArrangedSubview(emailErrorLabel)
         contentStackView.addArrangedSubview(phoneNumberErrorLabel)
 
@@ -522,8 +522,8 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
             phoneNumberErrorLabel.heightAnchor.constraint(equalToConstant: 20.0),
             cardHolderStackView.leadingAnchor.constraint(equalTo: contentStackView.leadingAnchor),
             cardHolderStackView.trailingAnchor.constraint(equalTo: contentStackView.trailingAnchor),
-            tdsStackView.leadingAnchor.constraint(equalTo: contentStackView.leadingAnchor),
-            tdsStackView.trailingAnchor.constraint(equalTo: contentStackView.trailingAnchor)
+            extrasStackView.leadingAnchor.constraint(equalTo: contentStackView.leadingAnchor),
+            extrasStackView.trailingAnchor.constraint(equalTo: contentStackView.trailingAnchor)
         ])
 
         cardHolderFieldContentView = contentStackView
@@ -662,7 +662,7 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
         }
     }
 
-    private func toggleCardHolderTdsAttributeErrorLabel() {
+    private func toggleCardHolderExtraAttributeErrorLabel() {
         // 複数項目のエラーを縦に並べる形なので、エラー文字列がない場合はLabel自体を非表示にする
         cardHolderErrorLabel.isHidden = cardHolderErrorLabel.text?.isEmpty ?? true
         emailErrorLabel.isHidden = emailErrorLabel.text?.isEmpty ?? true

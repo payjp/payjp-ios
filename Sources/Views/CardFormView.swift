@@ -498,8 +498,8 @@ extension CardFormView: CardFormAction {
         cardFormProperties.phoneNumberTextField.inputAccessoryView = view
     }
 
-    public func apply(threeDSecureAttributes: [any ThreeDSecureAttribute]) {
-        viewModel.update(threeDSecureAttributes: threeDSecureAttributes)
+    public func apply(extraAttributes: [any ExtraAttribute]) {
+        viewModel.update(extraAttributes: extraAttributes)
     }
 }
 
@@ -621,7 +621,7 @@ extension CardFormView: CardFormViewModelDelegate {
         showCameraPermissionAlert()
     }
 
-    func updateThreeDSecureAttributes(email: ThreeDSecureAttributeEmail?, phone: ThreeDSecureAttributePhone?) {
+    func updateExtraAttributes(email: ExtraAttributeEmail?, phone: ExtraAttributePhone?) {
         let emailInputEnabled = email != nil
         let phoneInputEnabled = phone != nil
         cardFormProperties.emailInputEnabled = emailInputEnabled

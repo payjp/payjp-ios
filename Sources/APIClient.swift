@@ -51,8 +51,8 @@ import PassKit
     /// - parameter expirationMonth:    Credit card expiration month `01`
     /// - parameter expirationYear:     Credit card expiration year `2020`
     /// - parameter name:               Credit card holder name `TARO YAMADA`
-    /// - parameter email:              Credit card email (3DS Attributes) e.g. `test@example.com`
-    /// - parameter phone:              Credit card phone number (3DS Attributes) E.164  e.g. `+819012345678`
+    /// - parameter email:              Credit card email (Extra Attributes) e.g. `test@example.com`
+    /// - parameter phone:              Credit card phone number (Extra Attributes) E.164  e.g. `+819012345678`
     /// - parameter completion:         completion action
     @nonobjc
     public func createToken(
