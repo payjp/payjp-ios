@@ -26,6 +26,8 @@ import Foundation
     public let liveMode: Bool
     public let createdAt: Date
     public let threeDSecureStatus: PAYThreeDSecureStatus?
+    public let email: String?
+    public let phone: String?
     public var rawValue: [String: Any]?
 
     // MARK: - Decodable
@@ -41,6 +43,8 @@ import Foundation
         case liveMode = "livemode"
         case createdAt = "created"
         case threeDSecureStatus = "three_d_secure_status"
+        case email
+        case phone
     }
 
     public init(from decoder: Decoder) throws {
@@ -59,6 +63,8 @@ import Foundation
         } else {
             threeDSecureStatus = nil
         }
+        email = try container.decodeIfPresent(String.self, forKey: .email)
+        phone = try container.decodeIfPresent(String.self, forKey: .phone)
     }
 
     public init(identifier: String,
@@ -71,6 +77,8 @@ import Foundation
                 liveMode: Bool,
                 createAt: Date,
                 threeDSecureStatus: PAYThreeDSecureStatus?,
+                email: String?,
+                phone: String?,
                 rawValue: [String: Any]? = nil ) {
         self.identifer = identifier
         self.name = name
@@ -82,6 +90,8 @@ import Foundation
         self.liveMode = liveMode
         self.createdAt = createAt
         self.threeDSecureStatus = threeDSecureStatus
+        self.email = email
+        self.phone = phone
         self.rawValue = rawValue
     }
 }

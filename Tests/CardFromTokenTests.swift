@@ -23,10 +23,16 @@ class CardFromTokenTests: XCTestCase {
 
     func testCardProperties() {
         XCTAssertEqual(card.brand, "Visa")
-    }
-
-    func testNameIsNullable() {
-        XCTAssertNil(card.name)
+        XCTAssertEqual(card.identifer, "car_202e275bfde8d17eb2e0444ff767")
+        XCTAssertEqual(card.last4Number, "0300")
+        XCTAssertEqual(card.brand, "Visa")
+        XCTAssertEqual(card.expirationMonth, 12)
+        XCTAssertEqual(card.expirationYear, 2018)
+        XCTAssertEqual(card.fingerprint, "35c45684bce0412a22a515f432d40be8")
+        XCTAssertEqual(card.name, "TARO YAMADA")
+        XCTAssertEqual(card.threeDSecureStatus, PAYThreeDSecureStatus.verified)
+        XCTAssertEqual(card.email, "test@example.com")
+        XCTAssertEqual(card.phone, "+819012345678")
     }
 
     // swiftlint:disable force_cast

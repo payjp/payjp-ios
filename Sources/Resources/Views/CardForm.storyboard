@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1aI-eK-01f">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1aI-eK-01f">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,10 +17,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="61c-5M-xI7">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                <rect key="frame" x="0.0" y="92" width="414" height="770"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="blx-Ud-4tL">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="786"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="694"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="afn-Xo-Kwx">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="313.5"/>
@@ -66,7 +66,7 @@
                                         </constraints>
                                     </scrollView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1NL-8f-08o" userLabel="Bottom View">
-                                        <rect key="frame" x="0.0" y="786" width="414" height="76"/>
+                                        <rect key="frame" x="0.0" y="694" width="414" height="76"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yza-qd-fV7" customClass="ActionButton" customModule="PAYJP">
                                                 <rect key="frame" x="36" y="16" width="342" height="44"/>
@@ -90,23 +90,24 @@
                                 </subviews>
                             </stackView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="uGj-64-kZm">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="92" width="414" height="770"/>
                             </activityIndicatorView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5fp-Ih-ELw" customClass="ErrorView" customModule="PAYJP">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="92" width="414" height="770"/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="I2t-0Q-mnp"/>
+                        <keyboardLayoutGuide key="keyboard" id="Q6e-dV-g67"/>
                         <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="uGj-64-kZm" firstAttribute="top" secondItem="I2t-0Q-mnp" secondAttribute="top" id="0Hx-7U-5WH"/>
-                            <constraint firstItem="61c-5M-xI7" firstAttribute="top" secondItem="bes-nP-2cY" secondAttribute="top" id="1jd-II-XB0"/>
-                            <constraint firstItem="61c-5M-xI7" firstAttribute="bottom" secondItem="I2t-0Q-mnp" secondAttribute="bottom" id="3RT-h0-evd"/>
+                            <constraint firstItem="61c-5M-xI7" firstAttribute="top" secondItem="I2t-0Q-mnp" secondAttribute="top" id="1jd-II-XB0"/>
                             <constraint firstItem="I2t-0Q-mnp" firstAttribute="trailing" secondItem="uGj-64-kZm" secondAttribute="trailing" id="4YO-B8-RNn"/>
                             <constraint firstItem="I2t-0Q-mnp" firstAttribute="bottom" secondItem="uGj-64-kZm" secondAttribute="bottom" id="Bdk-k5-t0H"/>
                             <constraint firstItem="5fp-Ih-ELw" firstAttribute="top" secondItem="I2t-0Q-mnp" secondAttribute="top" id="Eye-02-PG6"/>
                             <constraint firstItem="I2t-0Q-mnp" firstAttribute="trailing" secondItem="5fp-Ih-ELw" secondAttribute="trailing" id="GWQ-L3-Na2"/>
                             <constraint firstItem="61c-5M-xI7" firstAttribute="trailing" secondItem="I2t-0Q-mnp" secondAttribute="trailing" id="Kqa-yG-JDf"/>
+                            <constraint firstItem="Q6e-dV-g67" firstAttribute="top" secondItem="61c-5M-xI7" secondAttribute="bottom" id="fxZ-0U-lbe"/>
                             <constraint firstItem="uGj-64-kZm" firstAttribute="leading" secondItem="I2t-0Q-mnp" secondAttribute="leading" id="mRa-tP-wmA"/>
                             <constraint firstItem="5fp-Ih-ELw" firstAttribute="leading" secondItem="I2t-0Q-mnp" secondAttribute="leading" id="moS-yQ-F4t"/>
                             <constraint firstItem="5fp-Ih-ELw" firstAttribute="bottom" secondItem="I2t-0Q-mnp" secondAttribute="bottom" id="rYu-K4-LrX"/>
@@ -140,7 +141,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1aI-eK-01f" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ZJm-uP-Pni">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

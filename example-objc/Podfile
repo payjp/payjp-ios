@@ -1,8 +1,9 @@
-platform :ios, '10.0'
+platform :ios, '12.0'
 use_frameworks!
 
 target 'example-objc' do
 #  pod 'PAYJP'
   pod 'PAYJP', :path => '../'
-  pod 'CardIO'
+  # NOTE: if you need to scan card, add CardIO dependency like below
+  # pod 'CardIO'
 end

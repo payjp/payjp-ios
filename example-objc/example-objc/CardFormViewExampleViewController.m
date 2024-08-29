@@ -19,8 +19,6 @@
 @property(weak, nonatomic) IBOutlet UITableViewCell *validateAndCreateTokenCell;
 @property(weak, nonatomic) IBOutlet UITextField *selectColorField;
 
-- (IBAction)cardHolderSwitchChanged:(id)sender;
-
 @property(strong, nonatomic) PAYAPIClient *payjpClient;
 
 @property(strong, nonatomic) NSArray *list;
@@ -153,14 +151,14 @@
   [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
   // Create Token
-  if (indexPath.section == 1 && indexPath.row == 1) {
+  if (indexPath.section == 1 && indexPath.row == 0) {
     if (!self.cardFormView.isValid) {
       return;
     }
     [self createToken];
   }
   // Valdate and Create Token
-  if (indexPath.section == 1 && indexPath.row == 2) {
+  if (indexPath.section == 1 && indexPath.row == 1) {
     BOOL isValid = [self.cardFormView validateCardForm];
     if (isValid) {
       [self createToken];
@@ -245,10 +243,6 @@
 
 - (void)formInputDoneTappedIn:(UIView *)cardFormView {
   [self createToken];
-}
-
-- (IBAction)cardHolderSwitchChanged:(UISwitch *)sender {
-  [self.cardFormView setCardHolderRequired:sender.isOn];
 }
 
 - (void)handleTokenOperationStatusChange:(NSNotification *)notification {

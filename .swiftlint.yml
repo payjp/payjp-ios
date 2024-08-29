@@ -3,6 +3,7 @@ excluded:
   - example-objc
   - example-swift
   - vendor/bundle/ruby/
+  - .build
 disabled_rules:
   - xctfail_message
   - identifier_name

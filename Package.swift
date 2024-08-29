@@ -9,7 +9,9 @@ let package = Package(
     products: [
         .library(name: "PAYJP", targets: ["PAYJP"])
     ],
-    dependencies: [],
+    dependencies: [
+        .package(url: "https://github.com/marmelroy/PhoneNumberKit.git", from: "4.0.0")
+    ],
     targets: [
         .target(
             name: "PAYJP-ObjC",
@@ -19,7 +21,10 @@ let package = Package(
         ),
         .target(
             name: "PAYJP",
-            dependencies: ["PAYJP-ObjC"],
+            dependencies: [
+                "PAYJP-ObjC",
+                .product(name: "PhoneNumberKit", package: "PhoneNumberKit")
+            ],
             path: "Sources",
             exclude: [
                 "ObjC",

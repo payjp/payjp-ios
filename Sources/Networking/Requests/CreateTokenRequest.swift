@@ -23,33 +23,19 @@ struct CreateTokenRequest: BaseRequest {
 
         parameters["card[name]"] = name
         parameters["tenant"] = tenantId
+        parameters["card[email]"] = email
+        parameters["card[phone]"] = phone
         return parameters
     }
 
     // MARK: - Data
 
-    private let cardNumber: String
-    private let cvc: String
-    private let expirationMonth: String
-    private let expirationYear: String
-    private let name: String?
-    private let tenantId: String?
-
-    // MARK: - Lifecycle
-
-    init(
-        cardNumber: String,
-        cvc: String,
-        expirationMonth: String,
-        expirationYear: String,
-        name: String?,
-        tenantId: String?
-    ) {
-        self.cardNumber = cardNumber
-        self.cvc = cvc
-        self.expirationMonth = expirationMonth
-        self.expirationYear = expirationYear
-        self.name = name
-        self.tenantId = tenantId
-    }
+    let cardNumber: String
+    let cvc: String
+    let expirationMonth: String
+    let expirationYear: String
+    let name: String?
+    let tenantId: String?
+    let email: String?
+    let phone: String?
 }

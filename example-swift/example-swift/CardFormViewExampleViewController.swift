@@ -34,7 +34,6 @@ class CardFormVieExampleViewController: UITableViewController, CardFormViewDeleg
         let frame: CGRect = CGRect(x: x, y: y, width: width, height: height)
         cardFormView = CardFormTableStyledView(frame: frame)
         cardFormView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        cardFormView.setCardHolderRequired(true)
         cardFormView.delegate = self
 
         self.formContentView.addSubview(cardFormView)
@@ -118,14 +117,14 @@ class CardFormVieExampleViewController: UITableViewController, CardFormViewDeleg
         tableView.deselectRow(at: indexPath, animated: true)
 
         // Create Token
-        if indexPath.section == 1 && indexPath.row == 1 {
+        if indexPath.section == 1 && indexPath.row == 0 {
             if !self.cardFormView.isValid {
                 return
             }
             createToken()
         }
         // Valdate and Create Token
-        if indexPath.section == 1 && indexPath.row == 2 {
+        if indexPath.section == 1 && indexPath.row == 1 {
             let isValid = self.cardFormView.validateCardForm()
             if isValid {
                 createToken()
@@ -163,11 +162,6 @@ class CardFormVieExampleViewController: UITableViewController, CardFormViewDeleg
 
     func formInputDoneTapped(in cardFormView: UIView) {
         self.createToken()
-    }
-
-    @IBAction func cardHolderSwitchChanged(_ sender: UISwitch) {
-        self.cardFormView.setCardHolderRequired(sender.isOn)
-        self.tableView.reloadData()
     }
 
     @objc private func handleTokenOperationStatusChange(notification: Notification) {

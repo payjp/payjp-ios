@@ -15,18 +15,25 @@
 "payjp_card_form_expiration_label" = "有効期限";
 "payjp_card_form_cvc_label" = "セキュリティコード";
 "payjp_card_form_holder_name_label" = "カード名義";
+"payjp_card_form_email_label" = "メールアドレス";
+"payjp_card_form_phone_number_label" = "電話番号";
+// 3D Secure additional information
+"payjp_card_form_additional_info_label" = "追加情報";
+"payjp_card_form_additional_info_required_at_least_one" = "※1つ以上入力してください。";
 
 // table style
 "payjp_card_form_number_placeholder" = "カード番号";
 "payjp_card_form_expiration_placeholder" = "有効期限 月/年";
 "payjp_card_form_cvc_placeholder" = "セキュリティコード";
 "payjp_card_form_holder_name_placeholder" = "カード名義";
+"payjp_card_form_email_placeholder" = "メールアドレス";
 
 // label style
 "payjp_card_form_label_style_number_placeholder" = "カード番号";
 "payjp_card_form_label_style_expiration_placeholder" = "月/年";
 "payjp_card_form_label_style_cvc_placeholder" = "000";
-"payjp_card_form_label_style_holder_name_placeholder" = "TARO TANAKA";
+"payjp_card_form_label_style_holder_name_placeholder" = "TARO PAY";
+"payjp_card_form_label_style_email_placeholder" = "test@example.com";
 
 // validation
 "payjp_card_form_error_no_number" = "カード番号を入力してください";
@@ -37,6 +44,9 @@
 "payjp_card_form_error_no_cvc" = "セキュリティコードを入力してください";
 "payjp_card_form_error_invalid_cvc" = "正しいセキュリティコードを入力してください";
 "payjp_card_form_error_no_holder_name" = "カード名義を入力してください";
+"payjp_card_form_error_no_email" = "メールアドレスを入力してください";
+"payjp_card_form_error_no_phone_number" = "電話番号を入力してください";
+"payjp_card_form_error_invalid_phone_number" = "正しい電話番号を入力してください";
 
 // card form screen
 "payjp_card_form_screen_submit_button" = "カードを登録";

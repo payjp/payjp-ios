@@ -15,45 +15,61 @@ public class CardFormTableStyledView: CardFormView, CardFormProperties {
 
     // MARK: CardFormView
 
-    /// Card holder input field enabled.
-    @IBInspectable var isHolderRequired: Bool = false {
-        didSet {
-            holderContainer.isHidden = !isHolderRequired
-            holderSeparator.isHidden = !isHolderRequired
-            viewModel.update(isCardHolderEnabled: isHolderRequired)
-            notifyIsValidChanged()
-        }
-    }
-
     @IBOutlet weak var brandLogoImage: UIImageView!
     @IBOutlet weak var cvcIconImage: UIImageView!
-    @IBOutlet weak var holderContainer: UIStackView!
     @IBOutlet weak var ocrButton: UIButton!
 
     @IBOutlet weak var cardNumberTextField: FormTextField!
     @IBOutlet weak var expirationTextField: FormTextField!
     @IBOutlet weak var cvcTextField: FormTextField!
     @IBOutlet weak var cardHolderTextField: FormTextField!
+    @IBOutlet weak var emailTextField: FormTextField!
+    @IBOutlet weak var phoneNumberTextField: PresetPhoneNumberTextField!
 
     @IBOutlet weak var cardNumberErrorLabel: UILabel!
     @IBOutlet weak var expirationErrorLabel: UILabel!
     @IBOutlet weak var cvcErrorLabel: UILabel!
     @IBOutlet weak var cardHolderErrorLabel: UILabel!
+    @IBOutlet weak var emailErrorLabel: UILabel!
+    @IBOutlet weak var phoneNumberErrorLabel: UILabel!
+    @IBOutlet weak var additionalInfoView: UIView!
+    @IBOutlet weak var additionalInfoNoteLabel: UILabel!
 
     var inputTextColor: UIColor = Style.Color.blue
     var inputTintColor: UIColor = Style.Color.blue
     var inputTextErrorColorEnabled: Bool = false
     var cardNumberSeparator: String = "-"
+    var emailInputEnabled: Bool = true {
+        didSet {
+            emailInputView.isHidden = !emailInputEnabled
+            extraAttributeInputsView.isHidden = !emailInputEnabled && !phoneInputEnabled
+        }
+    }
+    var phoneInputEnabled: Bool = true {
+        didSet {
+            phoneInputView.isHidden = !phoneInputEnabled
+            phoneNumberSeparator.isHidden = !emailInputEnabled || !phoneInputEnabled
+            extraAttributeInputsView.isHidden = !emailInputEnabled && !phoneInputEnabled
+        }
+    }
 
     // MARK: Private
 
+    @IBOutlet private weak var emailInputView: UIView!
+    @IBOutlet private weak var phoneInputView: UIView!
     @IBOutlet private weak var expirationSeparator: UIView!
     @IBOutlet private weak var cvcSeparator: UIView!
     @IBOutlet private weak var holderSeparator: UIView!
+    @IBOutlet private weak var phoneNumberSeparator: UIView!
 
     @IBOutlet private weak var expirationSeparatorConstraint: NSLayoutConstraint!
     @IBOutlet private weak var cvcSeparatorConstraint: NSLayoutConstraint!
     @IBOutlet private weak var holderSeparatorConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var phoneSeparatorConstraint: NSLayoutConstraint!
+
+    @IBOutlet private weak var basicInputsContainerView: UIStackView!
+    @IBOutlet private weak var extraAttributeInputsView: UIStackView!
+    @IBOutlet private weak var additionalInfoLabel: UILabel!
 
     /// Camera scan action
     ///
@@ -87,7 +103,8 @@ public class CardFormTableStyledView: CardFormView, CardFormProperties {
             addSubview(view)
         }
 
-        backgroundColor = Style.Color.groupedBackground
+        basicInputsContainerView.backgroundColor = Style.Color.groupedBackground
+        extraAttributeInputsView.backgroundColor = Style.Color.groupedBackground
 
         // set images
         brandLogoImage.image = "icon_card".image
@@ -102,15 +119,23 @@ public class CardFormTableStyledView: CardFormView, CardFormProperties {
         // separatorのheightを 0.5 で指定すると太さが統一ではなくなってしまうためscaleを使って対応
         // cf. https://stackoverflow.com/a/21553495
         let height = 1.0 / UIScreen.main.scale
-        expirationSeparatorConstraint.constant = height
-        cvcSeparatorConstraint.constant = height
-        holderSeparatorConstraint.constant = height
+        [
+            expirationSeparatorConstraint,
+            cvcSeparatorConstraint,
+            holderSeparatorConstraint,
+            phoneSeparatorConstraint
+        ].forEach { $0?.constant = height }
 
-        expirationSeparator.backgroundColor = Style.Color.separator
-        cvcSeparator.backgroundColor = Style.Color.separator
-        holderSeparator.backgroundColor = Style.Color.separator
+        [
+            expirationSeparator,
+            cvcSeparator,
+            holderSeparator,
+            phoneNumberSeparator
+        ].forEach { $0?.backgroundColor = Style.Color.separator }
 
         setupInputFields()
+        additionalInfoLabel.text = "payjp_card_form_additional_info_label".localized
+        additionalInfoNoteLabel.text = "payjp_card_form_additional_info_required_at_least_one".localized
         apply(style: .defaultStyle)
 
         cardFormProperties = self
@@ -137,8 +162,15 @@ public class CardFormTableStyledView: CardFormView, CardFormProperties {
         cardHolderTextField.attributedPlaceholder = NSAttributedString(
             string: "payjp_card_form_holder_name_placeholder".localized,
             attributes: [NSAttributedString.Key.foregroundColor: Style.Color.placeholderText])
+        emailTextField.attributedPlaceholder = NSAttributedString(
+            string: "payjp_card_form_email_placeholder".localized,
+            attributes: [NSAttributedString.Key.foregroundColor: Style.Color.placeholderText])
+        phoneNumberTextField.withFlag = true
+        phoneNumberTextField.withDefaultPickerUI = true
+        phoneNumberTextField.withExamplePlaceholder = true
+        phoneNumberTextField.withPrefix = true
 
-        [cardNumberTextField, expirationTextField, cvcTextField, cardHolderTextField].forEach { textField in
+        [cardNumberTextField, expirationTextField, cvcTextField, cardHolderTextField, emailTextField, phoneNumberTextField].forEach { textField in
             guard let textField = textField else { return }
             textField.delegate = self
             textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
@@ -155,23 +187,28 @@ extension CardFormTableStyledView: CardFormStylable {
         self.inputTintColor = tintColor
 
         // input text
-        cardNumberTextField.textColor = inputTextColor
-        expirationTextField.textColor = inputTextColor
-        cvcTextField.textColor = inputTextColor
-        cardHolderTextField.textColor = inputTextColor
-        // error text
-        cardNumberErrorLabel.textColor = errorTextColor
-        expirationErrorLabel.textColor = errorTextColor
-        cvcErrorLabel.textColor = errorTextColor
-        cardHolderErrorLabel.textColor = errorTextColor
-        // tint
-        cardNumberTextField.tintColor = tintColor
-        expirationTextField.tintColor = tintColor
-        cvcTextField.tintColor = tintColor
-        cardHolderTextField.tintColor = tintColor
-    }
+        [
+            cardNumberTextField,
+            expirationTextField,
+            cvcTextField,
+            cardHolderTextField,
+            emailTextField,
+            phoneNumberTextField
+        ].forEach { textField in
+            textField?.textColor = inputTextColor
+            textField?.tintColor = tintColor
+        }
 
-    public func setCardHolderRequired(_ required: Bool) {
-        isHolderRequired = required
+        // error text
+        [
+            cardNumberErrorLabel,
+            expirationErrorLabel,
+            cvcErrorLabel,
+            cardHolderErrorLabel,
+            emailErrorLabel,
+            phoneNumberErrorLabel
+        ].forEach { label in
+            label?.textColor = errorTextColor
+        }
     }
 }

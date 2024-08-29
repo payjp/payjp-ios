@@ -10,11 +10,14 @@
 		32167E0727B1C55800E4BCD5 /* OHHTTPStubs.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32167E0627B1C55800E4BCD5 /* OHHTTPStubs.xcframework */; };
 		322BD1D6225C83CA00D83B5E /* JSONDecoder+PAYJP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322BD1D5225C83CA00D83B5E /* JSONDecoder+PAYJP.swift */; };
 		325E36B1233484C90037E6BE /* UIColor+PAYJP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325E36B0233484C90037E6BE /* UIColor+PAYJP.swift */; };
+		327C806E2C73D1F700CADF44 /* ExtraAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327C806D2C73D1F700CADF44 /* ExtraAttribute.swift */; };
+		328622662C6C483F00DEA55B /* PhoneNumberKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 328622622C6C42CB00DEA55B /* PhoneNumberKit.xcframework */; };
 		3289C9D123EACB6D008FFBC1 /* ClientInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3289C9D023EACB6D008FFBC1 /* ClientInfo.swift */; };
 		3289C9D323EBFC87008FFBC1 /* ClientInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3289C9D223EBFC87008FFBC1 /* ClientInfoTests.swift */; };
 		32A6F614239608DD00747477 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A6F613239608DD00747477 /* ActionButton.swift */; };
 		32A6F6162396093B00747477 /* Radius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A6F6152396093B00747477 /* Radius.swift */; };
 		32A8E4CC23B4616A001D1C38 /* JSONDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A8E4CB23B4616A001D1C38 /* JSONDecodable.swift */; };
+		32F227B22C768CCB00259287 /* PresetPhoneNumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F227B12C768CCB00259287 /* PresetPhoneNumberTextField.swift */; };
 		4421F6662591CCAC0001DA30 /* FinishTokenThreeDSecureRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4421F6652591CCAC0001DA30 /* FinishTokenThreeDSecureRequest.swift */; };
 		443AD9AF255A3D3800C13CB0 /* CardIOProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 443AD9AC255A3D3800C13CB0 /* CardIOProxy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		443AD9B0255A3D3800C13CB0 /* PAYJP.h in Headers */ = {isa = PBXBuildFile; fileRef = 443AD9AD255A3D3800C13CB0 /* PAYJP.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -148,15 +151,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		320B38E92C6E3886002D1BFB /* PAYJPTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = PAYJPTests.xctestplan; path = Tests/PAYJPTests.xctestplan; sourceTree = "<group>"; };
 		32167E0627B1C55800E4BCD5 /* OHHTTPStubs.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = OHHTTPStubs.xcframework; path = Carthage/Build/OHHTTPStubs.xcframework; sourceTree = "<group>"; };
 		322BD1D5225C83CA00D83B5E /* JSONDecoder+PAYJP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+PAYJP.swift"; sourceTree = "<group>"; };
 		325E36AE233482AC0037E6BE /* FormStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormStyle.swift; sourceTree = "<group>"; };
 		325E36B0233484C90037E6BE /* UIColor+PAYJP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+PAYJP.swift"; sourceTree = "<group>"; };
+		327C806D2C73D1F700CADF44 /* ExtraAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraAttribute.swift; sourceTree = "<group>"; };
+		328622622C6C42CB00DEA55B /* PhoneNumberKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = PhoneNumberKit.xcframework; path = Carthage/Build/PhoneNumberKit.xcframework; sourceTree = "<group>"; };
 		3289C9D023EACB6D008FFBC1 /* ClientInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientInfo.swift; sourceTree = "<group>"; };
 		3289C9D223EBFC87008FFBC1 /* ClientInfoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientInfoTests.swift; sourceTree = "<group>"; };
 		32A6F613239608DD00747477 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		32A6F6152396093B00747477 /* Radius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Radius.swift; sourceTree = "<group>"; };
 		32A8E4CB23B4616A001D1C38 /* JSONDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecodable.swift; sourceTree = "<group>"; };
+		32F227B12C768CCB00259287 /* PresetPhoneNumberTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetPhoneNumberTextField.swift; sourceTree = "<group>"; };
 		4421F6652591CCAC0001DA30 /* FinishTokenThreeDSecureRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishTokenThreeDSecureRequest.swift; sourceTree = "<group>"; };
 		443AD9AC255A3D3800C13CB0 /* CardIOProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOProxy.h; sourceTree = "<group>"; };
 		443AD9AD255A3D3800C13CB0 /* PAYJP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYJP.h; sourceTree = "<group>"; };
@@ -296,6 +303,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				32167E0727B1C55800E4BCD5 /* OHHTTPStubs.xcframework in Frameworks */,
+				328622662C6C483F00DEA55B /* PhoneNumberKit.xcframework in Frameworks */,
 				615AFF661C8C74A1003FB86F /* PAYJP.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -350,6 +358,7 @@
 		615AFF511C8C74A1003FB86F = {
 			isa = PBXGroup;
 			children = (
+				320B38E92C6E3886002D1BFB /* PAYJPTests.xctestplan */,
 				C6E00B0C1E1F505600C101B0 /* Frameworks */,
 				615AFF5C1C8C74A1003FB86F /* Products */,
 				615AFF5D1C8C74A1003FB86F /* Sources */,
@@ -600,6 +609,8 @@
 				ED3FEF6E22EFE71900FA73BF /* FormError.swift */,
 				325E36AE233482AC0037E6BE /* FormStyle.swift */,
 				ED6DF6F4245ADC9C009E2EF3 /* FormTextField.swift */,
+				327C806D2C73D1F700CADF44 /* ExtraAttribute.swift */,
+				32F227B12C768CCB00259287 /* PresetPhoneNumberTextField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -616,6 +627,7 @@
 		C6E00B0C1E1F505600C101B0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				328622622C6C42CB00DEA55B /* PhoneNumberKit.xcframework */,
 				32167E0627B1C55800E4BCD5 /* OHHTTPStubs.xcframework */,
 				C6E00B0D1E1F505600C101B0 /* OHHTTPStubs.framework */,
 			);
@@ -874,6 +886,7 @@
 				444052DF2554ED2500CBEEAE /* CardIOCardParams.m in Sources */,
 				ED31B0822398E9F000DDFFE5 /* CardFormInput.swift in Sources */,
 				615AFF761C8C76E2003FB86F /* APIClient.swift in Sources */,
+				327C806E2C73D1F700CADF44 /* ExtraAttribute.swift in Sources */,
 				BE0203E9231F8DCB00FE5635 /* StringProtocol+PAYJP.swift in Sources */,
 				EDA0E4122435E8AA0083A5E0 /* ThreeDSecureStatus.swift in Sources */,
 				EDCF722D22F935D400272C10 /* Token.swift in Sources */,
@@ -905,6 +918,7 @@
 				ED31B07E2397C6E800DDFFE5 /* CardFormScreenPresenter.swift in Sources */,
 				EDA3EE9622E1C26100D9A6C9 /* CvcFormatter.swift in Sources */,
 				ED2ECF84237E9E240066D6C2 /* CardFormViewController.swift in Sources */,
+				32F227B22C768CCB00259287 /* PresetPhoneNumberTextField.swift in Sources */,
 				ED6DF6F7245BB9B1009E2EF3 /* CardFormDisplayStyledView.swift in Sources */,
 				BE21782022E82B820098128D /* ParametersSerialization.swift in Sources */,
 				ED3DB9E0243ACCBE0065FC33 /* Mock.swift in Sources */,
@@ -1014,7 +1028,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-fembed-bitcode";
@@ -1070,7 +1084,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_CFLAGS = "-fembed-bitcode";
 				SDKROOT = iphoneos;
@@ -1094,6 +1108,11 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/Carthage/Build",
+					"$(SRCROOT)/Carthage/Build/iOS",
+				);
 				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
 				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -1120,6 +1139,11 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/Carthage/Build",
+					"$(SRCROOT)/Carthage/Build/iOS",
+				);
 				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
 				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -1140,9 +1164,12 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 8ZAC8P584F;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/Carthage/Build",
+					"$(SRCROOT)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Tests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1162,9 +1189,12 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 8ZAC8P584F;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/Carthage/Build",
+					"$(SRCROOT)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Tests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

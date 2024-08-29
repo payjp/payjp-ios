@@ -16,7 +16,10 @@ class CardFormScreenPresenterTests: XCTestCase {
                              expirationMonth: "4",
                              expirationYear: "20",
                              cvc: "123",
-                             cardHolder: "waka")
+                             cardHolder: "waka",
+                             email: "test@example.com",
+                             phoneNumber: "+819012345678"
+        )
     }
 
     private func mockToken(tdsStatus: PAYThreeDSecureStatus? = nil) -> Token {
@@ -29,7 +32,9 @@ class CardFormScreenPresenterTests: XCTestCase {
                         fingerprint: "abcdefg",
                         liveMode: false,
                         createAt: Date(),
-                        threeDSecureStatus: tdsStatus)
+                        threeDSecureStatus: tdsStatus,
+                        email: "test@example.com",
+                        phone: "+819012345678")
         let token = Token(identifier: "token_id",
                           livemode: false,
                           used: false,

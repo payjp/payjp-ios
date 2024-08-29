@@ -68,7 +68,9 @@ class CardFormScreenPresenter: CardFormScreenPresenterType {
                                  expirationMonth: formInput.expirationMonth,
                                  expirationYear: formInput.expirationYear,
                                  name: formInput.cardHolder,
-                                 tenantId: tenantId) { [weak self] result in
+                                 tenantId: tenantId,
+                                 email: formInput.email,
+                                 phone: formInput.phoneNumber) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let token):

@@ -22,7 +22,9 @@ class ThreeDSecureProcessHandlerTests: XCTestCase {
                         fingerprint: "abcdefg",
                         liveMode: false,
                         createAt: Date(),
-                        threeDSecureStatus: tdsStatus)
+                        threeDSecureStatus: tdsStatus,
+                        email: "test@example.com",
+                        phone: "+919012345678")
         let token = Token(identifier: "tok_123",
                           livemode: false,
                           used: false,

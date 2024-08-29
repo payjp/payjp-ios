@@ -46,20 +46,28 @@
 }
 
 - (void)pushCardFormWithViewType:(CardFormViewType)viewType {
+  PAYExtraAttributeEmail *email = [[PAYExtraAttributeEmail alloc] initWithPreset:nil];
+  PAYExtraAttributePhone *phone = [[PAYExtraAttributePhone alloc] initWithPresetNumber:nil
+                                                                          presetRegion:nil];
   PAYCardFormViewController *cardFormVc =
       [PAYCardFormViewController createCardFormViewControllerWithStyle:PAYCardFormStyle.defaultStyle
                                                               tenantId:nil
                                                               delegate:self
-                                                              viewType:viewType];
+                                                              viewType:viewType
+                                                       extraAttributes:@[ email, phone ]];
   [self.navigationController pushViewController:cardFormVc animated:YES];
 }
 
 - (void)presentCardFormWithViewType:(CardFormViewType)viewType {
+  PAYExtraAttributeEmail *email = [[PAYExtraAttributeEmail alloc] initWithPreset:nil];
+  PAYExtraAttributePhone *phone = [[PAYExtraAttributePhone alloc] initWithPresetNumber:nil
+                                                                          presetRegion:nil];
   PAYCardFormViewController *cardFormVc =
       [PAYCardFormViewController createCardFormViewControllerWithStyle:PAYCardFormStyle.defaultStyle
                                                               tenantId:nil
                                                               delegate:self
-                                                              viewType:viewType];
+                                                              viewType:viewType
+                                                       extraAttributes:@[ email, phone ]];
   UINavigationController *naviVc =
       [UINavigationController.new initWithRootViewController:cardFormVc];
   naviVc.presentationController.delegate = cardFormVc;
@@ -82,7 +90,11 @@
         // pop
         [wself.navigationController popViewControllerAnimated:YES];
         if (wself.token != nil) {
-          [wself showToken:wself.token];
+          [wself.navigationController
+              dismissViewControllerAnimated:YES
+                                 completion:^{
+                                   [wself.navigationController showToken:wself.token];
+                                 }];
         }
 
         // dismiss

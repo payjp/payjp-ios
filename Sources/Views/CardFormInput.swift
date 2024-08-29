@@ -14,4 +14,6 @@ struct CardFormInput {
     let expirationYear: String
     let cvc: String
     let cardHolder: String?
+    let email: String?
+    let phoneNumber: String?
 }

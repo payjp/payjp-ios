@@ -52,10 +52,18 @@ protocol CardFormViewViewModelType {
     /// - Returns: 入力結果
     func update(cardHolder: String?) -> Result<String, FormError>
 
-    /// カード名義入力の有効を更新する
+    /// メールアドレスの入力値を更新する
     ///
-    /// - Parameter isCardHolderEnabled: true 有効にする
-    func update(isCardHolderEnabled: Bool)
+    /// - Parameter email: メールアドレス
+    /// - Returns: 入力結果
+    func update(email: String?) -> Result<String?, FormError>
+
+    /// 電話番号の入力値を更新する
+    ///
+    /// - Parameter input: 入力値
+    /// - Parameter formattedValue: E 164でフォーマットされた値
+    /// - Returns: 入力結果
+    func updatePhoneNumber(input: String?, formattedValue: String?) -> Result<String?, FormError>
 
     /// トークンを生成する
     ///
@@ -77,6 +85,9 @@ protocol CardFormViewViewModelType {
 
     /// スキャナ起動をリクエストする
     func requestOcr()
+
+    /// 追加項目の設定を更新する
+    func update(extraAttributes: [ExtraAttribute])
 }
 
 protocol CardFormViewModelDelegate: AnyObject {
@@ -84,6 +95,8 @@ protocol CardFormViewModelDelegate: AnyObject {
     func startScanner()
     /// カメラ許可が必要な内容のアラートを表示する
     func showPermissionAlert()
+    /// 追加項目をUIに反映する
+    func updateExtraAttributes(email: ExtraAttributeEmail?, phone: ExtraAttributePhone?)
 }
 
 class CardFormViewViewModel: CardFormViewViewModelType {
@@ -103,14 +116,18 @@ class CardFormViewViewModel: CardFormViewViewModelType {
     private var monthYear: (month: String, year: String)?
     private var cvc: String?
     private var cardHolder: String?
-
-    private var isCardHolderEnabled: Bool = false
+    private var email: String?
+    private var phoneNumber: String?
+    private var phoneNumberInput: String? // 未入力かどうかをチェックする
+    private var emailEnabled: Bool = true
+    private var phoneEnabled: Bool = true
 
     var isValid: Bool {
         return checkCardNumberValid() &&
             checkExpirationValid() &&
             checkCvcValid() &&
-            (!self.isCardHolderEnabled || checkCardHolderValid())
+            checkCardHolderValid() &&
+            checkExtraAttributesValid()
     }
 
     var isCardBrandChanged = false
@@ -239,8 +256,44 @@ class CardFormViewViewModel: CardFormViewViewModelType {
         return .success(holderInput)
     }
 
-    func update(isCardHolderEnabled: Bool) {
-        self.isCardHolderEnabled = isCardHolderEnabled
+    func update(email: String?) -> Result<String?, FormError> {
+        guard emailEnabled else {
+            self.email = nil
+            return .success(nil)
+        }
+        // 未入力かどうかのみチェックする
+        guard let trimmed = email?.trimmingCharacters(in: .whitespacesAndNewlines), !trimmed.isEmpty else {
+            self.email = nil
+            // email / phone どちらかが入力できていれば良い
+            if phoneEnabled && phoneNumber != nil {
+                return .success(nil)
+            }
+            return .failure(.emailEmptyError(value: nil, isInstant: false))
+        }
+        self.email = trimmed
+        return .success(trimmed)
+    }
+
+    func updatePhoneNumber(input: String?, formattedValue: String?) -> Result<String?, FormError> {
+        guard phoneEnabled else {
+            self.phoneNumber = nil
+            return .success(nil)
+        }
+        self.phoneNumberInput = input
+        guard let input, !input.isEmpty else {
+            self.phoneNumber = nil
+            // email / phone どちらかが入力できていれば良い
+            if emailEnabled && email != nil {
+                return .success(nil)
+            }
+            return .failure(.phoneNumberEmptyError(value: nil, isInstant: false))
+        }
+        guard let formattedValue, !formattedValue.isEmpty else {
+            self.phoneNumber = nil
+            return .failure(.phoneNumberInvalidError(value: input, isInstant: true))
+        }
+        self.phoneNumber = formattedValue
+        return .success(formattedValue)
     }
 
     func createToken(with tenantId: String?, completion: @escaping (Result<Token, Error>) -> Void) {
@@ -251,7 +304,9 @@ class CardFormViewViewModel: CardFormViewViewModelType {
                                      expirationMonth: month,
                                      expirationYear: year,
                                      name: cardHolder,
-                                     tenantId: tenantId) { result in
+                                     tenantId: tenantId,
+                                     email: email,
+                                     phone: phoneNumber) { result in
                 switch result {
                 case .success(let token): completion(.success(token))
                 case .failure(let error): completion(.failure(error))
@@ -282,7 +337,9 @@ class CardFormViewViewModel: CardFormViewViewModelType {
                                       expirationMonth: month,
                                       expirationYear: year,
                                       cvc: cvc,
-                                      cardHolder: cardHolder)
+                                      cardHolder: cardHolder,
+                                      email: email,
+                                      phoneNumber: phoneNumber)
             completion(.success(input))
         } else {
             completion(.failure(LocalError.invalidFormInput))
@@ -307,6 +364,14 @@ class CardFormViewViewModel: CardFormViewViewModelType {
         default:
             print("Unsupport camera in your device.")
         }
+    }
+
+    func update(extraAttributes: [any ExtraAttribute]) {
+        let email = extraAttributes.compactMap({ $0 as? ExtraAttributeEmail }).first
+        let phone = extraAttributes.compactMap({ $0 as? ExtraAttributePhone }).first
+        emailEnabled = email != nil
+        phoneEnabled = phone != nil
+        delegate?.updateExtraAttributes(email: email, phone: phone)
     }
 
     // MARK: - Helpers
@@ -338,5 +403,24 @@ class CardFormViewViewModel: CardFormViewViewModelType {
             return !cardHolder.isEmpty
         }
         return false
+    }
+
+    private func checkExtraAttributesValid() -> Bool {
+        let emailOk = email?.isEmpty == false
+        let phoneOk = phoneNumber?.isEmpty == false
+        // 電話番号のinputがありvalueがないことから不正な入力とみなす
+        let hasInvalidPhoneInput = !phoneOk && phoneNumberInput?.isEmpty == false
+        switch (emailEnabled, phoneEnabled) {
+        case (true, true):
+            // 不正な入力がある場合はinvalid
+            guard !hasInvalidPhoneInput else { return false }
+            return emailOk || phoneOk
+        case (true, _):
+            return emailOk
+        case (_, true):
+            return phoneOk
+        case (false, false):
+            return true
+        }
     }
 }
