@@ -17,19 +17,21 @@
     <a title="CardFormViewController Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">PAYJP 1.6.1 Docs</a></p>
-        <p class="header-right"><a href="https://github.com/payjp/payjp-ios"><img src="../img/gh.png"/>View on GitHub</a></p>
-        <p class="header-right">
+        <p><a href="../index.html">PAYJP 2.0.0 Docs</a></p>
+        <p class="header-right"><a href="https://github.com/payjp/payjp-ios"><img src="../img/gh.png" alt="GitHub"/>View on GitHub</a></p>
+        <div class="header-right">
           <form role="search" action="../search.json">
             <input type="text" placeholder="Search documentation" data-typeahead>
           </form>
-        </p>
+        </div>
       </div>
     </header>
     <div class="content-wrapper">
       <p id="breadcrumbs">
-        <a href="../index.html">PAYJP Reference</a>
-        <img id="carat" src="../img/carat.png" />
+        <a href="../index.html">PAYJP</a>
+        <img id="carat" src="../img/carat.png" alt=""/>
+        <a href="../Classes.html">Classes</a>
+        <img id="carat" src="../img/carat.png" alt=""/>
         CardFormViewController Class Reference
       </p>
     </div>
@@ -62,6 +64,12 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/ClientInfo.html">ClientInfo</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ExtraAttributeEmail.html">ExtraAttributeEmail</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ExtraAttributePhone.html">ExtraAttributePhone</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/FormStyle.html">FormStyle</a>
@@ -145,6 +153,9 @@
                 <a href="../Protocols/CardFormViewDelegate.html">CardFormViewDelegate</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Protocols.html#/c:@M@PAYJP@objc(pl)PAYExtraAttribute">ExtraAttribute</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Protocols/PAYErrorResponseType.html">PAYErrorResponseType</a>
               </li>
               <li class="nav-group-task">
@@ -204,9 +215,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@PAYJP@objc(cs)PAYCardFormViewController(cm)createCardFormViewControllerWithStyle:tenantId:delegate:viewType:"></a>
-                    <a name="//apple_ref/swift/Method/createCardFormViewController(style:tenantId:delegate:viewType:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@PAYJP@objc(cs)PAYCardFormViewController(cm)createCardFormViewControllerWithStyle:tenantId:delegate:viewType:">createCardFormViewController(style:<wbr>tenantId:<wbr>delegate:<wbr>viewType:<wbr>)</a>
+                    <a name="/c:@M@PAYJP@objc(cs)PAYCardFormViewController(cm)createCardFormViewControllerWithStyle:tenantId:delegate:viewType:extraAttributes:"></a>
+                    <a name="//apple_ref/swift/Method/createCardFormViewController(style:tenantId:delegate:viewType:extraAttributes:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@PAYJP@objc(cs)PAYCardFormViewController(cm)createCardFormViewControllerWithStyle:tenantId:delegate:viewType:extraAttributes:">createCardFormViewController(style:<wbr>tenantId:<wbr>delegate:<wbr>viewType:<wbr>extraAttributes:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -221,12 +232,14 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@objc(createCardFormViewControllerWithStyle:tenantId:delegate:viewType:)</span>
+                          <pre class="highlight swift"><code><span class="kd">@objc(createCardFormViewControllerWithStyle:tenantId:delegate:viewType:extraAttributes:)</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">createCardFormViewController</span><span class="p">(</span>
     <span class="nv">style</span><span class="p">:</span> <span class="kt"><a href="../Classes/FormStyle.html">FormStyle</a></span> <span class="o">=</span> <span class="o">.</span><span class="n">defaultStyle</span><span class="p">,</span>
     <span class="nv">tenantId</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
     <span class="nv">delegate</span><span class="p">:</span> <span class="kt"><a href="../Protocols/CardFormViewControllerDelegate.html">CardFormViewControllerDelegate</a></span><span class="p">,</span>
-    <span class="nv">viewType</span><span class="p">:</span> <span class="kt"><a href="../Enums/CardFormViewType.html">CardFormViewType</a></span> <span class="o">=</span> <span class="o">.</span><span class="n">labelStyled</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CardFormViewController</span></code></pre>
+    <span class="nv">viewType</span><span class="p">:</span> <span class="kt"><a href="../Enums/CardFormViewType.html">CardFormViewType</a></span> <span class="o">=</span> <span class="o">.</span><span class="n">labelStyled</span><span class="p">,</span>
+    <span class="nv">extraAttributes</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Protocols.html#/c:@M@PAYJP@objc(pl)PAYExtraAttribute">ExtraAttribute</a></span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="kt"><a href="../Classes/ExtraAttributeEmail.html">ExtraAttributeEmail</a></span><span class="p">(),</span> <span class="kt"><a href="../Classes/ExtraAttributePhone.html">ExtraAttributePhone</a></span><span class="p">()]</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CardFormViewController</span></code></pre>
 
                         </div>
                       </div>
@@ -282,6 +295,18 @@
                                 </div>
                               </td>
                             </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>extraAttributes</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>extra attributes for 3-D Secure</p>
+                                </div>
+                              </td>
+                            </tr>
                           </tbody>
                         </table>
                       </div>
@@ -300,7 +325,7 @@
                 <a name="//apple_ref/swift/Section/Lifecycle" class="dashAnchor"></a>
                 <div class="section-name-container">
                   <a class="section-name-link" href="#/Lifecycle"></a>
-                  <h3 class="section-name"><p>Lifecycle</p>
+                  <h3 class="section-name"><span>Lifecycle</span>
 </h3>
                 </div>
               </div>
@@ -448,7 +473,7 @@
                 <a name="//apple_ref/swift/Section/CardFormViewDelegate" class="dashAnchor"></a>
                 <div class="section-name-container">
                   <a class="section-name-link" href="#/CardFormViewDelegate"></a>
-                  <h3 class="section-name"><p>CardFormViewDelegate</p>
+                  <h3 class="section-name"><span>CardFormViewDelegate</span>
 </h3>
                 </div>
               </div>
@@ -513,7 +538,7 @@
                 <a name="//apple_ref/swift/Section/UICollectionViewDataSource" class="dashAnchor"></a>
                 <div class="section-name-container">
                   <a class="section-name-link" href="#/UICollectionViewDataSource"></a>
-                  <h3 class="section-name"><p>UICollectionViewDataSource</p>
+                  <h3 class="section-name"><span>UICollectionViewDataSource</span>
 </h3>
                 </div>
               </div>
@@ -581,7 +606,7 @@
                 <a name="//apple_ref/swift/Section/UICollectionViewDelegateFlowLayout" class="dashAnchor"></a>
                 <div class="section-name-container">
                   <a class="section-name-link" href="#/UICollectionViewDelegateFlowLayout"></a>
-                  <h3 class="section-name"><p>UICollectionViewDelegateFlowLayout</p>
+                  <h3 class="section-name"><span>UICollectionViewDelegateFlowLayout</span>
 </h3>
                 </div>
               </div>
@@ -623,7 +648,7 @@
                 <a name="//apple_ref/swift/Section/UIAdaptivePresentationControllerDelegate" class="dashAnchor"></a>
                 <div class="section-name-container">
                   <a class="section-name-link" href="#/UIAdaptivePresentationControllerDelegate"></a>
-                  <h3 class="section-name"><p>UIAdaptivePresentationControllerDelegate</p>
+                  <h3 class="section-name"><span>UIAdaptivePresentationControllerDelegate</span>
 </h3>
                 </div>
               </div>
@@ -663,7 +688,7 @@
                 <a name="//apple_ref/swift/Section/ThreeDSecureProcessHandlerDelegate" class="dashAnchor"></a>
                 <div class="section-name-container">
                   <a class="section-name-link" href="#/ThreeDSecureProcessHandlerDelegate"></a>
-                  <h3 class="section-name"><p>ThreeDSecureProcessHandlerDelegate</p>
+                  <h3 class="section-name"><span>ThreeDSecureProcessHandlerDelegate</span>
 </h3>
                 </div>
               </div>
@@ -700,11 +725,10 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2020 <a class="link" href="https://pay.jp" target="_blank" rel="external">PAY.JP</a> All rights reserved.</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.7</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2024 <a class="link" href="https://pay.jp" target="_blank" rel="external noopener">PAY.JP</a> All rights reserved.</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.15.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>
     </div>
   </body>
-</div>
 </html>

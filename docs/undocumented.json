@@ -1,607 +1,656 @@
 {
   "warnings": [
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/APIClient.swift",
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/APIClient.swift",
       "line": 23,
       "symbol": "APIClient.tokenOperationObserver",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/APIClient.swift",
-      "line": 110,
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/APIClient.swift",
+      "line": 116,
       "symbol": "APIClient.createTokenWith(_:completionHandler:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/APIClient.swift",
-      "line": 125,
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/APIClient.swift",
+      "line": 131,
       "symbol": "APIClient.createTokenWith(_:cvc:expirationMonth:expirationYear:name:tenantId:completionHandler:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/APIClient.swift",
-      "line": 151,
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/APIClient.swift",
+      "line": 157,
       "symbol": "APIClient.getTokenWith(_:completionHandler:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/APIClient.swift",
-      "line": 164,
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/APIClient.swift",
+      "line": 170,
       "symbol": "APIClient.getAcceptedBrandsWith(_:completionHandler:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/APIClient.swift",
-      "line": 180,
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/APIClient.swift",
+      "line": 186,
       "symbol": "APIClient.finishTokenThreeDSecureWith(_:completionHandler:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Common/PAYNotificationKey.swift",
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Common/PAYNotificationKey.swift",
       "line": 11,
       "symbol": "PAYNotificationKey",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Common/PAYNotificationKey.swift",
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Common/PAYNotificationKey.swift",
       "line": 19,
       "symbol": "PAYNotificationKey",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Core/PAYJPSDK.swift",
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Core/PAYJPSDK.swift",
       "line": 50,
       "symbol": "PAYJPSDK.clientInfo",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Core/PAYJPSDK.swift",
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Core/PAYJPSDK.swift",
       "line": 53,
       "symbol": "PAYJPSDK.sdkVersion",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Networking/Core/APIError.swift",
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Networking/Core/APIError.swift",
       "line": 60,
       "symbol": "APIError.errorCode",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Networking/Core/APIError.swift",
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Networking/Core/APIError.swift",
       "line": 77,
       "symbol": "APIError.userInfo",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Networking/Core/ClientInfo.swift",
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Networking/Core/ClientInfo.swift",
       "line": 16,
       "symbol": "ClientInfo.bindingsName",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Networking/Core/ClientInfo.swift",
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Networking/Core/ClientInfo.swift",
       "line": 17,
       "symbol": "ClientInfo.bindingsVersion",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Networking/Core/ClientInfo.swift",
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Networking/Core/ClientInfo.swift",
       "line": 18,
       "symbol": "ClientInfo.bindingsPlugin",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Networking/Core/ClientInfo.swift",
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Networking/Core/ClientInfo.swift",
       "line": 19,
       "symbol": "ClientInfo.unameString",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Networking/Core/ClientInfo.swift",
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Networking/Core/ClientInfo.swift",
       "line": 20,
       "symbol": "ClientInfo.platform",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Networking/Core/ClientInfo.swift",
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Networking/Core/ClientInfo.swift",
       "line": 21,
       "symbol": "ClientInfo.publisher",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Networking/Core/ClientInfo.swift",
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Networking/Core/ClientInfo.swift",
       "line": 22,
       "symbol": "ClientInfo.cardFormType",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Networking/Core/ClientInfo.swift",
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Networking/Core/ClientInfo.swift",
       "line": 30,
       "symbol": "ClientInfo.default",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Networking/Core/ClientInfo.swift",
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Networking/Core/ClientInfo.swift",
       "line": 32,
       "symbol": "ClientInfo.makeInfo(plugin:publisher:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Networking/Core/LocalError.swift",
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Networking/Core/LocalError.swift",
       "line": 25,
       "symbol": "LocalError.errorCode",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Networking/Models/Card.swift",
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Networking/Models/Card.swift",
       "line": 19,
       "symbol": "Card.identifer",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Networking/Models/Card.swift",
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Networking/Models/Card.swift",
       "line": 20,
       "symbol": "Card.name",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Networking/Models/Card.swift",
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Networking/Models/Card.swift",
       "line": 21,
       "symbol": "Card.last4Number",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Networking/Models/Card.swift",
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Networking/Models/Card.swift",
       "line": 22,
       "symbol": "Card.brand",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Networking/Models/Card.swift",
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Networking/Models/Card.swift",
       "line": 23,
       "symbol": "Card.expirationMonth",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Networking/Models/Card.swift",
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Networking/Models/Card.swift",
       "line": 24,
       "symbol": "Card.expirationYear",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Networking/Models/Card.swift",
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Networking/Models/Card.swift",
       "line": 25,
       "symbol": "Card.fingerprint",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Networking/Models/Card.swift",
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Networking/Models/Card.swift",
       "line": 26,
       "symbol": "Card.liveMode",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Networking/Models/Card.swift",
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Networking/Models/Card.swift",
       "line": 27,
       "symbol": "Card.createdAt",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Networking/Models/Card.swift",
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Networking/Models/Card.swift",
       "line": 28,
       "symbol": "Card.threeDSecureStatus",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Networking/Models/Card.swift",
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Networking/Models/Card.swift",
       "line": 29,
+      "symbol": "Card.email",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Networking/Models/Card.swift",
+      "line": 30,
+      "symbol": "Card.phone",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Networking/Models/Card.swift",
+      "line": 31,
       "symbol": "Card.rawValue",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Networking/Models/Card.swift",
-      "line": 64,
-      "symbol": "Card.init(identifier:name:last4Number:brand:expirationMonth:expirationYear:fingerprint:liveMode:createAt:threeDSecureStatus:rawValue:)",
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Networking/Models/Card.swift",
+      "line": 70,
+      "symbol": "Card.init(identifier:name:last4Number:brand:expirationMonth:expirationYear:fingerprint:liveMode:createAt:threeDSecureStatus:email:phone:rawValue:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Networking/Models/PAYErrorResponse.swift",
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Networking/Models/PAYErrorResponse.swift",
       "line": 41,
       "symbol": "PAYErrorResponse.description",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Networking/Models/Token.swift",
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Networking/Models/Token.swift",
       "line": 18,
       "symbol": "Token.identifer",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Networking/Models/Token.swift",
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Networking/Models/Token.swift",
       "line": 19,
       "symbol": "Token.livemode",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Networking/Models/Token.swift",
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Networking/Models/Token.swift",
       "line": 20,
       "symbol": "Token.used",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Networking/Models/Token.swift",
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Networking/Models/Token.swift",
       "line": 21,
       "symbol": "Token.card",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Networking/Models/Token.swift",
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Networking/Models/Token.swift",
       "line": 22,
       "symbol": "Token.createdAt",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Networking/Models/Token.swift",
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Networking/Models/Token.swift",
       "line": 23,
       "symbol": "Token.rawValue",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Networking/Models/Token.swift",
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Networking/Models/Token.swift",
       "line": 44,
       "symbol": "Token.init(identifier:livemode:used:card:createAt:rawValue:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Networking/Models/Token.swift",
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Networking/Models/Token.swift",
       "line": 83,
       "symbol": "Token.isEqual(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Networking/TokenOperationObserver.swift",
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Networking/TokenOperationObserver.swift",
       "line": 12,
       "symbol": "Notification.Name.payjpTokenOperationStatusChanged",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Networking/TokenOperationObserver.swift",
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Networking/TokenOperationObserver.swift",
       "line": 16,
       "symbol": "NSNotification.payjpTokenOperationStatusChanged",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Networking/TokenOperationObserver.swift",
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Networking/TokenOperationObserver.swift",
       "line": 20,
       "symbol": "PAYNotificationKey.newTokenOperationStatus",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Networking/TokenOperationObserver.swift",
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Networking/TokenOperationObserver.swift",
       "line": 23,
       "symbol": "TokenOperationObserverType",
       "symbol_kind": "source.lang.swift.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Networking/TokenOperationObserver.swift",
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Networking/TokenOperationObserver.swift",
       "line": 24,
       "symbol": "TokenOperationObserverType.status",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Networking/TokenOperationStatus.swift",
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Networking/TokenOperationStatus.swift",
       "line": 11,
       "symbol": "TokenOperationStatus",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Networking/TokenOperationStatus.swift",
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Networking/TokenOperationStatus.swift",
       "line": 12,
       "symbol": "TokenOperationStatus.acceptable",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Networking/TokenOperationStatus.swift",
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Networking/TokenOperationStatus.swift",
       "line": 13,
       "symbol": "TokenOperationStatus.running",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Networking/TokenOperationStatus.swift",
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Networking/TokenOperationStatus.swift",
       "line": 14,
       "symbol": "TokenOperationStatus.throttled",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/ThreeDSecure/ThreeDSecureProcessHandler.swift",
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/ThreeDSecure/ThreeDSecureProcessHandler.swift",
       "line": 61,
       "symbol": "ThreeDSecureProcessHandler.init(webDriver:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/ThreeDSecure/ThreeDSecureSFSafariViewControllerDriver.swift",
-      "line": 44,
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/ThreeDSecure/ThreeDSecureSFSafariViewControllerDriver.swift",
+      "line": 42,
       "symbol": "ThreeDSecureSFSafariViewControllerDriver.safariViewControllerDidFinish(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/ThreeDSecure/ThreeDSecureURLConfiguration.swift",
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/ThreeDSecure/ThreeDSecureURLConfiguration.swift",
       "line": 18,
       "symbol": "ThreeDSecureURLConfiguration.init(redirectURL:redirectURLKey:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Views/CardFormDisplayStyledView.swift",
-      "line": 87,
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Views/CardFormDisplayStyledView.swift",
+      "line": 102,
       "symbol": "CardFormDisplayStyledView.init(frame:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Views/CardFormDisplayStyledView.swift",
-      "line": 92,
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Views/CardFormDisplayStyledView.swift",
+      "line": 107,
       "symbol": "CardFormDisplayStyledView.init(coder:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Views/CardFormDisplayStyledView.swift",
-      "line": 122,
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Views/CardFormDisplayStyledView.swift",
+      "line": 137,
       "symbol": "CardFormDisplayStyledView.intrinsicContentSize",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Views/CardFormDisplayStyledView.swift",
-      "line": 126,
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Views/CardFormDisplayStyledView.swift",
+      "line": 141,
       "symbol": "CardFormDisplayStyledView.layoutSubviews()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Views/CardFormDisplayStyledView.swift",
-      "line": 518,
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Views/CardFormDisplayStyledView.swift",
+      "line": 676,
       "symbol": "CardFormDisplayStyledView.scrollViewDidScroll(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Views/CardFormDisplayStyledView.swift",
-      "line": 527,
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Views/CardFormDisplayStyledView.swift",
+      "line": 685,
       "symbol": "CardFormDisplayStyledView.scrollViewWillBeginDragging(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Views/CardFormDisplayStyledView.swift",
-      "line": 531,
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Views/CardFormDisplayStyledView.swift",
+      "line": 689,
       "symbol": "CardFormDisplayStyledView.scrollViewDidEndDecelerating(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Views/CardFormLabelStyledView.swift",
-      "line": 70,
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Views/CardFormLabelStyledView.swift",
+      "line": 84,
       "symbol": "CardFormLabelStyledView.init(frame:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Views/CardFormLabelStyledView.swift",
-      "line": 75,
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Views/CardFormLabelStyledView.swift",
+      "line": 89,
       "symbol": "CardFormLabelStyledView.init(coder:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Views/CardFormLabelStyledView.swift",
-      "line": 115,
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Views/CardFormLabelStyledView.swift",
+      "line": 133,
       "symbol": "CardFormLabelStyledView.intrinsicContentSize",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Views/CardFormLabelStyledView.swift",
-      "line": 119,
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Views/CardFormLabelStyledView.swift",
+      "line": 137,
       "symbol": "CardFormLabelStyledView.layoutSubviews()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Views/CardFormTableStyledView.swift",
-      "line": 69,
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Views/CardFormTableStyledView.swift",
+      "line": 85,
       "symbol": "CardFormTableStyledView.init(frame:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Views/CardFormTableStyledView.swift",
-      "line": 74,
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Views/CardFormTableStyledView.swift",
+      "line": 90,
       "symbol": "CardFormTableStyledView.init(coder:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Views/CardFormTableStyledView.swift",
-      "line": 119,
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Views/CardFormTableStyledView.swift",
+      "line": 144,
       "symbol": "CardFormTableStyledView.intrinsicContentSize",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Views/CardFormView.swift",
-      "line": 73,
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Views/CardFormView.swift",
+      "line": 78,
       "symbol": "CardFormView.init(frame:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Views/CardFormView.swift",
-      "line": 78,
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Views/CardFormView.swift",
+      "line": 83,
       "symbol": "CardFormView.init(coder:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Views/CardFormView.swift",
-      "line": 464,
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Views/CardFormView.swift",
+      "line": 557,
       "symbol": "CardFormView.textFieldShouldClear(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Views/CardFormView.swift",
-      "line": 485,
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Views/CardFormView.swift",
+      "line": 583,
       "symbol": "CardFormView.textFieldShouldReturn(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Views/CardFormView.swift",
-      "line": 493,
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Views/CardFormView.swift",
+      "line": 591,
       "symbol": "CardFormView.textFieldDidBeginEditing(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Views/CardFormView.swift",
-      "line": 500,
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Views/CardFormView.swift",
+      "line": 598,
       "symbol": "CardFormView.didCancel(in:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Views/CardFormView.swift",
-      "line": 504,
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Views/CardFormView.swift",
+      "line": 602,
       "symbol": "CardFormView.cardIOProxy(_:didFinishWith:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Views/CardFormViewController.swift",
-      "line": 106,
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Views/CardFormViewController.swift",
+      "line": 110,
       "symbol": "CardFormViewController.viewDidLoad()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Views/CardFormViewController.swift",
-      "line": 136,
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Views/CardFormViewController.swift",
+      "line": 140,
       "symbol": "CardFormViewController.viewWillAppear(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Views/CardFormViewController.swift",
-      "line": 141,
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Views/CardFormViewController.swift",
+      "line": 145,
       "symbol": "CardFormViewController.viewWillDisappear(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Views/CardFormViewController.swift",
-      "line": 146,
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Views/CardFormViewController.swift",
+      "line": 150,
       "symbol": "CardFormViewController.viewDidDisappear(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Views/CardFormViewController.swift",
-      "line": 154,
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Views/CardFormViewController.swift",
+      "line": 158,
       "symbol": "CardFormViewController.viewDidLayoutSubviews()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Views/CardFormViewController.swift",
-      "line": 354,
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Views/CardFormViewController.swift",
+      "line": 358,
       "symbol": "CardFormViewController.collectionView(_:numberOfItemsInSection:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Views/CardFormViewController.swift",
-      "line": 358,
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Views/CardFormViewController.swift",
+      "line": 362,
       "symbol": "CardFormViewController.collectionView(_:cellForItemAt:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Views/CardFormViewController.swift",
-      "line": 382,
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Views/CardFormViewController.swift",
+      "line": 386,
       "symbol": "CardFormViewController.collectionView(_:layout:insetForSectionAt:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Views/CardFormViewController.swift",
-      "line": 404,
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Views/CardFormViewController.swift",
+      "line": 408,
       "symbol": "CardFormViewController.presentationControllerDidDismiss(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/payjp-ios/payjp-ios/Sources/Views/FormStyle.swift",
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Views/ExtraAttribute.swift",
+      "line": 18,
+      "symbol": "ExtraAttributeEmail",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Views/ExtraAttribute.swift",
+      "line": 19,
+      "symbol": "ExtraAttributeEmail.preset",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Views/ExtraAttribute.swift",
+      "line": 30,
+      "symbol": "ExtraAttributePhone",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Views/ExtraAttribute.swift",
+      "line": 31,
+      "symbol": "ExtraAttributePhone.presetNumber",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Views/ExtraAttribute.swift",
+      "line": 32,
+      "symbol": "ExtraAttributePhone.presetRegion",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Views/FormStyle.swift",
       "line": 43,
       "symbol": "FormStyle.init(labelTextColor:inputTextColor:errorTextColor:tintColor:inputFieldBackgroundColor:submitButtonColor:highlightColor:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     }
   ],
-  "source_directory": "/Users/runner/work/payjp-ios/payjp-ios"
+  "source_directory": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios"
 }

@@ -17,19 +17,19 @@
     <a title="Protocols  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">PAYJP 1.6.1 Docs</a></p>
-        <p class="header-right"><a href="https://github.com/payjp/payjp-ios"><img src="img/gh.png"/>View on GitHub</a></p>
-        <p class="header-right">
+        <p><a href="index.html">PAYJP 2.0.0 Docs</a></p>
+        <p class="header-right"><a href="https://github.com/payjp/payjp-ios"><img src="img/gh.png" alt="GitHub"/>View on GitHub</a></p>
+        <div class="header-right">
           <form role="search" action="search.json">
             <input type="text" placeholder="Search documentation" data-typeahead>
           </form>
-        </p>
+        </div>
       </div>
     </header>
     <div class="content-wrapper">
       <p id="breadcrumbs">
-        <a href="index.html">PAYJP Reference</a>
-        <img id="carat" src="img/carat.png" />
+        <a href="index.html">PAYJP</a>
+        <img id="carat" src="img/carat.png" alt=""/>
         Protocols  Reference
       </p>
     </div>
@@ -62,6 +62,12 @@
               </li>
               <li class="nav-group-task">
                 <a href="Classes/ClientInfo.html">ClientInfo</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/ExtraAttributeEmail.html">ExtraAttributeEmail</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/ExtraAttributePhone.html">ExtraAttributePhone</a>
               </li>
               <li class="nav-group-task">
                 <a href="Classes/FormStyle.html">FormStyle</a>
@@ -143,6 +149,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/CardFormViewDelegate.html">CardFormViewDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/c:@M@PAYJP@objc(pl)PAYExtraAttribute">ExtraAttribute</a>
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/PAYErrorResponseType.html">PAYErrorResponseType</a>
@@ -434,7 +443,7 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@objc(PAYCardFormViewControllerDelegate)</span>
-<span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">CardFormViewControllerDelegate</span> <span class="p">:</span> <span class="kt">AnyObject</span></code></pre>
+<span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">CardFormViewControllerDelegate</span></code></pre>
 
                         </div>
                       </div>
@@ -463,7 +472,7 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@objc(PAYCardFormViewDelegate)</span>
-<span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">CardFormViewDelegate</span> <span class="p">:</span> <span class="kt">AnyObject</span></code></pre>
+<span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">CardFormViewDelegate</span></code></pre>
 
                         </div>
                       </div>
@@ -498,16 +507,45 @@
                     </section>
                   </div>
                 </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@PAYJP@objc(pl)PAYExtraAttribute"></a>
+                    <a name="//apple_ref/swift/Protocol/ExtraAttribute" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@PAYJP@objc(pl)PAYExtraAttribute">ExtraAttribute</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Extra attributes for card form.
+For now it is mainly used for 3-D Secure.
+see [<a href="https://help.pay.jp/ja/articles/9556161">https://help.pay.jp/ja/articles/9556161</a>]</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc(PAYExtraAttribute)</span>
+<span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">ExtraAttribute</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
               </ul>
             </div>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2020 <a class="link" href="https://pay.jp" target="_blank" rel="external">PAY.JP</a> All rights reserved.</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.7</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2024 <a class="link" href="https://pay.jp" target="_blank" rel="external noopener">PAY.JP</a> All rights reserved.</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.15.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>
     </div>
   </body>
-</div>
 </html>

@@ -117,11 +117,16 @@ platform :ios do
     end
   end
 
-  desc "Create PR to update docs"
-  lane :create_pr_to_update_docs do
+  desc "Update docs"
+  lane :update_docs do
     Dir.chdir('..') do
       sh('jazzy --build-tool-arguments "--sdk,`xcrun --sdk iphonesimulator --show-sdk-path`,-Xswiftc,-target,-Xswiftc,arm64-apple-ios17.5-simulator"')
     end
+  end
+
+  desc "Create PR to update docs"
+  lane :create_pr_to_update_docs do
+    update_docs
     diff_files = sh("git diff --name-only").split
     unless diff_files.any? { |file| file.start_with? "docs/" }
       UI.message "No updates in docs."
