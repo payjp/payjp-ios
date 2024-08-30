@@ -17,19 +17,21 @@
     <a title="CardFormView Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">PAYJP 1.6.1 Docs</a></p>
-        <p class="header-right"><a href="https://github.com/payjp/payjp-ios"><img src="../img/gh.png"/>View on GitHub</a></p>
-        <p class="header-right">
+        <p><a href="../index.html">PAYJP 2.0.0 Docs</a></p>
+        <p class="header-right"><a href="https://github.com/payjp/payjp-ios"><img src="../img/gh.png" alt="GitHub"/>View on GitHub</a></p>
+        <div class="header-right">
           <form role="search" action="../search.json">
             <input type="text" placeholder="Search documentation" data-typeahead>
           </form>
-        </p>
+        </div>
       </div>
     </header>
     <div class="content-wrapper">
       <p id="breadcrumbs">
-        <a href="../index.html">PAYJP Reference</a>
-        <img id="carat" src="../img/carat.png" />
+        <a href="../index.html">PAYJP</a>
+        <img id="carat" src="../img/carat.png" alt=""/>
+        <a href="../Classes.html">Classes</a>
+        <img id="carat" src="../img/carat.png" alt=""/>
         CardFormView Class Reference
       </p>
     </div>
@@ -62,6 +64,12 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/ClientInfo.html">ClientInfo</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ExtraAttributeEmail.html">ExtraAttributeEmail</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ExtraAttributePhone.html">ExtraAttributePhone</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/FormStyle.html">FormStyle</a>
@@ -145,6 +153,9 @@
                 <a href="../Protocols/CardFormViewDelegate.html">CardFormViewDelegate</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Protocols.html#/c:@M@PAYJP@objc(pl)PAYExtraAttribute">ExtraAttribute</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Protocols/PAYErrorResponseType.html">PAYErrorResponseType</a>
               </li>
               <li class="nav-group-task">
@@ -218,7 +229,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">weak</span> <span class="k">var</span> <span class="nv">delegate</span><span class="p">:</span> <span class="kt"><a href="../Protocols/CardFormViewDelegate.html">CardFormViewDelegate</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">weak</span> <span class="k">var</span> <span class="nv">delegate</span><span class="p">:</span> <span class="kt"><a href="../Protocols/CardFormViewDelegate.html">CardFormViewDelegate</a></span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -287,7 +298,7 @@
                 <a name="//apple_ref/swift/Section/CardFormAction" class="dashAnchor"></a>
                 <div class="section-name-container">
                   <a class="section-name-link" href="#/CardFormAction"></a>
-                  <h3 class="section-name"><p>CardFormAction</p>
+                  <h3 class="section-name"><span>CardFormAction</span>
 </h3>
                 </div>
               </div>
@@ -476,6 +487,32 @@
                     </section>
                   </div>
                 </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5PAYJP14CardFormActionP5apply15extraAttributesySayAA14ExtraAttribute_pG_tF"></a>
+                    <a name="//apple_ref/swift/Method/apply(extraAttributes:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5PAYJP14CardFormActionP5apply15extraAttributesySayAA14ExtraAttribute_pG_tF">apply(extraAttributes:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">apply</span><span class="p">(</span><span class="nv">extraAttributes</span><span class="p">:</span> <span class="p">[</span><span class="n">any</span> <span class="kt"><a href="../Protocols.html#/c:@M@PAYJP@objc(pl)PAYExtraAttribute">ExtraAttribute</a></span><span class="p">])</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
               </ul>
             </div>
             <div class="task-group">
@@ -484,7 +521,7 @@
                 <a name="//apple_ref/swift/Section/UITextFieldDelegate" class="dashAnchor"></a>
                 <div class="section-name-container">
                   <a class="section-name-link" href="#/UITextFieldDelegate"></a>
-                  <h3 class="section-name"><p>UITextFieldDelegate</p>
+                  <h3 class="section-name"><span>UITextFieldDelegate</span>
 </h3>
                 </div>
               </div>
@@ -578,7 +615,7 @@
                 <a name="//apple_ref/swift/Section/CardIOProxyDelegate" class="dashAnchor"></a>
                 <div class="section-name-container">
                   <a class="section-name-link" href="#/CardIOProxyDelegate"></a>
-                  <h3 class="section-name"><p>CardIOProxyDelegate</p>
+                  <h3 class="section-name"><span>CardIOProxyDelegate</span>
 </h3>
                 </div>
               </div>
@@ -642,11 +679,10 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2020 <a class="link" href="https://pay.jp" target="_blank" rel="external">PAY.JP</a> All rights reserved.</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.7</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2024 <a class="link" href="https://pay.jp" target="_blank" rel="external noopener">PAY.JP</a> All rights reserved.</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.15.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>
     </div>
   </body>
-</div>
 </html>

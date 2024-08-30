@@ -71,6 +71,14 @@ Check Swift format with swiftLint
 
 Check Objective-C format with clang-format
 
+### ios update_docs
+
+```sh
+[bundle exec] fastlane ios update_docs
+```
+
+Update docs
+
 ### ios create_pr_to_update_docs
 
 ```sh
