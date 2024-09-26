@@ -19,7 +19,8 @@ class CreateTokenRequestTests: XCTestCase {
             name: "YUI ARAGAKI",
             tenantId: "mock_tenant_id",
             email: "test@example.com",
-            phone: "+819012345678"
+            phone: "+819012345678",
+            threeDSecure: true
         )
 
         XCTAssertEqual(request.path, "tokens")
@@ -32,6 +33,7 @@ class CreateTokenRequestTests: XCTestCase {
         XCTAssertEqual(request.bodyParameters?["tenant"], "mock_tenant_id")
         XCTAssertEqual(request.bodyParameters?["card[email]"], "test@example.com")
         XCTAssertEqual(request.bodyParameters?["card[phone]"], "+819012345678")
+        XCTAssertEqual(request.bodyParameters?["three_d_secure"], "true")
         XCTAssertNil(request.queryParameters)
     }
 
@@ -45,7 +47,8 @@ class CreateTokenRequestTests: XCTestCase {
             name: nil,
             tenantId: nil,
             email: nil,
-            phone: nil
+            phone: nil,
+            threeDSecure: false
         )
 
         XCTAssertEqual(request.path, "tokens")
@@ -58,6 +61,7 @@ class CreateTokenRequestTests: XCTestCase {
         XCTAssertNil(request.bodyParameters?["tenant"])
         XCTAssertNil(request.bodyParameters?["card[email]"])
         XCTAssertNil(request.bodyParameters?["card[phone]"])
+        XCTAssertEqual(request.bodyParameters?["three_d_secure"], "false")
         XCTAssertNil(request.queryParameters)
     }
 }

@@ -28,7 +28,7 @@ protocol CardFormScreenDelegate: AnyObject {
 protocol CardFormScreenPresenterType {
     var cardFormResultSuccess: Bool { get }
 
-    func createToken(tenantId: String?, formInput: CardFormInput)
+    func createToken(tenantId: String?, useThreeDSecure: Bool, formInput: CardFormInput)
     func completeTokenTds()
     func fetchBrands(tenantId: String?)
     func tokenOperationStatusDidUpdate(status: TokenOperationStatus)
@@ -60,7 +60,7 @@ class CardFormScreenPresenter: CardFormScreenPresenterType {
         self.tokenOperationStatus = tokenService.tokenOperationObserver.status
     }
 
-    func createToken(tenantId: String?, formInput: CardFormInput) {
+    func createToken(tenantId: String?, useThreeDSecure: Bool, formInput: CardFormInput) {
         tokenizeProgressing = true
         updateIndicatingUI()
         tokenService.createToken(cardNumber: formInput.cardNumber,
@@ -70,7 +70,9 @@ class CardFormScreenPresenter: CardFormScreenPresenterType {
                                  name: formInput.cardHolder,
                                  tenantId: tenantId,
                                  email: formInput.email,
-                                 phone: formInput.phoneNumber) { [weak self] result in
+                                 phone: formInput.phoneNumber,
+                                 threeDSecure: useThreeDSecure
+        ) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let token):

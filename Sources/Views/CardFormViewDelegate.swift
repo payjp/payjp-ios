@@ -35,15 +35,17 @@ public protocol CardFormAction {
     ///
     /// - Parameters:
     ///   - tenantId: identifier of tenant
+    ///   - useThreeDSecure: Whether use 3-D secure or not
     ///   - completion: completion action
-    func createToken(tenantId: String?, completion: @escaping (Result<Token, Error>) -> Void)
+    func createToken(tenantId: String?, useThreeDSecure: Bool, completion: @escaping (Result<Token, Error>) -> Void)
 
     /// Create token for objective-c
     ///
     /// - Parameters:
     ///   - tenantId: identifier of tenant
+    ///   - useThreeDSecure: Whether use 3-D secure or not
     ///   - completion: completion action
-    func createTokenWith(_ tenantId: String?, completion: @escaping (Token?, NSError?) -> Void)
+    func createTokenWith(_ tenantId: String?, useThreeDSecure: Bool, completion: @escaping (Token?, NSError?) -> Void)
 
     /// Fetch accepted card brands for swift
     ///

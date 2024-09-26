@@ -53,6 +53,7 @@ import PassKit
     /// - parameter name:               Credit card holder name `TARO YAMADA`
     /// - parameter email:              Credit card email (Extra Attributes) e.g. `test@example.com`
     /// - parameter phone:              Credit card phone number (Extra Attributes) E.164  e.g. `+819012345678`
+    /// - parameter useThreeDSecure:    Whether use 3-D secure or not
     /// - parameter completion:         completion action
     @nonobjc
     public func createToken(
@@ -64,6 +65,7 @@ import PassKit
         tenantId: String? = nil,
         email: String? = nil,
         phone: String? = nil,
+        useThreeDSecure: Bool,
         completion: @escaping (Result<Token, APIError>) -> Void
     ) {
         tokensService.createToken(cardNumber: cardNumber,
@@ -74,6 +76,7 @@ import PassKit
                                   tenantId: tenantId,
                                   email: email,
                                   phone: phone,
+                                  threeDSecure: useThreeDSecure,
                                   completion: completion)
     }
 
@@ -135,6 +138,9 @@ extension APIClient {
         expirationYear: String,
         name: String?,
         tenantId: String?,
+        email: String?,
+        phone: String?,
+        useThreeDSecure: Bool,
         completionHandler: @escaping (Token?, NSError?) -> Void
     ) {
         createToken(with: cardNumber,
@@ -142,7 +148,10 @@ extension APIClient {
                     expirationMonth: expirationMonth,
                     expirationYear: expirationYear,
                     name: name,
-                    tenantId: tenantId
+                    tenantId: tenantId,
+                    email: email,
+                    phone: phone,
+                    useThreeDSecure: useThreeDSecure
         ) { [weak self] result in
             guard let self = self else { return }
             switch result {

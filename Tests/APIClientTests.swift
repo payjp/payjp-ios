@@ -95,6 +95,9 @@ class APIClientTests: XCTestCase {
         let cardCvc = "123"
         let cardHolderName = "TARO YAMADA"
         let tenantId = "ten_123"
+        let email = "test@example.com"
+        let phone = "+819012345678"
+        let useThreeDSecure = true
 
         HTTPStubs.removeAllStubs()
         stubCardInputResponse(cardNumber: cardNumber,
@@ -103,6 +106,9 @@ class APIClientTests: XCTestCase {
                               cardExpYear: cardExpYear,
                               cardHolderName: cardHolderName,
                               tenantId: tenantId,
+                              email: "test%40example.com", // URLEncoded
+                              phone: "%2B819012345678", // URLEncoded
+                              useThreeDSecure: useThreeDSecure,
                               json: json)
 
         let expectation = self.expectation(description: self.description)
@@ -112,7 +118,11 @@ class APIClientTests: XCTestCase {
                               expirationMonth: cardExpMonth,
                               expirationYear: cardExpYear,
                               name: cardHolderName,
-                              tenantId: tenantId) { result in
+                              tenantId: tenantId,
+                              email: email,
+                              phone: phone,
+                              useThreeDSecure: useThreeDSecure
+        ) { result in
             switch result {
             case .success(let token):
                 XCTAssertEqual(token.identifer, expectedToken.identifer)
@@ -141,6 +151,9 @@ class APIClientTests: XCTestCase {
         let cardCvc = "123"
         let cardHolderName = "TARO YAMADA"
         let tenantId = "ten_123"
+        let email = "test@example.com"
+        let phone = "+819012345678"
+        let useThreeDSecure = true
 
         HTTPStubs.removeAllStubs()
         stubCardInputResponse(cardNumber: cardNumber,
@@ -149,6 +162,9 @@ class APIClientTests: XCTestCase {
                               cardExpYear: cardExpYear,
                               cardHolderName: cardHolderName,
                               tenantId: tenantId,
+                              email: "test%40example.com", // URLEncoded
+                              phone: "%2B819012345678", // URLEncoded
+                              useThreeDSecure: useThreeDSecure,
                               json: json)
 
         let expectation = self.expectation(description: self.description)
@@ -158,7 +174,11 @@ class APIClientTests: XCTestCase {
                                   expirationMonth: cardExpMonth,
                                   expirationYear: cardExpYear,
                                   name: cardHolderName,
-                                  tenantId: tenantId) { (token, error) in
+                                  tenantId: tenantId,
+                                  email: email,
+                                  phone: phone,
+                                  useThreeDSecure: useThreeDSecure
+        ) { (token, error) in
             XCTAssertNil(error)
             guard let token = token else {
                 XCTFail()
@@ -338,6 +358,9 @@ class APIClientTests: XCTestCase {
                                        cardExpYear: String,
                                        cardHolderName: String,
                                        tenantId: String,
+                                       email: String,
+                                       phone: String,
+                                       useThreeDSecure: Bool,
                                        json: Data) {
         let cardHolderNameEncoded = cardHolderName.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         stub(condition: { (req) -> Bool in
@@ -358,6 +381,9 @@ class APIClientTests: XCTestCase {
                 XCTAssertEqual(body?["card%5Bexp_year%5D"], cardExpYear)
                 XCTAssertEqual(body?["card%5Bname%5D"], cardHolderNameEncoded)
                 XCTAssertEqual(body?["tenant"], tenantId)
+                XCTAssertEqual(body?["card%5Bemail%5D"], email)
+                XCTAssertEqual(body?["card%5Bphone%5D"], phone)
+                XCTAssertEqual(body?["three_d_secure"], String(useThreeDSecure))
                 return true
             }
             return false
