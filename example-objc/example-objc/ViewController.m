@@ -58,6 +58,9 @@
                      expirationYear:year
                                name:name
                            tenantId:nil
+                              email:nil
+                              phone:nil
+                    useThreeDSecure:NO
                   completionHandler:^(PAYToken *token, NSError *error) {
                     if (error.domain == PAYErrorDomain && error.code == PAYErrorServiceError) {
                       id<PAYErrorResponseType> errorResponse =

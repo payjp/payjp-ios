@@ -167,7 +167,7 @@ class CardFormViewScrollViewController: UIViewController, CardFormViewDelegate,
     }
 
     func createToken() {
-        self.cardFormView.createToken(tenantId: "tenant_id") { [weak self] result in
+        self.cardFormView.createToken(useThreeDSecure: true) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let token):
@@ -189,7 +189,7 @@ class CardFormViewScrollViewController: UIViewController, CardFormViewDelegate,
     }
 
     func fetchBrands() {
-        self.cardFormView.fetchBrands(tenantId: "tenant_id") { [weak self] result in
+        self.cardFormView.fetchBrands { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let brands):

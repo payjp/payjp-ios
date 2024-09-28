@@ -60,7 +60,7 @@ class CardFormViewWith3DSViewController: UIViewController {
     }
 
     func createToken() {
-        self.cardFormView.createToken { [weak self] result in
+        self.cardFormView.createToken(useThreeDSecure: true) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let token):
