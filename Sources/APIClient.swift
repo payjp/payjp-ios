@@ -65,7 +65,7 @@ import PassKit
         tenantId: String? = nil,
         email: String? = nil,
         phone: String? = nil,
-        useThreeDSecure: Bool,
+        useThreeDSecure: Bool = false,
         completion: @escaping (Result<Token, APIError>) -> Void
     ) {
         tokensService.createToken(cardNumber: cardNumber,

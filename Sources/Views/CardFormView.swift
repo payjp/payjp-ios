@@ -442,7 +442,7 @@ extension CardFormView: CardFormAction {
         return viewModel.isValid
     }
 
-    @nonobjc public func createToken(tenantId: String? = nil, useThreeDSecure: Bool, completion: @escaping (Result<Token, Error>) -> Void) {
+    @nonobjc public func createToken(tenantId: String? = nil, useThreeDSecure: Bool = false, completion: @escaping (Result<Token, Error>) -> Void) {
         viewModel.createToken(with: tenantId, useThreeDSecure: useThreeDSecure, completion: completion)
     }
 
@@ -462,7 +462,7 @@ extension CardFormView: CardFormAction {
         }
     }
 
-    @nonobjc public func fetchBrands(tenantId: String?, completion: CardBrandsResult?) {
+    @nonobjc public func fetchBrands(tenantId: String? = nil, completion: CardBrandsResult?) {
         viewModel.fetchAcceptedBrands(with: tenantId, completion: completion)
     }
 
