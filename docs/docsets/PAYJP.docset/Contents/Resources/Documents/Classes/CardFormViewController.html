@@ -215,9 +215,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@PAYJP@objc(cs)PAYCardFormViewController(cm)createCardFormViewControllerWithStyle:tenantId:delegate:viewType:extraAttributes:"></a>
-                    <a name="//apple_ref/swift/Method/createCardFormViewController(style:tenantId:delegate:viewType:extraAttributes:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@PAYJP@objc(cs)PAYCardFormViewController(cm)createCardFormViewControllerWithStyle:tenantId:delegate:viewType:extraAttributes:">createCardFormViewController(style:<wbr>tenantId:<wbr>delegate:<wbr>viewType:<wbr>extraAttributes:<wbr>)</a>
+                    <a name="/c:@M@PAYJP@objc(cs)PAYCardFormViewController(cm)createCardFormViewControllerWithStyle:tenantId:delegate:viewType:extraAttributes:useThreeDSecure:"></a>
+                    <a name="//apple_ref/swift/Method/createCardFormViewController(style:tenantId:delegate:viewType:extraAttributes:useThreeDSecure:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@PAYJP@objc(cs)PAYCardFormViewController(cm)createCardFormViewControllerWithStyle:tenantId:delegate:viewType:extraAttributes:useThreeDSecure:">createCardFormViewController(style:<wbr>tenantId:<wbr>delegate:<wbr>viewType:<wbr>extraAttributes:<wbr>useThreeDSecure:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -232,13 +232,14 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@objc(createCardFormViewControllerWithStyle:tenantId:delegate:viewType:extraAttributes:)</span>
+                          <pre class="highlight swift"><code><span class="kd">@objc(createCardFormViewControllerWithStyle:tenantId:delegate:viewType:extraAttributes:useThreeDSecure:)</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">createCardFormViewController</span><span class="p">(</span>
     <span class="nv">style</span><span class="p">:</span> <span class="kt"><a href="../Classes/FormStyle.html">FormStyle</a></span> <span class="o">=</span> <span class="o">.</span><span class="n">defaultStyle</span><span class="p">,</span>
     <span class="nv">tenantId</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
     <span class="nv">delegate</span><span class="p">:</span> <span class="kt"><a href="../Protocols/CardFormViewControllerDelegate.html">CardFormViewControllerDelegate</a></span><span class="p">,</span>
     <span class="nv">viewType</span><span class="p">:</span> <span class="kt"><a href="../Enums/CardFormViewType.html">CardFormViewType</a></span> <span class="o">=</span> <span class="o">.</span><span class="n">labelStyled</span><span class="p">,</span>
-    <span class="nv">extraAttributes</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Protocols.html#/c:@M@PAYJP@objc(pl)PAYExtraAttribute">ExtraAttribute</a></span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="kt"><a href="../Classes/ExtraAttributeEmail.html">ExtraAttributeEmail</a></span><span class="p">(),</span> <span class="kt"><a href="../Classes/ExtraAttributePhone.html">ExtraAttributePhone</a></span><span class="p">()]</span>
+    <span class="nv">extraAttributes</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Protocols.html#/c:@M@PAYJP@objc(pl)PAYExtraAttribute">ExtraAttribute</a></span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="kt"><a href="../Classes/ExtraAttributeEmail.html">ExtraAttributeEmail</a></span><span class="p">(),</span> <span class="kt"><a href="../Classes/ExtraAttributePhone.html">ExtraAttributePhone</a></span><span class="p">()],</span>
+    <span class="nv">useThreeDSecure</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CardFormViewController</span></code></pre>
 
                         </div>
@@ -304,6 +305,18 @@
                               <td>
                                 <div>
                                   <p>extra attributes for 3-D Secure</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>useThreeDSecure</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>whether use 3-D secure or not</p>
                                 </div>
                               </td>
                             </tr>
