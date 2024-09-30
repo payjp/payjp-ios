@@ -55,7 +55,7 @@ class CardFormScreenPresenterTests: XCTestCase {
         mockService.createTokenResult = .success(mockToken())
 
         let presenter = CardFormScreenPresenter(delegate: mockDelegate, tokenService: mockService)
-        presenter.createToken(tenantId: "tenant_id", formInput: cardFormInput())
+        presenter.createToken(tenantId: "tenant_id", useThreeDSecure: true, formInput: cardFormInput())
         presenter.tokenOperationStatusDidUpdate(status: .running)
         presenter.tokenOperationStatusDidUpdate(status: .throttled)
         presenter.tokenOperationStatusDidUpdate(status: .acceptable)
@@ -84,7 +84,7 @@ class CardFormScreenPresenterTests: XCTestCase {
         mockService.createTokenResult = .failure(apiError)
 
         let presenter = CardFormScreenPresenter(delegate: mockDelegate, tokenService: mockService)
-        presenter.createToken(tenantId: "tenant_id", formInput: cardFormInput())
+        presenter.createToken(tenantId: "tenant_id", useThreeDSecure: true, formInput: cardFormInput())
         presenter.tokenOperationStatusDidUpdate(status: .running)
         presenter.tokenOperationStatusDidUpdate(status: .throttled)
 
@@ -114,7 +114,7 @@ class CardFormScreenPresenterTests: XCTestCase {
         mockService.createTokenResult = .success(mockToken())
 
         let presenter = CardFormScreenPresenter(delegate: mockDelegate, tokenService: mockService)
-        presenter.createToken(tenantId: "tenant_id", formInput: cardFormInput())
+        presenter.createToken(tenantId: "tenant_id", useThreeDSecure: true, formInput: cardFormInput())
         presenter.tokenOperationStatusDidUpdate(status: .running)
         presenter.tokenOperationStatusDidUpdate(status: .throttled)
 
@@ -185,7 +185,7 @@ class CardFormScreenPresenterTests: XCTestCase {
         mockService.createTokenResult = .success(token)
 
         let presenter = CardFormScreenPresenter(delegate: mockDelegate, tokenService: mockService)
-        presenter.createToken(tenantId: "tenant_id", formInput: cardFormInput())
+        presenter.createToken(tenantId: "tenant_id", useThreeDSecure: true, formInput: cardFormInput())
         presenter.tokenOperationStatusDidUpdate(status: .running)
         presenter.tokenOperationStatusDidUpdate(status: .throttled)
         presenter.tokenOperationStatusDidUpdate(status: .acceptable)
@@ -211,7 +211,7 @@ class CardFormScreenPresenterTests: XCTestCase {
 
         let presenter = CardFormScreenPresenter(delegate: mockDelegate,
                                                 tokenService: mockService)
-        presenter.createToken(tenantId: "tenant_id", formInput: cardFormInput())
+        presenter.createToken(tenantId: "tenant_id", useThreeDSecure: true, formInput: cardFormInput())
         presenter.completeTokenTds()
         presenter.tokenOperationStatusDidUpdate(status: .running)
         presenter.tokenOperationStatusDidUpdate(status: .throttled)
@@ -242,7 +242,7 @@ class CardFormScreenPresenterTests: XCTestCase {
 
         let presenter = CardFormScreenPresenter(delegate: mockDelegate,
                                                 tokenService: mockService)
-        presenter.createToken(tenantId: "tenant_id", formInput: cardFormInput())
+        presenter.createToken(tenantId: "tenant_id", useThreeDSecure: true, formInput: cardFormInput())
         presenter.completeTokenTds()
 
         waitForExpectations(timeout: 1, handler: nil)

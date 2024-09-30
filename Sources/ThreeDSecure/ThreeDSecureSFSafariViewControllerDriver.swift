@@ -21,6 +21,7 @@ public class ThreeDSecureSFSafariViewControllerDriver: NSObject, ThreeDSecureWeb
         let safariVc = SFSafariViewController(url: url)
         safariVc.dismissButtonStyle = .close
         safariVc.delegate = self
+        safariVc.modalPresentationStyle = .overFullScreen
         self.delegate = delegate
         host.present(safariVc, animated: true, completion: nil)
     }

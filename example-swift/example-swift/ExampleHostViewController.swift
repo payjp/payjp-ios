@@ -28,7 +28,7 @@ class ExampleHostViewController: UITableViewController {
 
     private func presentTdsAttributeOptions(viewType: CardFormViewType, pushNavigation: Bool) {
         func showCardForm(attributes: [ExtraAttribute]) {
-            let cardForm = CardFormViewController.createCardFormViewController(delegate: self, viewType: viewType, extraAttributes: attributes)
+            let cardForm = CardFormViewController.createCardFormViewController(delegate: self, viewType: viewType, extraAttributes: attributes, useThreeDSecure: true)
             if pushNavigation {
                 self.navigationController?.pushViewController(cardForm, animated: true)
             } else {

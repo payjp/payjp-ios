@@ -43,7 +43,7 @@ class TokenOperationObserver: TokenOperationObserverInternalType {
 
     // MARK: - TokenOperationObserverType
 
-    private (set) var status: TokenOperationStatus = .acceptable {
+    private(set) var status: TokenOperationStatus = .acceptable {
         didSet {
             if status != oldValue {
                 DispatchQueue.main.async { [weak self] in

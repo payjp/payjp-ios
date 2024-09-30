@@ -442,12 +442,16 @@ extension CardFormView: CardFormAction {
         return viewModel.isValid
     }
 
-    @nonobjc public func createToken(tenantId: String? = nil, completion: @escaping (Result<Token, Error>) -> Void) {
-        viewModel.createToken(with: tenantId, completion: completion)
+    @nonobjc public func createToken(tenantId: String? = nil, useThreeDSecure: Bool = false, completion: @escaping (Result<Token, Error>) -> Void) {
+        viewModel.createToken(with: tenantId, useThreeDSecure: useThreeDSecure, completion: completion)
     }
 
     public func createTokenWith(_ tenantId: String?, completion: @escaping (Token?, NSError?) -> Void) {
-        viewModel.createToken(with: tenantId) { [weak self] result in
+        return createTokenWith(tenantId, useThreeDSecure: false, completion: completion)
+    }
+
+    public func createTokenWith(_ tenantId: String?, useThreeDSecure: Bool, completion: @escaping (Token?, NSError?) -> Void) {
+        viewModel.createToken(with: tenantId, useThreeDSecure: useThreeDSecure) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let result):
@@ -458,7 +462,7 @@ extension CardFormView: CardFormAction {
         }
     }
 
-    @nonobjc public func fetchBrands(tenantId: String?, completion: CardBrandsResult?) {
+    @nonobjc public func fetchBrands(tenantId: String? = nil, completion: CardBrandsResult?) {
         viewModel.fetchAcceptedBrands(with: tenantId, completion: completion)
     }
 

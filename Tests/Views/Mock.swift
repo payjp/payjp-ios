@@ -95,16 +95,17 @@ class MockTokenService: TokenServiceType {
     let tokenOperationObserver: TokenOperationObserverType = MockTokenOperationObserverType()
 
     // swiftlint:disable function_parameter_count
-    func createToken(cardNumber: String,
-                     cvc: String,
-                     expirationMonth: String,
-                     expirationYear: String,
-                     name: String?,
-                     tenantId: String?,
-                     email: String?,
-                     phone: String?,
-                     completion: @escaping (Result<Token, APIError>) -> Void) -> URLSessionDataTask? {
-
+    func createToken(
+        cardNumber: String,
+        cvc: String,
+        expirationMonth: String,
+        expirationYear: String,
+        name: String?,
+        tenantId: String?,
+        email: String?,
+        phone: String?,
+        threeDSecure: Bool,
+        completion: @escaping (Result<Token, APIError>) -> Void) -> URLSessionDataTask? {
         self.createTokenTenantId = tenantId
         guard let result = createTokenResult else {
             fatalError("Set createTokenResult before invoked.")

@@ -171,6 +171,7 @@
 
   [self.cardFormView
       createTokenWith:nil
+      useThreeDSecure:YES
            completion:^(PAYToken *token, NSError *error) {
              if (error.domain == PAYErrorDomain && error.code == PAYErrorServiceError) {
                id<PAYErrorResponseType> errorResponse = error.userInfo[PAYErrorServiceErrorObject];

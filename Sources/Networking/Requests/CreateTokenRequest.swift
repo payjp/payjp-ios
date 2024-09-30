@@ -25,6 +25,7 @@ struct CreateTokenRequest: BaseRequest {
         parameters["tenant"] = tenantId
         parameters["card[email]"] = email
         parameters["card[phone]"] = phone
+        parameters["three_d_secure"] = String(threeDSecure)
         return parameters
     }
 
@@ -38,4 +39,5 @@ struct CreateTokenRequest: BaseRequest {
     let tenantId: String?
     let email: String?
     let phone: String?
+    let threeDSecure: Bool
 }

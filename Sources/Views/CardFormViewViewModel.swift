@@ -69,8 +69,9 @@ protocol CardFormViewViewModelType {
     ///
     /// - Parameters:
     ///   - tenantId: テナントID
+    ///   - useThreeDSecure: 3-D セキュアを利用するかどうか
     ///   - completion: 取得結果
-    func createToken(with tenantId: String?, completion: @escaping (Result<Token, Error>) -> Void)
+    func createToken(with tenantId: String?, useThreeDSecure: Bool, completion: @escaping (Result<Token, Error>) -> Void)
 
     /// 利用可能ブランドを取得する
     ///
@@ -296,7 +297,7 @@ class CardFormViewViewModel: CardFormViewViewModelType {
         return .success(formattedValue)
     }
 
-    func createToken(with tenantId: String?, completion: @escaping (Result<Token, Error>) -> Void) {
+    func createToken(with tenantId: String?, useThreeDSecure: Bool, completion: @escaping (Result<Token, any Error>) -> Void) {
         if let cardNumberString = cardNumber?.value, let month = monthYear?.month,
            let year = monthYear?.year, let cvc = cvc {
             tokenService.createToken(cardNumber: cardNumberString,
@@ -306,7 +307,9 @@ class CardFormViewViewModel: CardFormViewViewModelType {
                                      name: cardHolder,
                                      tenantId: tenantId,
                                      email: email,
-                                     phone: phoneNumber) { result in
+                                     phone: phoneNumber,
+                                     threeDSecure: useThreeDSecure
+            ) { result in
                 switch result {
                 case .success(let token): completion(.success(token))
                 case .failure(let error): completion(.failure(error))

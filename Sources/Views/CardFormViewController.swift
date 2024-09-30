@@ -52,6 +52,7 @@ public class CardFormViewController: UIViewController {
 
     private var formStyle: FormStyle?
     private var tenantId: String?
+    private var useThreeDSecure: Bool = false
     private var cardFormViewType: CardFormViewType?
     private var accptedBrands: [CardBrand]?
     private var accessorySubmitButton: ActionButton!
@@ -71,14 +72,16 @@ public class CardFormViewController: UIViewController {
     ///   - delegate: delegate of CardFormViewControllerDelegate
     ///   - viewType: card form type
     ///   - extraAttributes: extra attributes for 3-D Secure
+    ///   - useThreeDSecure: whether use 3-D secure or not
     /// - Returns: CardFormViewController
-    @objc(createCardFormViewControllerWithStyle: tenantId: delegate: viewType: extraAttributes:)
+    @objc(createCardFormViewControllerWithStyle: tenantId: delegate: viewType: extraAttributes:useThreeDSecure:)
     public static func createCardFormViewController(
         style: FormStyle = .defaultStyle,
         tenantId: String? = nil,
         delegate: CardFormViewControllerDelegate,
         viewType: CardFormViewType = .labelStyled,
-        extraAttributes: [ExtraAttribute] = [ExtraAttributeEmail(), ExtraAttributePhone()]
+        extraAttributes: [ExtraAttribute] = [ExtraAttributeEmail(), ExtraAttributePhone()],
+        useThreeDSecure: Bool = false
     ) -> CardFormViewController {
 
         let stotyboard = UIStoryboard(name: "CardForm", bundle: .payjpBundle)
@@ -91,6 +94,7 @@ public class CardFormViewController: UIViewController {
         cardFormVc.delegate = delegate
         cardFormVc.cardFormViewType = viewType
         cardFormVc.extraAttributes = extraAttributes
+        cardFormVc.useThreeDSecure = useThreeDSecure
         return cardFormVc
     }
 
@@ -232,7 +236,7 @@ public class CardFormViewController: UIViewController {
         cardFormView.cardFormInput { result in
             switch result {
             case .success(let formInput):
-                presenter?.createToken(tenantId: tenantId, formInput: formInput)
+                presenter?.createToken(tenantId: tenantId, useThreeDSecure: useThreeDSecure, formInput: formInput)
             case .failure(let error):
                 showError(message: error.localizedDescription)
             }

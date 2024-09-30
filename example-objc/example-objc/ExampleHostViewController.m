@@ -54,7 +54,8 @@
                                                               tenantId:nil
                                                               delegate:self
                                                               viewType:viewType
-                                                       extraAttributes:@[ email, phone ]];
+                                                       extraAttributes:@[ email, phone ]
+                                                       useThreeDSecure:YES];
   [self.navigationController pushViewController:cardFormVc animated:YES];
 }
 
@@ -67,7 +68,8 @@
                                                               tenantId:nil
                                                               delegate:self
                                                               viewType:viewType
-                                                       extraAttributes:@[ email, phone ]];
+                                                       extraAttributes:@[ email, phone ]
+                                                       useThreeDSecure:YES];
   UINavigationController *naviVc =
       [UINavigationController.new initWithRootViewController:cardFormVc];
   naviVc.presentationController.delegate = cardFormVc;

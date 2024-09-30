@@ -22,6 +22,7 @@ protocol TokenServiceType {
         tenantId: String?,
         email: String?,
         phone: String?,
+        threeDSecure: Bool,
         completion: @escaping (Result<Token, APIError>) -> Void
     ) -> URLSessionDataTask?
 
@@ -72,6 +73,7 @@ class TokenService: TokenServiceType {
         tenantId: String?,
         email: String?,
         phone: String?,
+        threeDSecure: Bool,
         completion: @escaping (Result<Token, APIError>) -> Void
     ) -> URLSessionDataTask? {
         let request = CreateTokenRequest(
@@ -82,7 +84,9 @@ class TokenService: TokenServiceType {
             name: name,
             tenantId: tenantId,
             email: email,
-            phone: phone)
+            phone: phone,
+            threeDSecure: threeDSecure
+        )
         self.checkTokenOperationStatus()
         self.tokenOperationObserverInternal.startRequest()
         return self.client.request(with: request) { [weak self] result in
