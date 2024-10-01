@@ -239,7 +239,8 @@ public class CardFormView: UIView {
             inputCardHolderSuccess(value: cardHolder)
         case let .failure(error):
             switch error {
-            case let .cardHolderEmptyError(value, instant):
+            case let .cardHolderEmptyError(value, instant),
+                 let .cardHolderInvalidError(value, instant):
                 cardFormProperties.cardHolderTextField.text = value
                 if cardFormProperties.inputTextErrorColorEnabled {
                     cardFormProperties.cardHolderTextField.textColor = forceShowError ||

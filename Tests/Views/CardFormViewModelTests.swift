@@ -300,7 +300,7 @@ class CardFormViewModelTests: XCTestCase {
         switch result {
         case .failure(let error):
             switch error {
-            case .cardHolderEmptyError(value: nil, isInstant: false):
+            case .cardHolderEmptyError(value: "", isInstant: false):
                 break
             default:
                 XCTFail()
@@ -318,6 +318,23 @@ class CardFormViewModelTests: XCTestCase {
         case .failure(let error):
             switch error {
             case .cardHolderEmptyError(value: nil, isInstant: false):
+                break
+            default:
+                XCTFail()
+            }
+        default:
+            XCTFail()
+        }
+    }
+
+    func testUpdateCardHolderInvalid() {
+        let viewModel = CardFormViewViewModel()
+        let result = viewModel.update(cardHolder: "JANE,")
+
+        switch result {
+        case .failure(let error):
+            switch error {
+            case .cardHolderInvalidError(value: "JANE,", isInstant: true):
                 break
             default:
                 XCTFail()
