@@ -14,7 +14,7 @@ protocol CardHolderValidatorType {
 
 struct CardHolderValidator: CardHolderValidatorType {
     // swiftlint:disable force_try
-    let regex = try! NSRegularExpression(pattern: "^[a-zA-Z\\d\\s\\-\\.]+$")
+    let regex = try! NSRegularExpression(pattern: "^[a-zA-Z0-9 \\-\\.]+$")
     // swiftlint:enable force_try
     func isValid(cardHolder: String) -> Bool {
         let range = NSRange(location: 0, length: cardHolder.utf16.count)

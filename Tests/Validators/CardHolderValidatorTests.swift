@@ -15,5 +15,9 @@ class CardHolderValidatorTests: XCTestCase {
         XCTAssertEqual(validator.isValid(cardHolder: "JANE DOE"), true)
         XCTAssertEqual(validator.isValid(cardHolder: "abcABC012 -."), true)
         XCTAssertEqual(validator.isValid(cardHolder: "山田たろう"), false)
+        // 全角スペースは不可
+        XCTAssertEqual(validator.isValid(cardHolder: "JANE　DOE"), false)
+        // 全角数字は不可
+        XCTAssertEqual(validator.isValid(cardHolder: "１２３"), false)
     }
 }
