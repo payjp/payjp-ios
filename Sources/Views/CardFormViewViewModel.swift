@@ -109,6 +109,7 @@ class CardFormViewViewModel: CardFormViewViewModelType {
     private let expirationExtractor: ExpirationExtractorType
     private let cvcFormatter: CvcFormatterType
     private let cvcValidator: CvcValidatorType
+    private let cardHolderValidator: CardHolderValidatorType
     private let accountsService: AccountsServiceType
     private let tokenService: TokenServiceType
     private let permissionFetcher: PermissionFetcherType
@@ -145,6 +146,7 @@ class CardFormViewViewModel: CardFormViewViewModelType {
          expirationExtractor: ExpirationExtractorType = ExpirationExtractor(),
          cvcFormatter: CvcFormatterType = CvcFormatter(),
          cvcValidator: CvcValidatorType = CvcValidator(),
+         cardHolderValidator: CardHolderValidatorType = CardHolderValidator(),
          accountsService: AccountsServiceType = AccountsService.shared,
          tokenService: TokenServiceType = TokenService.shared,
          permissionFetcher: PermissionFetcherType = PermissionFetcher.shared) {
@@ -155,6 +157,7 @@ class CardFormViewViewModel: CardFormViewViewModelType {
         self.expirationExtractor = expirationExtractor
         self.cvcFormatter = cvcFormatter
         self.cvcValidator = cvcValidator
+        self.cardHolderValidator = cardHolderValidator
         self.accountsService = accountsService
         self.tokenService = tokenService
         self.permissionFetcher = permissionFetcher
@@ -248,13 +251,16 @@ class CardFormViewViewModel: CardFormViewViewModelType {
     }
 
     func update(cardHolder: String?) -> Result<String, FormError> {
-        guard let holderInput = cardHolder, let cardHolder = cardHolder, !cardHolder.isEmpty else {
+        guard let cardHolder = cardHolder, !cardHolder.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
             self.cardHolder = nil
-            return .failure(.cardHolderEmptyError(value: nil, isInstant: false))
+            return .failure(.cardHolderEmptyError(value: cardHolder, isInstant: false))
         }
-        self.cardHolder = holderInput
-
-        return .success(holderInput)
+        self.cardHolder = cardHolder
+        if cardHolderValidator.isValid(cardHolder: cardHolder) {
+            return .success(cardHolder)
+        } else {
+            return .failure(.cardHolderInvalidError(value: cardHolder, isInstant: true))
+        }
     }
 
     func update(email: String?) -> Result<String?, FormError> {
@@ -299,7 +305,7 @@ class CardFormViewViewModel: CardFormViewViewModelType {
 
     func createToken(with tenantId: String?, useThreeDSecure: Bool, completion: @escaping (Result<Token, any Error>) -> Void) {
         if let cardNumberString = cardNumber?.value, let month = monthYear?.month,
-           let year = monthYear?.year, let cvc = cvc {
+           let year = monthYear?.year, let cvc = cvc, let cardHolder = cardHolder?.trimmingCharacters(in: .whitespacesAndNewlines) {
             tokenService.createToken(cardNumber: cardNumberString,
                                      cvc: cvc,
                                      expirationMonth: month,
@@ -403,7 +409,7 @@ class CardFormViewViewModel: CardFormViewViewModelType {
 
     private func checkCardHolderValid() -> Bool {
         if let cardHolder = self.cardHolder {
-            return !cardHolder.isEmpty
+            return self.cardHolderValidator.isValid(cardHolder: cardHolder)
         }
         return false
     }
