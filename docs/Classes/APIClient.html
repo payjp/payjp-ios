@@ -17,7 +17,7 @@
     <a title="APIClient Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">PAYJP 2.0.0 Docs</a></p>
+        <p><a href="../index.html">PAYJP 2.1.0 Docs</a></p>
         <p class="header-right"><a href="https://github.com/payjp/payjp-ios"><img src="../img/gh.png" alt="GitHub"/>View on GitHub</a></p>
         <div class="header-right">
           <form role="search" action="../search.json">
@@ -327,9 +327,9 @@ cf. <a href="https://pay.jp/docs/api/#introduction">https://pay.jp/docs/api/#int
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5PAYJP9APIClientC11createToken4with3cvc15expirationMonth0G4Year4name8tenantId5email5phone10completionySS_S4SSgA3Nys6ResultOyAA0D0CAA8APIErrorOGctF"></a>
-                    <a name="//apple_ref/swift/Method/createToken(with:cvc:expirationMonth:expirationYear:name:tenantId:email:phone:completion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5PAYJP9APIClientC11createToken4with3cvc15expirationMonth0G4Year4name8tenantId5email5phone10completionySS_S4SSgA3Nys6ResultOyAA0D0CAA8APIErrorOGctF">createToken(with:<wbr>cvc:<wbr>expirationMonth:<wbr>expirationYear:<wbr>name:<wbr>tenantId:<wbr>email:<wbr>phone:<wbr>completion:<wbr>)</a>
+                    <a name="/s:5PAYJP9APIClientC11createToken4with3cvc15expirationMonth0G4Year4name8tenantId5email5phone15useThreeDSecure10completionySS_S4SSgA3OSbys6ResultOyAA0D0CAA8APIErrorOGctF"></a>
+                    <a name="//apple_ref/swift/Method/createToken(with:cvc:expirationMonth:expirationYear:name:tenantId:email:phone:useThreeDSecure:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5PAYJP9APIClientC11createToken4with3cvc15expirationMonth0G4Year4name8tenantId5email5phone15useThreeDSecure10completionySS_S4SSgA3OSbys6ResultOyAA0D0CAA8APIErrorOGctF">createToken(with:<wbr>cvc:<wbr>expirationMonth:<wbr>expirationYear:<wbr>name:<wbr>tenantId:<wbr>email:<wbr>phone:<wbr>useThreeDSecure:<wbr>completion:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -354,6 +354,7 @@ cf. <a href="https://pay.jp/docs/api/#introduction">https://pay.jp/docs/api/#int
     <span class="nv">tenantId</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
     <span class="nv">email</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
     <span class="nv">phone</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+    <span class="nv">useThreeDSecure</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span>
     <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Result</span><span class="o">&lt;</span><span class="kt"><a href="../Classes/Token.html">Token</a></span><span class="p">,</span> <span class="kt"><a href="../Enums/APIError.html">APIError</a></span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span>
 <span class="p">)</span></code></pre>
 
@@ -444,6 +445,18 @@ cf. <a href="https://pay.jp/docs/api/#introduction">https://pay.jp/docs/api/#int
                               <td>
                                 <div>
                                   <p>Credit card phone number (Extra Attributes) E.164  e.g. <code>+819012345678</code></p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>useThreeDSecure</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Whether use 3-D secure or not</p>
                                 </div>
                               </td>
                             </tr>
@@ -685,9 +698,9 @@ cf. <a href="https://pay.jp/docs/api/#introduction">https://pay.jp/docs/api/#int
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@CM@PAYJP@objc(cs)PAYAPIClient(im)createTokenWith:cvc:expirationMonth:expirationYear:name:tenantId:completionHandler:"></a>
-                    <a name="//apple_ref/swift/Method/createTokenWith(_:cvc:expirationMonth:expirationYear:name:tenantId:completionHandler:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@CM@PAYJP@objc(cs)PAYAPIClient(im)createTokenWith:cvc:expirationMonth:expirationYear:name:tenantId:completionHandler:">createTokenWith(_:<wbr>cvc:<wbr>expirationMonth:<wbr>expirationYear:<wbr>name:<wbr>tenantId:<wbr>completionHandler:<wbr>)</a>
+                    <a name="/c:@CM@PAYJP@objc(cs)PAYAPIClient(im)createTokenWith:cvc:expirationMonth:expirationYear:name:tenantId:email:phone:useThreeDSecure:completionHandler:"></a>
+                    <a name="//apple_ref/swift/Method/createTokenWith(_:cvc:expirationMonth:expirationYear:name:tenantId:email:phone:useThreeDSecure:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@PAYJP@objc(cs)PAYAPIClient(im)createTokenWith:cvc:expirationMonth:expirationYear:name:tenantId:email:phone:useThreeDSecure:completionHandler:">createTokenWith(_:<wbr>cvc:<wbr>expirationMonth:<wbr>expirationYear:<wbr>name:<wbr>tenantId:<wbr>email:<wbr>phone:<wbr>useThreeDSecure:<wbr>completionHandler:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -710,6 +723,9 @@ cf. <a href="https://pay.jp/docs/api/#introduction">https://pay.jp/docs/api/#int
     <span class="nv">expirationYear</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
     <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span>
     <span class="nv">tenantId</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span>
+    <span class="nv">email</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span>
+    <span class="nv">phone</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span>
+    <span class="nv">useThreeDSecure</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">,</span>
     <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Classes/Token.html">Token</a></span><span class="p">?,</span> <span class="kt">NSError</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span>
 <span class="p">)</span></code></pre>
 
