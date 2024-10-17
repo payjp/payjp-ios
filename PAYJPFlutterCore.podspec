@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.name             = 'PAYJPFlutterCore'
   s.version          = PAYJPSDK::VERSION
   s.summary          = 'PAY.JP iOS SDK for Flutter distribution'
-  s.description      = 'PAY.JP iOS SDK https://pay.jp/docs/started'
+  s.description      = 'PAY.JP iOS SDK https://pay.jp/docs'
 
   s.homepage         = PAYJPSDK::HOMEPAGE_URL
   s.license          = PAYJPSDK::LICENSE
