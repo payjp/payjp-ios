@@ -17,7 +17,7 @@
     <a title="Classes  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">PAYJP 2.1.0 Docs</a></p>
+        <p><a href="index.html">PAYJP 2.1.1 Docs</a></p>
         <p class="header-right"><a href="https://github.com/payjp/payjp-ios"><img src="img/gh.png" alt="GitHub"/>View on GitHub</a></p>
         <div class="header-right">
           <form role="search" action="search.json">
@@ -523,6 +523,7 @@ cf. <a href="https://pay.jp/docs/api/#token-%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3
                           <pre class="highlight swift"><code><span class="kd">@IBDesignable</span>
 <span class="kd">@objcMembers</span>
 <span class="kd">@objc(PAYCardFormDisplayStyledView)</span>
+<span class="kd">@MainActor</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="kt">CardFormDisplayStyledView</span> <span class="p">:</span> <span class="kt"><a href="Classes/CardFormView.html">CardFormView</a></span><span class="p">,</span> <span class="kt">CardFormProperties</span></code></pre>
 <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">CardFormDisplayStyledView</span><span class="p">:</span> <span class="kt">UIScrollViewDelegate</span></code></pre>
 <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">CardFormDisplayStyledView</span><span class="p">:</span> <span class="kt"><a href="Protocols/CardFormStylable.html">CardFormStylable</a></span></code></pre>
@@ -557,6 +558,7 @@ It&rsquo;s recommended to implement with UIScrollView.</p>
                           <pre class="highlight swift"><code><span class="kd">@IBDesignable</span>
 <span class="kd">@objcMembers</span>
 <span class="kd">@objc(PAYCardFormLabelStyledView)</span>
+<span class="kd">@MainActor</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="kt">CardFormLabelStyledView</span> <span class="p">:</span> <span class="kt"><a href="Classes/CardFormView.html">CardFormView</a></span><span class="p">,</span> <span class="kt">CardFormProperties</span></code></pre>
 <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">CardFormLabelStyledView</span><span class="p">:</span> <span class="kt"><a href="Protocols/CardFormStylable.html">CardFormStylable</a></span></code></pre>
 
@@ -590,6 +592,7 @@ It&rsquo;s suitable for UITableView design.</p>
                           <pre class="highlight swift"><code><span class="kd">@IBDesignable</span>
 <span class="kd">@objcMembers</span>
 <span class="kd">@objc(PAYCardFormTableStyledView)</span>
+<span class="kd">@MainActor</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="kt">CardFormTableStyledView</span> <span class="p">:</span> <span class="kt"><a href="Classes/CardFormView.html">CardFormView</a></span><span class="p">,</span> <span class="kt">CardFormProperties</span></code></pre>
 <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">CardFormTableStyledView</span><span class="p">:</span> <span class="kt"><a href="Protocols/CardFormStylable.html">CardFormStylable</a></span></code></pre>
 
@@ -620,6 +623,7 @@ It&rsquo;s suitable for UITableView design.</p>
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@objcMembers</span>
+<span class="kd">@MainActor</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="kt">CardFormView</span> <span class="p">:</span> <span class="kt">UIView</span></code></pre>
 <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">CardFormView</span><span class="p">:</span> <span class="kt"><a href="Protocols/CardFormAction.html">CardFormAction</a></span></code></pre>
 <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">CardFormView</span><span class="p">:</span> <span class="kt">UITextFieldDelegate</span></code></pre>
@@ -653,6 +657,7 @@ It&rsquo;s suitable for UITableView design.</p>
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@objcMembers</span>
 <span class="kd">@objc(PAYCardFormViewController)</span>
+<span class="kd">@MainActor</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="kt">CardFormViewController</span> <span class="p">:</span> <span class="kt">UIViewController</span></code></pre>
 <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">CardFormViewController</span><span class="p">:</span> <span class="kt"><a href="Protocols/CardFormViewDelegate.html">CardFormViewDelegate</a></span></code></pre>
 <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">CardFormViewController</span><span class="p">:</span> <span class="kt">UICollectionViewDataSource</span></code></pre>
