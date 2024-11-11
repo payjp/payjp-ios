@@ -44,7 +44,7 @@
 "payjp_card_form_error_invalid_cvc" = "Please enter a valid security code.";
 "payjp_card_form_error_no_holder_name" = "Please enter a card holder name.";
 "payjp_card_form_error_invalid_holder_name" = "There are invalid characters for card holder name.";
-"payjp_card_form_error_invalid_holder_name_length" = "Please enter a card holder name within 45 characters.";
+"payjp_card_form_error_invalid_holder_name_length" = "Please enter a card holder name between 2 and 45 characters.";
 "payjp_card_form_error_no_email" = "Please enter a email.";
 "payjp_card_form_error_no_phone_number" = "Please enter a phone number.";
 "payjp_card_form_error_invalid_phone_number" = "Please enter a valid phone number.";

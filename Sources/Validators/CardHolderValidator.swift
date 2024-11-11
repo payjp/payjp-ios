@@ -23,7 +23,7 @@ struct CardHolderValidator: CardHolderValidatorType {
     let regex = try! NSRegularExpression(pattern: "^[a-zA-Z0-9 \\-\\.]+$")
     // swiftlint:enable force_try
     func validate(cardHolder: String) -> CardHolderValidationResult {
-        guard cardHolder.count <= 45 else {
+        guard case 2...45 = cardHolder.count else {
             return .invalidCardHolderLength
         }
         let range = NSRange(location: 0, length: cardHolder.utf16.count)

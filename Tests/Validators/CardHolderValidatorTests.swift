@@ -23,5 +23,9 @@ class CardHolderValidatorTests: XCTestCase {
         XCTAssertEqual(validator.validate(cardHolder: "1234567890123456789012345678901234567890123456"), .invalidCardHolderLength)
         // 45文字はOK
         XCTAssertEqual(validator.validate(cardHolder: "123456789012345678901234567890123456789012345"), .valid)
+        // 1文字は不可
+        XCTAssertEqual(validator.validate(cardHolder: "1"), .invalidCardHolderLength)
+        // 2文字はOK
+        XCTAssertEqual(validator.validate(cardHolder: "12"), .valid)
     }
 }
