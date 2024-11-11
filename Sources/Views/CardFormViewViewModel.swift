@@ -256,10 +256,13 @@ class CardFormViewViewModel: CardFormViewViewModelType {
             return .failure(.cardHolderEmptyError(value: cardHolder, isInstant: false))
         }
         self.cardHolder = cardHolder
-        if cardHolderValidator.isValid(cardHolder: cardHolder) {
+        switch cardHolderValidator.validate(cardHolder: cardHolder) {
+        case .valid:
             return .success(cardHolder)
-        } else {
+        case .invalidCardHolderCharacter:
             return .failure(.cardHolderInvalidError(value: cardHolder, isInstant: true))
+        case .invalidCardHolderLength:
+            return .failure(.cardHolderInvalidLengthError(value: cardHolder, isInstant: true))
         }
     }
 
@@ -409,7 +412,7 @@ class CardFormViewViewModel: CardFormViewViewModelType {
 
     private func checkCardHolderValid() -> Bool {
         if let cardHolder = self.cardHolder {
-            return self.cardHolderValidator.isValid(cardHolder: cardHolder)
+            return self.cardHolderValidator.validate(cardHolder: cardHolder) == .valid
         }
         return false
     }

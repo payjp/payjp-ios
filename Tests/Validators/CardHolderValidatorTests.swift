@@ -12,12 +12,20 @@ import XCTest
 class CardHolderValidatorTests: XCTestCase {
     func testCardHolderValidation() {
         let validator = CardHolderValidator()
-        XCTAssertEqual(validator.isValid(cardHolder: "JANE DOE"), true)
-        XCTAssertEqual(validator.isValid(cardHolder: "abcABC012 -."), true)
-        XCTAssertEqual(validator.isValid(cardHolder: "山田たろう"), false)
+        XCTAssertEqual(validator.validate(cardHolder: "JANE DOE"), .valid)
+        XCTAssertEqual(validator.validate(cardHolder: "abcABC012 -."), .valid)
+        XCTAssertEqual(validator.validate(cardHolder: "山田たろう"), .invalidCardHolderCharacter)
         // 全角スペースは不可
-        XCTAssertEqual(validator.isValid(cardHolder: "JANE　DOE"), false)
+        XCTAssertEqual(validator.validate(cardHolder: "JANE　DOE"), .invalidCardHolderCharacter)
         // 全角数字は不可
-        XCTAssertEqual(validator.isValid(cardHolder: "１２３"), false)
+        XCTAssertEqual(validator.validate(cardHolder: "１２３"), .invalidCardHolderCharacter)
+        // 46文字以上は不可
+        XCTAssertEqual(validator.validate(cardHolder: "1234567890123456789012345678901234567890123456"), .invalidCardHolderLength)
+        // 45文字はOK
+        XCTAssertEqual(validator.validate(cardHolder: "123456789012345678901234567890123456789012345"), .valid)
+        // 1文字は不可
+        XCTAssertEqual(validator.validate(cardHolder: "1"), .invalidCardHolderLength)
+        // 2文字はOK
+        XCTAssertEqual(validator.validate(cardHolder: "12"), .valid)
     }
 }
