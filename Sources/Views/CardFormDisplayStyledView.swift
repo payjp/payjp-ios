@@ -272,6 +272,7 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
     private func setupErrorLabel() -> UILabel {
         let label = UILabel()
         label.font = .systemFont(ofSize: 13)
+        label.numberOfLines = 0
         return label
     }
 
@@ -517,9 +518,6 @@ public class CardFormDisplayStyledView: CardFormView, CardFormProperties {
         contentStackView.addArrangedSubview(phoneNumberErrorLabel)
 
         NSLayoutConstraint.activate([
-            cardHolderErrorLabel.heightAnchor.constraint(equalToConstant: 20.0),
-            emailErrorLabel.heightAnchor.constraint(equalToConstant: 20.0),
-            phoneNumberErrorLabel.heightAnchor.constraint(equalToConstant: 20.0),
             cardHolderStackView.leadingAnchor.constraint(equalTo: contentStackView.leadingAnchor),
             cardHolderStackView.trailingAnchor.constraint(equalTo: contentStackView.trailingAnchor),
             extrasStackView.leadingAnchor.constraint(equalTo: contentStackView.leadingAnchor),
