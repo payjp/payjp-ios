@@ -429,21 +429,21 @@
     },
     {
       "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Views/CardFormDisplayStyledView.swift",
-      "line": 676,
+      "line": 674,
       "symbol": "CardFormDisplayStyledView.scrollViewDidScroll(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Views/CardFormDisplayStyledView.swift",
-      "line": 685,
+      "line": 683,
       "symbol": "CardFormDisplayStyledView.scrollViewWillBeginDragging(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/tatsuyakitagawa/src/github.com/payjp/payjp-ios/Sources/Views/CardFormDisplayStyledView.swift",
-      "line": 689,
+      "line": 687,
       "symbol": "CardFormDisplayStyledView.scrollViewDidEndDecelerating(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
