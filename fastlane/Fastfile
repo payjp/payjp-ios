@@ -38,8 +38,8 @@ platform :ios do
 
   desc "Lint podspec"
   lane :lint_podspec do
-    sh('pod lib lint ../PAYJP.podspec --allow-warnings')
-    sh('pod lib lint ../PAYJPFlutterCore.podspec --allow-warnings')
+    sh('pod lib lint ../PAYJP.podspec')
+    sh('pod lib lint ../PAYJPFlutterCore.podspec')
     pod_version = PAYJPSDK::VERSION
     info_version = get_version_number
     unless pod_version == info_version then
