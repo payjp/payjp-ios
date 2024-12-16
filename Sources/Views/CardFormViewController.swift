@@ -297,6 +297,7 @@ extension CardFormViewController: CardFormScreenDelegate {
 
     func reloadBrands(brands: [CardBrand]) {
         accptedBrands = brands
+        cardFormView.setAcceptedBrands(brands)
         brandsView.reloadData()
     }
 

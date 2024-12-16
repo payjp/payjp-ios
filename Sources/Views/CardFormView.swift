@@ -299,6 +299,10 @@ public class CardFormView: UIView {
         inputPhoneNumberComplete()
     }
 
+    func setAcceptedBrands(_ brands: [CardBrand]) {
+        viewModel.setAcceptedCardBrands(brands)
+    }
+
     func inputCardNumberSuccess(value: CardNumber) {
         cardFormProperties.cardNumberErrorLabel.text = nil
     }

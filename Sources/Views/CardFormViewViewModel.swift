@@ -80,6 +80,10 @@ protocol CardFormViewViewModelType {
     ///   - completion: 取得結果
     func fetchAcceptedBrands(with tenantId: String?, completion: CardBrandsResult?)
 
+    /// 利用可能ブランドをセットする
+    /// - Parameter brands: 利用可能ブランド
+    func setAcceptedCardBrands(_ brands: [CardBrand])
+
     /// フォームの入力値を取得する
     /// - Parameter completion: 取得結果
     func cardFormInput(completion: (Result<CardFormInput, Error>) -> Void)
@@ -340,6 +344,10 @@ class CardFormViewViewModel: CardFormViewViewModelType {
                 completion?(.failure(error))
             }
         }
+    }
+
+    func setAcceptedCardBrands(_ brands: [CardBrand]) {
+        self.acceptedCardBrands = brands
     }
 
     func cardFormInput(completion: (Result<CardFormInput, Error>) -> Void) {
