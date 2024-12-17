@@ -188,7 +188,7 @@ class CardFormViewViewModel: CardFormViewViewModelType {
             // 利用可能ブランドのチェック
             if let acceptedCardBrands = self.acceptedCardBrands {
                 if cardNumberInput.brand != .unknown && !acceptedCardBrands.contains(cardNumberInput.brand) {
-                    return .failure(.cardNumberInvalidError(value: cardNumberInput, isInstant: false))
+                    return .failure(.cardNumberInvalidBrandError(value: cardNumberInput, isInstant: true))
                 }
             }
             // 桁数チェック
