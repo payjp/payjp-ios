@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1aI-eK-01f">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1aI-eK-01f">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -112,6 +112,7 @@
                             <constraint firstItem="5fp-Ih-ELw" firstAttribute="leading" secondItem="I2t-0Q-mnp" secondAttribute="leading" id="moS-yQ-F4t"/>
                             <constraint firstItem="5fp-Ih-ELw" firstAttribute="bottom" secondItem="I2t-0Q-mnp" secondAttribute="bottom" id="rYu-K4-LrX"/>
                             <constraint firstItem="61c-5M-xI7" firstAttribute="leading" secondItem="I2t-0Q-mnp" secondAttribute="leading" id="w0h-kb-oSe"/>
+                            <constraint firstItem="I2t-0Q-mnp" firstAttribute="bottom" secondItem="1NL-8f-08o" secondAttribute="bottom" id="xMH-Zr-1eO"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add New Card" leftItemsSupplementBackButton="YES" id="Mkd-CE-3mO">
