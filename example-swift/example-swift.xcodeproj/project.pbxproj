@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0721B6CF2D4FBDDB0070C36F /* ThreeDSecureExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0721B6CE2D4FBDCD0070C36F /* ThreeDSecureExampleViewController.swift */; };
+		07EFF5FF2D5CCBEB00E66DAD /* PhoneNumberKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3286226C2C6C93A700DEA55B /* PhoneNumberKit.xcframework */; };
+		07EFF6002D5CCBEB00E66DAD /* PhoneNumberKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3286226C2C6C93A700DEA55B /* PhoneNumberKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		07EFF6042D5CD0B400E66DAD /* ThreeDSecureProcessHandlerExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EFF6032D5CD08900E66DAD /* ThreeDSecureProcessHandlerExampleView.swift */; };
+		07EFF6062D5CE5FD00E66DAD /* CardFormViewControllerExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EFF6052D5CE5FD00E66DAD /* CardFormViewControllerExampleView.swift */; };
 		32167E0927B1C5F100E4BCD5 /* PAYJP.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32167E0827B1C5F100E4BCD5 /* PAYJP.xcframework */; };
 		32167E0A27B1C5F100E4BCD5 /* PAYJP.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 32167E0827B1C5F100E4BCD5 /* PAYJP.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		32167E0C27B1C62900E4BCD5 /* PAYJP.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32167E0827B1C5F100E4BCD5 /* PAYJP.xcframework */; };
@@ -52,6 +57,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				07EFF6002D5CCBEB00E66DAD /* PhoneNumberKit.xcframework in Embed Frameworks */,
 				32167E0D27B1C62900E4BCD5 /* PAYJP.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -60,6 +66,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0721B6CE2D4FBDCD0070C36F /* ThreeDSecureExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeDSecureExampleViewController.swift; sourceTree = "<group>"; };
+		07EFF6032D5CD08900E66DAD /* ThreeDSecureProcessHandlerExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeDSecureProcessHandlerExampleView.swift; sourceTree = "<group>"; };
+		07EFF6052D5CE5FD00E66DAD /* CardFormViewControllerExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFormViewControllerExampleView.swift; sourceTree = "<group>"; };
 		32167E0827B1C5F100E4BCD5 /* PAYJP.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = PAYJP.xcframework; path = Carthage/Build/PAYJP.xcframework; sourceTree = "<group>"; };
 		3219F14B26B1087400D2AE00 /* CardFormViewWith3DSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFormViewWith3DSViewController.swift; sourceTree = "<group>"; };
 		3286226C2C6C93A700DEA55B /* PhoneNumberKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = PhoneNumberKit.xcframework; path = Carthage/Build/PhoneNumberKit.xcframework; sourceTree = "<group>"; };
@@ -92,6 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07EFF5FF2D5CCBEB00E66DAD /* PhoneNumberKit.xcframework in Frameworks */,
 				32167E0C27B1C62900E4BCD5 /* PAYJP.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -114,6 +124,8 @@
 				32B471DF24C6AD180061579C /* AppDelegate.swift */,
 				32B471E124C6AD180061579C /* SceneDelegate.swift */,
 				32B471E324C6AD180061579C /* ContentView.swift */,
+				07EFF6052D5CE5FD00E66DAD /* CardFormViewControllerExampleView.swift */,
+				07EFF6032D5CD08900E66DAD /* ThreeDSecureProcessHandlerExampleView.swift */,
 				32B471E524C6AD1B0061579C /* Assets.xcassets */,
 				32B471EA24C6AD1B0061579C /* LaunchScreen.storyboard */,
 				32B471ED24C6AD1B0061579C /* Info.plist */,
@@ -157,6 +169,7 @@
 				ED50839223278BB800C64A7F /* CardFormViewExampleViewController.swift */,
 				ED5085BC232A0FE300C64A7F /* CardFormViewScrollViewController.swift */,
 				3219F14B26B1087400D2AE00 /* CardFormViewWith3DSViewController.swift */,
+				0721B6CE2D4FBDCD0070C36F /* ThreeDSecureExampleViewController.swift */,
 				ED630C1623556BF4006C061E /* ColorTheme.swift */,
 				32CB11331FDA7E3D007AD8F5 /* Info.plist */,
 				32CB11301FDA7E3D007AD8F5 /* LaunchScreen.storyboard */,
@@ -327,8 +340,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07EFF6042D5CD0B400E66DAD /* ThreeDSecureProcessHandlerExampleView.swift in Sources */,
 				32B471E024C6AD180061579C /* AppDelegate.swift in Sources */,
 				32B471E224C6AD180061579C /* SceneDelegate.swift in Sources */,
+				07EFF6062D5CE5FD00E66DAD /* CardFormViewControllerExampleView.swift in Sources */,
 				32B471E424C6AD180061579C /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -340,6 +355,7 @@
 				3219F14C26B1087400D2AE00 /* CardFormViewWith3DSViewController.swift in Sources */,
 				ED8BDA062383BA3B00680C05 /* ExampleHostViewController.swift in Sources */,
 				ED5085BD232A0FE300C64A7F /* CardFormViewScrollViewController.swift in Sources */,
+				0721B6CF2D4FBDDB0070C36F /* ThreeDSecureExampleViewController.swift in Sources */,
 				ED630C1723556BF4006C061E /* ColorTheme.swift in Sources */,
 				32CB112A1FDA7E3D007AD8F5 /* ViewController.swift in Sources */,
 				ED50839323278BB800C64A7F /* CardFormViewExampleViewController.swift in Sources */,
