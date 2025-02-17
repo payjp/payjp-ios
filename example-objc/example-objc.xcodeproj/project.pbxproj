@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07EFF5F92D5BA99700E66DAD /* ThreeDSecureExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07EFF5F82D5BA99700E66DAD /* ThreeDSecureExampleViewController.m */; };
 		32CB11691FDA97A1007AD8F5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 32CB11681FDA97A1007AD8F5 /* AppDelegate.m */; };
 		32CB116C1FDA97A1007AD8F5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32CB116B1FDA97A1007AD8F5 /* ViewController.m */; };
 		32CB11711FDA97A1007AD8F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32CB11701FDA97A1007AD8F5 /* Assets.xcassets */; };
@@ -22,7 +23,48 @@
 		EDADA25E238B9DE60057FDF3 /* SampleService.m in Sources */ = {isa = PBXBuildFile; fileRef = EDADA25D238B9DE60057FDF3 /* SampleService.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		0777C9172D4A746B00D90CFD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0777C90F2D4A746A00D90CFD /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5D5DCB4D5FD7F25FA86BF45E27546AC6;
+			remoteInfo = PAYJP;
+		};
+		0777C9192D4A746B00D90CFD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0777C90F2D4A746A00D90CFD /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9B9004C28064E22540CFEB2BBE5D815D;
+			remoteInfo = "PAYJP-PAYJP";
+		};
+		0777C91B2D4A746B00D90CFD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0777C90F2D4A746A00D90CFD /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 69681285C13FB58876DD5727BCB2DC85;
+			remoteInfo = PhoneNumberKit;
+		};
+		0777C91D2D4A746B00D90CFD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0777C90F2D4A746A00D90CFD /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 45D025E797F561FE08B0D339D021BCCD;
+			remoteInfo = "PhoneNumberKit-PhoneNumberKitPrivacy";
+		};
+		0777C91F2D4A746B00D90CFD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0777C90F2D4A746A00D90CFD /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6FDD3DCEA8973F11FFD8BD6C6C9B89E7;
+			remoteInfo = "Pods-example-objc";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		0777C90F2D4A746A00D90CFD /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Pods.xcodeproj; sourceTree = "<group>"; };
+		07EFF5F72D5BA99700E66DAD /* ThreeDSecureExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThreeDSecureExampleViewController.h; sourceTree = "<group>"; };
+		07EFF5F82D5BA99700E66DAD /* ThreeDSecureExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThreeDSecureExampleViewController.m; sourceTree = "<group>"; };
 		0C330AD1C4F19804D88FF08A /* Pods-example-objc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-example-objc.release.xcconfig"; path = "Target Support Files/Pods-example-objc/Pods-example-objc.release.xcconfig"; sourceTree = "<group>"; };
 		32CB11641FDA97A1007AD8F5 /* example-objc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "example-objc.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		32CB11671FDA97A1007AD8F5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -71,6 +113,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		0777C9102D4A746A00D90CFD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0777C9182D4A746B00D90CFD /* PAYJP.framework */,
+				0777C91A2D4A746B00D90CFD /* PAYJP.bundle */,
+				0777C91C2D4A746B00D90CFD /* PhoneNumberKit.framework */,
+				0777C91E2D4A746B00D90CFD /* PhoneNumberKitPrivacy.bundle */,
+				0777C9202D4A746B00D90CFD /* Pods_example_objc.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		32CB115B1FDA97A1007AD8F5 = {
 			isa = PBXGroup;
 			children = (
@@ -79,7 +133,9 @@
 				7D1E977C41291B2B0E664566 /* Pods */,
 				076A1CE0860082B360166A12 /* Frameworks */,
 			);
+			indentWidth = 4;
 			sourceTree = "<group>";
+			tabWidth = 4;
 		};
 		32CB11651FDA97A1007AD8F5 /* Products */ = {
 			isa = PBXGroup;
@@ -113,6 +169,8 @@
 				32CB11761FDA97A1007AD8F5 /* main.m */,
 				ED4ACE1923850AA400349BBF /* UIViewController+Alert.h */,
 				ED4ACE1A23850BCA00349BBF /* UIViewController+Alert.m */,
+				07EFF5F72D5BA99700E66DAD /* ThreeDSecureExampleViewController.h */,
+				07EFF5F82D5BA99700E66DAD /* ThreeDSecureExampleViewController.m */,
 			);
 			path = "example-objc";
 			sourceTree = "<group>";
@@ -120,6 +178,7 @@
 		7D1E977C41291B2B0E664566 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
+				0777C90F2D4A746A00D90CFD /* Pods.xcodeproj */,
 				50CBE7A2314A4BA81D8496FE /* Pods-example-objc.debug.xcconfig */,
 				0C330AD1C4F19804D88FF08A /* Pods-example-objc.release.xcconfig */,
 			);
@@ -175,12 +234,56 @@
 			mainGroup = 32CB115B1FDA97A1007AD8F5;
 			productRefGroup = 32CB11651FDA97A1007AD8F5 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 0777C9102D4A746A00D90CFD /* Products */;
+					ProjectRef = 0777C90F2D4A746A00D90CFD /* Pods.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				32CB11631FDA97A1007AD8F5 /* example-objc */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		0777C9182D4A746B00D90CFD /* PAYJP.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = PAYJP.framework;
+			remoteRef = 0777C9172D4A746B00D90CFD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0777C91A2D4A746B00D90CFD /* PAYJP.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = PAYJP.bundle;
+			remoteRef = 0777C9192D4A746B00D90CFD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0777C91C2D4A746B00D90CFD /* PhoneNumberKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = PhoneNumberKit.framework;
+			remoteRef = 0777C91B2D4A746B00D90CFD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0777C91E2D4A746B00D90CFD /* PhoneNumberKitPrivacy.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = PhoneNumberKitPrivacy.bundle;
+			remoteRef = 0777C91D2D4A746B00D90CFD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0777C9202D4A746B00D90CFD /* Pods_example_objc.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Pods_example_objc.framework;
+			remoteRef = 0777C91F2D4A746B00D90CFD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		32CB11621FDA97A1007AD8F5 /* Resources */ = {
@@ -252,6 +355,7 @@
 				BE0417D622E6DF6600B944CB /* CardFormViewExampleViewController.m in Sources */,
 				32CB11691FDA97A1007AD8F5 /* AppDelegate.m in Sources */,
 				EDADA25E238B9DE60057FDF3 /* SampleService.m in Sources */,
+				07EFF5F92D5BA99700E66DAD /* ThreeDSecureExampleViewController.m in Sources */,
 				ED50837D23167B9100C64A7F /* CardFormViewScrollViewController.m in Sources */,
 				ED4ACE1B23850BCA00349BBF /* UIViewController+Alert.m in Sources */,
 			);
