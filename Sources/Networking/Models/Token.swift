@@ -88,25 +88,3 @@ extension Token {
         return false
     }
 }
-
-// MARK: - ThreeDSecure
-
-extension Token {
-    private var tdsBaseUrl: URL {
-        return URL(string: "\(PAYJPApiEndpoint)tds/\(identifer)")!
-    }
-
-    var tdsEntryUrl: URL {
-        let url = tdsBaseUrl.appendingPathComponent("start")
-        var components = URLComponents(url: url, resolvingAgainstBaseURL: true)!
-        components.queryItems = [
-            URLQueryItem(name: "publickey", value: PAYJPSDK.publicKey),
-            URLQueryItem(name: "back", value: PAYJPSDK.threeDSecureURLConfiguration?.redirectURLKey)
-        ]
-        return components.url!
-    }
-
-    var tdsFinishUrl: URL {
-        return tdsBaseUrl.appendingPathComponent("finish")
-    }
-}
