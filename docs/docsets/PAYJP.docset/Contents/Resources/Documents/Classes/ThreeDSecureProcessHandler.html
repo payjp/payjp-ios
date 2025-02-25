@@ -17,7 +17,7 @@
     <a title="ThreeDSecureProcessHandler Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">PAYJP 2.1.5 Docs</a></p>
+        <p><a href="../index.html">PAYJP 2.2.0 Docs</a></p>
         <p class="header-right"><a href="https://github.com/payjp/payjp-ios"><img src="../img/gh.png" alt="GitHub"/>View on GitHub</a></p>
         <div class="header-right">
           <form role="search" action="../search.json">
@@ -295,9 +295,38 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">startThreeDSecureProcess</span><span class="p">(</span><span class="nv">viewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span>
+                          <pre class="highlight swift"><code><span class="kd">@available(*, deprecated, message: "Use startThreeDSecureProcess(viewController:delegate:resourceId:﹚ instead.")</span>
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">startThreeDSecureProcess</span><span class="p">(</span><span class="nv">viewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span>
                                      <span class="nv">delegate</span><span class="p">:</span> <span class="kt"><a href="../Protocols/ThreeDSecureProcessHandlerDelegate.html">ThreeDSecureProcessHandlerDelegate</a></span><span class="p">,</span>
                                      <span class="nv">token</span><span class="p">:</span> <span class="kt"><a href="../Classes/Token.html">Token</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5PAYJP30ThreeDSecureProcessHandlerTypeP05startbcD014viewController8delegate10resourceIdySo06UIViewI0C_AA0bcdE8Delegate_pSStF"></a>
+                    <a name="//apple_ref/swift/Method/startThreeDSecureProcess(viewController:delegate:resourceId:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5PAYJP30ThreeDSecureProcessHandlerTypeP05startbcD014viewController8delegate10resourceIdySo06UIViewI0C_AA0bcdE8Delegate_pSStF">startThreeDSecureProcess(viewController:<wbr>delegate:<wbr>resourceId:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">startThreeDSecureProcess</span><span class="p">(</span><span class="nv">viewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span>
+                                     <span class="nv">delegate</span><span class="p">:</span> <span class="kt"><a href="../Protocols/ThreeDSecureProcessHandlerDelegate.html">ThreeDSecureProcessHandlerDelegate</a></span><span class="p">,</span>
+                                     <span class="nv">resourceId</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
