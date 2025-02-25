@@ -19,4 +19,15 @@ public class ThreeDSecureURLConfiguration: NSObject {
         self.redirectURL = redirectURL
         self.redirectURLKey = redirectURLKey
     }
+
+    public func makeThreeDSecureEntryURL(resourceId: String) -> URL {
+        let baseUrl = URL(string: "\(PAYJPApiEndpoint)tds/\(resourceId)")!
+        let url = baseUrl.appendingPathComponent("start")
+        var components = URLComponents(url: url, resolvingAgainstBaseURL: true)!
+        components.queryItems = [
+            URLQueryItem(name: "publickey", value: PAYJPSDK.publicKey),
+            URLQueryItem(name: "back", value: redirectURLKey)
+        ]
+        return components.url!
+    }
 }

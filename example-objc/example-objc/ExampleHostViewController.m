@@ -23,25 +23,27 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   [tableView deselectRowAtIndexPath:indexPath animated:true];
 
-  if (indexPath.row == 0) {
-    [self pushCardFormWithViewType:CardFormViewTypeTableStyled];
-  }
+  if (indexPath.section == 0) {
+    if (indexPath.row == 0) {
+      [self pushCardFormWithViewType:CardFormViewTypeTableStyled];
+    }
 
-  if (indexPath.row == 1) {
-    // customize card form
-    //        UIColor *color = RGB(0, 122, 255);
-    //        PAYCardFormStyle *style = [[PAYCardFormStyle alloc] initWithLabelTextColor:color
-    //                                                                    inputTextColor:color
-    //                                                                    errorTextColor:nil
-    //                                                                         tintColor:color
-    //                                                         inputFieldBackgroundColor:nil
-    //                                                                 submitButtonColor:color
-    //                                                                    highlightColor:nil];
-    [self presentCardFormWithViewType:CardFormViewTypeLabelStyled];
-  }
+    if (indexPath.row == 1) {
+      // customize card form
+      //        UIColor *color = RGB(0, 122, 255);
+      //        PAYCardFormStyle *style = [[PAYCardFormStyle alloc] initWithLabelTextColor:color
+      //                                                                    inputTextColor:color
+      //                                                                    errorTextColor:nil
+      //                                                                         tintColor:color
+      //                                                         inputFieldBackgroundColor:nil
+      //                                                                 submitButtonColor:color
+      //                                                                    highlightColor:nil];
+      [self presentCardFormWithViewType:CardFormViewTypeLabelStyled];
+    }
 
-  if (indexPath.row == 2) {
-    [self pushCardFormWithViewType:CardFormViewTypeDisplayStyled];
+    if (indexPath.row == 2) {
+      [self pushCardFormWithViewType:CardFormViewTypeDisplayStyled];
+    }
   }
 }
 

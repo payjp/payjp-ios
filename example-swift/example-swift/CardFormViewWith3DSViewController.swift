@@ -67,8 +67,8 @@ class CardFormViewWith3DSViewController: UIViewController {
                 DispatchQueue.main.async {
                     if let tdsStatus = token.card.threeDSecureStatus, tdsStatus == .unverified {
                             self.pendingToken = token
-                            ThreeDSecureProcessHandler.shared.startThreeDSecureProcess(viewController: self, delegate: self, token: token)
-                        return
+                            ThreeDSecureProcessHandler.shared.startThreeDSecureProcess(viewController: self, delegate: self, resourceId: token.identifer)
+                            return
                     }
                     self.tokenIdLabel.text = token.identifer
                     self.showToken(token: token)

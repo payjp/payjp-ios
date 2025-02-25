@@ -33,7 +33,14 @@ class ThreeDSecureProcessHandlerTests: XCTestCase {
         return token
     }
 
+    private func mockResourceID() -> String {
+        return "ch_123"
+    }
+
+    @available(*, deprecated)
     func testStartThreeDSecureProcess() {
+        PAYJPSDK.threeDSecureURLConfiguration = ThreeDSecureURLConfiguration(redirectURL: URL(string: "test://")!,
+                                                                             redirectURLKey: "test")
         let mockDriver = MockWebDriver()
         let handler = ThreeDSecureProcessHandler(webDriver: mockDriver)
         let token = self.mockToken(tdsStatus: .unverified)
@@ -43,7 +50,22 @@ class ThreeDSecureProcessHandlerTests: XCTestCase {
                                          delegate: mockVC,
                                          token: token)
 
-        XCTAssertEqual(mockDriver.openWebBrowserUrl?.absoluteString, token.tdsEntryUrl.absoluteString)
+        let expectedUrl = PAYJPSDK.threeDSecureURLConfiguration?.makeThreeDSecureEntryURL(resourceId: token.identifer)
+        XCTAssertEqual(mockDriver.openWebBrowserUrl?.absoluteString, expectedUrl?.absoluteString)
+    }
+
+    func testStartThreeDSecureProcessWithResourceID() {
+        let mockDriver = MockWebDriver()
+        let handler = ThreeDSecureProcessHandler(webDriver: mockDriver)
+        let resourceID = self.mockResourceID()
+        let mockVC = MockViewController()
+
+        handler.startThreeDSecureProcess(viewController: mockVC,
+                                         delegate: mockVC,
+                                         resourceId: resourceID)
+
+        // Verify the URL contains the resource ID
+        XCTAssertTrue(mockDriver.openWebBrowserUrl?.absoluteString.contains(resourceID) ?? false)
     }
 
     func testCompleteThreeDSecureProcess() {
@@ -52,13 +74,13 @@ class ThreeDSecureProcessHandlerTests: XCTestCase {
 
         let mockDriver = MockWebDriver(isSafariVC: true)
         let handler = ThreeDSecureProcessHandler(webDriver: mockDriver)
-        let token = self.mockToken(tdsStatus: .unverified)
+        let resourceID = self.mockResourceID()
         let mockVC = MockViewController()
         let url = URL(string: "test://")!
 
         handler.startThreeDSecureProcess(viewController: mockVC,
                                          delegate: mockVC,
-                                         token: token)
+                                         resourceId: resourceID)
 
         let result = handler.completeThreeDSecureProcess(url: url)
 
@@ -72,13 +94,13 @@ class ThreeDSecureProcessHandlerTests: XCTestCase {
 
         let mockDriver = MockWebDriver(isSafariVC: true)
         let handler = ThreeDSecureProcessHandler(webDriver: mockDriver)
-        let token = self.mockToken(tdsStatus: .unverified)
+        let resourceID = self.mockResourceID()
         let mockVC = MockViewController()
         let url = URL(string: "unknown://")!
 
         handler.startThreeDSecureProcess(viewController: mockVC,
                                          delegate: mockVC,
-                                         token: token)
+                                         resourceId: resourceID)
 
         let result = handler.completeThreeDSecureProcess(url: url)
 
@@ -92,13 +114,13 @@ class ThreeDSecureProcessHandlerTests: XCTestCase {
 
         let mockDriver = MockWebDriver(isSafariVC: false)
         let handler = ThreeDSecureProcessHandler(webDriver: mockDriver)
-        let token = self.mockToken(tdsStatus: .unverified)
+        let resourceID = self.mockResourceID()
         let mockVC = MockViewController()
         let url = URL(string: "test://")!
 
         handler.startThreeDSecureProcess(viewController: mockVC,
                                          delegate: mockVC,
-                                         token: token)
+                                         resourceId: resourceID)
 
         let result = handler.completeThreeDSecureProcess(url: url)
 
@@ -112,12 +134,12 @@ class ThreeDSecureProcessHandlerTests: XCTestCase {
 
         let mockDriver = MockWebDriver(isSafariVC: true)
         let handler = ThreeDSecureProcessHandler(webDriver: mockDriver)
-        let token = self.mockToken(tdsStatus: .unverified)
+        let resourceID = self.mockResourceID()
         let mockVC = MockViewController()
 
         handler.startThreeDSecureProcess(viewController: mockVC,
                                          delegate: mockVC,
-                                         token: token)
+                                         resourceId: resourceID)
         // Webブラウザを閉じた場合を想定
         handler.webBrowseDidFinish(mockDriver)
 

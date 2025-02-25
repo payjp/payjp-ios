@@ -14,15 +14,17 @@ class ExampleHostViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        switch indexPath.row {
-        case 0:
-            presentTdsAttributeOptions(viewType: .tableStyled, pushNavigation: true)
-        case 1:
-            presentTdsAttributeOptions(viewType: .labelStyled, pushNavigation: false)
-        case 2:
-            presentTdsAttributeOptions(viewType: .displayStyled, pushNavigation: true)
-        default:
-            break
+        if indexPath.section == 0 {
+            switch indexPath.row {
+            case 0:
+                presentTdsAttributeOptions(viewType: .tableStyled, pushNavigation: true)
+            case 1:
+                presentTdsAttributeOptions(viewType: .labelStyled, pushNavigation: false)
+            case 2:
+                presentTdsAttributeOptions(viewType: .displayStyled, pushNavigation: true)
+            default:
+                break
+            }
         }
     }
 

@@ -18,6 +18,7 @@ import SafariServices
 }
 
 /// 3DSecure handler delegate.
+@objc(PAYJPThreeDSecureProcessHandlerDelegate)
 public protocol ThreeDSecureProcessHandlerDelegate: AnyObject {
 
     /// Tells the delegate that 3DSecure process is finished.
@@ -31,15 +32,26 @@ public protocol ThreeDSecureProcessHandlerDelegate: AnyObject {
 /// Handler for 3DSecure process.
 public protocol ThreeDSecureProcessHandlerType {
 
-    /// Stsart 3DSecure process
+    /// Start 3DSecure process
     /// Delegate will be released once the process is finished.
     /// - Parameters:
     ///   - viewController: the viewController which will present SFSafariViewController.
     ///   - delegate: ThreeDSecureProcessHandlerDelegate
     ///   - token: Token
+    @available(*, deprecated, message: "Use startThreeDSecureProcess(viewController:delegate:resourceId:) instead.")
     func startThreeDSecureProcess(viewController: UIViewController,
                                   delegate: ThreeDSecureProcessHandlerDelegate,
                                   token: Token)
+
+    /// Start 3DSecure process with resourceID
+    /// Delegate will be released once the process is finished.
+    /// - Parameters:
+    ///   - viewController: the viewController which will present SFSafariViewController.
+    ///   - delegate: ThreeDSecureProcessHandlerDelegate
+    ///   - resourceId: ID of the resource(card, charge, token, etc.)
+    func startThreeDSecureProcess(viewController: UIViewController,
+                                  delegate: ThreeDSecureProcessHandlerDelegate,
+                                  resourceId: String)
 
     /// Complete 3DSecure process.
     /// - Parameters:
@@ -64,11 +76,29 @@ public class ThreeDSecureProcessHandler: NSObject, ThreeDSecureProcessHandlerTyp
 
     // MARK: ThreeDSecureProcessHandlerType
 
+    @available(*, deprecated, message: "Use startThreeDSecureProcess(viewController:delegate:resourceId:) instead.")
     public func startThreeDSecureProcess(viewController: UIViewController,
                                          delegate: ThreeDSecureProcessHandlerDelegate,
                                          token: Token) {
         self.delegate = delegate
-        webDriver.openWebBrowser(host: viewController, url: token.tdsEntryUrl, delegate: self)
+        let threeDSecureEntryURL = PAYJPSDK.threeDSecureURLConfiguration?.makeThreeDSecureEntryURL(resourceId: token.identifer)
+        guard let threeDSecureEntryURL = threeDSecureEntryURL else {
+            delegate.threeDSecureProcessHandlerDidFinish(self, status: .canceled)
+            return
+        }
+        webDriver.openWebBrowser(host: viewController, url: threeDSecureEntryURL, delegate: self)
+    }
+
+    public func startThreeDSecureProcess(viewController: UIViewController,
+                                         delegate: ThreeDSecureProcessHandlerDelegate,
+                                         resourceId: String) {
+        self.delegate = delegate
+        let threeDSecureEntryURL = PAYJPSDK.threeDSecureURLConfiguration?.makeThreeDSecureEntryURL(resourceId: resourceId)
+        guard let threeDSecureEntryURL = threeDSecureEntryURL else {
+            delegate.threeDSecureProcessHandlerDidFinish(self, status: .canceled)
+            return
+        }
+        webDriver.openWebBrowser(host: viewController, url: threeDSecureEntryURL, delegate: self)
     }
 
     public func completeThreeDSecureProcess(url: URL) -> Bool {

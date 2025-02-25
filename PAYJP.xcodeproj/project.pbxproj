@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07AEC1332D492DD80054E345 /* ThreeDSecureURLConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AEC1322D492DD80054E345 /* ThreeDSecureURLConfigurationTests.swift */; };
+		07BC10742D4625CB00891977 /* PhoneNumberKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 328622622C6C42CB00DEA55B /* PhoneNumberKit.xcframework */; };
 		32167E0727B1C55800E4BCD5 /* OHHTTPStubs.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32167E0627B1C55800E4BCD5 /* OHHTTPStubs.xcframework */; };
 		322BD1D6225C83CA00D83B5E /* JSONDecoder+PAYJP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322BD1D5225C83CA00D83B5E /* JSONDecoder+PAYJP.swift */; };
 		32585BAF2CAC4E7C003F920B /* CardHolderValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32585BAE2CAC4E7C003F920B /* CardHolderValidator.swift */; };
 		32585BB22CAC5237003F920B /* CardHolderValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32585BB02CAC522B003F920B /* CardHolderValidatorTests.swift */; };
 		325E36B1233484C90037E6BE /* UIColor+PAYJP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325E36B0233484C90037E6BE /* UIColor+PAYJP.swift */; };
 		327C806E2C73D1F700CADF44 /* ExtraAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327C806D2C73D1F700CADF44 /* ExtraAttribute.swift */; };
-		328622662C6C483F00DEA55B /* PhoneNumberKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 328622622C6C42CB00DEA55B /* PhoneNumberKit.xcframework */; };
 		3289C9D123EACB6D008FFBC1 /* ClientInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3289C9D023EACB6D008FFBC1 /* ClientInfo.swift */; };
 		3289C9D323EBFC87008FFBC1 /* ClientInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3289C9D223EBFC87008FFBC1 /* ClientInfoTests.swift */; };
 		32A6F614239608DD00747477 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A6F613239608DD00747477 /* ActionButton.swift */; };
@@ -152,8 +153,21 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		07BC10762D4625CB00891977 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		320B38E92C6E3886002D1BFB /* PAYJPTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = PAYJPTests.xctestplan; path = Tests/PAYJPTests.xctestplan; sourceTree = "<group>"; };
+		07AEC1322D492DD80054E345 /* ThreeDSecureURLConfigurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeDSecureURLConfigurationTests.swift; sourceTree = "<group>"; };
 		32167E0627B1C55800E4BCD5 /* OHHTTPStubs.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = OHHTTPStubs.xcframework; path = Carthage/Build/OHHTTPStubs.xcframework; sourceTree = "<group>"; };
 		322BD1D5225C83CA00D83B5E /* JSONDecoder+PAYJP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+PAYJP.swift"; sourceTree = "<group>"; };
 		32585BAE2CAC4E7C003F920B /* CardHolderValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardHolderValidator.swift; sourceTree = "<group>"; };
@@ -225,7 +239,6 @@
 		C65513BD1DA37AD4009D6DA5 /* APIError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		C68681F61E1E21D9001D7F75 /* CardFromTokenTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardFromTokenTests.swift; sourceTree = "<group>"; };
 		C68681F91E1E2369001D7F75 /* TestFixture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestFixture.swift; sourceTree = "<group>"; };
-		C6E00B0D1E1F505600C101B0 /* OHHTTPStubs.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OHHTTPStubs.framework; path = Carthage/Build/iOS/OHHTTPStubs.framework; sourceTree = "<group>"; };
 		ED00F8BE24319E1B004DFE2C /* UIApplication+PAYJP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+PAYJP.swift"; sourceTree = "<group>"; };
 		ED00F8CF243353FC004DFE2C /* ThreeDSecureProcessHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreeDSecureProcessHandler.swift; sourceTree = "<group>"; };
 		ED00F8D0243353FC004DFE2C /* ThreeDSecureURLConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreeDSecureURLConfiguration.swift; sourceTree = "<group>"; };
@@ -299,6 +312,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07BC10742D4625CB00891977 /* PhoneNumberKit.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,7 +321,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				32167E0727B1C55800E4BCD5 /* OHHTTPStubs.xcframework in Frameworks */,
-				328622662C6C483F00DEA55B /* PhoneNumberKit.xcframework in Frameworks */,
 				615AFF661C8C74A1003FB86F /* PAYJP.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -362,7 +375,6 @@
 		615AFF511C8C74A1003FB86F = {
 			isa = PBXGroup;
 			children = (
-				320B38E92C6E3886002D1BFB /* PAYJPTests.xctestplan */,
 				C6E00B0C1E1F505600C101B0 /* Frameworks */,
 				615AFF5C1C8C74A1003FB86F /* Products */,
 				615AFF5D1C8C74A1003FB86F /* Sources */,
@@ -635,7 +647,6 @@
 			children = (
 				328622622C6C42CB00DEA55B /* PhoneNumberKit.xcframework */,
 				32167E0627B1C55800E4BCD5 /* OHHTTPStubs.xcframework */,
-				C6E00B0D1E1F505600C101B0 /* OHHTTPStubs.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -684,6 +695,7 @@
 			children = (
 				EDA0E418243739C00083A5E0 /* ThreeDSecureProcessHandlerTests.swift */,
 				ED3DB9E1243ACD2B0065FC33 /* ThreeDSecureSFSafariViewControllerDriverTests.swift */,
+				07AEC1322D492DD80054E345 /* ThreeDSecureURLConfigurationTests.swift */,
 				ED3DB9DF243ACCBE0065FC33 /* Mock.swift */,
 			);
 			path = ThreeDSecure;
@@ -725,6 +737,7 @@
 				615AFF581C8C74A1003FB86F /* Headers */,
 				615AFF591C8C74A1003FB86F /* Resources */,
 				324792A72342FD9B00C86EFB /* Run SwiftLint */,
+				07BC10762D4625CB00891977 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -949,6 +962,7 @@
 				EDA3EE9B22E1CD9900D9A6C9 /* CardBrandTransformerTests.swift in Sources */,
 				ED508383231CC3B600C64A7F /* StringProtocol+PAYJPTests.swift in Sources */,
 				EDA77569238E4CB200162340 /* PublicKeyValidatorTests.swift in Sources */,
+				07AEC1332D492DD80054E345 /* ThreeDSecureURLConfigurationTests.swift in Sources */,
 				EDA0E4142435EBA80083A5E0 /* ThreeDSecureStatusTests.swift in Sources */,
 				EDA3EE8122DF1F0300D9A6C9 /* CardNumberFormatterTests.swift in Sources */,
 				BE21781622E8091A0098128D /* PAYJPSDKTests.swift in Sources */,

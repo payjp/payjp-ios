@@ -25,6 +25,7 @@
 @property(strong, nonatomic) NSArray *list;
 @property(strong, nonatomic) UIPickerView *pickerView;
 @property(assign, nonatomic) PAYTokenOperationStatus tokenOperationStatus;
+@property(nonatomic, strong) PAYToken *pendingToken;
 
 @end
 
@@ -205,6 +206,14 @@
 
              NSLog(@"token = %@", [wself displayToken:token]);
              dispatch_async(dispatch_get_main_queue(), ^{
+               if (token.card.threeDSecureStatus == PAYThreeDSecureStatusUnverified) {
+                 wself.pendingToken = token;
+                 [[PAYJPThreeDSecureProcessHandler sharedHandler]
+                     startThreeDSecureProcessWithViewController:wself
+                                                       delegate:wself
+                                                     resourceId:token.identifer];
+                 return;
+               }
                wself.tokenIdLabel.text = token.identifer;
                [wself showToken:token];
              });
@@ -228,6 +237,53 @@
                });
              }
            }];
+}
+
+- (void)completeTokenTds {
+  if (!self.pendingToken) {
+    return;
+  }
+
+  __weak typeof(self) wself = self;
+  [[PAYAPIClient sharedClient]
+      finishTokenThreeDSecureWith:self.pendingToken.identifer
+                completionHandler:^(PAYToken *token, NSError *error) {
+                  if (error) {
+                    if ([error.domain isEqualToString:PAYErrorDomain]) {
+                      id<PAYErrorResponseType> errorResponse =
+                          error.userInfo[PAYErrorServiceErrorObject];
+                      NSLog(@"[errorResponse] %@", errorResponse.description);
+                    }
+
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                      wself.tokenIdLabel.text = nil;
+                      [wself showError:error];
+                    });
+                    return;
+                  }
+
+                  dispatch_async(dispatch_get_main_queue(), ^{
+                    wself.pendingToken = nil;
+                    wself.tokenIdLabel.text = token.identifer;
+                    [wself showToken:token];
+                  });
+                }];
+}
+
+#pragma mark - PAYThreeDSecureProcessHandlerDelegate
+
+- (void)threeDSecureProcessHandlerDidFinish:(PAYJPThreeDSecureProcessHandler *)handler
+                                     status:(enum ThreeDSecureProcessStatus)status {
+  switch (status) {
+    case ThreeDSecureProcessStatusCompleted:
+      [self completeTokenTds];
+      break;
+    case ThreeDSecureProcessStatusCanceled:
+      // UI更新など
+      break;
+    default:
+      break;
+  }
 }
 
 @end
