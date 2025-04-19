@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>PAY.JP 3Dセキュア</title>
+                <style>
+                    * {
+                        box-sizing: border-box;
+                        margin:0;
+                        padding:0;
+                    }
+                    html {
+                        height: 100%;
+                    }
+                    body{
+                        font-family: "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", sans-serif;
+                        min-height: 100vh;
+                    }
+                    .wrap{
+                        width: 100%;
+                        min-height: 100vh;
+                        position: relative;
+                    }
+                    .content {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        flex-direction: column;
+                        gap: 24px;
+                        padding: 30px;
+                        height: 100vh;
+                    }
+                    .content .caption-box{
+                        width: 100%;
+                        max-width: 320px;
+                    }
+                    .content .caption{
+                        font-size: 12px;
+                        text-align: left;
+                    }
+                    .content .title{
+                        text-align: center;
+                        font-weight: bold;
+                        font-size:18px;
+                    }
+                    .content .description {
+                        font-size: 16px;
+                        text-align: center;
+                    }
+                </style>
+            </head>
+    <body>
+        <div class="wrap">
+            <section class="content">
+                <svg fill="none" height="33" viewBox="0 0 32 33" width="32" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16.5" fill="#fff" r="15" stroke="#ba0022" stroke-width="2"/><path d="m16 19.9617c-.8648 0-1.5375-.6726-1.5375-1.5375v-12.25193c0-.86485.6727-1.58555 1.5375-1.58555.8168 0 1.5375.7207 1.5375 1.58555v12.30003c0 .8168-.7207 1.4894-1.5375 1.4894zm0 2.3063c1.057 0 1.9219.9129 1.9219 1.9218 0 1.0571-.8649 1.9219-1.9219 1.9219-1.1051 0-1.9219-.8168-1.9219-1.9219 0-1.057.8168-1.9218 1.9219-1.9218z" fill="#ba0022"/></svg>
+                <p class="title">認証エラー</p>
+                
+                <div class="caption-box">
+                    <p class="description">
+                    認証中にアプリ内でエラーが発生しました。<br>
+                    元のページに戻り、最初からやり直してください。
+                    </p>
+                </div>
+                
+                <div class="caption-box">
+                    <p class="caption">
+                    問題が解決しない場合は、下記のエラーメッセージを添えてご利用のサービスにお問い合わせください。
+                    <br><br>{{errorMessage}}
+                    </p>
+                </div>
+            </section>
+        </div>
+    </body>
+</html>

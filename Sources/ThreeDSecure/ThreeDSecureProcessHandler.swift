@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SafariServices
 
 /// 3DSecure process status.
 @objc public enum ThreeDSecureProcessStatus: Int {
@@ -65,13 +64,14 @@ public class ThreeDSecureProcessHandler: NSObject, ThreeDSecureProcessHandlerTyp
 
     /// Shared instance.
     @objc(sharedHandler)
-    public static let shared = ThreeDSecureProcessHandler()
+    public static let shared = ThreeDSecureProcessHandler(webDriver: ThreeDSecureWebViewControllerDriver.shared)
 
     private weak var delegate: ThreeDSecureProcessHandlerDelegate?
     private let webDriver: ThreeDSecureWebDriver
 
-    public init(webDriver: ThreeDSecureWebDriver = ThreeDSecureSFSafariViewControllerDriver.shared) {
+    public init(webDriver: ThreeDSecureWebDriver = ThreeDSecureWebViewControllerDriver.shared) {
         self.webDriver = webDriver
+        super.init()
     }
 
     // MARK: ThreeDSecureProcessHandlerType
@@ -80,13 +80,9 @@ public class ThreeDSecureProcessHandler: NSObject, ThreeDSecureProcessHandlerTyp
     public func startThreeDSecureProcess(viewController: UIViewController,
                                          delegate: ThreeDSecureProcessHandlerDelegate,
                                          token: Token) {
-        self.delegate = delegate
-        let threeDSecureEntryURL = PAYJPSDK.threeDSecureURLConfiguration?.makeThreeDSecureEntryURL(resourceId: token.identifer)
-        guard let threeDSecureEntryURL = threeDSecureEntryURL else {
-            delegate.threeDSecureProcessHandlerDidFinish(self, status: .canceled)
-            return
-        }
-        webDriver.openWebBrowser(host: viewController, url: threeDSecureEntryURL, delegate: self)
+        self.startThreeDSecureProcess(viewController: viewController,
+                                      delegate: delegate,
+                                      resourceId: token.identifer)
     }
 
     public func startThreeDSecureProcess(viewController: UIViewController,
@@ -96,6 +92,7 @@ public class ThreeDSecureProcessHandler: NSObject, ThreeDSecureProcessHandlerTyp
         let threeDSecureEntryURL = PAYJPSDK.threeDSecureURLConfiguration?.makeThreeDSecureEntryURL(resourceId: resourceId)
         guard let threeDSecureEntryURL = threeDSecureEntryURL else {
             delegate.threeDSecureProcessHandlerDidFinish(self, status: .canceled)
+            self.delegate = nil
             return
         }
         webDriver.openWebBrowser(host: viewController, url: threeDSecureEntryURL, delegate: self)
@@ -106,12 +103,12 @@ public class ThreeDSecureProcessHandler: NSObject, ThreeDSecureProcessHandlerTyp
 
         if let redirectUrl = PAYJPSDK.threeDSecureURLConfiguration?.redirectURL {
             if url.absoluteString.starts(with: redirectUrl.absoluteString) {
-                let topViewController = UIApplication.topViewController()
-                return webDriver.closeWebBrowser(host: topViewController) { [weak self] in
+                let closed = webDriver.closeWebBrowser(host: nil) { [weak self] in
                     guard let self = self else { return }
                     self.delegate?.threeDSecureProcessHandlerDidFinish(self, status: .completed)
                     self.delegate = nil
                 }
+                return closed
             }
         }
         return false

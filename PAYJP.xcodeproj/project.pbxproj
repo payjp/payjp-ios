@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07492B2D2DABCE6F00BFD5C8 /* ThreeDSecureWebViewControllerDriver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07492B2C2DABCE6F00BFD5C8 /* ThreeDSecureWebViewControllerDriver.swift */; };
+		07492B2F2DABCF2700BFD5C8 /* ThreeDSecureWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07492B2E2DABCF2700BFD5C8 /* ThreeDSecureWebViewController.swift */; };
+		07EA3F2B2DB3F3A700D97904 /* ThreeDSecureWebViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EA3F2A2DB3F3A700D97904 /* ThreeDSecureWebViewControllerTests.swift */; };
+		07EA3F2D2DB3F66300D97904 /* ThreeDSecureWebViewControllerDriverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EA3F2C2DB3F66300D97904 /* ThreeDSecureWebViewControllerDriverTests.swift */; };
 		07AEC1332D492DD80054E345 /* ThreeDSecureURLConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AEC1322D492DD80054E345 /* ThreeDSecureURLConfigurationTests.swift */; };
 		07BC10742D4625CB00891977 /* PhoneNumberKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 328622622C6C42CB00DEA55B /* PhoneNumberKit.xcframework */; };
 		32167E0727B1C55800E4BCD5 /* OHHTTPStubs.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32167E0627B1C55800E4BCD5 /* OHHTTPStubs.xcframework */; };
@@ -167,6 +171,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		07492B2C2DABCE6F00BFD5C8 /* ThreeDSecureWebViewControllerDriver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeDSecureWebViewControllerDriver.swift; sourceTree = "<group>"; };
+		07492B2E2DABCF2700BFD5C8 /* ThreeDSecureWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeDSecureWebViewController.swift; sourceTree = "<group>"; };
 		07AEC1322D492DD80054E345 /* ThreeDSecureURLConfigurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeDSecureURLConfigurationTests.swift; sourceTree = "<group>"; };
 		32167E0627B1C55800E4BCD5 /* OHHTTPStubs.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = OHHTTPStubs.xcframework; path = Carthage/Build/OHHTTPStubs.xcframework; sourceTree = "<group>"; };
 		322BD1D5225C83CA00D83B5E /* JSONDecoder+PAYJP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+PAYJP.swift"; sourceTree = "<group>"; };
@@ -658,6 +664,8 @@
 				EDDB9370243AF0E400B5806B /* ThreeDSecureSFSafariViewControllerDriver.swift */,
 				ED00F8D0243353FC004DFE2C /* ThreeDSecureURLConfiguration.swift */,
 				ED3DB9DD243ABCEE0065FC33 /* ThreeDSecureWebDriver.swift */,
+				07492B2E2DABCF2700BFD5C8 /* ThreeDSecureWebViewController.swift */,
+				07492B2C2DABCE6F00BFD5C8 /* ThreeDSecureWebViewControllerDriver.swift */,
 			);
 			path = ThreeDSecure;
 			sourceTree = "<group>";
@@ -696,6 +704,8 @@
 				EDA0E418243739C00083A5E0 /* ThreeDSecureProcessHandlerTests.swift */,
 				ED3DB9E1243ACD2B0065FC33 /* ThreeDSecureSFSafariViewControllerDriverTests.swift */,
 				07AEC1322D492DD80054E345 /* ThreeDSecureURLConfigurationTests.swift */,
+				07EA3F2A2DB3F3A700D97904 /* ThreeDSecureWebViewControllerTests.swift */,
+				07EA3F2C2DB3F66300D97904 /* ThreeDSecureWebViewControllerDriverTests.swift */,
 				ED3DB9DF243ACCBE0065FC33 /* Mock.swift */,
 			);
 			path = ThreeDSecure;
@@ -863,7 +873,9 @@
 			files = (
 				32A8E4CC23B4616A001D1C38 /* JSONDecodable.swift in Sources */,
 				EDCF723322F9490400272C10 /* String+PAYJP.swift in Sources */,
+				07492B2F2DABCF2700BFD5C8 /* ThreeDSecureWebViewController.swift in Sources */,
 				ED00F8D1243353FD004DFE2C /* ThreeDSecureProcessHandler.swift in Sources */,
+				07492B2D2DABCE6F00BFD5C8 /* ThreeDSecureWebViewControllerDriver.swift in Sources */,
 				EDCF723222F948F500272C10 /* CardNumber.swift in Sources */,
 				ED3DB9DE243ABCEE0065FC33 /* ThreeDSecureWebDriver.swift in Sources */,
 				EDCF723122F948ED00272C10 /* FormError.swift in Sources */,
@@ -980,6 +992,7 @@
 				32585BB22CAC5237003F920B /* CardHolderValidatorTests.swift in Sources */,
 				ED3FEF7522F13F6000FA73BF /* String+PAYJPTests.swift in Sources */,
 				BE6C231020B566AE00C4FE1E /* APIErrorNSErrorTests.swift in Sources */,
+07EA3F2B2DB3F3A700D97904 /* ThreeDSecureWebViewControllerTests.swift in Sources */,
 				ED016AAF234ACE030049E6CE /* NSErrorConverterTests.swift in Sources */,
 				C68681F81E1E22DB001D7F75 /* CardFromTokenTests.swift in Sources */,
 				BE21785B22E99BB30098128D /* CreateTokenForApplePayRequestTests.swift in Sources */,
@@ -987,6 +1000,7 @@
 				BE734B8A22DD7DE2008679EC /* ExpirationFormatterTests.swift in Sources */,
 				BE21785722E995C40098128D /* CreateTokenRequestTests.swift in Sources */,
 				BE21786322E9B9A90098128D /* GetAcceptedBrandsTests.swift in Sources */,
+07EA3F2D2DB3F66300D97904 /* ThreeDSecureWebViewControllerDriverTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
