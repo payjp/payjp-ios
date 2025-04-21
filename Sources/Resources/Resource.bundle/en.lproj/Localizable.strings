@@ -9,6 +9,7 @@
 // common
 "payjp_common_ok" = "OK";
 "payjp_common_settings" = "Settings";
+"payjp_common_close" = "Close";
 
 // card form
 "payjp_card_form_number_label" = "Card number";
