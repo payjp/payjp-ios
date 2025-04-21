@@ -1,5 +1,5 @@
 module PAYJPSDK
-  VERSION = '2.2.0'
+  VERSION = '2.2.1'
   HOMEPAGE_URL = 'https://github.com/payjp/payjp-ios'
   LICENSE = { :type => 'MIT' }
   AUTHOR = { 'PAY.JP (https://pay.jp)' => 'support@pay.jp' }
