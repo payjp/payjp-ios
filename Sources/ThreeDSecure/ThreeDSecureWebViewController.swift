@@ -1,5 +1,5 @@
 import UIKit
-import WebKit
+@preconcurrency import WebKit
 
 protocol ThreeDSecureWebViewControllerDelegate: AnyObject {
     func webViewControllerDidFinish(_ controller: ThreeDSecureWebViewController, completed: Bool)
@@ -125,7 +125,7 @@ extension ThreeDSecureWebViewController: WKNavigationDelegate {
 
     public func webView(
         _ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction,
-        decisionHandler: @escaping @MainActor(WKNavigationActionPolicy) -> Void
+        decisionHandler: @escaping (WKNavigationActionPolicy) -> Void
     ) {
 
         guard let url = navigationAction.request.url else {
