@@ -1,5 +1,5 @@
 import UIKit
-import WebKit
+@preconcurrency import WebKit
 
 protocol ThreeDSecureWebViewControllerDelegate: AnyObject {
     func webViewControllerDidFinish(_ controller: ThreeDSecureWebViewController, completed: Bool)
