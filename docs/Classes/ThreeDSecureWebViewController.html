@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>CardFormAction Protocol Reference</title>
+    <title>ThreeDSecureWebViewController Class Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -13,8 +13,8 @@
     <script src="../js/jazzy.search.js" defer></script>
   </head>
   <body>
-    <a name="//apple_ref/swift/Protocol/CardFormAction" class="dashAnchor"></a>
-    <a title="CardFormAction Protocol Reference"></a>
+    <a name="//apple_ref/swift/Class/ThreeDSecureWebViewController" class="dashAnchor"></a>
+    <a title="ThreeDSecureWebViewController Class Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html">PAYJP 2.2.1 Docs</a></p>
@@ -30,9 +30,9 @@
       <p id="breadcrumbs">
         <a href="../index.html">PAYJP</a>
         <img id="carat" src="../img/carat.png" alt=""/>
-        <a href="../Protocols.html">Protocols</a>
+        <a href="../Classes.html">Classes</a>
         <img id="carat" src="../img/carat.png" alt=""/>
-        CardFormAction Protocol Reference
+        ThreeDSecureWebViewController Class Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -197,26 +197,38 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>CardFormAction</h1>
+            <h1>ThreeDSecureWebViewController</h1>
               <div class="declaration">
                 <div class="language">
                   
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">CardFormAction</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">@objcMembers</span>
+<span class="kd">@MainActor</span>
+<span class="kd">open</span> <span class="kd">class</span> <span class="kt">ThreeDSecureWebViewController</span> <span class="p">:</span> <span class="kt">UIViewController</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">ThreeDSecureWebViewController</span><span class="p">:</span> <span class="kt">WKNavigationDelegate</span></code></pre>
 
                 </div>
               </div>
-            <p>CardForm action protocol.</p>
+            <p>Undocumented</p>
 
           </section>
           <section class="section task-group-section">
             <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Initialization"></a>
+                <a name="//apple_ref/swift/Section/Initialization" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Initialization"></a>
+                  <h3 class="section-name"><span>Initialization</span>
+</h3>
+                </div>
+              </div>
               <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5PAYJP14CardFormActionP7isValidSbvp"></a>
-                    <a name="//apple_ref/swift/Property/isValid" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5PAYJP14CardFormActionP7isValidSbvp">isValid</a>
+                    <a name="/c:@M@PAYJP@objc(cs)ThreeDSecureWebViewController(im)initWithUrl:"></a>
+                    <a name="//apple_ref/swift/Method/init(url:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@PAYJP@objc(cs)ThreeDSecureWebViewController(im)initWithUrl:">init(url:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -224,41 +236,18 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Form is valid</p>
+                        <p>指定されたURLおよびオプションで許可ドメインを指定してWebViewControllerを初期化する。</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">isValid</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5PAYJP14CardFormActionP11createToken8tenantId15useThreeDSecure10completionySSSg_Sbys6ResultOyAA0F0Cs5Error_pGctF"></a>
-                    <a name="//apple_ref/swift/Method/createToken(tenantId:useThreeDSecure:completion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5PAYJP14CardFormActionP11createToken8tenantId15useThreeDSecure10completionySSSg_Sbys6ResultOyAA0F0Cs5Error_pGctF">createToken(tenantId:<wbr>useThreeDSecure:<wbr>completion:<wbr>)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Create token for swift</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">createToken</span><span class="p">(</span><span class="nv">tenantId</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="nv">useThreeDSecure</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Result</span><span class="o">&lt;</span><span class="kt"><a href="../Classes/Token.html">Token</a></span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">@MainActor</span>
+<span class="kd">public</span> <span class="nf">init</span><span class="p">(</span>
+    <span class="nv">url</span><span class="p">:</span> <span class="kt">URL</span>
+<span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -269,36 +258,12 @@
                             <tr>
                               <td>
                                 <code>
-                                <em>tenantId</em>
+                                <em>url</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>identifier of tenant</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>useThreeDSecure</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>Whether use 3-D secure or not</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>completion</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>completion action</p>
+                                  <p>WebViewで最初に読み込むURL。</p>
                                 </div>
                               </td>
                             </tr>
@@ -311,9 +276,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5PAYJP14CardFormActionP15createTokenWith_15useThreeDSecure10completionySSSg_SbyAA0F0CSg_So7NSErrorCSgtctF"></a>
-                    <a name="//apple_ref/swift/Method/createTokenWith(_:useThreeDSecure:completion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5PAYJP14CardFormActionP15createTokenWith_15useThreeDSecure10completionySSSg_SbyAA0F0CSg_So7NSErrorCSgtctF">createTokenWith(_:<wbr>useThreeDSecure:<wbr>completion:<wbr>)</a>
+                    <a name="/c:@M@PAYJP@objc(cs)ThreeDSecureWebViewController(im)initWithCoder:"></a>
+                    <a name="//apple_ref/swift/Method/init(coder:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@PAYJP@objc(cs)ThreeDSecureWebViewController(im)initWithCoder:">init(coder:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -321,59 +286,58 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Create token for objective-c</p>
+                        <p>Undocumented</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">createTokenWith</span><span class="p">(</span><span class="n">_</span> <span class="nv">tenantId</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="nv">useThreeDSecure</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Classes/Token.html">Token</a></span><span class="p">?,</span> <span class="kt">NSError</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@MainActor</span>
+<span class="kd">required</span> <span class="kd">public</span> <span class="nf">init</span><span class="p">?(</span><span class="nv">coder</span><span class="p">:</span> <span class="kt">NSCoder</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>tenantId</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>identifier of tenant</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>useThreeDSecure</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>Whether use 3-D secure or not</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>completion</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>completion action</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Lifecycle%20Methods"></a>
+                <a name="//apple_ref/swift/Section/Lifecycle Methods" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Lifecycle%20Methods"></a>
+                  <h3 class="section-name"><span>Lifecycle Methods</span>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@PAYJP@objc(cs)ThreeDSecureWebViewController(im)viewDidLoad"></a>
+                    <a name="//apple_ref/swift/Method/viewDidLoad()" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@PAYJP@objc(cs)ThreeDSecureWebViewController(im)viewDidLoad">viewDidLoad()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@MainActor</span>
+<span class="k">override</span> <span class="kd">open</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
@@ -381,9 +345,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5PAYJP14CardFormActionP11fetchBrands8tenantId10completionySSSg_ys6ResultOySayAA0B5BrandOGAA8APIErrorOGcSgtF"></a>
-                    <a name="//apple_ref/swift/Method/fetchBrands(tenantId:completion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5PAYJP14CardFormActionP11fetchBrands8tenantId10completionySSSg_ys6ResultOySayAA0B5BrandOGAA8APIErrorOGcSgtF">fetchBrands(tenantId:<wbr>completion:<wbr>)</a>
+                    <a name="/c:@M@PAYJP@objc(cs)ThreeDSecureWebViewController(im)viewDidDisappear:"></a>
+                    <a name="//apple_ref/swift/Method/viewDidDisappear(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@PAYJP@objc(cs)ThreeDSecureWebViewController(im)viewDidDisappear:">viewDidDisappear(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -391,47 +355,61 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Fetch accepted card brands for swift</p>
+                        <p>Undocumented</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">fetchBrands</span><span class="p">(</span><span class="nv">tenantId</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:5PAYJP16CardBrandsResulta">CardBrandsResult</a></span><span class="p">?)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@MainActor</span>
+<span class="k">override</span> <span class="kd">open</span> <span class="kd">func</span> <span class="nf">viewDidDisappear</span><span class="p">(</span><span class="n">_</span> <span class="nv">animated</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>tenantId</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>tenantId identifier of tenant</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>completion</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>completion action</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/WKNavigationDelegate"></a>
+                <a name="//apple_ref/swift/Section/WKNavigationDelegate" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/WKNavigationDelegate"></a>
+                  <h3 class="section-name"><span>WKNavigationDelegate</span>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@PAYJP@objc(cs)ThreeDSecureWebViewController(im)webView:decidePolicyForNavigationAction:decisionHandler:"></a>
+                    <a name="//apple_ref/swift/Method/webView(_:decidePolicyFor:decisionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@PAYJP@objc(cs)ThreeDSecureWebViewController(im)webView:decidePolicyForNavigationAction:decisionHandler:">webView(_:<wbr>decidePolicyFor:<wbr>decisionHandler:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@MainActor</span>
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">webView</span><span class="p">(</span>
+    <span class="n">_</span> <span class="nv">webView</span><span class="p">:</span> <span class="kt">WKWebView</span><span class="p">,</span> <span class="n">decidePolicyFor</span> <span class="nv">navigationAction</span><span class="p">:</span> <span class="kt">WKNavigationAction</span><span class="p">,</span>
+    <span class="nv">decisionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">WKNavigationActionPolicy</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span>
+<span class="p">)</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
@@ -439,9 +417,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5PAYJP14CardFormActionP15fetchBrandsWith_10completionySSSg_ySaySo8NSStringCGSg_So7NSErrorCSgtcSgtF"></a>
-                    <a name="//apple_ref/swift/Method/fetchBrandsWith(_:completion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5PAYJP14CardFormActionP15fetchBrandsWith_10completionySSSg_ySaySo8NSStringCGSg_So7NSErrorCSgtcSgtF">fetchBrandsWith(_:<wbr>completion:<wbr>)</a>
+                    <a name="/c:@CM@PAYJP@objc(cs)ThreeDSecureWebViewController(im)webView:didStartProvisionalNavigation:"></a>
+                    <a name="//apple_ref/swift/Method/webView(_:didStartProvisionalNavigation:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@PAYJP@objc(cs)ThreeDSecureWebViewController(im)webView:didStartProvisionalNavigation:">webView(_:<wbr>didStartProvisionalNavigation:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -449,47 +427,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Fetch accepted card brands for objective-c</p>
+                        <p>Undocumented</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">fetchBrandsWith</span><span class="p">(</span><span class="n">_</span> <span class="nv">tenantId</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="nv">completion</span><span class="p">:</span> <span class="p">(([</span><span class="kt">NSString</span><span class="p">]?,</span> <span class="kt">NSError</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@MainActor</span>
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">webView</span><span class="p">(</span>
+    <span class="n">_</span> <span class="nv">webView</span><span class="p">:</span> <span class="kt">WKWebView</span><span class="p">,</span> <span class="n">didStartProvisionalNavigation</span> <span class="nv">navigation</span><span class="p">:</span> <span class="kt">WKNavigation</span><span class="o">!</span>
+<span class="p">)</span></code></pre>
 
                         </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>tenantId</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>tenantId identifier of tenant</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>completion</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>completion action</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
                       </div>
                     </section>
                   </div>
@@ -497,9 +447,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5PAYJP14CardFormActionP08validatebC0SbyF"></a>
-                    <a name="//apple_ref/swift/Method/validateCardForm()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5PAYJP14CardFormActionP08validatebC0SbyF">validateCardForm()</a>
+                    <a name="/c:@CM@PAYJP@objc(cs)ThreeDSecureWebViewController(im)webView:didFinishNavigation:"></a>
+                    <a name="//apple_ref/swift/Method/webView(_:didFinish:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@PAYJP@objc(cs)ThreeDSecureWebViewController(im)webView:didFinishNavigation:">webView(_:<wbr>didFinish:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -507,20 +457,17 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Validate card form</p>
+                        <p>Undocumented</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">validateCardForm</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@MainActor</span>
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">webView</span><span class="p">(</span><span class="n">_</span> <span class="nv">webView</span><span class="p">:</span> <span class="kt">WKWebView</span><span class="p">,</span> <span class="n">didFinish</span> <span class="nv">navigation</span><span class="p">:</span> <span class="kt">WKNavigation</span><span class="o">!</span><span class="p">)</span></code></pre>
 
                         </div>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>is valid form</p>
                       </div>
                     </section>
                   </div>
@@ -528,9 +475,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5PAYJP14CardFormActionP23setupInputAccessoryView4viewySo6UIViewC_tF"></a>
-                    <a name="//apple_ref/swift/Method/setupInputAccessoryView(view:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5PAYJP14CardFormActionP23setupInputAccessoryView4viewySo6UIViewC_tF">setupInputAccessoryView(view:<wbr>)</a>
+                    <a name="/c:@CM@PAYJP@objc(cs)ThreeDSecureWebViewController(im)webView:didFailNavigation:withError:"></a>
+                    <a name="//apple_ref/swift/Method/webView(_:didFail:withError:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@PAYJP@objc(cs)ThreeDSecureWebViewController(im)webView:didFailNavigation:withError:">webView(_:<wbr>didFail:<wbr>withError:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -538,35 +485,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Setup input accessory view of text field</p>
+                        <p>Undocumented</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">setupInputAccessoryView</span><span class="p">(</span><span class="nv">view</span><span class="p">:</span> <span class="kt">UIView</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@MainActor</span>
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">webView</span><span class="p">(</span>
+    <span class="n">_</span> <span class="nv">webView</span><span class="p">:</span> <span class="kt">WKWebView</span><span class="p">,</span> <span class="n">didFail</span> <span class="nv">navigation</span><span class="p">:</span> <span class="kt">WKNavigation</span><span class="o">!</span><span class="p">,</span> <span class="n">withError</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span>
+<span class="p">)</span></code></pre>
 
                         </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>view</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>input accessory view</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
                       </div>
                     </section>
                   </div>
@@ -574,9 +505,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5PAYJP14CardFormActionP5apply15extraAttributesySayAA14ExtraAttribute_pG_tF"></a>
-                    <a name="//apple_ref/swift/Method/apply(extraAttributes:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5PAYJP14CardFormActionP5apply15extraAttributesySayAA14ExtraAttribute_pG_tF">apply(extraAttributes:<wbr>)</a>
+                    <a name="/c:@CM@PAYJP@objc(cs)ThreeDSecureWebViewController(im)webView:didFailProvisionalNavigation:withError:"></a>
+                    <a name="//apple_ref/swift/Method/webView(_:didFailProvisionalNavigation:withError:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@PAYJP@objc(cs)ThreeDSecureWebViewController(im)webView:didFailProvisionalNavigation:withError:">webView(_:<wbr>didFailProvisionalNavigation:<wbr>withError:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -584,15 +515,18 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Enable extra attributes for 3-D Secure.
-Both [ExtraAttributesEmail] and [ExtraAttributesPhone] is enabled as default.</p>
+                        <p>Undocumented</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">apply</span><span class="p">(</span><span class="nv">extraAttributes</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Protocols.html#/c:@M@PAYJP@objc(pl)PAYExtraAttribute">ExtraAttribute</a></span><span class="p">])</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@MainActor</span>
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">webView</span><span class="p">(</span>
+    <span class="n">_</span> <span class="nv">webView</span><span class="p">:</span> <span class="kt">WKWebView</span><span class="p">,</span> <span class="n">didFailProvisionalNavigation</span> <span class="nv">navigation</span><span class="p">:</span> <span class="kt">WKNavigation</span><span class="o">!</span><span class="p">,</span>
+    <span class="n">withError</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span>
+<span class="p">)</span></code></pre>
 
                         </div>
                       </div>
