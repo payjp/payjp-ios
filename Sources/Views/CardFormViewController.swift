@@ -112,6 +112,8 @@ public class CardFormViewController: UIViewController {
     // MARK: Lifecycle
 
     public override func viewDidLoad() {
+        super.viewDidLoad()
+
         presenter = CardFormScreenPresenter(delegate: self)
 
         setupCardFormView()
@@ -179,12 +181,15 @@ public class CardFormViewController: UIViewController {
         submitButton.isHidden = false
     }
 
-    @objc private func keyboardDidChangeFrame(notification: Notification) {
-        let keyboardRect = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect ?? .zero
-        var keyboardY = scrollView.bounds.height - keyboardRect.origin.y
-        if keyboardY < 0 {
-            keyboardY = 0
+    @objc private func keyboardWillChangeFrame(notification: Notification) {
+        guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else {
+            return
         }
+
+        let keyboardFrameInView = view.convert(keyboardFrame, from: nil)
+
+        let viewBottom = view.bounds.height
+        let keyboardY = max(0, viewBottom - keyboardFrameInView.origin.y)
 
         var contentInset = scrollView.contentInset
         contentInset.bottom = keyboardY
@@ -196,15 +201,10 @@ public class CardFormViewController: UIViewController {
         scrollView.scrollIndicatorInsets = scrollIndicatorInsets
         scrollView.showsVerticalScrollIndicator = true
 
-        // displayStyledのレイアウトで横ScrollViewを使用している影響で
-        // 縦スクロールが効かないため、手動でスクロールさせるようにしている
-        // 縦スクロールが発生する画面サイズ かつ displayStyled のときのみスクロールさせる
-        let diff = scrollView.contentSize.height -
-            scrollView.bounds.size.height +
-            scrollView.contentInset.bottom
-        if keyboardY > 0 && diff > 0 && cardFormViewType == .displayStyled {
-            let offset = CGPoint(x: 0, y: diff)
-            scrollView.setContentOffset(offset, animated: true)
+        // displayStyled以外はアクティブなテキストフィールドに自動スクロール
+        if keyboardY > 0 && cardFormViewType != .displayStyled,
+           let activeField = findFirstResponder(in: scrollView) {
+            scrollToVisibleTextField(activeField, keyboardHeight: keyboardY)
         }
     }
 
@@ -212,6 +212,32 @@ public class CardFormViewController: UIViewController {
         if let value = notification.userInfo?[PAYNotificationKey.newTokenOperationStatus] as? Int,
            let newStatus = TokenOperationStatus.init(rawValue: value) {
             self.presenter?.tokenOperationStatusDidUpdate(status: newStatus)
+        }
+    }
+
+    private func findFirstResponder(in view: UIView) -> UIView? {
+        if view.isFirstResponder {
+            return view
+        }
+        for subview in view.subviews {
+            if let firstResponder = findFirstResponder(in: subview) {
+                return firstResponder
+            }
+        }
+        return nil
+    }
+
+    private func scrollToVisibleTextField(_ textField: UIView, keyboardHeight: CGFloat) {
+        let textFieldFrame = scrollView.convert(textField.bounds, from: textField)
+        let visibleHeight = scrollView.bounds.height - keyboardHeight
+
+        let padding: CGFloat = 20
+        let targetY = textFieldFrame.origin.y - padding
+
+        let maxY = textFieldFrame.maxY + padding
+        if maxY > scrollView.contentOffset.y + visibleHeight {
+            let newOffsetY = max(0, min(targetY, scrollView.contentSize.height - visibleHeight))
+            scrollView.setContentOffset(CGPoint(x: 0, y: newOffsetY), animated: true)
         }
     }
 
@@ -227,8 +253,8 @@ public class CardFormViewController: UIViewController {
                                                name: UIResponder.keyboardWillHideNotification,
                                                object: nil)
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(keyboardDidChangeFrame),
-                                               name: UIResponder.keyboardDidChangeFrameNotification,
+                                               selector: #selector(keyboardWillChangeFrame),
+                                               name: UIResponder.keyboardWillChangeFrameNotification,
                                                object: nil)
     }
 
