@@ -135,6 +135,7 @@ public class CardFormViewController: UIViewController {
         brandsView.backgroundColor = Style.Color.groupedBackground
 
         setupKeyboardNotification()
+        setupKeyboardDismiss()
         fetchAccpetedBrands()
 
         NotificationCenter.default.addObserver(self,
@@ -256,6 +257,18 @@ public class CardFormViewController: UIViewController {
                                                selector: #selector(keyboardWillChangeFrame),
                                                name: UIResponder.keyboardWillChangeFrameNotification,
                                                object: nil)
+    }
+
+    private func setupKeyboardDismiss() {
+        scrollView.keyboardDismissMode = .onDrag
+
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGesture)
+    }
+
+    @objc private func dismissKeyboard() {
+        view.endEditing(true)
     }
 
     private func createToken() {
