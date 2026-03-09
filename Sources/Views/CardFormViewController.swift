@@ -202,9 +202,13 @@ public class CardFormViewController: UIViewController {
         scrollView.scrollIndicatorInsets = scrollIndicatorInsets
         scrollView.showsVerticalScrollIndicator = true
 
-        // displayStyled以外はアクティブなテキストフィールドに自動スクロール
-        if keyboardY > 0 && cardFormViewType != .displayStyled,
-           let activeField = findFirstResponder(in: scrollView) {
+        // アクティブなテキストフィールドに自動スクロール
+        guard keyboardY > 0, let activeField = findFirstResponder(in: scrollView) else { return }
+
+        // displayStyledは内部に横スクロールを持つため、別処理
+        if cardFormViewType == .displayStyled {
+            scrollToVisibleForDisplayStyled(activeField: activeField, keyboardHeight: keyboardY)
+        } else {
             scrollToVisibleTextField(activeField, keyboardHeight: keyboardY)
         }
     }
@@ -233,13 +237,36 @@ public class CardFormViewController: UIViewController {
         let visibleHeight = scrollView.bounds.height - keyboardHeight
 
         let padding: CGFloat = 20
-        let targetY = textFieldFrame.origin.y - padding
-
         let maxY = textFieldFrame.maxY + padding
-        if maxY > scrollView.contentOffset.y + visibleHeight {
-            let newOffsetY = max(0, min(targetY, scrollView.contentSize.height - visibleHeight))
-            scrollView.setContentOffset(CGPoint(x: 0, y: newOffsetY), animated: true)
-        }
+
+        // キーボードで隠れていない場合はスクロールしない
+        guard maxY > scrollView.contentOffset.y + visibleHeight else { return }
+
+        let targetY = textFieldFrame.origin.y - padding
+        let newOffsetY = max(0, min(targetY, scrollView.contentSize.height - visibleHeight))
+        scrollView.setContentOffset(CGPoint(x: 0, y: newOffsetY), animated: true)
+    }
+
+    /// displayStyled専用: 内部に横スクロールがあるため、cardFormViewを基準にスクロール
+    private func scrollToVisibleForDisplayStyled(activeField: UIView, keyboardHeight: CGFloat) {
+        let visibleHeight = scrollView.bounds.height - keyboardHeight
+        let padding: CGFloat = 20
+
+        // activeFieldの実際の位置で判定（view座標系で取得してscrollViewに変換）
+        let activeFieldFrameInView = activeField.convert(activeField.bounds, to: view)
+        let keyboardTop = view.bounds.height - keyboardHeight
+
+        // キーボードで隠れていない場合はスクロールしない
+        guard activeFieldFrameInView.maxY + padding > keyboardTop else { return }
+
+        // スクロール先はcardFormViewを基準に計算（横スクロールの影響を避ける）
+        let cardFormFrame = scrollView.convert(cardFormView.bounds, from: cardFormView)
+        let relativeY = cardFormView.convert(activeField.bounds, from: activeField).origin.y
+        let activeFieldBottomY = cardFormFrame.origin.y + relativeY + activeField.bounds.height + padding
+
+        let targetY = activeFieldBottomY - visibleHeight
+        let newOffsetY = max(0, min(targetY, scrollView.contentSize.height - visibleHeight))
+        scrollView.setContentOffset(CGPoint(x: 0, y: newOffsetY), animated: true)
     }
 
     // MARK: Private

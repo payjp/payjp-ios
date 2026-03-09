@@ -1,3 +1,3 @@
 # github "payjp/payjp-ios"
-git "../" "HEAD"
+git "../" "fix/card_form_keyboard_scroll_area"
 
