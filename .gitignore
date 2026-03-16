@@ -78,3 +78,7 @@ firebase-debug.log
 docs/docsets/*.tgz
 
 Brewfile.lock.json
+
+# Checkout example
+example-checkout-v2/server/.env
+example-checkout-v2/server/node_modules/
