@@ -112,6 +112,8 @@ public class CardFormViewController: UIViewController {
     // MARK: Lifecycle
 
     public override func viewDidLoad() {
+        super.viewDidLoad()
+
         presenter = CardFormScreenPresenter(delegate: self)
 
         setupCardFormView()
@@ -133,6 +135,7 @@ public class CardFormViewController: UIViewController {
         brandsView.backgroundColor = Style.Color.groupedBackground
 
         setupKeyboardNotification()
+        setupKeyboardDismiss()
         fetchAccpetedBrands()
 
         NotificationCenter.default.addObserver(self,
@@ -179,12 +182,15 @@ public class CardFormViewController: UIViewController {
         submitButton.isHidden = false
     }
 
-    @objc private func keyboardDidChangeFrame(notification: Notification) {
-        let keyboardRect = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect ?? .zero
-        var keyboardY = scrollView.bounds.height - keyboardRect.origin.y
-        if keyboardY < 0 {
-            keyboardY = 0
+    @objc private func keyboardWillChangeFrame(notification: Notification) {
+        guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else {
+            return
         }
+
+        let keyboardFrameInView = view.convert(keyboardFrame, from: nil)
+
+        let viewBottom = view.bounds.height
+        let keyboardY = max(0, viewBottom - keyboardFrameInView.origin.y)
 
         var contentInset = scrollView.contentInset
         contentInset.bottom = keyboardY
@@ -196,15 +202,14 @@ public class CardFormViewController: UIViewController {
         scrollView.scrollIndicatorInsets = scrollIndicatorInsets
         scrollView.showsVerticalScrollIndicator = true
 
-        // displayStyledのレイアウトで横ScrollViewを使用している影響で
-        // 縦スクロールが効かないため、手動でスクロールさせるようにしている
-        // 縦スクロールが発生する画面サイズ かつ displayStyled のときのみスクロールさせる
-        let diff = scrollView.contentSize.height -
-            scrollView.bounds.size.height +
-            scrollView.contentInset.bottom
-        if keyboardY > 0 && diff > 0 && cardFormViewType == .displayStyled {
-            let offset = CGPoint(x: 0, y: diff)
-            scrollView.setContentOffset(offset, animated: true)
+        // アクティブなテキストフィールドに自動スクロール
+        guard keyboardY > 0, let activeField = findFirstResponder(in: scrollView) else { return }
+
+        // displayStyledは内部に横スクロールを持つため、別処理
+        if cardFormViewType == .displayStyled {
+            scrollToVisibleForDisplayStyled(activeField: activeField, keyboardHeight: keyboardY)
+        } else {
+            scrollToVisibleTextField(activeField, keyboardHeight: keyboardY)
         }
     }
 
@@ -213,6 +218,55 @@ public class CardFormViewController: UIViewController {
            let newStatus = TokenOperationStatus.init(rawValue: value) {
             self.presenter?.tokenOperationStatusDidUpdate(status: newStatus)
         }
+    }
+
+    private func findFirstResponder(in view: UIView) -> UIView? {
+        if view.isFirstResponder {
+            return view
+        }
+        for subview in view.subviews {
+            if let firstResponder = findFirstResponder(in: subview) {
+                return firstResponder
+            }
+        }
+        return nil
+    }
+
+    private func scrollToVisibleTextField(_ textField: UIView, keyboardHeight: CGFloat) {
+        let textFieldFrame = scrollView.convert(textField.bounds, from: textField)
+        let visibleHeight = scrollView.bounds.height - keyboardHeight
+
+        let padding: CGFloat = 20
+        let maxY = textFieldFrame.maxY + padding
+
+        // キーボードで隠れていない場合はスクロールしない
+        guard maxY > scrollView.contentOffset.y + visibleHeight else { return }
+
+        let targetY = textFieldFrame.origin.y - padding
+        let newOffsetY = max(0, min(targetY, scrollView.contentSize.height - visibleHeight))
+        scrollView.setContentOffset(CGPoint(x: 0, y: newOffsetY), animated: true)
+    }
+
+    /// displayStyled専用: 内部に横スクロールがあるため、cardFormViewを基準にスクロール
+    private func scrollToVisibleForDisplayStyled(activeField: UIView, keyboardHeight: CGFloat) {
+        let visibleHeight = scrollView.bounds.height - keyboardHeight
+        let padding: CGFloat = 20
+
+        // activeFieldの実際の位置で判定（view座標系で取得してscrollViewに変換）
+        let activeFieldFrameInView = activeField.convert(activeField.bounds, to: view)
+        let keyboardTop = view.bounds.height - keyboardHeight
+
+        // キーボードで隠れていない場合はスクロールしない
+        guard activeFieldFrameInView.maxY + padding > keyboardTop else { return }
+
+        // スクロール先はcardFormViewを基準に計算（横スクロールの影響を避ける）
+        let cardFormFrame = scrollView.convert(cardFormView.bounds, from: cardFormView)
+        let relativeY = cardFormView.convert(activeField.bounds, from: activeField).origin.y
+        let activeFieldBottomY = cardFormFrame.origin.y + relativeY + activeField.bounds.height + padding
+
+        let targetY = activeFieldBottomY - visibleHeight
+        let newOffsetY = max(0, min(targetY, scrollView.contentSize.height - visibleHeight))
+        scrollView.setContentOffset(CGPoint(x: 0, y: newOffsetY), animated: true)
     }
 
     // MARK: Private
@@ -227,9 +281,21 @@ public class CardFormViewController: UIViewController {
                                                name: UIResponder.keyboardWillHideNotification,
                                                object: nil)
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(keyboardDidChangeFrame),
-                                               name: UIResponder.keyboardDidChangeFrameNotification,
+                                               selector: #selector(keyboardWillChangeFrame),
+                                               name: UIResponder.keyboardWillChangeFrameNotification,
                                                object: nil)
+    }
+
+    private func setupKeyboardDismiss() {
+        scrollView.keyboardDismissMode = .onDrag
+
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGesture)
+    }
+
+    @objc private func dismissKeyboard() {
+        view.endEditing(true)
     }
 
     private func createToken() {
