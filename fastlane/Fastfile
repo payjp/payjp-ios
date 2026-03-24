@@ -230,12 +230,37 @@ platform :ios do
     sh('swift build -v --sdk `xcrun --sdk iphonesimulator --show-sdk-path` -Xswiftc "-target" -Xswiftc "arm64-apple-ios17.5-simulator"')
   end
 
+  desc "Build SPM-swift example app"
+  lane :build_spm_swift_example do
+    project_file = 'example-swift/example-swift.xcodeproj'
+    build_app(
+      project: project_file,
+      scheme: 'example-swift',
+      configuration: 'Debug',
+      skip_archive: true,
+      skip_codesigning: true
+    )
+  end
+
+  desc "Build SPM-swift-ui example app"
+  lane :build_spm_swift_ui_example do
+    project_file = 'example-swift/example-swift.xcodeproj'
+    build_app(
+      project: project_file,
+      scheme: 'example-swift-ui',
+      configuration: 'Debug',
+      skip_archive: true,
+      skip_codesigning: true
+    )
+  end
+
   desc "Build carthage-swift example app"
   lane :build_carthage_swift_example do
     sh('cd ../example-swift && carthage bootstrap --use-xcframeworks --platform iOS --cache-builds')
     project_file = 'example-swift/example-swift.xcodeproj'
     build_app(
       project: project_file,
+      scheme: 'example-swift-carthage',
       configuration: 'Debug',
       skip_archive: true,
       skip_codesigning: true

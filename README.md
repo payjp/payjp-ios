@@ -22,7 +22,8 @@
 ## サンプルコード
 
 - Apple Pay: https://github.com/payjp/apple-pay-example
-- CreditCard (Swift, Carthage): https://github.com/payjp/payjp-ios/tree/master/example-swift
+- CreditCard (Swift, SPM): https://github.com/payjp/payjp-ios/tree/master/example-swift
+- CreditCard (Swift, Carthage): https://github.com/payjp/payjp-ios/tree/master/example-swift (example-swift-carthageターゲット)
 - CreditCard (Objective-C, CocoaPods): https://github.com/payjp/payjp-ios/tree/master/example-objc
 
 ## 動作環境
