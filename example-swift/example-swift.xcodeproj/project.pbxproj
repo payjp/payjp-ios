@@ -312,7 +312,7 @@
 			);
 			mainGroup = 32CB111B1FDA7E3D007AD8F5;
 			packageReferences = (
-				710E2C2A2F71A9F20063E80D /* XCLocalSwiftPackageReference "../../payjp-ios" */,
+				71BF9BC62F7D292400A6E267 /* XCLocalSwiftPackageReference ".." */,
 			);
 			productRefGroup = 32CB11251FDA7E3D007AD8F5 /* Products */;
 			projectDirPath = "";
@@ -794,9 +794,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		710E2C2A2F71A9F20063E80D /* XCLocalSwiftPackageReference "../../payjp-ios" */ = {
+		710E2C2A2F71A9F20063E80D /* XCLocalSwiftPackageReference ".." */ = {
 			isa = XCLocalSwiftPackageReference;
-			relativePath = "../../payjp-ios";
+			relativePath = "..";
+		};
+		71BF9BC62F7D292400A6E267 /* XCLocalSwiftPackageReference ".." */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = "..";
 		};
 /* End XCLocalSwiftPackageReference section */
 
@@ -807,7 +811,7 @@
 		};
 		710E2C2B2F71A9FF0063E80D /* PAYJP */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 710E2C2A2F71A9F20063E80D /* XCLocalSwiftPackageReference "../../payjp-ios" */;
+			package = 710E2C2A2F71A9F20063E80D /* XCLocalSwiftPackageReference ".." */;
 			productName = PAYJP;
 		};
 /* End XCSwiftPackageProductDependency section */
