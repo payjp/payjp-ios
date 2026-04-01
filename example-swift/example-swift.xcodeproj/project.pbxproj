@@ -107,7 +107,7 @@
 		32CB11311FDA7E3D007AD8F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		32CB11331FDA7E3D007AD8F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		710E2C442F71AA480063E80D /* example-swift-carthage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "example-swift-carthage.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		710E2C452F71AA480063E80D /* example-swift-carthage-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "example-swift-carthage-Info.plist"; path = "/Users/t.tokumitsu/Developer/project/pay/payjp-ios/example-swift/example-swift-carthage-Info.plist"; sourceTree = "<absolute>"; };
+		710E2C452F71AA480063E80D /* example-swift-carthage-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "example-swift-carthage-Info.plist"; sourceTree = "<group>"; };
 		ED50839223278BB800C64A7F /* CardFormViewExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFormViewExampleViewController.swift; sourceTree = "<group>"; };
 		ED5085BC232A0FE300C64A7F /* CardFormViewScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFormViewScrollViewController.swift; sourceTree = "<group>"; };
 		ED5085C2232A1A2B00C64A7F /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
