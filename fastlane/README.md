@@ -103,6 +103,22 @@ Distribute sample app with Firebase App Distribution
 
 Build with Package.swift
 
+### ios build_spm_swift_example
+
+```sh
+[bundle exec] fastlane ios build_spm_swift_example
+```
+
+Build SPM-swift example app
+
+### ios build_spm_swift_ui_example
+
+```sh
+[bundle exec] fastlane ios build_spm_swift_ui_example
+```
+
+Build SPM-swift-ui example app
+
 ### ios build_carthage_swift_example
 
 ```sh

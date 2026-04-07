@@ -44,5 +44,7 @@ jobs:
       - run: bundle exec fastlane ios test
       - run: bundle exec fastlane ios lint_podspec
       - run: bundle exec fastlane ios build_swiftpm
+      - run: bundle exec fastlane ios build_spm_swift_example
+      - run: bundle exec fastlane ios build_spm_swift_ui_example
       - run: bundle exec fastlane ios build_carthage_swift_example
       - run: bundle exec fastlane ios build_cocoapods_objc_example
