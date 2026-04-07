@@ -22,7 +22,8 @@
 ## サンプルコード
 
 - Apple Pay: https://github.com/payjp/apple-pay-example
-- CreditCard (Swift, Carthage): https://github.com/payjp/payjp-ios/tree/master/example-swift
+- CreditCard (Swift, SPM): https://github.com/payjp/payjp-ios/tree/master/example-swift
+- CreditCard (Swift, Carthage): https://github.com/payjp/payjp-ios/tree/master/example-swift (example-swift-carthageターゲット)
 - CreditCard (Objective-C, CocoaPods): https://github.com/payjp/payjp-ios/tree/master/example-objc
 
 ## 動作環境
@@ -38,6 +39,24 @@
 ```
 github "payjp/payjp-ios"
 ```
+
+<details>
+<summary>Carthageサンプルアプリのビルド</summary>
+
+example-swift-carthageターゲットをローカルでビルドする場合は、fastlaneを使用してください：
+
+```bash
+bundle exec fastlane ios build_carthage_swift_example
+```
+
+このlaneは以下を自動的に実行します：
+1. PAYJP.xcframeworkの作成（iOSデバイス＋シミュレーター用）
+2. 依存ライブラリ（PhoneNumberKit等）のCarthageビルド
+3. example-swift-carthageアプリのビルド
+
+注: Package.swiftとの競合により、`carthage bootstrap`だけではビルドできません。fastlaneを使用してください。
+
+</details>
 
 [CocoaPods](https://cocoapods.org) でもインストールすることができます。
 

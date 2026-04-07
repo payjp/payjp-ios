@@ -78,3 +78,6 @@ firebase-debug.log
 docs/docsets/*.tgz
 
 Brewfile.lock.json
+
+# Claude Code
+.claude
