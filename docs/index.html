@@ -16,7 +16,7 @@
     <a title="PAYJP  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">PAYJP 2.2.1 Docs</a></p>
+        <p><a href="index.html">PAYJP 2.2.2 Docs</a></p>
         <p class="header-right"><a href="https://github.com/payjp/payjp-ios"><img src="img/gh.png" alt="GitHub"/>View on GitHub</a></p>
         <div class="header-right">
           <form role="search" action="search.json">
@@ -235,7 +235,8 @@
 
 <ul>
 <li>Apple Pay: <a href="https://github.com/payjp/apple-pay-example">https://github.com/payjp/apple-pay-example</a></li>
-<li>CreditCard (Swift, Carthage): <a href="https://github.com/payjp/payjp-ios/tree/master/example-swift">https://github.com/payjp/payjp-ios/tree/master/example-swift</a></li>
+<li>CreditCard (Swift, SPM): <a href="https://github.com/payjp/payjp-ios/tree/master/example-swift">https://github.com/payjp/payjp-ios/tree/master/example-swift</a></li>
+<li>CreditCard (Swift, Carthage): <a href="https://github.com/payjp/payjp-ios/tree/master/example-swift">https://github.com/payjp/payjp-ios/tree/master/example-swift</a> (example-swift-carthageターゲット)</li>
 <li>CreditCard (Objective-C, CocoaPods): <a href="https://github.com/payjp/payjp-ios/tree/master/example-objc">https://github.com/payjp/payjp-ios/tree/master/example-objc</a></li>
 </ul>
 <h2 id='動作環境' class='heading'>動作環境</h2>
@@ -250,6 +251,24 @@
 <p><a href="https://github.com/Carthage/Carthage">Carthage</a> でインストールする場合、以下のように記述してください</p>
 <pre class="highlight plaintext"><code>github "payjp/payjp-ios"
 </code></pre>
+
+<details>
+<summary>Carthageサンプルアプリのビルド</summary>
+
+example-swift-carthageターゲットをローカルでビルドする場合は、fastlaneを使用してください：
+
+&ldquo;`bash
+bundle exec fastlane ios build_carthage_swift_example
+&rdquo;`
+
+このlaneは以下を自動的に実行します：
+1. PAYJP.xcframeworkの作成（iOSデバイス＋シミュレーター用）
+2. 依存ライブラリ（PhoneNumberKit等）のCarthageビルド
+3. example-swift-carthageアプリのビルド
+
+注: Package.swiftとの競合により、`carthage bootstrap`だけではビルドできません。fastlaneを使用してください。
+
+</details>
 
 <p><a href="https://cocoapods.org">CocoaPods</a> でもインストールすることができます。</p>
 <pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'PAYJP'</span>
