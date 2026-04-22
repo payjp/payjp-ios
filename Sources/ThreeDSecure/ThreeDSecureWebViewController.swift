@@ -82,7 +82,15 @@ protocol ThreeDSecureWebViewControllerDelegate: AnyObject {
     private func setupNavigationBar() {
         let navItem = UINavigationItem()
         if #available(iOS 13.0, *) {
-            navigationBar.barTintColor = UIColor.systemBackground
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = UIColor.systemBackground
+            navigationBar.standardAppearance = appearance
+            navigationBar.scrollEdgeAppearance = appearance
+            navigationBar.compactAppearance = appearance
+            if #available(iOS 15.0, *) {
+                navigationBar.compactScrollEdgeAppearance = appearance
+            }
         }
         navigationBar.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(navigationBar)
