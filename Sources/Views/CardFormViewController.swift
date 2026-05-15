@@ -291,6 +291,7 @@ public class CardFormViewController: UIViewController {
 
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tapGesture.cancelsTouchesInView = false
+        tapGesture.delegate = self
         view.addGestureRecognizer(tapGesture)
     }
 
@@ -495,5 +496,21 @@ extension CardFormViewController: ThreeDSecureProcessHandlerDelegate {
         default:
             break
         }
+    }
+}
+
+// MARK: UIGestureRecognizerDelegate
+extension CardFormViewController: UIGestureRecognizerDelegate {
+
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
+                                  shouldReceive touch: UITouch) -> Bool {
+        var view = touch.view
+        while let v = view {
+            if v is UITextField {
+                return false
+            }
+            view = v.superview
+        }
+        return true
     }
 }
