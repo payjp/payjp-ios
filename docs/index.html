@@ -195,12 +195,20 @@
             
             <h1 id='pay-jp-ios-sdk' class='heading'>PAY.JP iOS SDK</h1>
 
-<p><a href="https://github.com/payjp/payjp-ios"><img src="https://img.shields.io/cocoapods/v/PAYJP.svg" alt="CocoaPods"></a>
+<p><a href="#cocoapods-%E9%85%8D%E4%BF%A1%E7%B5%82%E4%BA%86%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"><img src="https://img.shields.io/badge/CocoaPods-deprecated-lightgrey.svg" alt="CocoaPods deprecated"></a>
 <a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage Compatible"></a>
 <a href="https://github.com/apple/swift-package-manager"><img src="https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg" alt="Swift Package Manager compatible"></a>
 <img src="https://github.com/payjp/payjp-ios/workflows/Build%20and%20Test/badge.svg?branch=master" alt="Build and Test"></p>
 
 <p>オンライン決済サービス「<a href="https://pay.jp/">PAY.JP</a>」のiOSアプリ組込み用のSDKです。</p>
+
+<blockquote>
+<p><strong>【重要】CocoaPods での配信終了について</strong></p>
+
+<p>CocoaPods Trunk が 2026年12月2日に読み取り専用となるため、今後 CocoaPods では新しいバージョンを配信できなくなります。
+最新バージョンをご利用いただくには、<a href="#swift-package-manager-%E6%8E%A8%E5%A5%A8">Swift Package Manager</a> または <a href="#carthage">Carthage</a> へ移行してください。
+詳細は<a href="#cocoapods-%E9%85%8D%E4%BF%A1%E7%B5%82%E4%BA%86%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">CocoaPods 配信終了について</a>を参照してください。</p>
+</blockquote>
 
 <p>最新バージョンでは以下を実現するための機能が提供されています。
 詳細はドキュメントを参照してください。</p>
@@ -237,7 +245,7 @@
 <li>Apple Pay: <a href="https://github.com/payjp/apple-pay-example">https://github.com/payjp/apple-pay-example</a></li>
 <li>CreditCard (Swift, SPM): <a href="https://github.com/payjp/payjp-ios/tree/master/example-swift">https://github.com/payjp/payjp-ios/tree/master/example-swift</a></li>
 <li>CreditCard (Swift, Carthage): <a href="https://github.com/payjp/payjp-ios/tree/master/example-swift">https://github.com/payjp/payjp-ios/tree/master/example-swift</a> (example-swift-carthageターゲット)</li>
-<li>CreditCard (Objective-C, CocoaPods): <a href="https://github.com/payjp/payjp-ios/tree/master/example-objc">https://github.com/payjp/payjp-ios/tree/master/example-objc</a></li>
+<li>CreditCard (Objective-C, CocoaPods・非推奨): <a href="https://github.com/payjp/payjp-ios/tree/master/example-objc">https://github.com/payjp/payjp-ios/tree/master/example-objc</a></li>
 </ul>
 <h2 id='動作環境' class='heading'>動作環境</h2>
 
@@ -247,6 +255,31 @@
 <li>最新安定版のXcode</li>
 </ul>
 <h2 id='インストール' class='heading'>インストール</h2>
+<h3 id='swift-package-manager-推奨' class='heading'>Swift Package Manager (推奨)</h3>
+
+<p>Xcode でプロジェクトを開き、以下の手順で追加してください。</p>
+
+<ol>
+<li>メニューの <strong>File &gt; Add Package Dependencies&hellip;</strong> を選択</li>
+<li>検索欄に <code>https://github.com/payjp/payjp-ios.git</code> を入力</li>
+<li><strong>Dependency Rule</strong> でバージョンを指定し、<strong>Add Package</strong> を選択</li>
+<li>利用するターゲットに <code>PAYJP</code> を追加</li>
+</ol>
+
+<p><code>Package.swift</code> で管理している場合は、以下のように記述してください。</p>
+<pre class="highlight swift"><code><span class="nv">dependencies</span><span class="p">:</span> <span class="p">[</span>
+    <span class="o">.</span><span class="nf">package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/payjp/payjp-ios.git"</span><span class="p">,</span> <span class="nv">from</span><span class="p">:</span> <span class="s">"&lt;バージョン&gt;"</span><span class="p">)</span>
+<span class="p">],</span>
+<span class="nv">targets</span><span class="p">:</span> <span class="p">[</span>
+    <span class="o">.</span><span class="nf">target</span><span class="p">(</span>
+        <span class="nv">name</span><span class="p">:</span> <span class="s">"YourTarget"</span><span class="p">,</span>
+        <span class="nv">dependencies</span><span class="p">:</span> <span class="p">[</span>
+            <span class="o">.</span><span class="nf">product</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"PAYJP"</span><span class="p">,</span> <span class="nv">package</span><span class="p">:</span> <span class="s">"PAYJP"</span><span class="p">)</span>
+        <span class="p">]</span>
+    <span class="p">)</span>
+<span class="p">]</span>
+</code></pre>
+<h3 id='carthage' class='heading'>Carthage</h3>
 
 <p><a href="https://github.com/Carthage/Carthage">Carthage</a> でインストールする場合、以下のように記述してください</p>
 <pre class="highlight plaintext"><code>github "payjp/payjp-ios"
@@ -269,12 +302,31 @@ bundle exec fastlane ios build_carthage_swift_example
 注: Package.swiftとの競合により、`carthage bootstrap`だけではビルドできません。fastlaneを使用してください。
 
 </details>
+<h3 id='cocoapods-非推奨' class='heading'>CocoaPods (非推奨)</h3>
+
+<blockquote>
+<p><strong>【重要】</strong> CocoaPods での新しいバージョンの配信は終了予定です。<a href="#cocoapods-%E9%85%8D%E4%BF%A1%E7%B5%82%E4%BA%86%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">CocoaPods 配信終了について</a>を参照し、Swift Package Manager または Carthage へ移行してください。</p>
+</blockquote>
 
 <p><a href="https://cocoapods.org">CocoaPods</a> でもインストールすることができます。</p>
 <pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'PAYJP'</span>
 </code></pre>
+<h2 id='cocoapods-配信終了について' class='heading'>CocoaPods 配信終了について</h2>
 
-<p>Xcode 12以上の場合、Swift Package Managerにも対応しています。</p>
+<p>CocoaPods の公開リポジトリ (Trunk) が <a href="https://blog.cocoapods.org/CocoaPods-Specs-Repo/">2026年12月2日に読み取り専用になる</a>ことに伴い、PAY.JP iOS SDK は CocoaPods での配信を終了します。</p>
+
+<ul>
+<li>配信終了前に公開済みのバージョンは、引き続き CocoaPods でインストールできます。</li>
+<li>配信終了後に公開される新しいバージョンは、CocoaPods では取得できません。</li>
+<li>最新のバージョンや機能追加・修正を利用するには、Swift Package Manager または Carthage への移行が必要です。</li>
+</ul>
+<h3 id='cocoapods-から-swift-package-manager-への移行' class='heading'>CocoaPods から Swift Package Manager への移行</h3>
+
+<ol>
+<li><code>Podfile</code> から <code>pod &#39;PAYJP&#39;</code> を削除し、<code>pod install</code> を実行する</li>
+<li>上記の<a href="#swift-package-manager-%E6%8E%A8%E5%A5%A8">Swift Package Manager</a>の手順で <code>PAYJP</code> を追加する</li>
+<li>アプリのビルドと動作を確認する</li>
+</ol>
 <h2 id='sdk開発環境' class='heading'>SDK開発環境</h2>
 
 <ul>
